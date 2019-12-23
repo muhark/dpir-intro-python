@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Musashi Harukawa, DPIR">
+  <title>Introduction to Python for Social Science</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="/home/lunayneko/Presentations/reveal.js/css/reset.css">
+  <link rel="stylesheet" href="/home/lunayneko/Presentations/reveal.js/css/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="/home/lunayneko/Presentations/reveal.js/css/theme/my_simple.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? '/home/lunayneko/Presentations/reveal.js/css/print/pdf.css' : '/home/lunayneko/Presentations/reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="/home/lunayneko/Presentations/reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Introduction to Python for Social Science</h1>
+  <p class="author">Musashi Harukawa, DPIR</p>
+  <p class="date">1st Week Hilary 2020</p>
+</section>
+
+<section><section id="course-overview" class="title-slide slide level1"><h1>Course Overview</h1></section>
+<section id="schedule" class="slide level2">
+<h2>Schedule</h2>
+<p>8-week long course will take place on Wednesdays at the IT Lab in the Manor Road Building. Each week will consist of a three-hour session divided roughly as follows:</p>
+<ul>
+<li class="fragment">1615-1715: Lecture</li>
+<li class="fragment">1715-1725: Break</li>
+<li class="fragment">1725-1825: Workshop</li>
+<li class="fragment">1825-1925: Clinic</li>
+</ul>
+</section>
+<section id="lecture" class="slide level2">
+<h2>Lecture</h2>
+<ul>
+<li class="fragment">During the lectures I will discuss a mixture of theory and methods. The slides will be made available at: <strong>to be confirmed</strong></li>
+<li class="fragment">Please feel free to stop me and ask questions! I have alloted time for this.</li>
+</ul>
+</section>
+<section id="workshop" class="slide level2">
+<h2>Workshop</h2>
+<ul>
+<li class="fragment">In the workshop, you will work through a number of set programming problems and discussion questions.</li>
+<li class="fragment">Answers will be discussed as a class for the final 10 minutes.</li>
+</ul>
+</section>
+<section id="clinic" class="slide level2">
+<h2>Clinic</h2>
+<ul>
+<li class="fragment">Each week, there will be tasks and projects for you to try in your own time, if you wish.</li>
+<li class="fragment">I’ll be available for an hour after each session to answer questions one-to-one or in small groups.</li>
+</ul>
+</section></section>
+<section><section id="course-structure" class="title-slide slide level1"><h1>Course Structure</h1><p>The topics for the eight weeks are as follows:</p></section>
+<section id="section" class="slide level2">
+<h2></h2>
+<ol type="1">
+<li class="fragment">Introduction to Python and the Development Environment</li>
+<li class="fragment">Data Structures and Pandas I</li>
+<li class="fragment">Data Structures and Pandas II</li>
+<li class="fragment">Data Visualisation</li>
+<li class="fragment">Machine Learning with <code>scikit-learn</code> I</li>
+<li class="fragment">Machine Learning with <code>scikit-learn</code> II</li>
+<li class="fragment">Mining the Web</li>
+<li class="fragment">Introduction to Natural Language Processing</li>
+</ol>
+</section></section>
+<section id="feedback" class="title-slide slide level1"><h1>Feedback</h1><ul>
+<li class="fragment">This is a brand new course, and far from perfect.</li>
+<li class="fragment">I would appreciate and welcome any feedback on any aspect.</li>
+<li class="fragment">Feedback can either be:
+<ul>
+<li class="fragment">sent to me at <code>musashi.harukawa{=^._.^= minus C}ox.ac.uk</code></li>
+<li class="fragment">or communicated via a Google survey link that will be provided.</li>
+</ul></li>
+<li class="fragment">Please also feel free to come talk to me in person!</li>
+</ul></section>
+<section id="week-1-introduction-to-python-and-the-development-environment" class="title-slide slide level1"><h1>Week 1: Introduction to Python and the Development Environment</h1><p>This week will cover the following points:</p>
+<ol type="1">
+<li class="fragment">What is Python?…</li>
+<li class="fragment">… and what can I use it for?</li>
+<li class="fragment">What are the tools I have to write, test and run Python code?</li>
+<li class="fragment">Writing your first Python script.</li>
+</ol></section>
+<section><section id="what-is-python" class="title-slide slide level1"><h1>What is Python?…</h1><p>Python is an <em>open-source, general-purpose scripting language</em>.</p></section>
+<section id="open-source" class="slide level2">
+<h2>Open-Source</h2>
+<ul>
+<li class="fragment">Built by a community</li>
+<li class="fragment">Maintained by a community</li>
+<li class="fragment">Free to use for all</li>
+</ul>
+</section>
+<section id="general-purpose" class="slide level2">
+<h2>General-Purpose</h2>
+<ul>
+<li class="fragment">If you’re doing it on a computer and there’s some repetitive element, then you can automate it in Python.</li>
+<li class="fragment">Python isn’t limited to Data Science, but it’s very popular with data scientists!</li>
+</ul>
+<aside class="notes">
+Large community means that a larger number of people create, contribute to, and maintain the data analysis tools that we all use.
+</aside>
+</section>
+<section id="scripting" class="slide level2">
+<h2><em>Scripting</em></h2>
+<ul>
+<li class="fragment">No strict definition for what a “script” is.</li>
+<li class="fragment">Series of commands to automate some task.</li>
+<li class="fragment">Like a pipeline: takes some inputs, does some things to these inputs, and gives back some outputs.</li>
+</ul>
+<aside class="notes">
+It’s good to keep the input-output framework in your head.
+</aside>
+</section></section>
+<section><section id="and-what-can-i-use-python-for" class="title-slide slide level1"><h1>and what can I use Python for?</h1><p>Some reasons you, as a social science researcher, may want to learn Python:</p></section>
+<section id="i-want-to" class="slide level2">
+<h2>I want to…</h2>
+<ul>
+<li class="fragment">Clean up my messy data!</li>
+<li class="fragment">Run analyses with (hundreds of) millions of data points
+<ul>
+<li class="fragment">it won’t fit into an excel spreadsheet!</li>
+</ul></li>
+<li class="fragment">I want to automate downloading several decades of newspaper articles!</li>
+<li class="fragment">I want to create beautiful (interactive) visuals to accompany my analyses!</li>
+<li class="fragment">I want to uncover hidden structures linking parliamentary committees!</li>
+<li class="fragment">… and more!</li>
+</ul>
+</section></section>
+<section id="python-vs-r" class="title-slide slide level1"><h1>Python vs <code>R</code></h1><table>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th><code>python</code></th>
+<th><code>R</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>General Purpose Programming</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>Regression Analysis</td>
+<td>Kinda</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>Machine Learning</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>Web Scraping</td>
+<td>Yes</td>
+<td>Kinda</td>
+</tr>
+<tr class="odd">
+<td>Natural Language Processing<a href="#/fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>Data Visualisation</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>Conclusion: … it depends, but ideally you want to learn both!</p></section>
+<section><section id="basic-coding-tools" class="title-slide slide level1"><h1>Basic Coding Tools</h1><ul>
+<li class="fragment"><code>Python</code> is a language, and not an application.</li>
+<li class="fragment">We have a variety of tools for developing our python code.</li>
+</ul></section>
+<section id="anaconda" class="slide level2">
+<h2>Anaconda</h2>
+<ul>
+<li class="fragment">Environment and software manager.</li>
+<li class="fragment">Can be used from the command line (<code>cli</code>) or browser-like interface (anaconda-navigator).</li>
+</ul>
+<aside class="notes">
+At this point, I switch windows to open up the anaconda navigator, and go through the various relevant tabs. These include the launcher for various apps and the environment manager.
+</aside>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<figure>
+<img data-src="/home/lunayneko/Pictures/anaconda_navigator_screenshot.png" alt="" /><figcaption>Anaconda Navigator</figcaption>
+</figure>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<figure>
+<img data-src="/home/lunayneko/Pictures/anaconda_navigator_environments.png" alt="" /><figcaption>Environment Manager</figcaption>
+</figure>
+</section>
+<section id="jupyter" class="slide level2">
+<h2>Jupyter</h2>
+<ul>
+<li class="fragment">Interactive code editor.</li>
+<li class="fragment">Popular but controversial.</li>
+</ul>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<figure>
+<img data-src="/home/lunayneko/Pictures/jupyter_lab_launcher.png" alt="" /><figcaption>Jupyter Lab Launcher</figcaption>
+</figure>
+</section>
+<section id="section-4" class="slide level2">
+<h2></h2>
+<figure>
+<img data-src="/home/lunayneko/Pictures/jupyter_lab_editor.png" alt="" /><figcaption>Jupyter Lab Editor</figcaption>
+</figure>
+<aside class="notes">
+Launch Jupyter Lab session. Show how you can navigate a file tree, and then create a new notebook and name it.
+</aside>
+</section>
+<section id="other-options" class="slide level2">
+<h2>Other Options</h2>
+<ul>
+<li class="fragment">I prefer to use Atom with Hydrogen</li>
+<li class="fragment">PyCharm is popular with developers</li>
+<li class="fragment">If you’ve spent a lot of time with RStudio, you may prefer Spyder.</li>
+</ul>
+</section>
+<section id="section-5" class="slide level2">
+<h2></h2>
+<figure>
+<img data-src="/home/lunayneko/Pictures/atom_editor.png" alt="" /><figcaption>Atom</figcaption>
+</figure>
+</section></section>
+<section id="basic-workflow" class="title-slide slide level1"><h1>Basic Workflow</h1><ol type="1">
+<li class="fragment">Open up Anaconda Navigator</li>
+<li class="fragment">Open up Jupyter Lab (or Notebook)</li>
+<li class="fragment">Navigate to relevant directory</li>
+<li class="fragment">Open pre-existing notebook, or create new one.</li>
+<li class="fragment">Start coding!</li>
+</ol></section>
+<section><section id="getting-started" class="title-slide slide level1"><h1>Getting Started!</h1><p>We are now going to write our first python command!</p></section>
+<section id="step-1-create-notebook" class="slide level2">
+<h2>Step 1: Create Notebook</h2>
+<p>Following the steps from before, create a new notebook in your working directory, and call it <code>my_first_notebook.ipynb</code> (or whatever).</p>
+</section>
+<section id="step-2-write-command" class="slide level2">
+<h2>Step 2: Write Command</h2>
+<p>Type the following code into the first cell:</p>
+<pre class="{python}"><code>print(&quot;Hello World!&quot;)</code></pre>
+<p>and now hit <code>CTRL+ENTER</code></p>
+</section></section>
+<section><section id="breaking-down-our-first-script" class="title-slide slide level1"><h1>Breaking down our first script</h1><p>Let’s break down what we did here.</p></section>
+<section id="print" class="slide level2">
+<h2><code>print()</code></h2>
+<pre class="{python}"><code>print(&quot;This is my first line of code!&quot;)
+^---^^                                ^</code></pre>
+<p>This is the <em>print function</em>. It prints whatever argument it is given to the console. We know it is a function because it has brackets.</p>
+</section>
+<section id="input" class="slide level2">
+<h2>input</h2>
+<pre class="{python}"><code>print(&quot;This is my first line of code!&quot;)
+      ^------------------------------^</code></pre>
+<p>This is the input to the function. There is only one argument for this function, so there are no commas. This is what the print function prints to the console.</p>
+</section>
+<section id="quotes" class="slide level2">
+<h2>quotes</h2>
+<pre class="{python}"><code>print(&quot;This is my first line of code!&quot;)
+      ^                              ^</code></pre>
+<p>The double quotes are used to create a <em>string</em>. We can also use single quotes, but if we don’t use any quotes let’s see what happens.</p>
+</section></section>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Python and <code>R</code> both provide extensive and powerful natural language processing libraries, e.g. <code>nltk</code>, <code>gensim</code> in Python; <code>tm</code>, <code>quanteda</code> in <code>R</code>, and <code>spaCy</code> in both. Unfortunately, there are many techniques that are only implemented in one language but not the other.<a href="#/fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+    </div>
+  </div>
+
+  <script src="/home/lunayneko/Presentations/reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '/home/lunayneko/Presentations/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '/home/lunayneko/Presentations/reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: '/home/lunayneko/Presentations/reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
