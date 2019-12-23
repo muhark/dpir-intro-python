@@ -99,9 +99,8 @@ body {
 .reveal ol,
 .reveal dl,
 .reveal ul {
-  display: inline-block;
   text-align: left;
-  margin: 0 0 0 1em; }
+  margin: 0 0 0 1.5em; }
 
 .reveal ol {
   list-style-type: decimal; }
@@ -120,7 +119,7 @@ body {
 .reveal ol ol,
 .reveal ol ul {
   display: block;
-  margin-left: 30px; }
+  margin-left: 1.5em; }
 
 .reveal dt {
   font-weight: bold; }
@@ -159,7 +158,16 @@ body {
 
 .reveal code {
   font-family: monospace;
-  text-transform: none; }
+  text-transform: none;
+  padding: 2px 4px;
+  font-size: 90%;
+  color: #c7254e;
+  background-color: #f9f2f4;
+  vertical-align: baseline;
+  white-space: pre-wrap;
+  border-radius: 2px;
+
+}
 
 .reveal pre code {
   display: block;
