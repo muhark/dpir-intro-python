@@ -57,7 +57,7 @@ The lecture begins with a few administrative points, and then goes into the foll
     - Quick Aside: Python vs `R`
         - This question comes up frequently. My two cents on the debate is that whereas `R` is a language specifically for statistical computing, python is a general-purpose programming language popular with the data science community. There is a lot of overlap in the functionality between the two languages, and learning either one will enable you to do many things anyway.
 - _Basic Coding Tools_
-    -
+    - _Aim of this is to understand a few things about the coding toolkit and interface_.
     - Anaconda: An environment manager. Python has many _libraries_ and _versions_; this software helps you keep them tidy.
     - Jupyter: Code editor (and executor). Takes the form of terminals, notebooks and lab.
         - How to start Jupyter (and why is this running in a browser??)
@@ -67,7 +67,10 @@ The lecture begins with a few administrative points, and then goes into the foll
         - PyCharm: most commonly used tool for development, good for people in the class with prior experience coding in other languages.
         - vim: if you're hardcore
         - Takeaway: Python is a language, which is separate from the tools you use to write and execute it.
-- _First Steps in Python_:
-    - `print("Hello World!")`
-    - `type_dict = {42: "integer", 3.5: "float", True: "boolean", "word": "string"}`
-    -
+- _First Steps in Python_: (to be done in RISE)
+    1. `print()`
+        - Note: notebook returns output of last command, if this is just a variable then it returns that. In general if you want print statements, then 
+    2. variable assignment
+    3. binary operators: +, -, ==
+    4. 4 basic data types
+    5. lists and dicts
