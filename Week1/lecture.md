@@ -7,6 +7,8 @@ theme: my_simple
 
 # Course Overview
 
+Note: Next few slides are primarily details about the course.
+
 ## Schedule
 
 8-week long course will take place on Wednesdays at the IT Lab in the Manor Road Building. Each week will consist of a three-hour session divided roughly as follows:
@@ -16,9 +18,13 @@ theme: my_simple
 - 1725-1825: Workshop
 - 1825-1925: Clinic
 
+Note: Mention that class in 3rd week (5th Feb) will be moved to Monday (3rd Feb).
+
 ## Lecture
 
-- During the lectures I will discuss a mixture of theory and methods. The slides will be made available at: **to be confirmed**
+- During the lectures I will discuss a mixture of theory and methods. The slides will be made available at the following:
+  - https://github.com/muhark/dpir-intro-python
+  - Canvas?
 - Please feel free to stop me and ask questions! I have alloted time for this.
 
 ## Workshop
@@ -176,52 +182,71 @@ Conclusion: ... it depends, but ideally you want to learn both!
 4. Open pre-existing notebook, or create new one.
 5. Start coding!
 
-# Getting Started!
+## Getting Started!
 
-We are now going to write our first python command!
+- Create a new notebook in your working directory, and call it `week1_lecture.ipynb` (or whatever).
+- Let's get coding!
 
-## Step 1: Create Notebook
+# Coding Recap
 
-Following the steps from before, create a new notebook in your working directory, and call it `my_first_notebook.ipynb` (or whatever).
+A quick recap of the things that you learned in the coding session:
 
-## Step 2: Write Command
+## Variable Assignment
 
-Type the following code into the first cell:
+Variables can be assigned with `=`.
 
-```{python}
-print("Hello World!")
-```
+## Four Basic Data Types
 
-and now hit `CTRL+ENTER`
+There are four basic data types in Python. These are:
 
-# Breaking down our first script
+- String
+- Integer
+- Float
+- Boolean
 
-Let's break down what we did here.
+## String
 
-## `print()`
+- _A sequence of characters_.
+- Behaves like a sequence; can be indexed with `[index]`
 
-```{python}
-print("This is my first line of code!")
-^---^^                                ^
-```
+## Integer
 
-This is the _print function_. It prints whatever argument it is given to the console. We know it is a function because it has brackets.
+- Whole numbers.
+- Can be positive or negative.
 
-## input
+## Float
 
+- Decimal numbers.
+- Behave unexpectedly. Remember: `0.1*3==0.3` returns `False`.
 
-```{python}
-print("This is my first line of code!")
-      ^------------------------------^
-```
+## Boolean
 
-This is the input to the function. There is only one argument for this function, so there are no commas. This is what the print function prints to the console.
+- True/False
+- Behaves similarly to integers 0 and 1.
 
-## quotes
+## Two basic data structures
 
-```{python}
-print("This is my first line of code!")
-      ^                              ^
-```
+We learned about two basic data structures:
 
-The double quotes are used to create a _string_. We can also use single quotes, but if we don't use any quotes let's see what happens.
+- Lists
+- Dictionaries
+
+## Lists
+
+- Lists are an ordered sequence of values.
+- Created by writing a sequence of comma-separated values between square brackets:
+  - i.e. `[1, 2, 5, "some string"]`
+- Lists are mutable; values can be changed in place without creating a new variable.
+- Lists can be indexed the same way as strings:
+  - `[n]` to get the n+1th element.
+  - `[m:n]` to get all elements from m+1 to n.
+
+## Dictionaries
+
+- Unordered mapping of _keys_ to _values_.
+  - Cannot be indexed numerically, and if iterated over, will not return values in the same order.
+- Created by writing a list of `key:value` pairs separated by commas between curly braces.
+  - i.e. `{"cat": "meow", "dog": "bork"}`
+- `some_dict[some_key]` returns the corresponding value for `some_key` in `some_dict`
+- To see all of the keys, use the `.keys()` method of the dict, i.e. `some_dict.keys()`
+- To see all of the values, use the `.values()` method of the dict, i.e. `some_dict.values()`

@@ -41,7 +41,7 @@
   <p class="date">1st Week Hilary 2020</p>
 </section>
 
-<section><section id="course-overview" class="title-slide slide level1"><h1>Course Overview</h1></section>
+<section><section id="course-overview" class="title-slide slide level1"><h1>Course Overview</h1><p>Note: Next few slides are primarily details about the course.</p></section>
 <section id="schedule" class="slide level2">
 <h2>Schedule</h2>
 <p>8-week long course will take place on Wednesdays at the IT Lab in the Manor Road Building. Each week will consist of a three-hour session divided roughly as follows:</p>
@@ -51,11 +51,16 @@
 <li class="fragment">1725-1825: Workshop</li>
 <li class="fragment">1825-1925: Clinic</li>
 </ul>
+<p>Note: Mention that class in 3rd week (5th Feb) will be moved to Monday (3rd Feb).</p>
 </section>
 <section id="lecture" class="slide level2">
 <h2>Lecture</h2>
 <ul>
-<li class="fragment">During the lectures I will discuss a mixture of theory and methods. The slides will be made available at: <strong>to be confirmed</strong></li>
+<li class="fragment">During the lectures I will discuss a mixture of theory and methods. The slides will be made available at the following:
+<ul>
+<li class="fragment">https://github.com/muhark/dpir-intro-python</li>
+<li class="fragment">Canvas?</li>
+</ul></li>
 <li class="fragment">Please feel free to stop me and ask questions! I have alloted time for this.</li>
 </ul>
 </section>
@@ -253,42 +258,102 @@ Launch Jupyter Lab session. Show how you can navigate a file tree, and then crea
 <img data-src="/home/lunayneko/Pictures/atom_editor.png" alt="" /><figcaption>Atom</figcaption>
 </figure>
 </section></section>
-<section id="basic-workflow" class="title-slide slide level1"><h1>Basic Workflow</h1><ol type="1">
+<section><section id="basic-workflow" class="title-slide slide level1"><h1>Basic Workflow</h1><ol type="1">
 <li class="fragment">Open up Anaconda Navigator</li>
 <li class="fragment">Open up Jupyter Lab (or Notebook)</li>
 <li class="fragment">Navigate to relevant directory</li>
 <li class="fragment">Open pre-existing notebook, or create new one.</li>
 <li class="fragment">Start coding!</li>
 </ol></section>
-<section><section id="getting-started" class="title-slide slide level1"><h1>Getting Started!</h1><p>We are now going to write our first python command!</p></section>
-<section id="step-1-create-notebook" class="slide level2">
-<h2>Step 1: Create Notebook</h2>
-<p>Following the steps from before, create a new notebook in your working directory, and call it <code>my_first_notebook.ipynb</code> (or whatever).</p>
-</section>
-<section id="step-2-write-command" class="slide level2">
-<h2>Step 2: Write Command</h2>
-<p>Type the following code into the first cell:</p>
-<pre class="{python}"><code>print(&quot;Hello World!&quot;)</code></pre>
-<p>and now hit <code>CTRL+ENTER</code></p>
+<section id="getting-started" class="slide level2">
+<h2>Getting Started!</h2>
+<ul>
+<li class="fragment">Create a new notebook in your working directory, and call it <code>week1_lecture.ipynb</code> (or whatever).</li>
+<li class="fragment">Let’s get coding!</li>
+</ul>
 </section></section>
-<section><section id="breaking-down-our-first-script" class="title-slide slide level1"><h1>Breaking down our first script</h1><p>Let’s break down what we did here.</p></section>
-<section id="print" class="slide level2">
-<h2><code>print()</code></h2>
-<pre class="{python}"><code>print(&quot;This is my first line of code!&quot;)
-^---^^                                ^</code></pre>
-<p>This is the <em>print function</em>. It prints whatever argument it is given to the console. We know it is a function because it has brackets.</p>
+<section><section id="coding-recap" class="title-slide slide level1"><h1>Coding Recap</h1><p>A quick recap of the things that you learned in the coding session:</p></section>
+<section id="variable-assignment" class="slide level2">
+<h2>Variable Assignment</h2>
+<p>Variables can be assigned with <code>=</code>.</p>
 </section>
-<section id="input" class="slide level2">
-<h2>input</h2>
-<pre class="{python}"><code>print(&quot;This is my first line of code!&quot;)
-      ^------------------------------^</code></pre>
-<p>This is the input to the function. There is only one argument for this function, so there are no commas. This is what the print function prints to the console.</p>
+<section id="four-basic-data-types" class="slide level2">
+<h2>Four Basic Data Types</h2>
+<p>There are four basic data types in Python. These are:</p>
+<ul>
+<li class="fragment">String</li>
+<li class="fragment">Integer</li>
+<li class="fragment">Float</li>
+<li class="fragment">Boolean</li>
+</ul>
 </section>
-<section id="quotes" class="slide level2">
-<h2>quotes</h2>
-<pre class="{python}"><code>print(&quot;This is my first line of code!&quot;)
-      ^                              ^</code></pre>
-<p>The double quotes are used to create a <em>string</em>. We can also use single quotes, but if we don’t use any quotes let’s see what happens.</p>
+<section id="string" class="slide level2">
+<h2>String</h2>
+<ul>
+<li class="fragment"><em>A sequence of characters</em>.</li>
+<li class="fragment">Behaves like a sequence; can be indexed with <code>[index]</code></li>
+</ul>
+</section>
+<section id="integer" class="slide level2">
+<h2>Integer</h2>
+<ul>
+<li class="fragment">Whole numbers.</li>
+<li class="fragment">Can be positive or negative.</li>
+</ul>
+</section>
+<section id="float" class="slide level2">
+<h2>Float</h2>
+<ul>
+<li class="fragment">Decimal numbers.</li>
+<li class="fragment">Behave unexpectedly. Remember: <code>0.1*3==0.3</code> returns <code>False</code>.</li>
+</ul>
+</section>
+<section id="boolean" class="slide level2">
+<h2>Boolean</h2>
+<ul>
+<li class="fragment">True/False</li>
+<li class="fragment">Behaves similarly to integers 0 and 1.</li>
+</ul>
+</section>
+<section id="two-basic-data-structures" class="slide level2">
+<h2>Two basic data structures</h2>
+<p>We learned about two basic data structures:</p>
+<ul>
+<li class="fragment">Lists</li>
+<li class="fragment">Dictionaries</li>
+</ul>
+</section>
+<section id="lists" class="slide level2">
+<h2>Lists</h2>
+<ul>
+<li class="fragment">Lists are an ordered sequence of values.</li>
+<li class="fragment">Created by writing a sequence of comma-separated values between square brackets:
+<ul>
+<li class="fragment">i.e. <code>[1, 2, 5, "some string"]</code></li>
+</ul></li>
+<li class="fragment">Lists are mutable; values can be changed in place without creating a new variable.</li>
+<li class="fragment">Lists can be indexed the same way as strings:
+<ul>
+<li class="fragment"><code>[n]</code> to get the n+1th element.</li>
+<li class="fragment"><code>[m:n]</code> to get all elements from m+1 to n.</li>
+</ul></li>
+</ul>
+</section>
+<section id="dictionaries" class="slide level2">
+<h2>Dictionaries</h2>
+<ul>
+<li class="fragment">Unordered mapping of <em>keys</em> to <em>values</em>.
+<ul>
+<li class="fragment">Cannot be indexed numerically, and if iterated over, will not return values in the same order.</li>
+</ul></li>
+<li class="fragment">Created by writing a list of <code>key:value</code> pairs separated by commas between curly braces.
+<ul>
+<li class="fragment">i.e. <code>{"cat": "meow", "dog": "bork"}</code></li>
+</ul></li>
+<li class="fragment"><code>some_dict[some_key]</code> returns the corresponding value for <code>some_key</code> in <code>some_dict</code></li>
+<li class="fragment">To see all of the keys, use the <code>.keys()</code> method of the dict, i.e. <code>some_dict.keys()</code></li>
+<li class="fragment">To see all of the values, use the <code>.values()</code> method of the dict, i.e. <code>some_dict.values()</code></li>
+</ul>
 </section></section>
 <section class="footnotes" role="doc-endnotes">
 <hr />
