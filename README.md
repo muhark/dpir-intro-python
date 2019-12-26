@@ -1,10 +1,4 @@
-# dpir-intro-python
----
-title: Introduction to Python for Social Science
-author: Musashi Harukawa, DPIR
-date: Optional, Hilary Term 2020
-geometry: margin=2cm
----
+# Introduction to Python for Social Science 
 
 ## Course Description
 
@@ -38,8 +32,6 @@ More generally though, given the rapidly changing nature of the field, students 
 For further questions regarding course specifics or accessibility requirements, please feel free to write to me at [musashi.harukawa@merton.ox.ac.uk](musashi.harukawa@merton.ox.ac.uk).
 
 [^6dc0]: If you have something other than Windows, Mac or Linux (e.g. Windows RT, iPadOS, Android), come talk to me.
-
-\newpage
 
 ## Course Outline
 
