@@ -41,7 +41,9 @@
   <p class="date">1st Week Hilary 2020</p>
 </section>
 
-<section><section id="course-overview" class="title-slide slide level1"><h1>Course Overview</h1><p>Note: Next few slides are primarily details about the course.</p></section>
+<section><section id="course-overview" class="title-slide slide level1"><h1>Course Overview</h1><aside class="notes">
+Next few slides are primarily details about the course.
+</aside></section>
 <section id="schedule" class="slide level2">
 <h2>Schedule</h2>
 <p>8-week long course will take place on Wednesdays at the IT Lab in the Manor Road Building. Each week will consist of a three-hour session divided roughly as follows:</p>
@@ -51,7 +53,9 @@
 <li class="fragment">1725-1825: Workshop</li>
 <li class="fragment">1825-1925: Clinic</li>
 </ul>
-<p>Note: Mention that class in 3rd week (5th Feb) will be moved to Monday (3rd Feb).</p>
+<aside class="notes">
+Mention that class in 3rd week (5th Feb) will be moved to Monday (3rd Feb).
+</aside>
 </section>
 <section id="lecture" class="slide level2">
 <h2>Lecture</h2>
@@ -63,6 +67,9 @@
 </ul></li>
 <li class="fragment">Please feel free to stop me and ask questions! I have alloted time for this.</li>
 </ul>
+<aside class="notes">
+Slides are generated with <code>reveal.js</code>. Should be viewable on any device with a browser.
+</aside>
 </section>
 <section id="workshop" class="slide level2">
 <h2>Workshop</h2>
@@ -83,8 +90,8 @@
 <h2></h2>
 <ol type="1">
 <li class="fragment">Introduction to Python and the Development Environment</li>
-<li class="fragment">Data Structures and Pandas I</li>
-<li class="fragment">Data Structures and Pandas II</li>
+<li class="fragment">Data Structures and <code>pandas</code> I</li>
+<li class="fragment">Data Structures and <code>pandas</code> II</li>
 <li class="fragment">Data Visualisation</li>
 <li class="fragment">Machine Learning with <code>scikit-learn</code> I</li>
 <li class="fragment">Machine Learning with <code>scikit-learn</code> II</li>
@@ -93,21 +100,26 @@
 </ol>
 </section></section>
 <section id="feedback" class="title-slide slide level1"><h1>Feedback</h1><ul>
-<li class="fragment">This is a brand new course, and far from perfect.</li>
-<li class="fragment">I would appreciate and welcome any feedback on any aspect.</li>
+<li class="fragment">This is my first try at this course, and I’m looking for continuous feedback.</li>
 <li class="fragment">Feedback can either be:
 <ul>
-<li class="fragment">sent to me at <code>musashi.harukawa{=^._.^= minus C}ox.ac.uk</code></li>
-<li class="fragment">or communicated via a Google survey link that will be provided.</li>
+<li class="fragment">sent to me at <code>musashi.harukawa@politics.ox.ac.uk</code></li>
+<li class="fragment">or communicated via a Google survey (to be sent each week).</li>
 </ul></li>
+</ul>
+<aside class="notes">
+<ul>
+<li class="fragment">This is a brand new course, and far from perfect.</li>
+<li class="fragment">I would appreciate and welcome any feedback on any aspect.</li>
 <li class="fragment">Please also feel free to come talk to me in person!</li>
-</ul></section>
+</ul>
+</aside></section>
 <section id="week-1-introduction-to-python-and-the-development-environment" class="title-slide slide level1"><h1>Week 1: Introduction to Python and the Development Environment</h1><p>This week will cover the following points:</p>
 <ol type="1">
 <li class="fragment">What is Python?…</li>
 <li class="fragment">… and what can I use it for?</li>
 <li class="fragment">What are the tools I have to write, test and run Python code?</li>
-<li class="fragment">Writing your first Python script.</li>
+<li class="fragment">Coding tutorial I: Base Data Types and Structures</li>
 </ol></section>
 <section><section id="what-is-python" class="title-slide slide level1"><h1>What is Python?…</h1><p>Python is an <em>open-source, general-purpose scripting language</em>.</p></section>
 <section id="open-source" class="slide level2">
@@ -129,7 +141,7 @@ Large community means that a larger number of people create, contribute to, and 
 </aside>
 </section>
 <section id="scripting" class="slide level2">
-<h2><em>Scripting</em></h2>
+<h2>Scripting</h2>
 <ul>
 <li class="fragment">No strict definition for what a “script” is.</li>
 <li class="fragment">Series of commands to automate some task.</li>
@@ -215,19 +227,34 @@ At this point, I switch windows to open up the anaconda navigator, and go throug
 <figure>
 <img data-src="/home/lunayneko/Pictures/anaconda_navigator_screenshot.png" alt="" /><figcaption>Anaconda Navigator</figcaption>
 </figure>
+<aside class="notes">
+<ul>
+<li class="fragment">Make sure students can find navigator, and open applications from it.</li>
+</ul>
+</aside>
 </section>
 <section id="section-2" class="slide level2">
 <h2></h2>
 <figure>
 <img data-src="/home/lunayneko/Pictures/anaconda_navigator_environments.png" alt="" /><figcaption>Environment Manager</figcaption>
 </figure>
+<aside class="notes">
+<ul>
+<li class="fragment">Show students how to install packages here. Also mention that this can be done from the command line.</li>
+</ul>
+</aside>
 </section>
 <section id="jupyter" class="slide level2">
 <h2>Jupyter</h2>
 <ul>
 <li class="fragment">Interactive code editor.</li>
-<li class="fragment">Popular but controversial.</li>
+<li class="fragment">Popular, but has its detractors.</li>
 </ul>
+<aside class="notes">
+<ul>
+<li class="fragment">I don’t use it, but I started off with it. I recommend that you give it a go.</li>
+</ul>
+</aside>
 </section>
 <section id="section-3" class="slide level2">
 <h2></h2>
@@ -258,17 +285,15 @@ Launch Jupyter Lab session. Show how you can navigate a file tree, and then crea
 <img data-src="/home/lunayneko/Pictures/atom_editor.png" alt="" /><figcaption>Atom</figcaption>
 </figure>
 </section></section>
-<section><section id="basic-workflow" class="title-slide slide level1"><h1>Basic Workflow</h1><ol type="1">
+<section id="basic-workflow" class="title-slide slide level1"><h1>Basic Workflow</h1><ol type="1">
 <li class="fragment">Open up Anaconda Navigator</li>
 <li class="fragment">Open up Jupyter Lab (or Notebook)</li>
 <li class="fragment">Navigate to relevant directory</li>
 <li class="fragment">Open pre-existing notebook, or create new one.</li>
 <li class="fragment">Start coding!</li>
 </ol></section>
-<section id="data-types-and-structures" class="slide level2">
-<h2>Data Types and Structures</h2>
-<ul>
-<li class="fragment">The next section of this lecture teaches on two fundamental, but abstract aspects of coding:
+<section><section id="motivation-for-todays-coding-lesson" class="title-slide slide level1"><h1>Motivation for Today’s Coding Lesson</h1><ul>
+<li class="fragment">Today we learn about two fundamental, but abstract aspects of coding:
 <ul>
 <li class="fragment">Data Types</li>
 <li class="fragment">Data Structures</li>
@@ -276,26 +301,116 @@ Launch Jupyter Lab session. Show how you can navigate a file tree, and then crea
 </ul>
 <aside class="notes">
 I want to spend a brief moment to explain why this is relevant.
-</aside>
-</section>
+</aside></section>
 <section id="why-automate" class="slide level2">
 <h2>Why Automate?</h2>
 <ul>
 <li class="fragment">In general, as social scientists using computational methods, our goal is to automate some component of our analysis.</li>
 <li class="fragment">The advantage of automation is cost, scale, and scope.</li>
-</ul>
-<aside class="notes">
-Feasibility is often discussed; I contend that there are patterns that can <em>only</em> be detected algorithmically.
-</aside>
-<ul>
 <li class="fragment">But in order to harness these methods, we need to structure our information in a way that algorithms and programs can utilise.
 <ul>
 <li class="fragment">This process of quantifying and structuring our observations usually entails the loss of some information.</li>
 </ul></li>
 </ul>
+<aside class="notes">
+<ul>
+<li class="fragment">Some qualitative scholars I speak to contend that the validity of the quantitative endeavour ends there.
+<ul>
+<li class="fragment">Are there unquantifiable things?</li>
+</ul></li>
+<li class="fragment">I’m more optimistic about what is possible, and think that the key to having valid quantitative inferences is to be extremely clear on the connection between the data in your analysis and the actual events you are measuring.</li>
+</ul>
+</aside>
 </section>
-<section id="bridging-the-gap-between-quantitative-and-qualitative-methods" class="slide level2">
-<h2>Bridging the Gap between Quantitative and Qualitative Methods</h2>
+<section id="bridging-the-gap-between-qualitative-and-quantitative-methods" class="slide level2">
+<h2>Bridging the Gap between Qualitative and Quantitative Methods</h2>
+<ul>
+<li class="fragment">Choosing a representation of your information that retains relevant properties is key.</li>
+<li class="fragment">To read more about this particular debate, a good starting point is <a href="https://pdfs.semanticscholar.org/2680/6102a45a6104489872dd3241b6e8030bbc40.pdf">Stevens (1946)</a>.</li>
+</ul>
+<aside class="notes">
+<ul>
+<li class="fragment">I would love to discuss this further, but this isn’t really that kind of methods class.</li>
+</ul>
+</aside>
+</section>
+<section id="data-types" class="slide level2">
+<h2>Data Types</h2>
+<p>Some (statistical) data types:</p>
+<ul>
+<li class="fragment">Numerical
+<ul>
+<li class="fragment">Interval</li>
+<li class="fragment">Ratio</li>
+<li class="fragment">Count</li>
+</ul></li>
+<li class="fragment">Text</li>
+<li class="fragment">Date and time</li>
+<li class="fragment">Logical</li>
+<li class="fragment">Categorical</li>
+</ul>
+<aside class="notes">
+(<em>Before points</em>)<br> - What do I mean when I talk about different “types” of data? - Small exercise: what are instances of each of these?
+</aside>
+</section>
+<section id="representing-data-on-a-computer" class="slide level2">
+<h2>Representing Data on a Computer</h2>
+<ul>
+<li class="fragment"><em>Good news:</em>
+<ul>
+<li class="fragment">Python, like most modern programming languages, has ways to represent each of the data types listed above.</li>
+</ul></li>
+<li class="fragment"><em>Bad news:</em>
+<ul>
+<li class="fragment">At a fundamental level, this is being stored as 0’s and 1’s.</li>
+</ul></li>
+<li class="fragment"><em>Take away:</em>
+<ul>
+<li class="fragment">Take the time to understand the relationship between:
+<ul>
+<li class="fragment">your empirical observations,</li>
+<li class="fragment">the abstracted representation of them in your mathematical model,</li>
+<li class="fragment">the approximation of this in your computational model.</li>
+</ul></li>
+</ul></li>
+</ul>
+<aside class="notes">
+<ul>
+<li class="fragment">I’m making a bit of an assumption here about the theory-generating workflow, in that a stylised mathematical model is usually prior to a computational/empirical approach.</li>
+</ul>
+</aside>
+</section>
+<section id="data-structures" class="slide level2">
+<h2>Data Structures</h2>
+<ul>
+<li class="fragment">Data types are concerned with the representation of individual data points, or observations.</li>
+<li class="fragment">Data structures are concerned with the relations between observations.
+<ul>
+<li class="fragment">Are the data points members of the same set?</li>
+<li class="fragment">Are the data points members of the same sequence?</li>
+<li class="fragment">Are the data points different features of single empirical unit?</li>
+</ul></li>
+</ul>
+</section>
+<section id="exercise" class="slide level2">
+<h2>Exercise</h2>
+<figure>
+<img data-src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.softcafe.com%2Fimg%2Fmenus96%2Famerican-bistro-menu-design.png&amp;f=1&amp;nofb=1" alt="" /><figcaption>Menu</figcaption>
+</figure>
+<aside class="notes">
+<ul>
+<li class="fragment">Question to discuss with partner: how would you represent this information in a computer? Possible answers include:
+<ul>
+<li class="fragment">Data Frame (a combination of relational and vector data)</li>
+<li class="fragment">Multiple sequences</li>
+<li class="fragment">Hierarchically: course -&gt; item -&gt; - desc. - price</li>
+</ul></li>
+</ul>
+</aside>
+</section>
+<section id="and-now" class="slide level2">
+<h2>And now…</h2>
+<h3 id="lets-get-to-coding">Let’s get to coding!</h3>
 </section></section>
 <section><section id="coding-recap" class="title-slide slide level1"><h1>Coding Recap</h1><p>A quick recap of the things that you learned in the coding session:</p></section>
 <section id="variable-assignment" class="slide level2">
@@ -380,6 +495,12 @@ Feasibility is often discussed; I contend that there are patterns that can <em>o
 <li class="fragment">To see all of the values, use the <code>.values()</code> method of the dict, i.e. <code>some_dict.values()</code></li>
 </ul>
 </section></section>
+<section id="next-week-data-structures-and-pandas-i" class="title-slide slide level1"><h1>Next Week: Data Structures and <code>pandas</code> I</h1><p>We learn about:</p>
+<ul>
+<li class="fragment"><code>pandas</code>, a key library for working with data</li>
+<li class="fragment">Reading different data formats</li>
+<li class="fragment">Slicing and indexing data</li>
+</ul></section>
 <section class="footnotes" role="doc-endnotes">
 <hr />
 <ol>
