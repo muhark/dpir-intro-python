@@ -18,7 +18,7 @@ Note: Next few slides are primarily details about the course.
 - 1725-1825: Workshop
 - 1825-1925: Clinic
 
-Note: Mention that class in 3rd week (5th Feb) will be moved to Monday (3rd Feb).
+<aside class="notes"> Mention that class in 3rd week (5th Feb) will be moved to Monday (3rd Feb). </aside>
 
 ## Lecture
 
@@ -89,7 +89,7 @@ Python is an _open-source, general-purpose scripting language_.
 
 <aside class="notes"> Large community means that a larger number of people create, contribute to, and maintain the data analysis tools that we all use. </aside>
 
-## _Scripting_
+## Scripting
 
 - No strict definition for what a "script" is.
 - Series of commands to automate some task.
@@ -182,10 +182,28 @@ Conclusion: ... it depends, but ideally you want to learn both!
 4. Open pre-existing notebook, or create new one.
 5. Start coding!
 
-## Getting Started!
+## Data Types and Structures
 
-- Create a new notebook in your working directory, and call it `week1_lecture.ipynb` (or whatever).
-- Let's get coding!
+- The next section of this lecture teaches on two fundamental, but abstract aspects of coding:
+  - Data Types
+  - Data Structures
+
+<aside class="notes"> I want to spend a brief moment to explain why this is relevant. </aside>
+
+## Why Automate?
+
+- In general, as social scientists using computational methods, our goal is to automate some component of our analysis.
+- The advantage of automation is cost, scale, and scope.
+
+<aside class="notes"> Feasibility is often discussed; I contend that there are patterns that can _only_ be detected algorithmically. </aside>
+
+- But in order to harness these methods, we need to structure our information in a way that algorithms and programs can utilise.
+  - This process of quantifying and structuring our observations usually entails the loss of some information.
+
+## Bridging the Gap between Quantitative and Qualitative Methods
+
+
+
 
 # Coding Recap
 
