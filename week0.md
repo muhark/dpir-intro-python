@@ -1,7 +1,8 @@
 ---
-title: Introduction to Python for Social Science
+title: Python Installation Guide
 author: Musashi Harukawa, DPIR
 date: 0th Week Hilary Term 2020
+geometry: margin=2cm
 ---
 
 # Installing Anaconda
