@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Musashi Harukawa, DPIR">
+  <title>Introduction to Python for Social Science</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../reveal.js/css/reset.css">
+  <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="../reveal.js/css/theme/../../../dpir-intro-theme.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal.js/css/print/pdf.css' : '../reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="../reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Introduction to Python for Social Science</h1>
+  <p class="subtitle">Lecture 2 - Data Structures and Pandas I</p>
+  <p class="author">Musashi Harukawa, DPIR</p>
+  <p class="date">2nd Week Hilary 2020</p>
+</section>
+
+<section><section id="last-week" class="title-slide slide level1"><h1>Last Week</h1><ul>
+<li class="fragment">What is Python, and what can I use it for?</li>
+<li class="fragment">What tools do I have to write, test and run Python code?
+<ul>
+<li class="fragment">Opening up JupyterLab/Notebooks/IPython</li>
+<li class="fragment">Executing code in Jupyter, etc.</li>
+</ul></li>
+<li class="fragment">Writing your first Python script and notebook.
+<ul>
+<li class="fragment">Data Types</li>
+<li class="fragment">Data Structures</li>
+</ul></li>
+</ul></section>
+<section id="this-week" class="slide level2">
+<h2>This Week</h2>
+<p>This week we will learn about a key library for working with <strong>data</strong>:</p>
+<ul>
+<li class="fragment">Thinking about (tabular) data</li>
+<li class="fragment">I/O</li>
+<li class="fragment">Slicing, indexing</li>
+<li class="fragment">Summarising</li>
+</ul>
+</section></section>
+<section id="the-hard-truth-about-data-science" class="title-slide slide level1"><h1>The Hard Truth About Data Science…</h1><ul>
+<li class="fragment">Analysis usually takes &lt;30% of your time.</li>
+<li class="fragment">&gt;50% of your time will be spent reading, cleaning, checking, storing, and cursing your data.</li>
+<li class="fragment">Data cleaning is meticulous work, but that doesn’t mean you can’t be efficient.</li>
+</ul></section>
+<section id="thinking-about-data" class="title-slide slide level1"><h1>Thinking About Data</h1><p>We can think of a data point as having two properties:</p>
+<ol type="1">
+<li class="fragment">Value</li>
+<li class="fragment">Relation (to other values)</li>
+</ol>
+<aside class="notes">
+<ul>
+<li class="fragment">Inherent in value is an abstract type that the value is an instance of.</li>
+<li class="fragment">In data science, we are often more concerned with the latter than the former for the bulk of the analysis. I say this because we don’t tend to care about the exact values, beyond type, until the end, when we look at the output of our model. When building our pipeline, what matters most is the type and structure of data.</li>
+</ul>
+</aside></section>
+<section><section id="data-structures" class="title-slide slide level1"><h1>Data Structures</h1><p>Three Ways of Structuring Data:</p>
+<ul>
+<li class="fragment">Graph</li>
+<li class="fragment">Tree (Hierarchical)</li>
+<li class="fragment"><strong>Tabular</strong></li>
+</ul>
+<aside class="notes">
+Option: Do an example of how we can structure data about the members of the class.
+</aside></section>
+<section id="graph" class="slide level2">
+<h2>Graph</h2>
+<ul>
+<li class="fragment">Graphs are constructed of nodes (vertices) and edges.</li>
+</ul>
+<figure>
+<img data-src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Graphe_initial_avant_contraction.png" alt="" /><figcaption>Graph</figcaption>
+</figure>
+<aside class="notes">
+<ul>
+<li class="fragment">Nodes and edges can have values associated with them.</li>
+<li class="fragment">A special case of graphs, called directed graphs, have edges with directions associated with them.</li>
+</ul>
+</aside>
+</section>
+<section id="trees" class="slide level2">
+<h2>Trees</h2>
+<ul>
+<li class="fragment">A tree is a type of graph with <a href="https://en.wikipedia.org/wiki/Tree_(graph_theory)#Tree">a number of properties</a></li>
+<li class="fragment">Commonly used to represent hierarchical data structures, such as nested sets or dependency/flow diagrams.</li>
+</ul>
+<figure>
+<img data-src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Arbol3.PNG" alt="" /><figcaption>Tree</figcaption>
+</figure>
+<aside class="notes">
+<ul>
+<li class="fragment">Websites are all trees in their backend.</li>
+<li class="fragment">A lot of the data you encounter will be tree-like in nature.
+<ul>
+<li class="fragment">A key point about this is that each element in this tree may not have the same properties. This can cause problems when attempting to convert to tabular data.</li>
+</ul></li>
+</ul>
+</aside>
+</section>
+<section id="tabular-data" class="slide level2">
+<h2>Tabular Data</h2>
+<ul>
+<li class="fragment"></li>
+</ul>
+<aside class="notes">
+In this class we are primarily focused on tabular data. If your data is not tabular, you may want to figure out some way to coerce it to a tabular format because most statistical/ML models assume tabular data.
+</aside>
+</section></section>
+<section id="data-io" class="title-slide slide level1"><h1>Data I/O</h1><p>Pandas comes with functions for reading and writing to all kinds of data formats. A quick list can be viewed using tab completion:</p>
+<pre class="{python}"><code>In [1]: import pandas as pd
+
+In [2]: pd.read_&lt;TAB&gt;
+ read_clipboard() read_hdf()       read_sas()
+ read_csv         read_html()      read_sql()
+ read_excel()     read_json()      read_sql_query()
+ read_feather()   read_msgpack()   read_sql_table()
+ read_fwf()       read_parquet()   read_stata()
+ read_gbq()       read_pickle()    read_table</code></pre></section>
+<section id="csv-format" class="title-slide slide level1"><h1><code>csv</code> format</h1><p><code>csv</code> (<em>comma-separated-values</em> or as I prefer, <em>character-separated values</em>), is a standard <em>plain text</em> tabular data storage format.</p>
+<p>Some reasons to use <code>csv</code>:</p>
+<ul>
+<li class="fragment">lightweight</li>
+<li class="fragment">human-readable</li>
+<li class="fragment">optional header (first row)</li>
+<li class="fragment">*fairly* portable between systems</li>
+</ul>
+<p>Some limitations of <code>csv</code>:</p>
+<ul>
+<li class="fragment">unpredictable behaviour of separator is common character (e.g. <code>,</code>)</li>
+<li class="fragment">fixed number of rows (strictly tabular)</li>
+<li class="fragment">not very durable</li>
+</ul></section>
+<section id="pd.read_csv" class="title-slide slide level1"><h1><code>pd.read_csv()</code></h1></section>
+    </div>
+  </div>
+
+  <script src="../reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: '../reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>

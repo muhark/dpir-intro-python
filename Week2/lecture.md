@@ -5,60 +5,87 @@ author: Musashi Harukawa, DPIR
 date: 2nd Week Hilary 2020
 ---
 
-# Recap
-
-Last week we covered the following topics:
+# Last Week
 
 - What is Python, and what can I use it for?
 - What tools do I have to write, test and run Python code?
     - Opening up JupyterLab/Notebooks/IPython
     - Executing code in Jupyter, etc.
 - Writing your first Python script and notebook.
-    - Installing libraries
-    - Importing libraries
-    - `print`, `+`, `-`, `*`, `/`, `list`, `for`...
+    - Data Types
+    - Data Structures
 
-# This week
+## This Week
 
-This week we will learn about **data**:
+This week we will learn about a key library for working with **data**:
 
 - Thinking about (tabular) data
 - I/O
 - Slicing, indexing
 - Summarising
 
-And we will do all of these things with the `pandas` library.
 
 # The Hard Truth About Data Science...
 
 - Analysis usually takes \<30% of your time.
 - \>50% of your time will be spent reading, cleaning, checking, storing, and cursing your data.
-
-The Good News:
-
 - Data cleaning is meticulous work, but that doesn't mean you can't be efficient.
 
 # Thinking About Data
 
-Without getting into information theory, we can think about two properties of data:
+We can think of a data point as having two properties:
 
 1. Value
 2. Relation (to other values)
 
-<!-- In data science, we are often more concerned with the latter than the former for the bulk of the analysis. -->
-
+<aside class="notes">
+- Inherent in value is an abstract type that the value is an instance of.
+- In data science, we are often more concerned with the latter than the former for the bulk of the analysis. I say this because we don't tend to care about the exact values, beyond type, until the end, when we look at the output of our model. When building our pipeline, what matters most is the type and structure of data.
+</aside>
 
 # Data Structures
 
 Three Ways of Structuring Data:
 
-- Graph (Relational)
-- Hierarchical
+- Graph
+- Tree (Hierarchical)
 - **Tabular**
 
-<!-- Option: Do an example of how we can structure data about the members of the class. -->
+<aside class="notes">
+Option: Do an example of how we can structure data about the members of the class.
+</aside>
 
-<!-- In this class we are primarily focused on tabular data. If your data is not tabular, you may want to figure out some way to coerce it to a tabular format because most statistical/ML models assume tabular data. -->
+## Graph
+
+- Graphs are constructed of nodes (vertices) and edges.
+
+![Graph](https://upload.wikimedia.org/wikipedia/commons/9/9c/Graphe_initial_avant_contraction.png)
+
+<aside class="notes">
+- Nodes and edges can have values associated with them.
+- A special case of graphs, called directed graphs, have edges with directions associated with them.
+</aside>
+
+## Trees
+
+- A tree is a type of graph with [a number of properties](https://en.wikipedia.org/wiki/Tree_(graph_theory)#Tree)
+- Commonly used to represent hierarchical data structures, such as nested sets or dependency/flow diagrams.
+
+![Tree](https://upload.wikimedia.org/wikipedia/commons/c/cd/Arbol3.PNG)
+
+<aside class="notes">
+- Websites are all trees in their backend.
+- A lot of the data you encounter will be tree-like in nature.
+    - A key point about this is that each element in this tree may not have the same properties. This can cause problems when attempting to convert to tabular data.
+</aside>
+
+## Tabular Data
+
+-
+
+<aside class="notes">
+In this class we are primarily focused on tabular data. If your data is not tabular, you may want to figure out some way to coerce it to a tabular format because most statistical/ML models assume tabular data.
+</aside>
 
 # Data I/O
 
