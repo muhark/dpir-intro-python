@@ -1,5 +1,6 @@
 ---
 title: Introduction to Python for Social Science
+subtitle: Lecture 1 - Introduction to Python
 author: Musashi Harukawa, DPIR
 date: 1st Week Hilary 2020
 ---
@@ -291,7 +292,7 @@ Some (statistical) data types:
 
 ## Exercise
 
-![Menu](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.softcafe.com%2Fimg%2Fmenus96%2Famerican-bistro-menu-design.png&f=1&nofb=1)
+![Menu](https://commons.wikimedia.org/wiki/Category:Food_menus#/media/File:2016-04_Menu_.jpg)
 
 <aside class="notes">
 - Question to discuss with partner: how would you represent this information in a computer? Possible answers include:
