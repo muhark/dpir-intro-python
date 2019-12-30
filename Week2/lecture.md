@@ -81,15 +81,32 @@ Option: Do an example of how we can structure data about the members of the clas
 
 ## Tabular Data
 
--
+- Tabular data consists of an ordered arrangement of rows and columns.
+- A common example is a spreadsheet.
+- In this class will often be referred to as a matrix $\mathbf{X_{ij}}$ of $i$ observations of $j$ variables.
+  - Note all columns must be of equal length ($i$), and all rows must be of equal length ($j$).
 
 <aside class="notes">
 In this class we are primarily focused on tabular data. If your data is not tabular, you may want to figure out some way to coerce it to a tabular format because most statistical/ML models assume tabular data.
 </aside>
 
+## Coercing Data Structures
+
+- In reality, processes we observe are rarely tabular.
+  - Some observations may have special characteristics that others do not. ($j$ is not equal for all $i$)
+  - There may no be inherent ordering in our observations, or the characteristics ($i$ or $j$ are not orderable).
+  - Observations may be related, overlapping, or nested in a way that is relevant to our model but not suitable for a two-dimensional table.
+- _Take away_:
+  - When we receive or generate tabular data, we should keep in mind the _data-generating process_ and decide whether we are systematically losing information that is relevant to our model.
+  - Trade-offs and subjective decisions are always necessary; make these clear and do your best to justify them.
+
+# `pandas`
+
+- `pandas` is the most popular library for working
+
 # Data I/O
 
-Pandas comes with functions for reading and writing to all kinds of data formats. A quick list can be viewed using tab completion:
+`pandas` comes with functions for reading and writing to all kinds of data formats. A quick list can be viewed using tab completion:
 
 ```{python}
 In [1]: import pandas as pd
@@ -103,7 +120,13 @@ In [2]: pd.read_<TAB>
  read_gbq()       read_pickle()    read_table
 ```
 
-# `csv` format
+<aside class="notes">
+- Explain what I/O means.
+- This is a good moment to mention tab completion. Revisit it later during the coding tutorial.
+</aside>
+
+
+## `csv` format
 
 `csv` (_comma-separated-values_ or as I prefer, _character-separated values_), is a standard _plain text_ tabular data storage format.
 
