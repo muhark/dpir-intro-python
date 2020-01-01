@@ -101,9 +101,24 @@ In this class we are primarily focused on tabular data. If your data is not tabu
 
 # `pandas`
 
-- `pandas` is the most popular library for working
+`pandas` is a very popular library for working with tabular data structures in Python.
 
-# Data I/O
+- provides fast, flexible data structures
+- extensive array of convenient functions
+- compatible with most data science libraries
+
+## When you should **not** use `pandas`
+
+- Your data is not coercible to a tabular structure.
+- When your dataset is too large to load in your computer's memory (or loading it uses most of your RAM).
+
+<aside class="notes">
+- `pandas` is so standard, that it makes more sense to talk about the scenarios in which you would not want to use pandas
+- Note on RAM: It's not straightforward to predict the size of a dataset loaded into `pandas`. There are also options for dealing with datasets this large, although those are beyond what I can discuss in the lecture.
+</aside>
+
+
+## Data I/O
 
 `pandas` comes with functions for reading and writing to all kinds of data formats. A quick list can be viewed using tab completion:
 
@@ -134,12 +149,11 @@ Some reasons to use `csv`:
 - lightweight
 - human-readable
 - optional header (first row)
-- \*fairly\* portable between systems
+- mostly portable between systems
+  - _(use unicode for character encoding please)_
 
 Some limitations of `csv`:
 
 - unpredictable behaviour of separator is common character (e.g. `,`)
 - fixed number of rows (strictly tabular)
 - not very durable
-
-# `pd.read_csv()`
