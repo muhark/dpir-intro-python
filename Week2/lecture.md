@@ -2,6 +2,7 @@
 title: Introduction to Python for Social Science
 subtitle: Lecture 2 - Data Structures and Pandas I
 author: Musashi Harukawa, DPIR
+date: 2nd Week Hilary 2020
 ---
 
 # Last Week
@@ -101,11 +102,13 @@ In this class we are primarily focused on tabular data. If your data is not tabu
 
 # `pandas`
 
-`pandas` is a very popular library for working with tabular data structures in Python.
+`pandas` is a very popular library for working with tabular data structures in Python. Before we start using it, let's go over some of the ways it can be useful to you as a social science researcher.
+
+## Advantages of `pandas`
 
 - provides fast, flexible data structures
 - extensive array of convenient functions
-- compatible with most data science libraries
+- compatible with most data science libraries and data types
 
 ## When you should **not** use `pandas`
 
@@ -144,16 +147,28 @@ In [2]: pd.read_<TAB>
 
 `csv` (_comma-separated-values_ or as I prefer, _character-separated values_), is a standard _plain text_ tabular data storage format.
 
-Some reasons to use `csv`:
+Reasons to use `csv`:
 
 - lightweight
 - human-readable
 - optional header (first row)
 - mostly portable between systems
   - _(use unicode for character encoding please)_
+- row-accessible data format
 
-Some limitations of `csv`:
+##
+
+Limitations of `csv`:
 
 - unpredictable behaviour of separator is common character (e.g. `,`)
 - fixed number of rows (strictly tabular)
+- no built-in data types
 - not very durable
+- not easily column-accessible
+
+## Alternatives to `csv`
+
+- `xls(x)`
+- `html`
+- `pickle`
+- `sql`
