@@ -1,6 +1,5 @@
 ---
 title: Intro to Python Course Planning
-date: Week 1
 ---
 
 _From the syllabus_:
@@ -69,7 +68,7 @@ The lecture begins with a few administrative points, and then goes into the foll
         - Takeaway: Python is a language, which is separate from the tools you use to write and execute it.
 - _First Steps in Python_: (to be done in RISE)
     1. `print()`
-        - Note: notebook returns output of last command, if this is just a variable then it returns that. In general if you want print statements, then 
+        - Note: notebook returns output of last command, if this is just a variable then it returns that. In general if you want print statements, then
     2. variable assignment
     3. binary operators: +, -, ==
     4. 4 basic data types

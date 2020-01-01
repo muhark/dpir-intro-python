@@ -2,7 +2,6 @@
 title: Introduction to Python for Social Science
 subtitle: Lecture 2 - Data Structures and Pandas I
 author: Musashi Harukawa, DPIR
-date: 2nd Week Hilary 2020
 ---
 
 # Last Week
