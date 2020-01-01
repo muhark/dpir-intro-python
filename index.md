@@ -8,5 +8,5 @@ I'm experimenting with [`reveal.js`](https://revealjs.com/#/) for the lecture sl
 
 Please be aware, lectures will be updated continuously, and may contain errors.
 
-1. **Introduction to Python and the Development Environment** ([slides](Week1/lecture.html)) ([pdf](Week1/lecture.html))
-2. **Data Structures and Pandas I** ([slides](Week2/lecture.html)) ([pdf](Week2/lecture.pdf))
+1. **Introduction to Python and the Development Environment** ([slides](/dpir-intro-python/Week1/lecture.html)) ([pdf](/dpir-intro-python/Week1/lecture.html))
+2. **Data Structures and Pandas I** ([slides](/dpir-intro-python/Week2/lecture.html)) ([pdf](/dpir-intro-python/Week2/lecture.pdf))
