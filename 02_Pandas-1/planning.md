@@ -1,6 +1,5 @@
 ---
 title: Intro to Python Course Planning
-date: Week 1
 ---
 
 

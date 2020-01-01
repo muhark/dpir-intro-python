@@ -1,9 +1,6 @@
----
-title: Introduction to Python for Social Science
-author: Musashi Harukawa, DPIR
-date: Optional, Hilary Term 2020
-geometry: margin=2cm
----
+# Introduction to Python for Social Science
+
+_Musashi Harukawa, DPIR_
 
 ## Course Description
 
