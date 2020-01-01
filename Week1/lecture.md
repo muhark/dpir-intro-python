@@ -2,6 +2,7 @@
 title: Introduction to Python for Social Science
 subtitle: Lecture 1 - Introduction to Python
 author: Musashi Harukawa, DPIR
+date: 1st Week Hilary 2020
 ---
 
 # Course Overview
@@ -160,7 +161,7 @@ At this point, I switch windows to open up the anaconda navigator, and go throug
 
 ##
 
-![Anaconda Navigator](/home/lunayneko/Pictures/anaconda_navigator_screenshot.png)
+![Anaconda Navigator](../images/anaconda_navigator_screenshot.png)
 
 <aside class="notes">
 - Make sure students can find navigator, and open applications from it.
@@ -168,7 +169,7 @@ At this point, I switch windows to open up the anaconda navigator, and go throug
 
 ##
 
-![Environment Manager](/home/lunayneko/Pictures/anaconda_navigator_environments.png)
+![Environment Manager](../images/anaconda_navigator_environments.png)
 
 <aside class="notes">
 - Show students how to install packages here. Also mention that this can be done from the command line.
@@ -185,11 +186,11 @@ At this point, I switch windows to open up the anaconda navigator, and go throug
 
 ##
 
-![Jupyter Lab Launcher](/home/lunayneko/Pictures/jupyter_lab_launcher.png)
+![Jupyter Lab Launcher](../images/jupyter_lab_launcher.png)
 
 ##
 
-![Jupyter Lab Editor](/home/lunayneko/Pictures/jupyter_lab_editor.png)
+![Jupyter Lab Editor](../images/jupyter_lab_editor.png)
 
 <aside class="notes">
 Launch Jupyter Lab session. Show how you can navigate a file tree, and then create a new notebook and name it.
@@ -203,7 +204,7 @@ Launch Jupyter Lab session. Show how you can navigate a file tree, and then crea
 
 ##
 
-![Atom](/home/lunayneko/Pictures/atom_editor.png)
+![Atom](../images/atom_editor.png)
 
 # Basic Workflow
 
@@ -291,7 +292,7 @@ Some (statistical) data types:
 
 ## Exercise
 
-![Menu](https://commons.wikimedia.org/wiki/Category:Food_menus#/media/File:2016-04_Menu_.jpg)
+![Menu](https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/2016-04_Menu_.jpg/800px-2016-04_Menu_.jpg)
 
 <aside class="notes">
 - Question to discuss with partner: how would you represent this information in a computer? Possible answers include:

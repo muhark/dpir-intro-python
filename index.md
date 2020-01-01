@@ -17,7 +17,7 @@ You can find a syllabus for the course [here](/dpir-intro-python/syllabus.pdf).
 
 # Lecture Slides
 
-I'm experimenting with [`reveal.js`](https://revealjs.com/#/) for the lecture slides. Links to the lectures are provided below. If you prefer to view these as a pdf, see the following section [Supplementary Materials](#supplementary-materials)
+I'm experimenting with [`reveal.js`](https://revealjs.com/#/) for the lecture slides. Links to the lectures are provided below. If you prefer to view these as a pdf, see the [following section](#materials).
 
 Please be aware, lectures will be updated continuously, and may contain errors.
 

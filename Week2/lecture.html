@@ -127,13 +127,55 @@ Option: Do an example of how we can structure data about the members of the clas
 <section id="tabular-data" class="slide level2">
 <h2>Tabular Data</h2>
 <ul>
-<li class="fragment"></li>
+<li class="fragment">Tabular data consists of an ordered arrangement of rows and columns.</li>
+<li class="fragment">A common example is a spreadsheet.</li>
+<li class="fragment">In this class will often be referred to as a matrix <span class="math inline"><strong>X</strong><sub><strong>i</strong><strong>j</strong></sub></span> of <span class="math inline"><em>i</em></span> observations of <span class="math inline"><em>j</em></span> variables.
+<ul>
+<li class="fragment">Note all columns must be of equal length (<span class="math inline"><em>i</em></span>), and all rows must be of equal length (<span class="math inline"><em>j</em></span>).</li>
+</ul></li>
 </ul>
 <aside class="notes">
 In this class we are primarily focused on tabular data. If your data is not tabular, you may want to figure out some way to coerce it to a tabular format because most statistical/ML models assume tabular data.
 </aside>
+</section>
+<section id="coercing-data-structures" class="slide level2">
+<h2>Coercing Data Structures</h2>
+<ul>
+<li class="fragment">In reality, processes we observe are rarely tabular.
+<ul>
+<li class="fragment">Some observations may have special characteristics that others do not. (<span class="math inline"><em>j</em></span> is not equal for all <span class="math inline"><em>i</em></span>)</li>
+<li class="fragment">There may no be inherent ordering in our observations, or the characteristics (<span class="math inline"><em>i</em></span> or <span class="math inline"><em>j</em></span> are not orderable).</li>
+<li class="fragment">Observations may be related, overlapping, or nested in a way that is relevant to our model but not suitable for a two-dimensional table.</li>
+</ul></li>
+<li class="fragment"><em>Take away</em>:
+<ul>
+<li class="fragment">When we receive or generate tabular data, we should keep in mind the <em>data-generating process</em> and decide whether we are systematically losing information that is relevant to our model.</li>
+<li class="fragment">Trade-offs and subjective decisions are always necessary; make these clear and do your best to justify them.</li>
+</ul></li>
+</ul>
 </section></section>
-<section id="data-io" class="title-slide slide level1"><h1>Data I/O</h1><p>Pandas comes with functions for reading and writing to all kinds of data formats. A quick list can be viewed using tab completion:</p>
+<section><section id="pandas" class="title-slide slide level1"><h1><code>pandas</code></h1><p><code>pandas</code> is a very popular library for working with tabular data structures in Python.</p>
+<ul>
+<li class="fragment">provides fast, flexible data structures</li>
+<li class="fragment">extensive array of convenient functions</li>
+<li class="fragment">compatible with most data science libraries</li>
+</ul></section>
+<section id="when-you-should-not-use-pandas" class="slide level2">
+<h2>When you should <strong>not</strong> use <code>pandas</code></h2>
+<ul>
+<li class="fragment">Your data is not coercible to a tabular structure.</li>
+<li class="fragment">When your dataset is too large to load in your computer’s memory (or loading it uses most of your RAM).</li>
+</ul>
+<aside class="notes">
+<ul>
+<li class="fragment"><code>pandas</code> is so standard, that it makes more sense to talk about the scenarios in which you would not want to use pandas</li>
+<li class="fragment">Note on RAM: It’s not straightforward to predict the size of a dataset loaded into <code>pandas</code>. There are also options for dealing with datasets this large, although those are beyond what I can discuss in the lecture.</li>
+</ul>
+</aside>
+</section>
+<section id="data-io" class="slide level2">
+<h2>Data I/O</h2>
+<p><code>pandas</code> comes with functions for reading and writing to all kinds of data formats. A quick list can be viewed using tab completion:</p>
 <pre class="{python}"><code>In [1]: import pandas as pd
 
 In [2]: pd.read_&lt;TAB&gt;
@@ -142,22 +184,34 @@ In [2]: pd.read_&lt;TAB&gt;
  read_excel()     read_json()      read_sql_query()
  read_feather()   read_msgpack()   read_sql_table()
  read_fwf()       read_parquet()   read_stata()
- read_gbq()       read_pickle()    read_table</code></pre></section>
-<section id="csv-format" class="title-slide slide level1"><h1><code>csv</code> format</h1><p><code>csv</code> (<em>comma-separated-values</em> or as I prefer, <em>character-separated values</em>), is a standard <em>plain text</em> tabular data storage format.</p>
+ read_gbq()       read_pickle()    read_table</code></pre>
+<aside class="notes">
+<ul>
+<li class="fragment">Explain what I/O means.</li>
+<li class="fragment">This is a good moment to mention tab completion. Revisit it later during the coding tutorial.</li>
+</ul>
+</aside>
+</section>
+<section id="csv-format" class="slide level2">
+<h2><code>csv</code> format</h2>
+<p><code>csv</code> (<em>comma-separated-values</em> or as I prefer, <em>character-separated values</em>), is a standard <em>plain text</em> tabular data storage format.</p>
 <p>Some reasons to use <code>csv</code>:</p>
 <ul>
 <li class="fragment">lightweight</li>
 <li class="fragment">human-readable</li>
 <li class="fragment">optional header (first row)</li>
-<li class="fragment">*fairly* portable between systems</li>
+<li class="fragment">mostly portable between systems
+<ul>
+<li class="fragment"><em>(use unicode for character encoding please)</em></li>
+</ul></li>
 </ul>
 <p>Some limitations of <code>csv</code>:</p>
 <ul>
 <li class="fragment">unpredictable behaviour of separator is common character (e.g. <code>,</code>)</li>
 <li class="fragment">fixed number of rows (strictly tabular)</li>
 <li class="fragment">not very durable</li>
-</ul></section>
-<section id="pd.read_csv" class="title-slide slide level1"><h1><code>pd.read_csv()</code></h1></section>
+</ul>
+</section></section>
     </div>
   </div>
 
