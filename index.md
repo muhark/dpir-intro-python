@@ -7,7 +7,7 @@ author: Musashi Harukawa
 
 This is an work-in-progress website to accompany the optional Introduction to Python for Social Science held at the DPIR in Hilary Term 2020. I aim to keep all slides, exercises, and other supplementary materials on this website.
 
-# The Course
+# Course Details
 
 The lectures will be held weekly on Wednesdays, from 4:15pm to 7:15pm at the IT Lab in the Manor Road Building.
 
@@ -21,8 +21,8 @@ I'm experimenting with [`reveal.js`](https://revealjs.com/#/) for the lecture sl
 
 Please be aware, lectures will be updated continuously, and may contain errors.
 
-1. [**Introduction to Python and the Development Environment**](/dpir-intro-python/Week1/lecture.html)
-2. [**Data Structures and Pandas I**](/dpir-intro-python/Week2/lecture.html)
+1. [Introduction to Python and the Development Environment](/dpir-intro-python/Week1/lecture.html)
+2. [Data Structures and Pandas I](/dpir-intro-python/Week2/lecture.html)
 
 # Materials
 
@@ -32,7 +32,7 @@ Please be aware, lectures will be updated continuously, and may contain errors.
 | 2    | [slides](/dpir-intro-python/Week2/lecture.html) | [pdf](/dpir-intro-python/Week2/lecture.pdf) | [examples](/dpir-intro-python/Week2/examples.ipynb) | [exercises](/dpir-intro-python/Week2/exercises.ipynb) | [solutions](/dpir-intro-python/Week2/solutions.ipynb) |
 | 3    | [slides](/dpir-intro-python/Week3/lecture.html) | [pdf](/dpir-intro-python/Week3/lecture.pdf) | [examples](/dpir-intro-python/Week3/examples.ipynb) | [exercises](/dpir-intro-python/Week3/exercises.ipynb) | [solutions](/dpir-intro-python/Week3/solutions.ipynb) |
 
-# About Me
+#### About Me
 
 My name is Musashi Harukawa, I am a DPhil Politics student at the University of Oxford. Prior to the DPhil (and the MSc in Politics Research the year prior), I worked as a data scientist for a financial conglomerate in Tokyo. Before that, I worked as a teacher in Tokyo and Moscow.
 

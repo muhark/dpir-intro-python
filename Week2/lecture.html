@@ -154,12 +154,15 @@ In this class we are primarily focused on tabular data. If your data is not tabu
 </ul></li>
 </ul>
 </section></section>
-<section><section id="pandas" class="title-slide slide level1"><h1><code>pandas</code></h1><p><code>pandas</code> is a very popular library for working with tabular data structures in Python.</p>
+<section><section id="pandas" class="title-slide slide level1"><h1><code>pandas</code></h1><p><code>pandas</code> is a very popular library for working with tabular data structures in Python. Before we start using it, let’s go over some of the ways it can be useful to you as a social science researcher.</p></section>
+<section id="advantages-of-pandas" class="slide level2">
+<h2>Advantages of <code>pandas</code></h2>
 <ul>
 <li class="fragment">provides fast, flexible data structures</li>
 <li class="fragment">extensive array of convenient functions</li>
-<li class="fragment">compatible with most data science libraries</li>
-</ul></section>
+<li class="fragment">compatible with most data science libraries and data types</li>
+</ul>
+</section>
 <section id="when-you-should-not-use-pandas" class="slide level2">
 <h2>When you should <strong>not</strong> use <code>pandas</code></h2>
 <ul>
@@ -191,26 +194,62 @@ In [2]: pd.read_&lt;TAB&gt;
 <li class="fragment">This is a good moment to mention tab completion. Revisit it later during the coding tutorial.</li>
 </ul>
 </aside>
-</section>
+</section></section>
+<section><section id="data-formats" class="title-slide slide level1"><h1>Data Formats</h1><p>There are a number of data storage formats that you should be aware of:</p>
+<ul>
+<li class="fragment"><code>csv</code></li>
+<li class="fragment"><code>xls(x)</code></li>
+<li class="fragment"><code>json</code></li>
+<li class="fragment"><code>dta</code></li>
+<li class="fragment"><code>pickle</code></li>
+</ul></section>
 <section id="csv-format" class="slide level2">
 <h2><code>csv</code> format</h2>
 <p><code>csv</code> (<em>comma-separated-values</em> or as I prefer, <em>character-separated values</em>), is a standard <em>plain text</em> tabular data storage format.</p>
-<p>Some reasons to use <code>csv</code>:</p>
-<ul>
-<li class="fragment">lightweight</li>
-<li class="fragment">human-readable</li>
-<li class="fragment">optional header (first row)</li>
-<li class="fragment">mostly portable between systems
-<ul>
-<li class="fragment"><em>(use unicode for character encoding please)</em></li>
-</ul></li>
-</ul>
-<p>Some limitations of <code>csv</code>:</p>
-<ul>
-<li class="fragment">unpredictable behaviour of separator is common character (e.g. <code>,</code>)</li>
-<li class="fragment">fixed number of rows (strictly tabular)</li>
-<li class="fragment">not very durable</li>
-</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>lightweight</td>
+<td>unpredictable separator behaviour</td>
+</tr>
+<tr class="even">
+<td>human readable</td>
+<td>fixed number of rows (strictly tabular)</td>
+</tr>
+<tr class="odd">
+<td>mostly portable between systems</td>
+<td>no built-in data types</td>
+</tr>
+<tr class="even">
+<td>row-accessible data format</td>
+<td>lack of durability</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>not easily column-accessible</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="xlsx" class="slide level2">
+<h2><code>xls(x)</code></h2>
+<p>Microsoft excel’s data format. Tabular, but also contains some relational aspects when used with multiple “sheets”.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
 </section></section>
     </div>
   </div>
