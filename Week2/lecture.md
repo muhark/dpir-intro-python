@@ -143,32 +143,32 @@ In [2]: pd.read_<TAB>
 </aside>
 
 
+# Data Formats
+
+There are a number of data storage formats that you should be aware of:
+
+- `csv`
+- `xls(x)`
+- `json`
+- `dta`
+- `pickle`
+
 ## `csv` format
 
 `csv` (_comma-separated-values_ or as I prefer, _character-separated values_), is a standard _plain text_ tabular data storage format.
 
-Reasons to use `csv`:
+| Pros                            | Cons                                    |
+| ------------------------------- | --------------------------------------- |
+| lightweight                     | unpredictable separator behaviour       |
+| human readable                  | fixed number of rows (strictly tabular) |
+| mostly portable between systems | no built-in data types                  |
+| row-accessible data format      | lack of durability                      |
+|                                 | not easily column-accessible            |
 
-- lightweight
-- human-readable
-- optional header (first row)
-- mostly portable between systems
-  - _(use unicode for character encoding please)_
-- row-accessible data format
 
-##
+## `xls(x)`
 
-Limitations of `csv`:
+Microsoft excel's data format. Tabular, but also contains some relational aspects when used with multiple "sheets".
 
-- unpredictable behaviour of separator is common character (e.g. `,`)
-- fixed number of rows (strictly tabular)
-- no built-in data types
-- not very durable
-- not easily column-accessible
-
-## Alternatives to `csv`
-
-- `xls(x)`
-- `html`
-- `pickle`
-- `sql`
+| Pros | Cons |
+| ---- | ---- |
