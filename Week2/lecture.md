@@ -130,7 +130,7 @@ In [1]: import pandas as pd
 
 In [2]: pd.read_<TAB>
  read_clipboard() read_hdf()       read_sas()
- read_csv         read_html()      read_sql()
+ read_csv()       read_html()      read_sql()
  read_excel()     read_json()      read_sql_query()
  read_feather()   read_msgpack()   read_sql_table()
  read_fwf()       read_parquet()   read_stata()
@@ -159,7 +159,7 @@ There are a number of data storage formats that you should be aware of:
 
 | Pros                            | Cons                                    |
 | ------------------------------- | --------------------------------------- |
-| lightweight                     | unpredictable separator behaviour       |
+| lightweight/compressable        | unpredictable separator behaviour       |
 | human readable                  | fixed number of rows (strictly tabular) |
 | mostly portable between systems | no built-in data types                  |
 | row-accessible data format      | lack of durability                      |
@@ -168,7 +168,77 @@ There are a number of data storage formats that you should be aware of:
 
 ## `xls(x)`
 
-Microsoft excel's data format. Tabular, but also contains some relational aspects when used with multiple "sheets".
+- Microsoft excel's data format.
+- Not human-readable (binary).
+- Tabular, but also contains some relational aspects when used with multiple "sheets".
+- Note that merged cells, conditional formatting, etc. will be lost when importing with `pandas`.
 
-| Pros | Cons |
-| ---- | ---- |
+## `json`
+
+- Stands for _javascript object notation_.
+- Relational: stores values as key-value pairs.
+- Human-readable.
+- Can store arrays as values.
+- Frequently used by web APIs.
+- Similar: `yaml`, `cson`, etc.
+
+<!-- ```{json}
+{
+    "menu": {
+        "id": "file",
+        "value": "File",
+        "popup": {
+            "menuitem": [
+                {"value"   : "New",
+                 "onclick" : "CreateNewDoc()"},
+                {"value"   : "Open",
+                 "onclick" : "OpenDoc()"}
+            ]
+        }
+    }
+}
+``` -->
+
+## `dta`
+
+- Stata's standard data storage format.
+- Not human-readable (binary).
+- `pandas` contains a reader for these by default.
+- Not standard in industry, but common in political science.
+
+## `pickle`
+
+- Python's compressed data format.
+- Stores objects exactly as they are in a python script.
+- **WARNING**: Can be used to execute malicious code. Only open pickles that you can trust.
+
+## DBMS and `SQL`
+
+- In industry, database management systems (DBMS) are used to store and query large quantities of data in a reliable way.
+- `SQL`-compliant databases are a common type. `SQL` is a database managing and querying language.
+- If your research requires you to constantly be collecting data and ensuring its reliability, you should opt for a DBMS instead of one of the filetypes mentioned above.
+
+# Coding Tutorial
+
+Today, we learn about the following in `pandas`:
+
+- Data I/O
+- Understanding the `DataFrame` and `Series`
+- Indexing and Slicing
+- First look at the data
+- Summary functions
+
+## Data I/O
+
+- As seen earlier, pandas has methods for reading in data from various formats.
+- A strength of learning a library like `pandas` is that we can analyse tabular data regardless of the source format.
+
+## Understanding `DataFrame` and `Series`
+
+- `pandas` contains two native data containers:
+  - `pandas.DataFrame`: A two-dimensional\* labelled matrix
+  - `pandas.Series`: A one-dimensional labelled array
+
+## Indexing and Slicing
+
+- The fundamental 
