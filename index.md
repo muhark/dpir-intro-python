@@ -17,20 +17,29 @@ You can find a syllabus for the course [here](/dpir-intro-python/syllabus.pdf).
 
 # Lecture Slides
 
-I'm experimenting with [`reveal.js`](https://revealjs.com/#/) for the lecture slides. Links to the lectures are provided below. If you prefer to view these as a pdf, see the [following section](#materials).
+I'm experimenting with [`reveal.js`](https://revealjs.com/#/) for the lecture slides. Links to the lectures are provided below, and will be made available as the lectures are completed. Slides will also be made available in `pdf` (beamer) format.
 
 Please be aware, lectures will be updated continuously, and may contain errors.
 
 1. [Introduction to Python and the Development Environment](/dpir-intro-python/Week1/lecture.html)
-2. [Data Structures and Pandas I](/dpir-intro-python/Week2/lecture.html)
+2. ~~[Data Structures and `pandas` I]()~~
+3. ~~[Data Structures and `pandas` II]()~~
+4. ~~[Data Visualisation]()~~
+5. ~~[Machine Learning with `scikit-learn` I]()~~
+6. ~~[Machine Learning with `scikit-learn` II]()~~
+7. ~~[Mining the Web]()~~
+8. ~~[Introduction to Natural Language Processing]()~~
+
 
 # Materials
 
 | Week | `reveal.js`                                     | `pdf`                                       | Code Examples                                       | Code Exercises                                        | Code Solutions                                        |
 | ---- | ----------------------------------------------- | ------------------------------------------- | --------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
 | 1    | [slides](/dpir-intro-python/Week1/lecture.html) | [pdf](/dpir-intro-python/Week1/lecture.pdf) | [examples](/dpir-intro-python/Week1/examples.ipynb) | [exercises](/dpir-intro-python/Week1/exercises.ipynb) | [solutions](/dpir-intro-python/Week1/solutions.ipynb) |
-| 2    | [slides](/dpir-intro-python/Week2/lecture.html) | [pdf](/dpir-intro-python/Week2/lecture.pdf) | [examples](/dpir-intro-python/Week2/examples.ipynb) | [exercises](/dpir-intro-python/Week2/exercises.ipynb) | [solutions](/dpir-intro-python/Week2/solutions.ipynb) |
-| 3    | [slides](/dpir-intro-python/Week3/lecture.html) | [pdf](/dpir-intro-python/Week3/lecture.pdf) | [examples](/dpir-intro-python/Week3/examples.ipynb) | [exercises](/dpir-intro-python/Week3/exercises.ipynb) | [solutions](/dpir-intro-python/Week3/solutions.ipynb) |
+| 2    | [slides](placeholderWeek2/lecture.html) | [pdf](placeholderWeek2/lecture.pdf) | [examples](placeholderWeek2/examples.ipynb) | [exercises](placeholderWeek2/exercises.ipynb) | [solutions](placeholderWeek2/solutions.ipynb) |
+| 3    | [slides](placeholderWeek3/lecture.html) | [pdf](placeholderWeek3/lecture.pdf) | [examples](placeholderWeek3/examples.ipynb) | [exercises](placeholderWeek3/exercises.ipynb) | [solutions](placeholderWeek3/solutions.ipynb) |
+
+<!--Replaceable with regex s\placeholder(Week[2-3])/([a-z]*)\.([a-z]*)//dpir-intro-python/(Week[2-3])/([a-z]*)\.([a-z]*)\g-->
 
 #### About Me
 
