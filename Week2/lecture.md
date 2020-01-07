@@ -100,6 +100,71 @@ In this class we are primarily focused on tabular data. If your data is not tabu
   - When we receive or generate tabular data, we should keep in mind the _data-generating process_ and decide whether we are systematically losing information that is relevant to our model.
   - Trade-offs and subjective decisions are always necessary; make these clear and do your best to justify them.
 
+
+# Data Formats
+
+- Data analysis is usually done _in-memory_.
+- We use a variety of _data formats_ to store information _on disk_.
+- The representation of data in these two mediums is different, but most data analysis software provides methods for reading in and writing out data.
+- This process is not entirely trivial; different formats use different data types. Some potential pitfalls:
+    - Incompatibility: data in one format may not work with some software.
+    - Silent casting: data may change in unpredictable ways when converted between formats and programs.
+
+
+## On-disk Formats
+
+There are a number of data storage formats that you should be aware of:
+
+| Format    | Structure | Built-in Types | Human-Readable |   Compatibility    |
+|:--------- |:---------:|:--------------:|:--------------:|:------------------:|
+| `csv`     |    Tab    |       No       |      Yes       |        Any         |
+| `json`    | Hier/Ord  |      Yes       |      Yes       |        Any         |
+| `xls(x)`  |  Tab/Rel  |      Yes       |       No       |       Excel        |
+| `dta`     |  Tabular  |      Yes       |       No       |       STATA        |
+| `HDF5`    | Hier/Tab  |      Yes       |       No       | C, Java, Python, R |
+| `Feather` |    Tab    |      Yes       |       No       |     Python, R      |
+
+## Human-Readable Formats
+
+`csv` and `json`
+
+- `csv` ("comma separated-values") is an extremely common tabular data storage format.
+- Values are _delineated_ by a special character, usually a comma.
+    - There are reasons to not use commas, especially when working with text data.
+- _Has no built-in data types_; this needs to be inferred by the parser.
+
+- `json` (JavaScript Object Notation) is also extremely common, especially when using web data.
+- Stores information as a mixture of key-value pairs and arrays (think dicts of lists).
+- Working with `json` usually requires us to coerce hierarchical data to tabular data.
+
+## Closed-source Binary Formats
+
+`xls(x)` and `dta`
+
+- `xls(x)` is the format used by Microsoft Excel
+- If there is only one sheet, then this is tabular and essentially equivalent to `csv`.
+- If there are multiple sheets, `pandas` represents it as a list of tabular data frames.
+
+- `dta` is the format used by STATA.
+- More common in social sciences, but essentially unheard of in professional contexts.
+- May be preferred for compatibility with STATA, otherwise would not recommend.
+
+## Data Science-Specific Formats
+
+`HDF5` and `Feather`
+
+- `HDF5` is a commonly-used data storage format in data science, but not in academia.
+- Has a lot of nice properties, including efficient compression and fast reading.
+
+- `Feather` was created by Hadley Wickham and Wes McKinney as a fast, consistent and convenient data storage format for cross-usage between R and Python.
+- I highly recommend this if you work a lot with R and Python, or want to use both in the same project.
+
+## DBMS and `SQL`
+
+- In industry, database management systems (DBMS) are used to store and query large quantities of data in a reliable way.
+- `SQL`-compliant databases are a common type. `SQL` is a database managing and querying language.
+- If your research requires you to constantly be collecting data and ensuring its reliability, you should opt for a DBMS instead of one of the filetypes mentioned above.
+
 # `pandas`
 
 `pandas` is a very popular library for working with tabular data structures in Python. Before we start using it, let's go over some of the ways it can be useful to you as a social science researcher.
@@ -142,83 +207,7 @@ In [2]: pd.read_<TAB>
 - This is a good moment to mention tab completion. Revisit it later during the coding tutorial.
 </aside>
 
-
-# Data Formats
-
-There are a number of data storage formats that you should be aware of:
-
-- `csv`
-- `xls(x)`
-- `json`
-- `dta`
-- `pickle`
-
-## `csv` format
-
-`csv` (_comma-separated-values_ or as I prefer, _character-separated values_), is a standard _plain text_ tabular data storage format.
-
-| Pros                            | Cons                                    |
-| ------------------------------- | --------------------------------------- |
-| lightweight/compressable        | unpredictable separator behaviour       |
-| human readable                  | fixed number of rows (strictly tabular) |
-| mostly portable between systems | no built-in data types                  |
-| row-accessible data format      | lack of durability                      |
-|                                 | not easily column-accessible            |
-
-
-## `xls(x)`
-
-- Microsoft excel's data format.
-- Not human-readable (binary).
-- Tabular, but also contains some relational aspects when used with multiple "sheets".
-- Note that merged cells, conditional formatting, etc. will be lost when importing with `pandas`.
-
-## `json`
-
-- Stands for _javascript object notation_.
-- Relational: stores values as key-value pairs.
-- Human-readable.
-- Can store arrays as values.
-- Frequently used by web APIs.
-- Similar: `yaml`, `cson`, etc.
-
-<!-- ```{json}
-{
-    "menu": {
-        "id": "file",
-        "value": "File",
-        "popup": {
-            "menuitem": [
-                {"value"   : "New",
-                 "onclick" : "CreateNewDoc()"},
-                {"value"   : "Open",
-                 "onclick" : "OpenDoc()"}
-            ]
-        }
-    }
-}
-``` -->
-
-## `dta`
-
-- Stata's standard data storage format.
-- Not human-readable (binary).
-- `pandas` contains a reader for these by default.
-- Not standard in industry, but common in political science.
-
-## `pickle`
-
-- Python's compressed data format.
-- Stores objects exactly as they are in a python script.
-- **WARNING**: Can be used to execute malicious code. Only open pickles that you can trust.
-
-## DBMS and `SQL`
-
-- In industry, database management systems (DBMS) are used to store and query large quantities of data in a reliable way.
-- `SQL`-compliant databases are a common type. `SQL` is a database managing and querying language.
-- If your research requires you to constantly be collecting data and ensuring its reliability, you should opt for a DBMS instead of one of the filetypes mentioned above.
-
-# Coding Tutorial
+## Coding Tutorial
 
 Today, we learn about the following in `pandas`:
 
@@ -241,4 +230,4 @@ Today, we learn about the following in `pandas`:
 
 ## Indexing and Slicing
 
-- The fundamental 
+- The fundamental
