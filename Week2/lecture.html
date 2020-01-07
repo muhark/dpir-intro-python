@@ -8,15 +8,12 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="../reveal.js/css/reset.css">
   <link rel="stylesheet" href="../reveal.js/css/reveal.css">
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
   <link rel="stylesheet" href="../reveal.js/css/theme/../../../dpir-intro-theme.css" id="theme">
   <!-- Printing and PDF exports -->
@@ -42,20 +39,7 @@
   <p class="date">2nd Week Hilary 2020</p>
 </section>
 
-<section><section id="last-week" class="title-slide slide level1"><h1>Last Week</h1><ul>
-<li class="fragment">What is Python, and what can I use it for?</li>
-<li class="fragment">What tools do I have to write, test and run Python code?
-<ul>
-<li class="fragment">Opening up JupyterLab/Notebooks/IPython</li>
-<li class="fragment">Executing code in Jupyter, etc.</li>
-</ul></li>
-<li class="fragment">Writing your first Python script and notebook.
-<ul>
-<li class="fragment">Data Types</li>
-<li class="fragment">Data Structures</li>
-</ul></li>
-</ul></section>
-<section id="this-week" class="slide level2">
+<section><section id="last-week" class="title-slide slide level1"><h1>Last Week</h1></section><section id="this-week" class="slide level2">
 <h2>This Week</h2>
 <p>This week we will learn about a key library for working with <strong>data</strong>:</p>
 <ul>
@@ -65,38 +49,15 @@
 <li class="fragment">Summarising</li>
 </ul>
 </section></section>
-<section id="the-hard-truth-about-data-science" class="title-slide slide level1"><h1>The Hard Truth About Data Science…</h1><ul>
-<li class="fragment">Analysis usually takes &lt;30% of your time.</li>
-<li class="fragment">&gt;50% of your time will be spent reading, cleaning, checking, storing, and cursing your data.</li>
-<li class="fragment">Data cleaning is meticulous work, but that doesn’t mean you can’t be efficient.</li>
-</ul></section>
-<section id="thinking-about-data" class="title-slide slide level1"><h1>Thinking About Data</h1><p>We can think of a data point as having two properties:</p>
-<ol type="1">
-<li class="fragment">Value</li>
-<li class="fragment">Relation (to other values)</li>
-</ol>
-<aside class="notes">
-<ul>
-<li class="fragment">Inherent in value is an abstract type that the value is an instance of.</li>
-<li class="fragment">In data science, we are often more concerned with the latter than the former for the bulk of the analysis. I say this because we don’t tend to care about the exact values, beyond type, until the end, when we look at the output of our model. When building our pipeline, what matters most is the type and structure of data.</li>
-</ul>
-</aside></section>
-<section><section id="data-structures" class="title-slide slide level1"><h1>Data Structures</h1><p>Three Ways of Structuring Data:</p>
-<ul>
-<li class="fragment">Graph</li>
-<li class="fragment">Tree (Hierarchical)</li>
-<li class="fragment"><strong>Tabular</strong></li>
-</ul>
-<aside class="notes">
-Option: Do an example of how we can structure data about the members of the class.
-</aside></section>
-<section id="graph" class="slide level2">
+<section><section id="the-hard-truth-about-data-science" class="title-slide slide level1"><h1>The Hard Truth About Data Science…</h1></section></section>
+<section><section id="thinking-about-data" class="title-slide slide level1"><h1>Thinking About Data</h1></section></section>
+<section><section id="data-structures" class="title-slide slide level1"><h1>Data Structures</h1></section><section id="graph" class="slide level2">
 <h2>Graph</h2>
 <ul>
 <li class="fragment">Graphs are constructed of nodes (vertices) and edges.</li>
 </ul>
 <figure>
-<img data-src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Graphe_initial_avant_contraction.png" alt="" /><figcaption>Graph</figcaption>
+<img data-src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Graphe_initial_avant_contraction.png" alt="Graph" /><figcaption>Graph</figcaption>
 </figure>
 <aside class="notes">
 <ul>
@@ -104,15 +65,14 @@ Option: Do an example of how we can structure data about the members of the clas
 <li class="fragment">A special case of graphs, called directed graphs, have edges with directions associated with them.</li>
 </ul>
 </aside>
-</section>
-<section id="trees" class="slide level2">
+</section><section id="trees" class="slide level2">
 <h2>Trees</h2>
 <ul>
 <li class="fragment">A tree is a type of graph with <a href="https://en.wikipedia.org/wiki/Tree_(graph_theory)#Tree">a number of properties</a></li>
 <li class="fragment">Commonly used to represent hierarchical data structures, such as nested sets or dependency/flow diagrams.</li>
 </ul>
 <figure>
-<img data-src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Arbol3.PNG" alt="" /><figcaption>Tree</figcaption>
+<img data-src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Arbol3.PNG" alt="Tree" /><figcaption>Tree</figcaption>
 </figure>
 <aside class="notes">
 <ul>
@@ -123,8 +83,7 @@ Option: Do an example of how we can structure data about the members of the clas
 </ul></li>
 </ul>
 </aside>
-</section>
-<section id="tabular-data" class="slide level2">
+</section><section id="tabular-data" class="slide level2">
 <h2>Tabular Data</h2>
 <ul>
 <li class="fragment">Tabular data consists of an ordered arrangement of rows and columns.</li>
@@ -137,8 +96,7 @@ Option: Do an example of how we can structure data about the members of the clas
 <aside class="notes">
 In this class we are primarily focused on tabular data. If your data is not tabular, you may want to figure out some way to coerce it to a tabular format because most statistical/ML models assume tabular data.
 </aside>
-</section>
-<section id="coercing-data-structures" class="slide level2">
+</section><section id="coercing-data-structures" class="slide level2">
 <h2>Coercing Data Structures</h2>
 <ul>
 <li class="fragment">In reality, processes we observe are rarely tabular.
@@ -154,16 +112,114 @@ In this class we are primarily focused on tabular data. If your data is not tabu
 </ul></li>
 </ul>
 </section></section>
-<section><section id="pandas" class="title-slide slide level1"><h1><code>pandas</code></h1><p><code>pandas</code> is a very popular library for working with tabular data structures in Python. Before we start using it, let’s go over some of the ways it can be useful to you as a social science researcher.</p></section>
-<section id="advantages-of-pandas" class="slide level2">
+<section><section id="data-formats" class="title-slide slide level1"><h1>Data Formats</h1></section><section id="on-disk-formats" class="slide level2">
+<h2>On-disk Formats</h2>
+<p>There are a number of data storage formats that you should be aware of:</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Format</th>
+<th style="text-align: center;">Structure</th>
+<th style="text-align: center;">Built-in Types</th>
+<th style="text-align: center;">Human-Readable</th>
+<th style="text-align: center;">Compatibility</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>csv</code></td>
+<td style="text-align: center;">Tab</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Any</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>json</code></td>
+<td style="text-align: center;">Hier/Ord</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Any</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>xls(x)</code></td>
+<td style="text-align: center;">Tab/Rel</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">Excel</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>dta</code></td>
+<td style="text-align: center;">Tabular</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">STATA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>HDF5</code></td>
+<td style="text-align: center;">Hier/Tab</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">C, Java, Python, R</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>Feather</code></td>
+<td style="text-align: center;">Tab</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">Python, R</td>
+</tr>
+</tbody>
+</table>
+</section><section id="human-readable-formats" class="slide level2">
+<h2>Human-Readable Formats</h2>
+<p><code>csv</code> and <code>json</code></p>
+<ul>
+<li class="fragment"><code>csv</code> (“comma separated-values”) is an extremely common tabular data storage format.</li>
+<li class="fragment">Values are <em>delineated</em> by a special character, usually a comma.
+<ul>
+<li class="fragment">There are reasons to not use commas, especially when working with text data.</li>
+</ul></li>
+<li class="fragment"><p><em>Has no built-in data types</em>; this needs to be inferred by the parser.</p></li>
+<li class="fragment"><code>json</code> (JavaScript Object Notation) is also extremely common, especially when using web data.</li>
+<li class="fragment">Stores information as a mixture of key-value pairs and arrays (think dicts of lists).</li>
+<li class="fragment"><p>Working with <code>json</code> usually requires us to coerce hierarchical data to tabular data.</p></li>
+</ul>
+</section><section id="closed-source-binary-formats" class="slide level2">
+<h2>Closed-source Binary Formats</h2>
+<p><code>xls(x)</code> and <code>dta</code></p>
+<ul>
+<li class="fragment"><code>xls(x)</code> is the format used by Microsoft Excel</li>
+<li class="fragment">If there is only one sheet, then this is tabular and essentially equivalent to <code>csv</code>.</li>
+<li class="fragment"><p>If there are multiple sheets, <code>pandas</code> represents it as a list of tabular data frames.</p></li>
+<li class="fragment"><code>dta</code> is the format used by STATA.</li>
+<li class="fragment">More common in social sciences, but essentially unheard of in professional contexts.</li>
+<li class="fragment"><p>May be preferred for compatibility with STATA, otherwise would not recommend.</p></li>
+</ul>
+</section><section id="data-science-specific-formats" class="slide level2">
+<h2>Data Science-Specific Formats</h2>
+<p><code>HDF5</code> and <code>Feather</code></p>
+<ul>
+<li class="fragment"><code>HDF5</code> is a commonly-used data storage format in data science, but not in academia.</li>
+<li class="fragment"><p>Has a lot of nice properties, including efficient compression and fast reading.</p></li>
+<li class="fragment"><code>Feather</code> was created by Hadley Wickham and Wes McKinney as a fast, consistent and convenient data storage format for cross-usage between R and Python.</li>
+<li class="fragment"><p>I highly recommend this if you work a lot with R and Python, or want to use both in the same project.</p></li>
+</ul>
+</section><section id="dbms-and-sql" class="slide level2">
+<h2>DBMS and <code>SQL</code></h2>
+<ul>
+<li class="fragment">In industry, database management systems (DBMS) are used to store and query large quantities of data in a reliable way.</li>
+<li class="fragment"><code>SQL</code>-compliant databases are a common type. <code>SQL</code> is a database managing and querying language.</li>
+<li class="fragment">If your research requires you to constantly be collecting data and ensuring its reliability, you should opt for a DBMS instead of one of the filetypes mentioned above.</li>
+</ul>
+</section></section>
+<section><section id="pandas" class="title-slide slide level1"><h1><code>pandas</code></h1></section><section id="advantages-of-pandas" class="slide level2">
 <h2>Advantages of <code>pandas</code></h2>
 <ul>
 <li class="fragment">provides fast, flexible data structures</li>
 <li class="fragment">extensive array of convenient functions</li>
 <li class="fragment">compatible with most data science libraries and data types</li>
 </ul>
-</section>
-<section id="when-you-should-not-use-pandas" class="slide level2">
+</section><section id="when-you-should-not-use-pandas" class="slide level2">
 <h2>When you should <strong>not</strong> use <code>pandas</code></h2>
 <ul>
 <li class="fragment">Your data is not coercible to a tabular structure.</li>
@@ -175,15 +231,14 @@ In this class we are primarily focused on tabular data. If your data is not tabu
 <li class="fragment">Note on RAM: It’s not straightforward to predict the size of a dataset loaded into <code>pandas</code>. There are also options for dealing with datasets this large, although those are beyond what I can discuss in the lecture.</li>
 </ul>
 </aside>
-</section>
-<section id="data-io" class="slide level2">
+</section><section id="data-io" class="slide level2">
 <h2>Data I/O</h2>
 <p><code>pandas</code> comes with functions for reading and writing to all kinds of data formats. A quick list can be viewed using tab completion:</p>
 <pre class="{python}"><code>In [1]: import pandas as pd
 
 In [2]: pd.read_&lt;TAB&gt;
  read_clipboard() read_hdf()       read_sas()
- read_csv         read_html()      read_sql()
+ read_csv()       read_html()      read_sql()
  read_excel()     read_json()      read_sql_query()
  read_feather()   read_msgpack()   read_sql_table()
  read_fwf()       read_parquet()   read_stata()
@@ -194,66 +249,41 @@ In [2]: pd.read_&lt;TAB&gt;
 <li class="fragment">This is a good moment to mention tab completion. Revisit it later during the coding tutorial.</li>
 </ul>
 </aside>
-</section></section>
-<section><section id="data-formats" class="title-slide slide level1"><h1>Data Formats</h1><p>There are a number of data storage formats that you should be aware of:</p>
+</section><section id="coding-tutorial" class="slide level2">
+<h2>Coding Tutorial</h2>
+<p>Today, we learn about the following in <code>pandas</code>:</p>
 <ul>
-<li class="fragment"><code>csv</code></li>
-<li class="fragment"><code>xls(x)</code></li>
-<li class="fragment"><code>json</code></li>
-<li class="fragment"><code>dta</code></li>
-<li class="fragment"><code>pickle</code></li>
-</ul></section>
-<section id="csv-format" class="slide level2">
-<h2><code>csv</code> format</h2>
-<p><code>csv</code> (<em>comma-separated-values</em> or as I prefer, <em>character-separated values</em>), is a standard <em>plain text</em> tabular data storage format.</p>
-<table>
-<thead>
-<tr class="header">
-<th>Pros</th>
-<th>Cons</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>lightweight</td>
-<td>unpredictable separator behaviour</td>
-</tr>
-<tr class="even">
-<td>human readable</td>
-<td>fixed number of rows (strictly tabular)</td>
-</tr>
-<tr class="odd">
-<td>mostly portable between systems</td>
-<td>no built-in data types</td>
-</tr>
-<tr class="even">
-<td>row-accessible data format</td>
-<td>lack of durability</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>not easily column-accessible</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="xlsx" class="slide level2">
-<h2><code>xls(x)</code></h2>
-<p>Microsoft excel’s data format. Tabular, but also contains some relational aspects when used with multiple “sheets”.</p>
-<table>
-<thead>
-<tr class="header">
-<th>Pros</th>
-<th>Cons</th>
-</tr>
-</thead>
-<tbody>
-</tbody>
-</table>
+<li class="fragment">Data I/O</li>
+<li class="fragment">Understanding the <code>DataFrame</code> and <code>Series</code></li>
+<li class="fragment">Indexing and Slicing</li>
+<li class="fragment">First look at the data</li>
+<li class="fragment">Summary functions</li>
+</ul>
+</section><section id="data-io-1" class="slide level2">
+<h2>Data I/O</h2>
+<ul>
+<li class="fragment">As seen earlier, pandas has methods for reading in data from various formats.</li>
+<li class="fragment">A strength of learning a library like <code>pandas</code> is that we can analyse tabular data regardless of the source format.</li>
+</ul>
+</section><section id="understanding-dataframe-and-series" class="slide level2">
+<h2>Understanding <code>DataFrame</code> and <code>Series</code></h2>
+<ul>
+<li class="fragment"><code>pandas</code> contains two native data containers:
+<ul>
+<li class="fragment"><code>pandas.DataFrame</code>: A two-dimensional* labelled matrix</li>
+<li class="fragment"><code>pandas.Series</code>: A one-dimensional labelled array</li>
+</ul></li>
+</ul>
+</section><section id="indexing-and-slicing" class="slide level2">
+<h2>Indexing and Slicing</h2>
+<ul>
+<li class="fragment">The fundamental</li>
+</ul>
 </section></section>
     </div>
   </div>
 
+  <script src="../reveal.js/lib/js/head.min.js"></script>
   <script src="../reveal.js/js/reveal.js"></script>
 
   <script>

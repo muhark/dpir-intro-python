@@ -376,3 +376,14 @@ We learn about:
 - `pandas`, a key library for working with data
 - Reading different data formats
 - Slicing and indexing data
+
+# Readings
+
+The following sections of [_Python for Data Analysis: Data Wrangling with Pandas, NumPy and IPython, 2nd edition_](http://solo.bodleian.ox.ac.uk/permalink/f/89vilt/oxfaleph021507068) are relevant to this lecture:
+
+_Useful_:
+- 2.2: IPython Basics
+- 3.1: Data Structures and Sequences
+
+_Interesting_:
+- 1.2 Why Python for Data Analysis?
