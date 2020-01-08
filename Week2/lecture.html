@@ -39,7 +39,22 @@
   <p class="date">2nd Week Hilary 2020</p>
 </section>
 
-<section><section id="last-week" class="title-slide slide level1"><h1>Last Week</h1></section><section id="this-week" class="slide level2">
+<section><section id="overview" class="title-slide slide level1"><h1>Overview</h1></section><section id="last-week" class="slide level2">
+<h2>Last Week</h2>
+<ul>
+<li class="fragment">What is Python, and what can I use it for?</li>
+<li class="fragment">What tools do I have to write, test and run Python code?
+<ul>
+<li class="fragment">Opening up JupyterLab/Notebooks/IPython</li>
+<li class="fragment">Executing code in Jupyter, etc.</li>
+</ul></li>
+<li class="fragment">Writing your first Python script and notebook.
+<ul>
+<li class="fragment">Data Types</li>
+<li class="fragment">Data Structures</li>
+</ul></li>
+</ul>
+</section><section id="this-week" class="slide level2">
 <h2>This Week</h2>
 <p>This week we will learn about a key library for working with <strong>data</strong>:</p>
 <ul>
@@ -48,10 +63,39 @@
 <li class="fragment">Slicing, indexing</li>
 <li class="fragment">Summarising</li>
 </ul>
+</section><section id="the-hard-truth-about-data-science" class="slide level2">
+<h2>The Hard Truth About Data Science…</h2>
+<ul>
+<li class="fragment">Analysis usually takes &lt;30% of your time.</li>
+<li class="fragment">&gt;50% of your time will be spent reading, cleaning, checking, storing, and cursing your data.</li>
+<li class="fragment">Data cleaning is meticulous work, but that doesn’t mean you can’t be efficient.</li>
+</ul>
 </section></section>
-<section><section id="the-hard-truth-about-data-science" class="title-slide slide level1"><h1>The Hard Truth About Data Science…</h1></section></section>
-<section><section id="thinking-about-data" class="title-slide slide level1"><h1>Thinking About Data</h1></section></section>
-<section><section id="data-structures" class="title-slide slide level1"><h1>Data Structures</h1></section><section id="graph" class="slide level2">
+<section><section id="methodological-motivation-and-background" class="title-slide slide level1"><h1>Methodological Motivation and Background</h1></section><section id="thinking-about-data" class="slide level2">
+<h2>Thinking About Data</h2>
+<p>We can think of a data point as having two properties:</p>
+<ol type="1">
+<li class="fragment">Value</li>
+<li class="fragment">Relation (to other values)</li>
+</ol>
+<aside class="notes">
+<ul>
+<li class="fragment">Inherent in value is an abstract type that the value is an instance of.</li>
+<li class="fragment">In data science, we are often more concerned with the latter than the former for the bulk of the analysis. I say this because we don’t tend to care about the exact values, beyond type, until the end, when we look at the output of our model. When building our pipeline, what matters most is the type and structure of data.</li>
+</ul>
+</aside>
+</section><section id="data-structures" class="slide level2">
+<h2>Data Structures</h2>
+<p>Three Ways of Structuring Data:</p>
+<ul>
+<li class="fragment">Graph</li>
+<li class="fragment">Tree (Hierarchical)</li>
+<li class="fragment"><strong>Tabular</strong></li>
+</ul>
+<aside class="notes">
+Option: Do an example of how we can structure data about the members of the class.
+</aside>
+</section><section id="graph" class="slide level2">
 <h2>Graph</h2>
 <ul>
 <li class="fragment">Graphs are constructed of nodes (vertices) and edges.</li>
@@ -112,7 +156,19 @@ In this class we are primarily focused on tabular data. If your data is not tabu
 </ul></li>
 </ul>
 </section></section>
-<section><section id="data-formats" class="title-slide slide level1"><h1>Data Formats</h1></section><section id="on-disk-formats" class="slide level2">
+<section><section id="implementation" class="title-slide slide level1"><h1>Implementation</h1></section><section id="data-formats" class="slide level2">
+<h2>Data Formats</h2>
+<ul>
+<li class="fragment">Data analysis is usually done <em>in-memory</em>.</li>
+<li class="fragment">We use a variety of <em>data formats</em> to store information <em>on disk</em>.</li>
+<li class="fragment">The representation of data in these two mediums is different, but most data analysis software provides methods for reading in and writing out data.</li>
+<li class="fragment">This process is not entirely trivial; different formats use different data types. Some potential pitfalls:
+<ul>
+<li class="fragment">Incompatibility: data in one format may not work with some software.</li>
+<li class="fragment">Silent casting: data may change in unpredictable ways when converted between formats and programs.</li>
+</ul></li>
+</ul>
+</section><section id="on-disk-formats" class="slide level2">
 <h2>On-disk Formats</h2>
 <p>There are a number of data storage formats that you should be aware of:</p>
 <table>
@@ -212,7 +268,10 @@ In this class we are primarily focused on tabular data. If your data is not tabu
 <li class="fragment">If your research requires you to constantly be collecting data and ensuring its reliability, you should opt for a DBMS instead of one of the filetypes mentioned above.</li>
 </ul>
 </section></section>
-<section><section id="pandas" class="title-slide slide level1"><h1><code>pandas</code></h1></section><section id="advantages-of-pandas" class="slide level2">
+<section><section id="pandas" class="title-slide slide level1"><h1><code>pandas</code></h1></section><section id="section" class="slide level2">
+<h2></h2>
+<p><code>pandas</code> is a very popular library for working with tabular data structures in Python. Before we start using it, let’s go over some of the ways it can be useful to you as a social science researcher.</p>
+</section><section id="advantages-of-pandas" class="slide level2">
 <h2>Advantages of <code>pandas</code></h2>
 <ul>
 <li class="fragment">provides fast, flexible data structures</li>
@@ -277,7 +336,29 @@ In [2]: pd.read_&lt;TAB&gt;
 </section><section id="indexing-and-slicing" class="slide level2">
 <h2>Indexing and Slicing</h2>
 <ul>
-<li class="fragment">The fundamental</li>
+<li class="fragment">The most fundamental action in data analysis is the ability to “select” elements within your dataset.</li>
+<li class="fragment">With tabular data, we usually want to select some rows, some columns, or specific cells.</li>
+<li class="fragment"><code>pandas</code> data frames have explicit (named) row- and column-indices, as well as implicit indices because they all elements are ordered and named. We will learn methods for leveraging both.</li>
+</ul>
+</section><section id="first-look-at-the-data" class="slide level2">
+<h2>First Look at the Data</h2>
+<ul>
+<li class="fragment">When working with data, your first step should always be <em>getting to know the data</em>. Ask questions like:
+<ul>
+<li class="fragment">What are the dimensions of the dataset?</li>
+<li class="fragment">What information is contained in the columns? in the rows?</li>
+<li class="fragment">How is my data organised? (Long/tidy vs. wide format)</li>
+<li class="fragment">What data types are each of the columns? Is this expected?</li>
+<li class="fragment">How sparse is my data? (Looking for NAs)</li>
+</ul></li>
+<li class="fragment">There’s nothing worse than trying to debug code that’s taken hours to write only to discover that the problem lies in your data!</li>
+</ul>
+</section><section id="summary-functions" class="slide level2">
+<h2>Summary Functions</h2>
+<ul>
+<li class="fragment">Part of the function and appeal of data analysis is to reduce millions of data points to a few summary numbers that capture key information that you are looking for.</li>
+<li class="fragment">Summary functions do this: they summarise a large number of observations to one or a few values that tell you what you need to know. They are also known as <em>statistics</em>.</li>
+<li class="fragment">Basic examples include mean, sum, variance, skew, but also more advanced statistics such as regression coefficients, Kolmogorov-Smirnov tests, and even the output of machine learning algorithms!</li>
 </ul>
 </section></section>
     </div>

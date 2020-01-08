@@ -5,7 +5,9 @@ author: Musashi Harukawa, DPIR
 date: 2nd Week Hilary 2020
 ---
 
-# Last Week
+# Overview
+
+## Last Week
 
 - What is Python, and what can I use it for?
 - What tools do I have to write, test and run Python code?
@@ -25,13 +27,16 @@ This week we will learn about a key library for working with **data**:
 - Summarising
 
 
-# The Hard Truth About Data Science...
+## The Hard Truth About Data Science...
 
 - Analysis usually takes \<30% of your time.
 - \>50% of your time will be spent reading, cleaning, checking, storing, and cursing your data.
 - Data cleaning is meticulous work, but that doesn't mean you can't be efficient.
 
-# Thinking About Data
+
+# Methodological Motivation and Background
+
+## Thinking About Data
 
 We can think of a data point as having two properties:
 
@@ -43,7 +48,7 @@ We can think of a data point as having two properties:
 - In data science, we are often more concerned with the latter than the former for the bulk of the analysis. I say this because we don't tend to care about the exact values, beyond type, until the end, when we look at the output of our model. When building our pipeline, what matters most is the type and structure of data.
 </aside>
 
-# Data Structures
+## Data Structures
 
 Three Ways of Structuring Data:
 
@@ -101,7 +106,9 @@ In this class we are primarily focused on tabular data. If your data is not tabu
   - Trade-offs and subjective decisions are always necessary; make these clear and do your best to justify them.
 
 
-# Data Formats
+# Implementation
+
+## Data Formats
 
 - Data analysis is usually done _in-memory_.
 - We use a variety of _data formats_ to store information _on disk_.
@@ -167,6 +174,8 @@ There are a number of data storage formats that you should be aware of:
 
 # `pandas`
 
+##
+
 `pandas` is a very popular library for working with tabular data structures in Python. Before we start using it, let's go over some of the ways it can be useful to you as a social science researcher.
 
 ## Advantages of `pandas`
@@ -230,4 +239,22 @@ Today, we learn about the following in `pandas`:
 
 ## Indexing and Slicing
 
-- The fundamental
+- The most fundamental action in data analysis is the ability to "select" elements within your dataset.
+- With tabular data, we usually want to select some rows, some columns, or specific cells.
+- `pandas` data frames have explicit (named) row- and column-indices, as well as implicit indices because they all elements are ordered and named. We will learn methods for leveraging both.
+
+## First Look at the Data
+
+- When working with data, your first step should always be _getting to know the data_. Ask questions like:
+    - What are the dimensions of the dataset?
+    - What information is contained in the columns? in the rows?
+    - How is my data organised? (Long/tidy vs. wide format)
+    - What data types are each of the columns? Is this expected?
+    - How sparse is my data? (Looking for NAs)
+- There's nothing worse than trying to debug code that's taken hours to write only to discover that the problem lies in your data!
+
+## Summary Functions
+
+- Part of the function and appeal of data analysis is to reduce millions of data points to a few summary numbers that capture key information that you are looking for.
+- Summary functions do this: they summarise a large number of observations to one or a few values that tell you what you need to know. They are also known as _statistics_.
+- Basic examples include mean, sum, variance, skew, but also more advanced statistics such as regression coefficients, Kolmogorov-Smirnov tests, and even the output of machine learning algorithms!
