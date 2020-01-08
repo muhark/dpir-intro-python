@@ -48,9 +48,15 @@ Slides are generated with `reveal.js`. Should be viewable on any device with a b
 
 # Course Structure
 
-The topics for the eight weeks are as follows:
+<aside class="notes">
+Mention here that the lectures will generally take the format of:
+1. methodology and model (theory)
+2. implementation (operationalisation)
+3. relevance to research (examples)
+4. coding tutorial
+</aside>
 
-##
+## Topics:
 
 1. Introduction to Python and the Development Environment
 2. Data Structures and `pandas` I
@@ -61,7 +67,7 @@ The topics for the eight weeks are as follows:
 7. Mining the Web
 8. Introduction to Natural Language Processing
 
-# Feedback
+## Feedback
 
 - This is my first try at this course, and I'm looking for continuous feedback.
 - Feedback can either be:
@@ -76,6 +82,8 @@ The topics for the eight weeks are as follows:
 
 # Week 1: Introduction to Python and the Development Environment
 
+## Overview:
+
 This week will cover the following points:
 
 1. What is Python?...
@@ -86,7 +94,7 @@ This week will cover the following points:
 
 # What is Python?...
 
-Python is an _open-source, general-purpose scripting language_.
+## Python is an _open-source, general-purpose scripting language_.
 
 ## Open-Source
 
@@ -116,9 +124,10 @@ It's good to keep the input-output framework in your head.
 
 # and what can I use Python for?
 
-Some reasons you, as a social science researcher, may want to learn Python:
 
 ## I want to...
+
+Some reasons you, as a social science researcher, may want to learn Python:
 
 - Clean up my messy data!
 - Run analyses with (hundreds of) millions of data points
@@ -128,7 +137,7 @@ Some reasons you, as a social science researcher, may want to learn Python:
 - I want to uncover hidden structures linking parliamentary committees!
 - ... and more!
 
-# Python vs `R`
+## Comparison: Python vs `R`
 
 | Task                               | `python` | `R`   |
 | ---------------------------------- | -------- | ----- |
@@ -145,6 +154,8 @@ Some reasons you, as a social science researcher, may want to learn Python:
 Conclusion: ... it depends, but ideally you want to learn both!
 
 # Basic Coding Tools
+
+## Language $\ne$ Editor
 
 - `Python` is a language, and not an application.
 - We have a variety of tools for developing our python code.
@@ -206,7 +217,7 @@ Launch Jupyter Lab session. Show how you can navigate a file tree, and then crea
 
 ![Atom](../images/atom_editor.png)
 
-# Basic Workflow
+## Basic Workflow
 
 1. Open up Anaconda Navigator
 2. Open up Jupyter Lab (or Notebook)
@@ -214,7 +225,9 @@ Launch Jupyter Lab session. Show how you can navigate a file tree, and then crea
 4. Open pre-existing notebook, or create new one.
 5. Start coding!
 
-# Motivation for Today's Coding Lesson
+# Motivation
+
+##
 
 - Today we learn about two fundamental, but abstract aspects of coding:
   - Data Types
@@ -307,8 +320,6 @@ Some (statistical) data types:
 
 # Coding Recap
 
-A quick recap of the things that you learned in the coding session:
-
 ## Variable Assignment
 
 Variables can be assigned with `=`.
@@ -378,6 +389,8 @@ We learn about:
 - Slicing and indexing data
 
 # Readings
+
+##
 
 The following sections of [_Python for Data Analysis: Data Wrangling with Pandas, NumPy and IPython, 2nd edition_](http://solo.bodleian.ox.ac.uk/permalink/f/89vilt/oxfaleph021507068) are relevant to this lecture:
 
