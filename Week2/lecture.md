@@ -10,28 +10,20 @@ date: 2nd Week Hilary 2020
 ## Last Week
 
 - What is Python, and what can I use it for?
-- What tools do I have to write, test and run Python code?
+- Tools for writing, testing and running Python code
     - Opening up JupyterLab/Notebooks/IPython
     - Executing code in Jupyter, etc.
-- Writing your first Python script and notebook.
+- First steps in coding
     - Data Types
     - Data Structures
 
 ## This Week
 
-This week we will learn about a key library for working with **data**:
+This week we will continue talking about data:
 
-- Thinking about (tabular) data
-- I/O
-- Slicing, indexing
-- Summarising
-
-
-## The Hard Truth About Data Science...
-
-- Analysis usually takes \<30% of your time.
-- \>50% of your time will be spent reading, cleaning, checking, storing, and cursing your data.
-- Data cleaning is meticulous work, but that doesn't mean you can't be efficient.
+- Structuring our observations
+- Representing this data on a computer
+- Using `pandas` for data analysis
 
 
 # Methodological Motivation and Background
@@ -97,13 +89,25 @@ In this class we are primarily focused on tabular data. If your data is not tabu
 
 ## Coercing Data Structures
 
+Here's a challenge:
+
+- _How would you structure the information given by your family tree in a tabular data structure? What would be the columns (variables) and rows (observations)?_
+
+<p class="fragment">Extra challenge:</p>
+
+- _Could you do this without NAs?_
+
+## Issues
+
 - In reality, processes we observe are rarely tabular.
   - Some observations may have special characteristics that others do not. ($j$ is not equal for all $i$)
   - There may no be inherent ordering in our observations, or the characteristics ($i$ or $j$ are not orderable).
   - Observations may be related, overlapping, or nested in a way that is relevant to our model but not suitable for a two-dimensional table.
-- _Take away_:
-  - When we receive or generate tabular data, we should keep in mind the _data-generating process_ and decide whether we are systematically losing information that is relevant to our model.
-  - Trade-offs and subjective decisions are always necessary; make these clear and do your best to justify them.
+
+## Take Away
+
+- When we receive or generate tabular data, we should keep in mind the _data-generating process_ and decide whether we are systematically losing information that is relevant to our model.
+- Trade-offs and subjective decisions are always necessary; make these clear and do your best to justify them.
 
 
 # Implementation
@@ -120,8 +124,6 @@ In this class we are primarily focused on tabular data. If your data is not tabu
 
 ## On-disk Formats
 
-There are a number of data storage formats that you should be aware of:
-
 | Format    | Structure | Built-in Types | Human-Readable |   Compatibility    |
 |:--------- |:---------:|:--------------:|:--------------:|:------------------:|
 | `csv`     |    Tab    |       No       |      Yes       |        Any         |
@@ -135,14 +137,20 @@ There are a number of data storage formats that you should be aware of:
 
 `csv` and `json`
 
-- `csv` ("comma separated-values") is an extremely common tabular data storage format.
+`csv` ("comma separated-values") is an extremely common tabular data storage format.
+
 - Values are _delineated_ by a special character, usually a comma.
-    - There are reasons to not use commas, especially when working with text data.
 - _Has no built-in data types_; this needs to be inferred by the parser.
 
-- `json` (JavaScript Object Notation) is also extremely common, especially when using web data.
+`json` (JavaScript Object Notation) is also extremely common, especially when using web data.
+
 - Stores information as a mixture of key-value pairs and arrays (think dicts of lists).
 - Working with `json` usually requires us to coerce hierarchical data to tabular data.
+
+<aside class="notes">
+- There are reasons to not use commas, especially when working with text data.
+</aside>
+
 
 ## Closed-source Binary Formats
 
@@ -174,9 +182,13 @@ There are a number of data storage formats that you should be aware of:
 
 # `pandas`
 
-##
+## The Hard Truth About Data Science...
 
 `pandas` is a very popular library for working with tabular data structures in Python. Before we start using it, let's go over some of the ways it can be useful to you as a social science researcher.
+
+- Analysis usually takes \<30% of your time.
+- \>50% of your time will be spent reading, cleaning, checking, storing, and cursing your data.
+- Data cleaning is meticulous work, but that doesn't mean you can't be efficient.
 
 ## Advantages of `pandas`
 
@@ -236,6 +248,8 @@ Today, we learn about the following in `pandas`:
 - `pandas` contains two native data containers:
   - `pandas.DataFrame`: A two-dimensional\* labelled matrix
   - `pandas.Series`: A one-dimensional labelled array
+
+ <p class="fragment">\*Can be higher-dimensional with the use of hierarchical indices</p>
 
 ## Indexing and Slicing
 
