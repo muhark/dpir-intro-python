@@ -15,45 +15,15 @@ Next few slides are primarily details about the course.
 
 8-week long course will take place on Wednesdays at the IT Lab in the Manor Road Building. Each week will consist of a three-hour session divided roughly as follows:
 
-- 1615-1715: Lecture
-- 1715-1725: Break
-- 1725-1825: Workshop
-- 1825-1925: Clinic
+- 1615-1700: Lecture
+- 1700-1745: Coding Tutorial
+- 1745-1800: Break
+- 1800-1845: Workshop
+- 1845-1915: Clinic
 
 <aside class="notes">
+Note that only the first 1.5 hours are necessary.
 Mention that class in 3rd week (5th Feb) will be moved to Monday (3rd Feb).
-</aside>
-
-## Lecture
-
-- During the lectures I will discuss a mixture of theory and methods. The slides will be made available at the following:
-  - https://github.com/muhark/dpir-intro-python
-  - Canvas?
-- Please feel free to stop me and ask questions! I have alloted time for this.
-
-<aside class="notes">
-Slides are generated with `reveal.js`. Should be viewable on any device with a browser.
-</aside>
-
-## Workshop
-
-- In the workshop, you will work through a number of set programming problems and discussion questions.
-- Answers will be discussed as a class for the final 10 minutes.
-
-## Clinic
-
-- Each week, there will be tasks and projects for you to try in your own time, if you wish.
-- I'll be available for an hour after each session to answer questions one-to-one or in small groups.
-
-
-# Course Structure
-
-<aside class="notes">
-Mention here that the lectures will generally take the format of:
-1. methodology and model (theory)
-2. implementation (operationalisation)
-3. relevance to research (examples)
-4. coding tutorial
 </aside>
 
 ## Topics:
@@ -67,12 +37,48 @@ Mention here that the lectures will generally take the format of:
 7. Mining the Web
 8. Introduction to Natural Language Processing
 
+<aside class="notes">
+Mention here that the lectures will generally take the format of:
+1. methodology and model (theory)
+2. implementation (operationalisation)
+3. relevance to research (examples)
+4. coding tutorial
+</aside>
+
+## Lecture
+
+- Lectures focus on the methodological motivation and context for the techniques.
+- Where relevant, some computer science and information theory will be discussed.
+- The slides will be made available at the following:
+  - https://github.com/muhark/dpir-intro-python
+  - Canvas?
+- Please feel free to stop me and ask questions! I have alloted time for this.
+
+<aside class="notes">
+Slides are generated with `reveal.js`. Should be viewable on any device with a browser.
+</aside>
+
+## Coding Tutorial
+
+- In this section I explain the nitty-gritty of actually implementing these problems in code.
+- Pull out your laptops and code along with me while we work through examples!
+
+## Workshop
+
+- In the workshop, you will work through a number of set programming problems and discussion questions.
+- This part is optional: my goal is to give everyone a space where they can work collaboratively on these problem sets, and I will be around to try and help.
+
+## Clinic
+
+- The final 30 minutes are reserved for one-on-one help. Sign-up will be formalised from next week onwards.
+
+
 ## Feedback
 
 - This is my first try at this course, and I'm looking for continuous feedback.
 - Feedback can either be:
     -  sent to me at `musashi.harukawa@politics.ox.ac.uk`
-    -  or communicated via a Google survey (to be sent each week).
+    -  or communicated via a Google survey (link on website)
 
 <aside class="notes">
 - This is a brand new course, and far from perfect.
@@ -121,13 +127,17 @@ Large community means that a larger number of people create, contribute to, and 
 It's good to keep the input-output framework in your head.
 </aside>
 
+## Language
+
+- Python is a language, and not an application.
+- Practical difference for you:
+    - most applications provide you options to select from.
+    - languages require to generate commands from accepted rules.
+- Upshot is that you can do nearly anything with Python!
 
 # and what can I use Python for?
 
-
 ## I want to...
-
-Some reasons you, as a social science researcher, may want to learn Python:
 
 - Clean up my messy data!
 - Run analyses with (hundreds of) millions of data points
@@ -135,7 +145,8 @@ Some reasons you, as a social science researcher, may want to learn Python:
 - I want to automate downloading several decades of newspaper articles!
 - I want to create beautiful (interactive) visuals to accompany my analyses!
 - I want to uncover hidden structures linking parliamentary committees!
-- ... and more!
+- I want to track the [changing meaning of a concept over a century](https://www.cambridge.org/core/journals/political-analysis/article/timely-intervention-tracking-the-changing-meanings-of-political-concepts-with-word-vectors/DDF3B5833A12E673EEE24FBD9798679E)!
+- Again: _any repetitive task done on a computer can be automated with Python_.
 
 ## Comparison: Python vs `R`
 
@@ -153,12 +164,7 @@ Some reasons you, as a social science researcher, may want to learn Python:
 
 Conclusion: ... it depends, but ideally you want to learn both!
 
-# Basic Coding Tools
-
-## Language $\ne$ Editor
-
-- `Python` is a language, and not an application.
-- We have a variety of tools for developing our python code.
+# Tools of the Trade
 
 ## Anaconda
 
@@ -190,9 +196,10 @@ At this point, I switch windows to open up the anaconda navigator, and go throug
 
 - Interactive code editor.
 - Popular, but has its detractors.
+- Multiple options: console, notebook and lab
 
 <aside class="notes">
-- I don't use it, but I started off with it. I recommend that you give it a go.
+Explain that we are using lab in this course, but notebook or console are options.
 </aside>
 
 ##
@@ -225,26 +232,27 @@ Launch Jupyter Lab session. Show how you can navigate a file tree, and then crea
 4. Open pre-existing notebook, or create new one.
 5. Start coding!
 
-# Motivation
+# This Week
 
-##
+## Data is more than data
 
-- Today we learn about two fundamental, but abstract aspects of coding:
+- Today I introduce two fundamental, but abstract aspects of coding:
   - Data Types
   - Data Structures
 
 <aside class="notes">
-I want to spend a brief moment to explain why this is relevant.
+Note that we will continue to discuss these topics for 3 weeks.
 </aside>
 
 ## Why Automate?
 
 - In general, as social scientists using computational methods, our goal is to automate some component of our analysis.
 - The advantage of automation is cost, scale, and scope.
-- But in order to harness these methods, we need to structure our information in a way that algorithms and programs can utilise.
+- But in order to harness these methods, we need to represent our observations in a way that algorithms and programs can utilise.
     - This process of quantifying and structuring our observations usually entails the loss of some information.
 
 <aside class="notes">
+- This automation is not limited to collecting data. Running a regression or sorting your responses by data is the automation of doing this by hand.
 - Some qualitative scholars I speak to contend that the validity of the quantitative endeavour ends there.
     - Are there unquantifiable things?
 - I'm more optimistic about what is possible, and think that the key to having valid quantitative inferences is to be extremely clear on the connection between the data in your analysis and the actual events you are measuring.
@@ -274,22 +282,18 @@ Some (statistical) data types:
 
 
 <aside class="notes">
-(_Before points_)<br>
 - What do I mean when I talk about different "types" of data?
 - Small exercise: what are instances of each of these?
 </aside>
 
 ## Representing Data on a Computer
 
-- _Good news:_
-    - Python, like most modern programming languages, has ways to represent each of the data types listed above.
-- _Bad news:_
-    - At a fundamental level, this is being stored as 0's and 1's.
-- _Take away:_
-    - Take the time to understand the relationship between:
-        -  your empirical observations,
-        -  the abstracted representation of them in your mathematical model,
-        -  the approximation of this in your computational model.
+- _Good news:_ Python, like most modern programming languages, has ways to represent each of the data types listed above.
+- _Bad news:_ At a fundamental level, this is being stored as 0's and 1's.
+- _Take away:_ Take the time to understand the relationship between:
+    -  your empirical observations,
+    -  the abstracted representation of them in your mathematical model,
+    -  the approximation of this in your computational model.
 
 <aside class="notes">
 - I'm making a bit of an assumption here about the theory-generating workflow, in that a stylised mathematical model is usually prior to a computational/empirical approach.
@@ -384,6 +388,7 @@ We learned about two basic data structures:
 
 We learn about:
 
+- Tabular data structures
 - `pandas`, a key library for working with data
 - Reading different data formats
 - Slicing and indexing data
