@@ -276,14 +276,11 @@ Note that we will continue to discuss these topics for 3 weeks.
 
 Some (statistical) data types:
 
+- Logical
 - Numerical
-    - Interval
-    - Ratio
-    - Count
+- Categorical
 - Text
 - Date and time
-- Logical
-- Categorical
 
 
 <aside class="notes">
