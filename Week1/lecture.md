@@ -8,7 +8,9 @@ date: 1st Week Hilary 2020
 # Course Overview
 
 <aside class="notes">
-Next few slides are primarily details about the course.
+- First step is some general administrative notes.
+- I've designed this course to be a hands-on introduction to using Python for social science research.
+- While I have no formal background in computer science, I've worked both as a teacher and a data scientist, and using computational methods is a big part of my research. Hopefully the things I've learned along the way will be useful to you too.
 </aside>
 
 ## Schedule
@@ -22,8 +24,9 @@ Next few slides are primarily details about the course.
 - 1845-1915: Clinic
 
 <aside class="notes">
-Note that only the first 1.5 hours are necessary.
-Mention that class in 3rd week (5th Feb) will be moved to Monday (3rd Feb).
+- This course runs for eight weeks, usually on Wednesday, but in week 3 will be moved to Monday as I will be going to Japan for some family matters.
+- I've bokoked the room for three hours, but only the first 1.5 hours are taught. Thus you can leave at 5:45pm if you need to.
+- The timings are roughly as follows: **Go through breakdown**
 </aside>
 
 ## Topics:
@@ -38,11 +41,13 @@ Mention that class in 3rd week (5th Feb) will be moved to Monday (3rd Feb).
 8. Introduction to Natural Language Processing
 
 <aside class="notes">
-Mention here that the lectures will generally take the format of:
-1. methodology and model (theory)
-2. implementation (operationalisation)
-3. relevance to research (examples)
-4. coding tutorial
+- I've chosen six topics for the eight weeks.
+1. The first week will be focused on getting you to understand a bit better what Python is, and will teach some basics.
+2. The second and third week focus on working with data; cleaning, reshaping, writing and reading, and most importantly _understanding_.
+3. The fourth week will introduce two libraries for making data-based visuals; these will be publication grade, and can be used for academic papers or in a professional setting.
+4. The fifth and sixth week look at machine learning. The library we will use is not _the_ cutting edge, but has an amazing array of well-documented algorithms and is ideal for teaching ML basics.
+5. The seventh week gives a flying introduction to automating the collection of data from web pages. Web scraping is something I get asked about a lot, and takes longer than a week to teach, but hopefully I can give you a strong starting point to develop your own scrapers.
+6. The final week looks at my favourite area, which is text-as-data methods, aka NLP.
 </aside>
 
 ## Lecture
@@ -55,7 +60,7 @@ Mention here that the lectures will generally take the format of:
 - Please feel free to stop me and ask questions! I have alloted time for this.
 
 <aside class="notes">
-Slides are generated with `reveal.js`. Should be viewable on any device with a browser.
+Explain lecture flow. In the lecture, we look at the intersection of social science methodology and computer science theory.
 </aside>
 
 ## Coding Tutorial
