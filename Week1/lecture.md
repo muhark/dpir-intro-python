@@ -17,11 +17,11 @@ date: 1st Week Hilary 2020
 
 8-week long course will take place on Wednesdays at the IT Lab in the Manor Road Building. Each week will consist of a three-hour session divided roughly as follows:
 
-- 1615-1700: Lecture
-- 1700-1745: Coding Tutorial
-- 1745-1800: Break
-- 1800-1845: Workshop
-- 1845-1915: Clinic
+- 1600-1645: Lecture
+- 1645-1730: Coding Tutorial
+- 1730-1745: Break
+- 1745-1845: Workshop
+- 1845-1900: Clinic
 
 <aside class="notes">
 - This course runs for eight weeks, usually on Wednesday, but in week 3 will be moved to Monday as I will be going to Japan for some family matters.
