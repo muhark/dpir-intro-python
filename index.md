@@ -22,7 +22,7 @@ I'm experimenting with [`reveal.js`](https://revealjs.com/#/) for the lecture sl
 Please be aware, lectures will be updated continuously, and may contain errors.
 
 1. [Introduction to Python and the Development Environment](/dpir-intro-python/Week1/lecture.html)
-2. ~~[Data Structures and `pandas` I]()~~
+2. [Data Structures and `pandas` I](/dpir-intro-python/Week2/lecture.html)
 3. ~~[Data Structures and `pandas` II]()~~
 4. ~~[Data Visualisation]()~~
 5. ~~[Machine Learning with `scikit-learn` I]()~~
@@ -36,7 +36,7 @@ Please be aware, lectures will be updated continuously, and may contain errors.
 | Week | `reveal.js`                                     | `pdf`                                       | Code Examples                                       | Code Exercises                                        | Code Solutions                                        |
 | ---- | ----------------------------------------------- | ------------------------------------------- | --------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
 | 1    | [slides](/dpir-intro-python/Week1/lecture.html) | [pdf](/dpir-intro-python/Week1/lecture.pdf) | [examples](/dpir-intro-python/Week1/examples.ipynb) | [exercises](/dpir-intro-python/Week1/exercises.ipynb) | [solutions](/dpir-intro-python/Week1/solutions.ipynb) |
-| 2    | [slides](placeholderWeek2/lecture.html) | [pdf](placeholderWeek2/lecture.pdf) | [examples](placeholderWeek2/examples.ipynb) | [exercises](placeholderWeek2/exercises.ipynb) | [solutions](placeholderWeek2/solutions.ipynb) |
+| 2    | [slides](/dpir-intro-python/Week2/lecture.html) | [pdf](/dpir-intro-python/Week2/lecture.pdf) | [examples](/dpir-intro-python/Week2/examples.ipynb) | [exercises](/dpir-intro-python/Week2/exercises.ipynb) | [solutions](/dpir-intro-python/Week2/solutions.ipynb) |
 | 3    | [slides](placeholderWeek3/lecture.html) | [pdf](placeholderWeek3/lecture.pdf) | [examples](placeholderWeek3/examples.ipynb) | [exercises](placeholderWeek3/exercises.ipynb) | [solutions](placeholderWeek3/solutions.ipynb) |
 
 <!--Replaceable with regex s\placeholder(Week[2-3])/([a-z]*)\.([a-z]*)//dpir-intro-python/(Week[2-3])/([a-z]*)\.([a-z]*)\g-->

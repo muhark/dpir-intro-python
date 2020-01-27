@@ -102,7 +102,7 @@ Here's a challenge:
 - In reality, processes we observe are rarely tabular.
   - Some observations may have special characteristics that others do not. ($j$ is not equal for all $i$)
   - There may no be inherent ordering in our observations, or the characteristics ($i$ or $j$ are not orderable).
-  - Observations may be related, overlapping, or nested in a way that is relevant to our model but not suitable for a two-dimensional table.
+  - Observations may be nested within other observations (e.g. tweets, retweets and replies).
 
 ## Take Away
 
@@ -134,8 +134,6 @@ Here's a challenge:
 | `Feather` |    Tab    |      Yes       |       No       |     Python, R      |
 
 ## Human-Readable Formats
-
-`csv` and `json`
 
 `csv` ("comma separated-values") is an extremely common tabular data storage format.
 
