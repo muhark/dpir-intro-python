@@ -33,11 +33,11 @@ Please be aware, lectures will be updated continuously, and may contain errors.
 
 # Materials
 
-| Week | `reveal.js`                                     | `pdf`                                       | Code Examples                                       | Code Exercises                                        | Code Solutions                                        |
-| ---- | ----------------------------------------------- | ------------------------------------------- | --------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| 1    | [slides](/dpir-intro-python/Week1/lecture.html) | [pdf](/dpir-intro-python/Week1/lecture.pdf) | [examples](/dpir-intro-python/Week1/examples.ipynb) | [exercises](/dpir-intro-python/Week1/exercises.ipynb) | [solutions](/dpir-intro-python/Week1/solutions.ipynb) |
-| 2    | [slides](/dpir-intro-python/Week2/lecture.html) | [pdf](/dpir-intro-python/Week2/lecture.pdf) | [examples](/dpir-intro-python/Week2/examples.ipynb) | [exercises](/dpir-intro-python/Week2/exercises.ipynb) | [solutions](/dpir-intro-python/Week2/solutions.ipynb) |
-| 3    | [slides](placeholderWeek3/lecture.html) | [pdf](placeholderWeek3/lecture.pdf) | [examples](placeholderWeek3/examples.ipynb) | [exercises](placeholderWeek3/exercises.ipynb) | [solutions](placeholderWeek3/solutions.ipynb) |
+| Week | `reveal.js`                                     | `pdf`                                       | Code Examples                                       | Code Exercises                                        | Code Solutions                                        | Data                                                |
+| ---- | ----------------------------------------------- | ------------------------------------------- | --------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | --------------------------------------------------- |
+| 1    | [slides](/dpir-intro-python/Week1/lecture.html) | [pdf](/dpir-intro-python/Week1/lecture.pdf) | [examples](/dpir-intro-python/Week1/examples.ipynb) | [exercises](/dpir-intro-python/Week1/exercises.ipynb) | [solutions](/dpir-intro-python/Week1/solutions.ipynb) | None                                                |
+| 2    | [slides](/dpir-intro-python/Week2/lecture.html) | [pdf](/dpir-intro-python/Week2/lecture.pdf) | [examples](/dpir-intro-python/Week2/examples.ipynb) | [exercises](/dpir-intro-python/Week2/exercises.ipynb) | [solutions](/dpir-intro-python/Week2/solutions.ipynb) | [BES](/dpir-intro-python/Week2/data/data_week2.zip) |
+| 3    | [slides](placeholderWeek3/lecture.html)         | [pdf](placeholderWeek3/lecture.pdf)         | [examples](placeholderWeek3/examples.ipynb)         | [exercises](placeholderWeek3/exercises.ipynb)         | [solutions](placeholderWeek3/solutions.ipynb)         |                                                     |
 
 <!--Replaceable with regex s\placeholder(Week[2-3])/([a-z]*)\.([a-z]*)//dpir-intro-python/(Week[2-3])/([a-z]*)\.([a-z]*)\g-->
 
