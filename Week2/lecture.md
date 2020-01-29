@@ -270,3 +270,22 @@ Today, we learn about the following in `pandas`:
 - Part of the function and appeal of data analysis is to reduce millions of data points to a few summary numbers that capture key information that you are looking for.
 - Summary functions do this: they summarise a large number of observations to one or a few values that tell you what you need to know. They are also known as _statistics_.
 - Basic examples include mean, sum, variance, skew, but also more advanced statistics such as regression coefficients, Kolmogorov-Smirnov tests, and even the output of machine learning algorithms!
+
+
+# Readings
+
+##
+
+The following sections of [_Python for Data Analysis: Data Wrangling with Pandas, NumPy and IPython, 2nd edition_](http://solo.bodleian.ox.ac.uk/permalink/f/89vilt/oxfaleph021507068) are relevant to this lecture:
+
+_Useful_:
+- 5.*: Getting Started with pandas
+- 6.*: Data Loading, Storage and File Formats
+- 7.1-2: Data Cleaning and Preparation
+
+_Advanced_:
+- 7.3: String Manipulation (regex covered in further weeks)
+- 12.1: Categorical Data
+
+_Blog Posts_:
+- Pandas Data: https://pbpython.com/pandas_dtypes.html
