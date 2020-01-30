@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Musashi Harukawa, DPIR">
+  <title>Introduction to Python for Social Science</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../reveal.js/css/theme/../../../dpir-intro-theme.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal.js/css/print/pdf.css' : '../reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="../reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Introduction to Python for Social Science</h1>
+  <p class="subtitle">Lecture 3 - Data Structures and Pandas II</p>
+  <p class="author">Musashi Harukawa, DPIR</p>
+  <p class="date">3rd Week Hilary 2020</p>
+</section>
+
+<section><section id="overview" class="title-slide slide level1"><h1>Overview</h1></section><section id="last-week" class="slide level2">
+<h2>Last Week</h2>
+<ul>
+<li class="fragment">Graph, Tree and Tabular Data Structures</li>
+<li class="fragment">Representations of information</li>
+<li class="fragment">Introduction to <code>pandas</code></li>
+</ul>
+</section><section id="this-week" class="slide level2">
+<h2>This Week</h2>
+<p>This week we learn more advanced methods for working with data:</p>
+<ul>
+<li class="fragment">Functions</li>
+<li class="fragment"><code>apply</code> and vectorization</li>
+<li class="fragment"><code>GroupBy</code>: Split-apply-combine</li>
+<li class="fragment">Combining dataframes: append, concat and merge</li>
+<li class="fragment">Long- vs wide-form data; melting data</li>
+</ul>
+</section></section>
+<section><section id="methods-and-theory" class="title-slide slide level1"><h1>Methods and Theory</h1></section><section id="functions" class="slide level2">
+<h2>Functions</h2>
+<ul>
+<li class="fragment">A function is a mapping of two sets that relates each element of the first set to exactly one element of the second set.
+<ul>
+<li class="fragment">Formally, a function <span class="math inline">\(f\)</span> is a mapping of elements of a set <span class="math inline">\(X\)</span> to set <span class="math inline">\(Y\)</span> defined by ordered pairs <span class="math inline">\(G = (x, y)\)</span> such that <span class="math inline">\(x \in X\)</span> and <span class="math inline">\(y \in Y\)</span>.</li>
+<li class="fragment"><span class="math inline">\(X\)</span> is referred to as the <em>domain</em> of <span class="math inline">\(f\)</span>, and <span class="math inline">\(Y\)</span> is the <em>codomain</em>.</li>
+<li class="fragment"><span class="math inline">\(y\)</span> is the <em>image</em> or <em>value</em> of <span class="math inline">\(f\)</span> applied to the argument <span class="math inline">\(x\)</span>.</li>
+</ul></li>
+<li class="fragment">Practically, a function is an operation that takes one or more inputs, and returns zero or more outputs.
+<ul>
+<li class="fragment">For instance, the function <span class="math inline">\(f(a, b)\)</span> defined as <span class="math inline">\(a+b\)</span> takes two arguments, <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, and returns a value <span class="math inline">\(a+b\)</span>.</li>
+<li class="fragment"><span class="math inline">\(y\)</span> can be the null set, in the sense that functions can return <em>nothing</em>.</li>
+</ul></li>
+</ul>
+</section><section id="functions-and-vectors" class="slide level2">
+<h2>Functions and Vectors</h2>
+<p>There are several ways to think about applying a function to a vector <span class="math inline">\(X_i\)</span> of <span class="math inline">\(i\)</span> values:</p>
+<ul>
+<li class="fragment">Transformations</li>
+<li class="fragment">Element-wise Operations</li>
+<li class="fragment">Summaries</li>
+<li class="fragment">Grouped Summaries</li>
+</ul>
+</section><section id="transformation" class="slide level2">
+<h2>Transformation</h2>
+<p>The vector of all values in <span class="math inline">\(X_i\)</span>, <span class="math inline">\([x_1, x_2, ... x_i]\)</span> is in the domain of <span class="math inline">\(f\)</span>, and a vector <span class="math inline">\(Y_i\)</span> of equal length <span class="math inline">\(i\)</span> is returned.</p>
+<p><span class="math display">\[
+f \begin{bmatrix}
+    x_1 \\
+    x_2 \\
+    \vdots \\
+    x_i
+\end{bmatrix} \rightarrow
+\begin{bmatrix}
+    y_1 \\
+    y_2 \\
+    \vdots \\
+    y_i \\
+\end{bmatrix}
+\]</span></p>
+</section><section id="element-wise-operations" class="slide level2">
+<h2>Element-wise Operations</h2>
+<p>Individual elements of <span class="math inline">\(X_i\)</span> are in the domain of <span class="math inline">\(f\)</span>, and <span class="math inline">\(f\)</span> is applied to each element of <span class="math inline">\(X_i\)</span> to return a vector of length <span class="math inline">\(i\)</span> where the <span class="math inline">\(i\)</span>th element is the value of <span class="math inline">\(f(x_i)\)</span>.</p>
+<p><span class="math display">\[
+f \odot
+\begin{bmatrix}
+    x_1 \\
+    x_2 \\
+    \vdots \\
+    x_i
+\end{bmatrix} \rightarrow
+\begin{bmatrix}
+    f(x_1) \\
+    f(x_2) \\
+    \vdots \\
+    f(x_i)
+\end{bmatrix}
+\]</span></p>
+</section><section id="summaries" class="slide level2">
+<h2>Summaries</h2>
+<p>A summary reduces a vector <span class="math inline">\(X_i\)</span> of length <span class="math inline">\(i\)</span> to a single value <span class="math inline">\(\theta\)</span>. Thus vector <span class="math inline">\(X_i\)</span> is within the domain of <span class="math inline">\(f\)</span>, and <span class="math inline">\(\theta\)</span> is value of <span class="math inline">\(f\)</span> applied to <span class="math inline">\(X_i\)</span>.</p>
+<p><span class="math display">\[
+f \begin{bmatrix}
+    x_1 \\
+    x_2 \\
+    \vdots \\
+    x_i
+\end{bmatrix} \rightarrow
+\theta
+\]</span></p>
+</section><section id="grouped-summaries" class="slide level2">
+<h2>Grouped Summaries</h2>
+<p>Elements of <span class="math inline">\(X_{i, g}\)</span> are groupable in that each element <span class="math inline">\(x_i\)</span> is a member of some group <span class="math inline">\(g \in G\)</span>. In a sense they are somewhere between element-wise operations and summaries. <!-- A grouped summary therefore returns a vector $Y_g$ of length $g$, where each element $y_g'$ is the value of $f(\{x_{i, g=g'}\})$. --></p>
+<p><span class="math display">\[
+f \odot_g \begin{bmatrix}
+    x_{1, g=1} \\
+    x_{2, g=1} \\
+    x_{3, g=2} \\
+    \vdots \\
+    x_{i, g}
+\end{bmatrix} \rightarrow
+\begin{bmatrix}
+    f(x_{1, g=1}, x_{2, g=1}) \\
+    f(x_{3, g=2}) \\
+    \vdots \\
+    f(X_{i, g=g})
+\end{bmatrix} \rightarrow
+\begin{bmatrix}
+    y_1 \\
+    y_2 \\
+    \vdots \\
+    y_g
+\end{bmatrix}
+\]</span></p>
+</section><section id="combining-data" class="slide level2">
+<h2>Combining Data</h2>
+<p>Here are three different ways that two tabular datasets can be combined:</p>
+<ul>
+<li class="fragment">Appending/Concatenating</li>
+<li class="fragment">Merging</li>
+</ul>
+</section><section id="concatenating" class="slide level2">
+<h2>Concatenating</h2>
+<p>We can concatenate two or more tabular datasets so long as they all share at least one dimension (“height” or “width”).</p>
+<p>The case of adding one dataset onto the “end” of another is referred to typically as “appending”.</p>
+<p><span class="math display">\[
+X = \begin{bmatrix}
+    x_{1, 1} &amp; x_{1, 2} &amp; x_{1, 3} \\
+    x_{2, 1} &amp; x_{2, 2} &amp; x_{2, 3}
+\end{bmatrix} \\
+Y = \begin{bmatrix}
+    y_{1, 1} &amp; y_{1, 2} \\
+    y_{2, 1} &amp; y_{2, 2}
+\end{bmatrix} \\
+XY = \begin{bmatrix}
+x_{1, 1} &amp; x_{1, 2} &amp; x_{1, 3} &amp; y_{1, 1} &amp; y_{1, 2} \\
+x_{2, 1} &amp; x_{2, 2} &amp; x_{2, 3} &amp; y_{2, 1} &amp; y_{2, 2}
+\end{bmatrix}
+\]</span></p>
+</section></section>
+<section><section id="functions-1" class="title-slide slide level1"><h1>Functions</h1></section><section id="functions-2" class="slide level2">
+<h2>Functions</h2>
+<ul>
+<li class="fragment">A function is a structure takes one or more inputs, and gives zero or more outputs.</li>
+<li class="fragment">You have already encountered many functions, such as <code>sum()</code>, which takes the sum of an series.</li>
+</ul>
+</section><section id="functions-in-python" class="slide level2">
+<h2>Functions in Python</h2>
+<p>Here’s a simple function that adds 1 to the input:</p>
+<pre class="{python}"><code>def add_one(x):
+    &quot;&quot;&quot;
+    This function adds 1 to the input.
+    &quot;&quot;&quot;
+    y = x+1
+    return y</code></pre>
+</section><section id="def-add_onex" class="slide level2">
+<h2><code>def add_one(x):</code></h2>
+<pre class="{python}"><code>def add_one(x):
+    &quot;&quot;&quot;
+    This function adds 1 to the input.
+    &quot;&quot;&quot;
+    y = x+1
+    return y</code></pre>
+<ul>
+<li class="fragment">The command <code>def</code> followed by a space tells Python that you are defining a function.</li>
+<li class="fragment">This function is given the name followed by <code>def</code>; in this case <code>add_one</code>.</li>
+<li class="fragment">The <em>arguments</em> of the function are given after the function name, inside <code>()</code>.</li>
+<li class="fragment">The <code>:</code> says that the definition line is done. The following line must be indented by four spaces.</li>
+</ul>
+</section><section id="docstrings" class="slide level2">
+<h2>Docstrings</h2>
+<ul>
+<li class="fragment">A string immediately after a function definition is automatically assigned as the <strong>docstring</strong> for that function.</li>
+<li class="fragment">The docstring is the documentation that appears when you use the <code>func?</code> command.</li>
+<li class="fragment"><em>This is optional</em>, but a great way to document your code. It also helps you remember and read your code faster.</li>
+<li class="fragment">NB: I use a triple-double quote <code>&quot;&quot;&quot;</code> to create a multiline string. This is convenient, but not necessary (you can use a simple <code>&quot;</code> or <code>'</code>).</li>
+</ul>
+</section></section>
+    </div>
+  </div>
+
+  <script src="../reveal.js/lib/js/head.min.js"></script>
+  <script src="../reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: '../reveal.js/plugin/math/math.js', async: true },
+          { src: '../reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>

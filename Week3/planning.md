@@ -3,7 +3,7 @@ title: Week 3 Planning - Data Structures and Pandas II
 author: Musashi Harukawa
 ---
 
-# From the Syllabus
+<!-- # From the Syllabus
 
 **Learning Aims**:
 
@@ -43,4 +43,48 @@ By the end of this week, students should have a sufficient grounding in handling
     - The nightmare of datetimes
     - `strptime` and `strftime`
     - python native `datetime`, pandas `Timestamp` and numpy `datetime64`
-    - `pd.Series.dt` functions, and how they can be used with `groupby`
+    - `pd.Series.dt` functions, and how they can be used with `groupby` -->
+
+# Methods Covered:
+
+- Writing functions
+- Column/DataFrame apply
+- Groupby-Apply
+- Append, concat and merge
+- Melt and pivot
+
+# Methods/Theory
+
+- What is a function?
+- Applying functions to vectors:
+    - transformation, pointwise, and summaries
+    - grouped summary
+- Combining datasets
+    - Append vs concat vs merge
+    - A bit of set theory: union, etc.
+- Long vs wide-form data
+
+
+# Computational Aspect
+
+- Functions:
+    - Tools for control flow + generalizability
+    - Namespaces
+- Apply:
+- Groupby-Apply:
+    - Vectorization and performancea
+- Append, concat and merge
+    - Performance, accessibility over indexed data
+-
+
+
+Scrap:
+
+$$
+f(X_{i, 1}) = \begin{bmatrix}
+                    f(x_{1, 1}) \\
+                    f(x_{2, 1}) \\
+                    \vdots \\
+                    f(x_{N, 1})
+                \end{bmatrix}
+$$
