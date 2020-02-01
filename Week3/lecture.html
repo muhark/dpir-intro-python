@@ -66,6 +66,10 @@
 <li class="fragment"><span class="math inline">\(X\)</span> is referred to as the <em>domain</em> of <span class="math inline">\(f\)</span>, and <span class="math inline">\(Y\)</span> is the <em>codomain</em>.</li>
 <li class="fragment"><span class="math inline">\(y\)</span> is the <em>image</em> or <em>value</em> of <span class="math inline">\(f\)</span> applied to the argument <span class="math inline">\(x\)</span>.</li>
 </ul></li>
+</ul>
+</section><section id="functions-cont." class="slide level2">
+<h2>Functions cont.</h2>
+<ul>
 <li class="fragment">Practically, a function is an operation that takes one or more inputs, and returns zero or more outputs.
 <ul>
 <li class="fragment">For instance, the function <span class="math inline">\(f(a, b)\)</span> defined as <span class="math inline">\(a+b\)</span> takes two arguments, <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, and returns a value <span class="math inline">\(a+b\)</span>.</li>
@@ -76,14 +80,45 @@
 <h2>Functions and Vectors</h2>
 <p>There are several ways to think about applying a function to a vector <span class="math inline">\(X_i\)</span> of <span class="math inline">\(i\)</span> values:</p>
 <ul>
-<li class="fragment">Transformations</li>
+<li class="fragment">Transformations
+<ul>
 <li class="fragment">Element-wise Operations</li>
-<li class="fragment">Summaries</li>
+<li class="fragment">Cumulative Operations</li>
+</ul></li>
+<li class="fragment">Summaries
+<ul>
+<li class="fragment">Point Summaries</li>
 <li class="fragment">Grouped Summaries</li>
+</ul></li>
 </ul>
 </section><section id="transformation" class="slide level2">
 <h2>Transformation</h2>
 <p>The vector of all values in <span class="math inline">\(X_i\)</span>, <span class="math inline">\([x_1, x_2, ... x_i]\)</span> is in the domain of <span class="math inline">\(f\)</span>, and a vector <span class="math inline">\(Y_i\)</span> of equal length <span class="math inline">\(i\)</span> is returned.</p>
+<p>Examples/Use Cases per Datatype:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Dtype</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Numeric</td>
+<td>Cumulative Sum</td>
+</tr>
+<tr class="even">
+<td>Date/Time</td>
+<td>Conversion to Timedeltas</td>
+</tr>
+<tr class="odd">
+<td>Language</td>
+<td>Translation</td>
+</tr>
+</tbody>
+</table>
+</section><section id="transformation-1" class="slide level2">
+<h2>Transformation</h2>
 <p><span class="math display">\[
 f \begin{bmatrix}
     x_1 \\
@@ -98,9 +133,34 @@ f \begin{bmatrix}
     y_i \\
 \end{bmatrix}
 \]</span></p>
+</section><section id="special-case-2-element-wise-operations" class="slide level2">
+<h2>Special Case 2: Element-wise Operations</h2>
+<p>Element-wise operations are another special case of transformation. Individual elements of <span class="math inline">\(X_i\)</span> are in the domain of <span class="math inline">\(f\)</span>, and <span class="math inline">\(f\)</span> is applied to each element of <span class="math inline">\(X_i\)</span> to return a vector of length <span class="math inline">\(i\)</span> where the <span class="math inline">\(i\)</span>th element is the value of <span class="math inline">\(f(x_i)\)</span>.</p>
+<p>Examples/Use Cases per Datatype:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Dtype</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Numeric</td>
+<td>Inversion (multiply by -1)</td>
+</tr>
+<tr class="even">
+<td>Date/Time</td>
+<td>Timezone Conversion</td>
+</tr>
+<tr class="odd">
+<td>Language</td>
+<td>Stemming, capitalisation</td>
+</tr>
+</tbody>
+</table>
 </section><section id="element-wise-operations" class="slide level2">
 <h2>Element-wise Operations</h2>
-<p>Individual elements of <span class="math inline">\(X_i\)</span> are in the domain of <span class="math inline">\(f\)</span>, and <span class="math inline">\(f\)</span> is applied to each element of <span class="math inline">\(X_i\)</span> to return a vector of length <span class="math inline">\(i\)</span> where the <span class="math inline">\(i\)</span>th element is the value of <span class="math inline">\(f(x_i)\)</span>.</p>
 <p><span class="math display">\[
 f \odot
 \begin{bmatrix}
@@ -116,9 +176,51 @@ f \odot
     f(x_i)
 \end{bmatrix}
 \]</span></p>
+</section><section id="special-case-2-cumulative-operations" class="slide level2">
+<h2>Special Case 2: Cumulative Operations</h2>
+<p>Cumulative operations apply a function with an expanding scope iteratively over a vector. Thus the first value is takes the first element as its argument, the second value takes the first two elements as arguments, the third value takes the first three elements as arguments, and so on.</p>
+<p><span class="math display">\[
+f_{cum}(X_i) = \begin{bmatrix}
+    f_{1}^{1}(x_1) \\
+    f_{1}^{2}(x_1, x_2) \\
+    \vdots \\
+    f_{1}^{i}(x_1, x_2, ..., x_i)
+\end{bmatrix} =
+\begin{bmatrix}
+    f_{1}^{1}x_i \\
+    f_{1}^{2}x_i \\
+    \vdots \\
+    f_{1}^{i}x_i
+\end{bmatrix}
+\]</span></p>
 </section><section id="summaries" class="slide level2">
 <h2>Summaries</h2>
 <p>A summary reduces a vector <span class="math inline">\(X_i\)</span> of length <span class="math inline">\(i\)</span> to a single value <span class="math inline">\(\theta\)</span>. Thus vector <span class="math inline">\(X_i\)</span> is within the domain of <span class="math inline">\(f\)</span>, and <span class="math inline">\(\theta\)</span> is value of <span class="math inline">\(f\)</span> applied to <span class="math inline">\(X_i\)</span>.</p>
+<p>Examples/Use Cases per Datatype:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Dtype</th>
+<th>Example(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Numeric</td>
+<td>Mean, sum, regression</td>
+</tr>
+<tr class="even">
+<td>Date/Time</td>
+<td>Range, total seconds</td>
+</tr>
+<tr class="odd">
+<td>Language</td>
+<td>Sentiment scoring</td>
+</tr>
+</tbody>
+</table>
+</section><section id="point-summaries" class="slide level2">
+<h2>Point Summaries</h2>
 <p><span class="math display">\[
 f \begin{bmatrix}
     x_1 \\
@@ -154,37 +256,231 @@ f \odot_g \begin{bmatrix}
 \]</span></p>
 </section><section id="combining-data" class="slide level2">
 <h2>Combining Data</h2>
-<p>Here are three different ways that two tabular datasets can be combined:</p>
+<p>Here are two different ways that two tabular datasets can be combined:</p>
 <ul>
-<li class="fragment">Appending/Concatenating</li>
-<li class="fragment">Merging</li>
+<li class="fragment">Concatenating/Appending</li>
+<li class="fragment">Joining/Merging</li>
 </ul>
 </section><section id="concatenating" class="slide level2">
 <h2>Concatenating</h2>
 <p>We can concatenate two or more tabular datasets so long as they all share at least one dimension (“height” or “width”).</p>
-<p>The case of adding one dataset onto the “end” of another is referred to typically as “appending”.</p>
 <p><span class="math display">\[
 X = \begin{bmatrix}
-    x_{1, 1} &amp; x_{1, 2} &amp; x_{1, 3} \\
-    x_{2, 1} &amp; x_{2, 2} &amp; x_{2, 3}
-\end{bmatrix} \\
+    a &amp; b \\
+    c &amp; d \\
+    e &amp; f
+\end{bmatrix}
 Y = \begin{bmatrix}
-    y_{1, 1} &amp; y_{1, 2} \\
-    y_{2, 1} &amp; y_{2, 2}
+    w &amp; x \\
+    y &amp; z
 \end{bmatrix} \\
+\]</span></p>
+<p><span class="math display">\[
 XY = \begin{bmatrix}
-x_{1, 1} &amp; x_{1, 2} &amp; x_{1, 3} &amp; y_{1, 1} &amp; y_{1, 2} \\
-x_{2, 1} &amp; x_{2, 2} &amp; x_{2, 3} &amp; y_{2, 1} &amp; y_{2, 2}
+    a &amp; b \\
+    c &amp; d \\
+    e &amp; f \\
+    w &amp; x \\
+    y &amp; z
 \end{bmatrix}
 \]</span></p>
-</section></section>
-<section><section id="functions-1" class="title-slide slide level1"><h1>Functions</h1></section><section id="functions-2" class="slide level2">
-<h2>Functions</h2>
+</section><section id="appending" class="slide level2">
+<h2>Appending</h2>
+<p>The case of adding one dataset onto the “end” of another is referred to typically as “appending”.</p>
+</section><section id="joiningmerging" class="slide level2">
+<h2>Joining/Merging</h2>
+<p>Joining/merging is the combination of two datasets on one or more <em>keys</em>. In general, merging is done “horizontally”. There are four kinds of joins:</p>
 <ul>
-<li class="fragment">A function is a structure takes one or more inputs, and gives zero or more outputs.</li>
-<li class="fragment">You have already encountered many functions, such as <code>sum()</code>, which takes the sum of an series.</li>
+<li class="fragment">Inner</li>
+<li class="fragment">Left</li>
+<li class="fragment">Right</li>
+<li class="fragment">Outer</li>
 </ul>
-</section><section id="functions-in-python" class="slide level2">
+</section><section id="keys" class="slide level2">
+<h2>Keys</h2>
+<p>Let’s begin with the simple case of joining on a single key.</p>
+<p>A key is a column, present in both <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, which usually shares some number of elements. These common elements are used to determine how the merge is conducted.</p>
+</section><section id="our-data" class="slide level2">
+<h2>Our Data</h2>
+<p>Suppose we have two datasets. The first, <span class="math inline">\(X\)</span>, details the first names and roles of a number of employees working on some project. The second, <span class="math inline">\(Y\)</span>, details the names and employee ids of all full-time employees at that company.</p>
+<p><span class="math display">\[
+X = \begin{bmatrix}
+    \textbf{Role} &amp; \textbf{Name} \\
+    Lead &amp; Bertha \\
+    Research &amp; David \\
+    Assistant &amp; Frankie \\
+    Consultant &amp; Ryan
+\end{bmatrix}
+Y=\begin{bmatrix}
+    \textbf{Name} &amp; \textbf{id} \\
+    Adam &amp; 001 \\
+    Bertha &amp; 002 \\
+    Carla &amp; 003 \\
+    David &amp; 004 \\
+    Erica &amp; 005 \\
+    Frankie &amp; 006
+\end{bmatrix}
+\]</span></p>
+</section><section id="inner-join" class="slide level2">
+<h2>Inner Join</h2>
+<p>An inner join retains rows that contain the <em>intersection</em> of the sets of the keys. In other words, it only retains rows from either dataframe that have a corresponding key in the other dataframe.</p>
+<p>In the above example, the INNER JOIN of the two tables on NAME would result in the following table:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Role</th>
+<th><strong>Name</strong></th>
+<th>id</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Lead</td>
+<td><strong>Bertha</strong></td>
+<td>002</td>
+</tr>
+<tr class="even">
+<td>Research</td>
+<td><strong>David</strong></td>
+<td>004</td>
+</tr>
+<tr class="odd">
+<td>Assistant</td>
+<td><strong>Frankie</strong></td>
+<td>006</td>
+</tr>
+</tbody>
+</table>
+</section><section id="left-join" class="slide level2">
+<h2>Left Join</h2>
+<p>A left join only retains rows that contain the keys of the left-hand dataset, inserting N/A where the right-hand key does not contain the corresponding left-hand one.</p>
+<p>In the above example, the LEFT JOIN of the two tables on NAME would result in the following table. Note how Ryan’s id is N/A.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Role</th>
+<th><strong>Name</strong></th>
+<th>id</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Lead</td>
+<td><strong>Bertha</strong></td>
+<td>002</td>
+</tr>
+<tr class="even">
+<td>Research</td>
+<td><strong>David</strong></td>
+<td>004</td>
+</tr>
+<tr class="odd">
+<td>Assistant</td>
+<td><strong>Frankie</strong></td>
+<td>006</td>
+</tr>
+<tr class="even">
+<td>Consultant</td>
+<td>Ryan</td>
+<td><code>N/A</code></td>
+</tr>
+</tbody>
+</table>
+</section><section id="right-join" class="slide level2">
+<h2>Right Join</h2>
+<p>A right join retains rows that contain the keys of the right-hand dataset, inserting N/A where the left-hand key does not contain the corresponding right-hand one.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Role</th>
+<th>Name</th>
+<th>id</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>N/A</code></td>
+<td>Adam</td>
+<td>001</td>
+</tr>
+<tr class="even">
+<td>Lead</td>
+<td>Bertha</td>
+<td>002</td>
+</tr>
+<tr class="odd">
+<td><code>N/A</code></td>
+<td>Carla</td>
+<td>003</td>
+</tr>
+<tr class="even">
+<td>Research</td>
+<td>David</td>
+<td>004</td>
+</tr>
+<tr class="odd">
+<td><code>N/A</code></td>
+<td>Erica</td>
+<td>005</td>
+</tr>
+<tr class="even">
+<td>Assistant</td>
+<td>Frankie</td>
+<td>006</td>
+</tr>
+</tbody>
+</table>
+</section><section id="outer-join" class="slide level2">
+<h2>Outer Join</h2>
+<p>A (full) outer join retains all rows of both datasets, filling NAs where there is no key in common. NAs are inserted where a key does not exist in the opposing dataset.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Role</th>
+<th>Name</th>
+<th>id</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>N/A</code></td>
+<td>Adam</td>
+<td>001</td>
+</tr>
+<tr class="even">
+<td>Lead</td>
+<td><strong>Bertha</strong></td>
+<td>002</td>
+</tr>
+<tr class="odd">
+<td><code>N/A</code></td>
+<td>Carla</td>
+<td>003</td>
+</tr>
+<tr class="even">
+<td>Research</td>
+<td><strong>David</strong></td>
+<td>004</td>
+</tr>
+<tr class="odd">
+<td><code>N/A</code></td>
+<td>Erica</td>
+<td>005</td>
+</tr>
+<tr class="even">
+<td>Assistant</td>
+<td><strong>Frankie</strong></td>
+<td>006</td>
+</tr>
+<tr class="odd">
+<td>Consultant</td>
+<td>Ryan</td>
+<td><code>N/A</code></td>
+</tr>
+</tbody>
+</table>
+</section></section>
+<section><section id="implementation" class="title-slide slide level1"><h1>Implementation</h1></section><section id="functions-in-python" class="slide level2">
 <h2>Functions in Python</h2>
 <p>Here’s a simple function that adds 1 to the input:</p>
 <pre class="{python}"><code>def add_one(x):
@@ -215,6 +511,322 @@ x_{2, 1} &amp; x_{2, 2} &amp; x_{2, 3} &amp; y_{2, 1} &amp; y_{2, 2}
 <li class="fragment"><em>This is optional</em>, but a great way to document your code. It also helps you remember and read your code faster.</li>
 <li class="fragment">NB: I use a triple-double quote <code>&quot;&quot;&quot;</code> to create a multiline string. This is convenient, but not necessary (you can use a simple <code>&quot;</code> or <code>'</code>).</li>
 </ul>
+</section><section id="namespaces" class="slide level2">
+<h2>Namespaces</h2>
+<ul>
+<li class="fragment">Python uses <em>namespaces</em> for variables.</li>
+<li class="fragment">There are multiple levels of namespace, but the two relevant to you are <em>local</em> and <em>global</em>.</li>
+<li class="fragment">Variables defined <em>within</em> a function are created within the <em>local</em> namespace of that function.
+<ul>
+<li class="fragment">This means that they are only accessible from within the function.</li>
+</ul></li>
+<li class="fragment">Variables defined <em>outside</em> a function are created within the <em>global</em> namespace.</li>
+<li class="fragment">If a function contains a reference to a variable, it will first check to see whether the variable exists in the <em>local</em> namespace, and then the <em>global</em> one.</li>
+</ul>
+</section><section id="local-variables-not-accessibly-globally" class="slide level2">
+<h2>Local Variables not Accessibly Globally</h2>
+<p>The following code will result in an error:</p>
+<pre class="{python}"><code>def f(x):
+    y = 5
+    return x + y
+
+print(y)</code></pre>
+</section><section id="local-accessed-before-global" class="slide level2">
+<h2>Local Accessed Before Global</h2>
+<p>The following code will return the <em>local</em> value of <code>y</code>, thus returning 10.</p>
+<pre class="{python}"><code>y = 0
+
+def f(x):
+    y = 5
+    return x + y
+
+print(f(5))
+&gt;&gt; 10</code></pre>
+</section><section id="functions-reading-from-global-variables" class="slide level2">
+<h2>Functions Reading from Global Variables</h2>
+<p>The following code uses <code>y</code>, which is defined globally. Therefore it returns 5.</p>
+<pre class="{python}"><code>y = 0
+
+def f(x):
+    return x + y
+
+print(f(5))
+&gt;&gt; 5</code></pre>
+</section><section id="lambda-functions" class="slide level2">
+<h2><code>Lambda</code> Functions</h2>
+<p>Python has <em>lambda functions</em>. These are essentially a way to define a function in-line. Below, the function <code>f</code> is equivalent to the line <code>lambda x: x+1</code>.</p>
+<pre class="{python}"><code>def f(x):
+    return x+1
+
+lambda x: x+1</code></pre>
+</section><section id="applying-functions-to-pandas-objects" class="slide level2">
+<h2>Applying Functions to Pandas Objects</h2>
+<p>Remember that there are four relevant ways in which we might want to apply a function to a <code>Series</code> (or <code>DataFrame</code>!)</p>
+<ul>
+<li class="fragment">Transformation
+<ul>
+<li class="fragment">Element-wise Operation</li>
+<li class="fragment">Cumulative Operation</li>
+</ul></li>
+<li class="fragment">Summary
+<ul>
+<li class="fragment">Point Summary (covered in Lecture 2)</li>
+<li class="fragment">Grouped Summary</li>
+</ul></li>
+</ul>
+</section><section id="element-wise-operations-1" class="slide level2">
+<h2>Element-wise Operations</h2>
+<p>The most general method for applying a function element-wise is the <code>apply</code> function. - <code>apply</code> takes a function as its argument. - This can be a defined function, or a lambda function. - When used with a <code>Series</code>, the function will be applied to each element of the vector. - When used with a <code>DataFrame</code>, the function will be applied to each row (<code>axis=0</code>), or each column (<code>axis=1</code>) of the matrix. - In order to apply a function to every element of a <code>DataFrame</code>, use <code>applymap</code>.</p>
+</section><section id="pd.series.apply-with-functions" class="slide level2">
+<h2><code>pd.Series.apply</code> with functions</h2>
+<p>The following two examples will add every element of a Series to itself. Note that the function is passed as an argument to <code>apply()</code> <em>without</em> <code>()</code>. This is because we are pointing to the function inside the <code>apply()</code>, not calling it.</p>
+<pre class="{python}"><code>def add_to_self(x):
+    y = x + x
+    return y
+
+df[&#39;col1&#39;].apply(add_to_self)</code></pre>
+</section><section id="pd.series.apply-with-lambda" class="slide level2">
+<h2><code>pd.Series.apply</code> with lambda</h2>
+<p>I usually use <code>apply()</code> with <em>lambda functions</em>. There are two advantages to this approach:</p>
+<ul>
+<li class="fragment">Conciseness: you do not have to define a new function for something you do only once.</li>
+<li class="fragment">Passing arguments to the applied function: because <code>apply()</code> takes a function name, and not a call, as its argument, you cannot pass arguments to the function. By using a lambda function, this is possible:</li>
+</ul>
+</section><section id="pd.series.apply-with-lambda-examples" class="slide level2">
+<h2><code>pd.Series.apply</code> with lambda examples</h2>
+<pre class="{python}"><code>In [1]: import pandas as pd
+
+In [2]: df = pd.DataFrame({&#39;col1&#39;:range(5)})
+
+In [4]: z=5
+
+In [5]: df[&#39;col1&#39;].apply(lambda x: x+x-z)
+Out[5]:
+0   -5
+1   -3
+2   -1
+3    1
+4    3
+
+In [6]: def foo(x, z):
+   ...:     y = x+x-z
+   ...:     return y
+
+In [7]: df[&#39;col1&#39;].apply(lambda x: foo(x, z))
+Out[7]:
+0   -5
+1   -3
+2   -1
+3    1
+4    3</code></pre>
+</section><section id="cumulative-operations" class="slide level2">
+<h2>Cumulative Operations</h2>
+<p>There are built-in methods for the four standard cumulative operations. These are methods of both <code>pd.Series</code> and <code>pd.DataFrame</code>.</p>
+<ul>
+<li class="fragment">Sum: <code>cumsum</code></li>
+<li class="fragment">Product: <code>cumprod</code></li>
+<li class="fragment">Min: <code>cummin</code></li>
+<li class="fragment">Max: <code>cummax</code></li>
+<li class="fragment"><em>Advanced</em>: If you want to conduct other types of cumulative operation, you will need to use <code>pd.Series.expanding</code>, which works similarly to <code>groupby</code> (covered in subsequent slides).</li>
+</ul>
+</section><section id="apply-versus-for-loops" class="slide level2">
+<h2><code>apply</code> versus for-loops</h2>
+<ul>
+<li class="fragment">You may have noticed that both kinds of transformations thus described could be done iteratively, with a for-loop.</li>
+<li class="fragment">While this is true, the makers of <code>pandas</code> and its underlying library have optimised the library for <em>vectorized operations</em>.</li>
+<li class="fragment">This essentially means that if you want to take advantage of the speed of <code>pandas</code>, you should use <code>apply</code> as much as possible when conducting transformations.</li>
+<li class="fragment">This does not mean <em>never</em> use for-loops; the take-away should be that vectorization runs faster, but the fastest solution when accounting for programmer effort always depends on the task at hand.</li>
+</ul>
+</section><section id="grouped-summaries-1" class="slide level2">
+<h2>Grouped Summaries</h2>
+<p>Pandas provides an extremely efficient and clean method for doing group summaries, but the syntax can be difficult to understand.</p>
+<p>Imagine we have the following table:</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Location</th>
+<th style="text-align: center;">Age</th>
+<th style="text-align: center;">Female?</th>
+<th style="text-align: center;">Likes BoJo (1-10)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Andy</td>
+<td style="text-align: left;">Scotland</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Barbara</td>
+<td style="text-align: left;">Wales</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chris</td>
+<td style="text-align: left;">Scotland</td>
+<td style="text-align: center;">65</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dara</td>
+<td style="text-align: left;">N. Ireland</td>
+<td style="text-align: center;">55</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Elaine</td>
+<td style="text-align: left;">Wales</td>
+<td style="text-align: center;">43</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">4</td>
+</tr>
+</tbody>
+</table>
+<!-- ```{python}
+import pandas as pd
+df = pd.DataFrame({
+    'Name': ['Andy', 'Barbara', 'Chris', 'Dara', 'Elaine'],
+    'Location': ['Scotland', 'Wales', 'Scotland', 'N. Ireland', 'Wales'],
+    'Age': [32, 48, 65, 55, 43],
+    'Female': [0, 1, 1, 0, 1],
+    'PM_approval': [1, 3, 2, 6, 4]
+})
+``` -->
+</section><section id="groupby-syntax-simple-group-operations" class="slide level2">
+<h2>Groupby Syntax: Simple Group Operations</h2>
+<p>To conduct grouped summaries, we use the following syntax:</p>
+<pre class="{python}"><code>df.groupby(&#39;group_col&#39;)[&#39;value_col&#39;].summary_func()</code></pre>
+<ul>
+<li class="fragment"><code>group_col</code> is the column we are grouping over.</li>
+<li class="fragment"><code>value_col</code> is the column that contains the values we will be applying grouped summary functions to.</li>
+<li class="fragment"><code>summary_func</code> is the function that that is applied to each group.</li>
+</ul>
+</section><section id="groupby-syntax-hierarchical-group-operations-multiple-outputs" class="slide level2">
+<h2>Groupby Syntax: Hierarchical Group Operations, Multiple Outputs</h2>
+<p>We can pass lists in place of the scalar values above:</p>
+<pre class="{python}"><code>df.groupby([&#39;group_col1&#39;, &#39;group_col2&#39;])[[&#39;value_col1&#39;, &#39;value_col2&#39;]].summary_func()</code></pre>
+<ul>
+<li class="fragment">If we pass a list of values to the <code>groupby()</code> function, the resulting groups are <em>hierarchical</em>, with the order of columns in the list passed to this function determining the rank of columns within the hierarchy.</li>
+<li class="fragment">If we pass a list of values to the <code>[]</code> accessor following the <code>groupby()</code> call, we apply the grouped summary operation to each of the columns in this list. Order matters less here.</li>
+</ul>
+</section><section id="groupby-example-with-single-input" class="slide level2">
+<h2>Groupby Example with Single Input</h2>
+<pre class="{python}"><code>In [3]: df.groupby(&#39;Location&#39;)[&#39;Age&#39;].mean()
+Out[3]:
+Location
+N. Ireland    55.0
+Scotland      48.5
+Wales         45.5
+Name: Age, dtype: float64</code></pre>
+<ul>
+<li class="fragment">This calculates the <em>mean age per location</em>.
+<ul>
+<li class="fragment"><code>group_col</code>: Location</li>
+<li class="fragment"><code>value_col</code>: Age</li>
+<li class="fragment"><code>summary_func</code>: Mean</li>
+</ul></li>
+<li class="fragment">Note the output is a <code>Series</code>, because the <code>value_cols</code> arguments contained only a single column.</li>
+</ul>
+</section><section id="groupby-example-with-hierarchical-groups-single-input" class="slide level2">
+<h2>Groupby Example with Hierarchical Groups, Single Input</h2>
+<pre class="{python}"><code>In [4]: df.groupby([&#39;Location&#39;, &#39;Female&#39;])[&#39;PM_approval&#39;].mean()
+Out[4]:
+Location    Female
+N. Ireland  0         6.0
+Scotland    0         1.0
+            1         2.0
+Wales       1         3.5
+Name: PM_approval, dtype: float64</code></pre>
+<ul>
+<li class="fragment">This calculates the <em>mean PM approval per gender per location</em>.
+<ul>
+<li class="fragment">“<em>Per gender per location</em>”: For each area, get the per-gender mean.</li>
+<li class="fragment">In this case the hierarchical grouping goes Location over Gender.</li>
+</ul></li>
+<li class="fragment">Note the nested index on the series; we discuss this later.</li>
+</ul>
+</section><section id="groupby-example-with-hierarchical-groups-multiple-inputs" class="slide level2">
+<h2>Groupby Example with Hierarchical Groups, Multiple Inputs</h2>
+<pre class="{python}"><code>In [5]: df.groupby([&#39;Location&#39;, &#39;Female&#39;])[[&#39;Age&#39;, &#39;PM_approval&#39;]].mean()
+Out[5]:
+                    Age  PM_approval
+Location   Female
+N. Ireland 0       55.0          6.0
+Scotland   0       32.0          1.0
+           1       65.0          2.0
+Wales      1       45.5          3.5</code></pre>
+<ul>
+<li class="fragment">This calculates the <em>mean age and PM approval per gender per location</em>.</li>
+<li class="fragment">Note that passing multiple input columns (i.e. a dataframe) returns a dataframe.</li>
+</ul>
+</section><section id="appendconcat-joinmerge" class="slide level2">
+<h2>Append/Concat, Join/Merge</h2>
+<p>Pandas includes a multitude of functions for combining datasets, as well as <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/merging.html">an extensive guide with examples</a>.</p>
+<p>We cover just two functions:</p>
+<ul>
+<li class="fragment"><code>pd.concat()</code></li>
+<li class="fragment"><code>pd.merge()</code></li>
+</ul>
+</section><section id="concatenation-syntax" class="slide level2">
+<h2>Concatenation Syntax</h2>
+<p>To concatenate two or more dataframes, we use the following syntax:</p>
+<pre class="{python}"><code>pd.concat([df1, df2{, ..., dfn}], axis={0, 1})</code></pre>
+<ul>
+<li class="fragment">In the above, <code>{}</code> indicates that the argument is optional.</li>
+<li class="fragment">When <code>axis=0</code>, dataframes are stacked “vertically”. Where they have columns in common, the columns will be “stacked”, otherwise <code>N/A</code> will be inserted in the cells.
+<ul>
+<li class="fragment">If the columns are in a different order, make sure to pass <code>sort=True</code>.</li>
+</ul></li>
+<li class="fragment">When <code>axis=1</code>, dataframes are stacked “horizontally”. Where the index aligns, rows will be concatenated side-by-side. If there are index values not common between the dataframes, then <code>N/A</code> will be inserted in the cells.</li>
+</ul>
+</section><section id="merge-syntax" class="slide level2">
+<h2>Merge Syntax</h2>
+<pre class="{python}"><code>pd.merge(
+    left_df,
+    right_df,
+    how={&#39;left&#39;, &#39;right&#39;, &#39;outer&#39;, &#39;inner&#39;},
+    {on=common_key},
+    {left_on=left_key},
+    {right_on=right_key},
+    {left_index={True, False}},
+    {right_index={True, False}}
+)</code></pre>
+<ul>
+<li class="fragment">The first three arguments are straightforward:
+<ul>
+<li class="fragment"><code>left_df</code> is the left-hand dataframe to be merged.</li>
+<li class="fragment"><code>right_df</code> is the right-hand dataframe to be merged.</li>
+<li class="fragment"><code>how</code> determines what kind of join is used. (See <a href="#/joiningmerging">previous slides</a>.)</li>
+</ul></li>
+</ul>
+</section><section id="merge-syntax-cont." class="slide level2">
+<h2>Merge Syntax cont.</h2>
+<ul>
+<li class="fragment">The following argument(s) identify the keys from the left- and right-hand dataframes to be used for the join.
+<ul>
+<li class="fragment"><code>on</code> can be used when the key is a column with the same name in both dataframes.</li>
+<li class="fragment"><code>left_on</code> should be used in conjunction with <code>right_on</code> or <code>right_index</code>. Each can be a single column name or a list of column names to be used as merge keys.</li>
+<li class="fragment"><code>left_index</code> and <code>right_index</code> take either <code>True</code> or <code>False</code>. If <code>True</code>, then the index of the according dataframe is used as the merge key.</li>
+</ul></li>
+</ul>
+</section><section id="performance" class="slide level2">
+<h2>Performance</h2>
+<ul>
+<li class="fragment">In general, indices are faster to perform operations on, but also require more memory to store.</li>
+<li class="fragment">Pre-sorting concatenation axes or merging keys will improve performance greatly.</li>
+</ul>
+</section></section>
+<section><section id="coding-tutorial" class="title-slide slide level1"><h1>Coding Tutorial</h1></section><section id="lets-get-to-some-advanced-pandas" class="slide level2">
+<h2>Let’s get to some advanced pandas!</h2>
+</section><section id="recap" class="slide level2">
+<h2>Recap</h2>
 </section></section>
     </div>
   </div>
