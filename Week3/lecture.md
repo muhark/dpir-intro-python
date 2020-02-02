@@ -317,6 +317,32 @@ A (full) outer join retains all rows of both datasets, filling NAs where there i
 | Assistant  | **Frankie** | 006   |
 | Consultant | Ryan        | `N/A` |
 
+## Long- vs. Wide-Form Data
+
+- "Long" and "wide" refer to two different ways of organising data that contains repeated observations of the same variable across (usually) time.
+- In long format, each row represents an observation on a single unit at a single point in time. The temporal component is recorded in a separate column to the observations.
+- In wide format, each row represents a single unit observed at multiple points in time. A separate column is used for each combination of time $\times$ quantity.
+
+## Example: Long Format
+
+| Constituency | Year | Party  |
+| ------------ | ---- | ------ |
+| Oxford East  | 2010 | Labour |
+| Oxford West  | 2010 | Tory   |
+| Oxford East  | 2015 | Labour |
+| Oxford West  | 2015 | Tory   |
+| Oxford East  | 2017 | Labour |
+| Oxford West  | 2017 | LibDem |
+| Oxford East  | 2019 | Labour |
+| Oxford West  | 2019 | LibDem |
+
+## Example: Wide Format
+
+| Constituency | Party2010 | Party2015 | Party2017 | Party2019 |
+| ------------ | --------- | --------- | --------- | --------- |
+| Oxford East  | Labour    | Labour    | Labour    | Labour    |
+| Oxford West  | Tory      | Tory      | LibDem    | LibDem    |
+
 
 # Implementation
 
@@ -431,6 +457,7 @@ Remember that there are four relevant ways in which we might want to apply a fun
 ## Element-wise Operations
 
 The most general method for applying a function element-wise is the `apply` function.
+
 - `apply` takes a function as its argument.
     - This can be a defined function, or a lambda function.
 - When used with a `Series`, the function will be applied to each element of the vector.
@@ -657,6 +684,14 @@ pd.merge(
 
 - In general, indices are faster to perform operations on, but also require more memory to store.
 - Pre-sorting concatenation axes or merging keys will improve performance greatly.
+
+## Long and Wide Format
+
+Pandas provides two functions for changing between long and wide data format. For further details I direct you to the documentation:
+
+- [`pd.pivot()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.pivot.html#pandas.pivot): Converts long to wide.
+- [`pd.melt()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.melt.html#pandas.melt): Converts wide to long.
+
 
 # Coding Tutorial
 
