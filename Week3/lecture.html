@@ -105,7 +105,7 @@
 <tbody>
 <tr class="odd">
 <td>Numeric</td>
-<td>Cumulative Sum</td>
+<td>Multiple Regression</td>
 </tr>
 <tr class="even">
 <td>Date/Time</td>
@@ -133,9 +133,9 @@ f \begin{bmatrix}
     y_i \\
 \end{bmatrix}
 \]</span></p>
-</section><section id="special-case-2-element-wise-operations" class="slide level2">
-<h2>Special Case 2: Element-wise Operations</h2>
-<p>Element-wise operations are another special case of transformation. Individual elements of <span class="math inline">\(X_i\)</span> are in the domain of <span class="math inline">\(f\)</span>, and <span class="math inline">\(f\)</span> is applied to each element of <span class="math inline">\(X_i\)</span> to return a vector of length <span class="math inline">\(i\)</span> where the <span class="math inline">\(i\)</span>th element is the value of <span class="math inline">\(f(x_i)\)</span>.</p>
+</section><section id="element-wise-operations" class="slide level2">
+<h2>Element-wise Operations</h2>
+<p>Element-wise operations are a special case of transformation. Individual elements of <span class="math inline">\(X_i\)</span> are in the domain of <span class="math inline">\(f\)</span>, and <span class="math inline">\(f\)</span> is applied to each element of <span class="math inline">\(X_i\)</span> to return a vector of length <span class="math inline">\(i\)</span> where the <span class="math inline">\(i\)</span>th element is the value of <span class="math inline">\(f(x_i)\)</span>.</p>
 <p>Examples/Use Cases per Datatype:</p>
 <table>
 <thead>
@@ -159,8 +159,8 @@ f \begin{bmatrix}
 </tr>
 </tbody>
 </table>
-</section><section id="element-wise-operations" class="slide level2">
-<h2>Element-wise Operations</h2>
+</section><section id="element-wise-operations-illustration" class="slide level2">
+<h2>Element-wise Operations: Illustration</h2>
 <p><span class="math display">\[
 f \odot
 \begin{bmatrix}
@@ -176,9 +176,29 @@ f \odot
     f(x_i)
 \end{bmatrix}
 \]</span></p>
-</section><section id="special-case-2-cumulative-operations" class="slide level2">
-<h2>Special Case 2: Cumulative Operations</h2>
+</section><section id="cumulative-operations" class="slide level2">
+<h2>Cumulative Operations</h2>
 <p>Cumulative operations apply a function with an expanding scope iteratively over a vector. Thus the first value is takes the first element as its argument, the second value takes the first two elements as arguments, the third value takes the first three elements as arguments, and so on.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Dtype</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Numeric</td>
+<td>Cumulative Sum</td>
+</tr>
+<tr class="even">
+<td>Language</td>
+<td>Grammar Parsing<a href="#/fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></td>
+</tr>
+</tbody>
+</table>
+</section><section id="cumulative-operations-illustration" class="slide level2">
+<h2>Cumulative Operations: Illustration</h2>
 <p><span class="math display">\[
 f_{cum}(X_i) = \begin{bmatrix}
     f_{1}^{1}(x_1) \\
@@ -207,7 +227,7 @@ f_{cum}(X_i) = \begin{bmatrix}
 <tbody>
 <tr class="odd">
 <td>Numeric</td>
-<td>Mean, sum, regression</td>
+<td>Mean, sum</td>
 </tr>
 <tr class="even">
 <td>Date/Time</td>
@@ -273,7 +293,7 @@ X = \begin{bmatrix}
 Y = \begin{bmatrix}
     w &amp; x \\
     y &amp; z
-\end{bmatrix} \\
+\end{bmatrix}
 \]</span></p>
 <p><span class="math display">\[
 XY = \begin{bmatrix}
@@ -479,6 +499,95 @@ Y=\begin{bmatrix}
 </tr>
 </tbody>
 </table>
+</section><section id="long--vs.wide-form-data" class="slide level2">
+<h2>Long- vs. Wide-Form Data</h2>
+<ul>
+<li class="fragment">“Long” and “wide” refer to two different ways of organising data that contains repeated observations of the same variable across (usually) time.</li>
+<li class="fragment">In long format, each row represents an observation on a single unit at a single point in time. The temporal component is recorded in a separate column to the observations.</li>
+<li class="fragment">In wide format, each row represents a single unit observed at multiple points in time. A separate column is used for each combination of time <span class="math inline">\(\times\)</span> quantity.</li>
+</ul>
+</section><section id="example-long-format" class="slide level2">
+<h2>Example: Long Format</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Constituency</th>
+<th>Year</th>
+<th>Party</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Oxford East</td>
+<td>2010</td>
+<td>Labour</td>
+</tr>
+<tr class="even">
+<td>Oxford West</td>
+<td>2010</td>
+<td>Tory</td>
+</tr>
+<tr class="odd">
+<td>Oxford East</td>
+<td>2015</td>
+<td>Labour</td>
+</tr>
+<tr class="even">
+<td>Oxford West</td>
+<td>2015</td>
+<td>Tory</td>
+</tr>
+<tr class="odd">
+<td>Oxford East</td>
+<td>2017</td>
+<td>Labour</td>
+</tr>
+<tr class="even">
+<td>Oxford West</td>
+<td>2017</td>
+<td>LibDem</td>
+</tr>
+<tr class="odd">
+<td>Oxford East</td>
+<td>2019</td>
+<td>Labour</td>
+</tr>
+<tr class="even">
+<td>Oxford West</td>
+<td>2019</td>
+<td>LibDem</td>
+</tr>
+</tbody>
+</table>
+</section><section id="example-wide-format" class="slide level2">
+<h2>Example: Wide Format</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Constituency</th>
+<th>Party2010</th>
+<th>Party2015</th>
+<th>Party2017</th>
+<th>Party2019</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Oxford East</td>
+<td>Labour</td>
+<td>Labour</td>
+<td>Labour</td>
+<td>Labour</td>
+</tr>
+<tr class="even">
+<td>Oxford West</td>
+<td>Tory</td>
+<td>Tory</td>
+<td>LibDem</td>
+<td>LibDem</td>
+</tr>
+</tbody>
+</table>
 </section></section>
 <section><section id="implementation" class="title-slide slide level1"><h1>Implementation</h1></section><section id="functions-in-python" class="slide level2">
 <h2>Functions in Python</h2>
@@ -576,7 +685,18 @@ lambda x: x+1</code></pre>
 </ul>
 </section><section id="element-wise-operations-1" class="slide level2">
 <h2>Element-wise Operations</h2>
-<p>The most general method for applying a function element-wise is the <code>apply</code> function. - <code>apply</code> takes a function as its argument. - This can be a defined function, or a lambda function. - When used with a <code>Series</code>, the function will be applied to each element of the vector. - When used with a <code>DataFrame</code>, the function will be applied to each row (<code>axis=0</code>), or each column (<code>axis=1</code>) of the matrix. - In order to apply a function to every element of a <code>DataFrame</code>, use <code>applymap</code>.</p>
+<p>The most general method for applying a function element-wise is the <code>apply</code> function.</p>
+<ul>
+<li class="fragment"><code>apply</code> takes a function as its argument.
+<ul>
+<li class="fragment">This can be a defined function, or a lambda function.</li>
+</ul></li>
+<li class="fragment">When used with a <code>Series</code>, the function will be applied to each element of the vector.</li>
+<li class="fragment">When used with a <code>DataFrame</code>, the function will be applied to each row (<code>axis=0</code>), or each column (<code>axis=1</code>) of the matrix.
+<ul>
+<li class="fragment">In order to apply a function to every element of a <code>DataFrame</code>, use <code>applymap</code>.</li>
+</ul></li>
+</ul>
 </section><section id="pd.series.apply-with-functions" class="slide level2">
 <h2><code>pd.Series.apply</code> with functions</h2>
 <p>The following two examples will add every element of a Series to itself. Note that the function is passed as an argument to <code>apply()</code> <em>without</em> <code>()</code>. This is because we are pointing to the function inside the <code>apply()</code>, not calling it.</p>
@@ -619,7 +739,7 @@ Out[7]:
 2   -1
 3    1
 4    3</code></pre>
-</section><section id="cumulative-operations" class="slide level2">
+</section><section id="cumulative-operations-1" class="slide level2">
 <h2>Cumulative Operations</h2>
 <p>There are built-in methods for the four standard cumulative operations. These are methods of both <code>pd.Series</code> and <code>pd.DataFrame</code>.</p>
 <ul>
@@ -822,12 +942,25 @@ Wales      1       45.5          3.5</code></pre>
 <li class="fragment">In general, indices are faster to perform operations on, but also require more memory to store.</li>
 <li class="fragment">Pre-sorting concatenation axes or merging keys will improve performance greatly.</li>
 </ul>
+</section><section id="long-and-wide-format" class="slide level2">
+<h2>Long and Wide Format</h2>
+<p>Pandas provides two functions for changing between long and wide data format. For further details I direct you to the documentation:</p>
+<ul>
+<li class="fragment"><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.pivot.html#pandas.pivot"><code>pd.pivot()</code></a>: Converts long to wide.</li>
+<li class="fragment"><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.melt.html#pandas.melt"><code>pd.melt()</code></a>: Converts wide to long.</li>
+</ul>
 </section></section>
 <section><section id="coding-tutorial" class="title-slide slide level1"><h1>Coding Tutorial</h1></section><section id="lets-get-to-some-advanced-pandas" class="slide level2">
 <h2>Let’s get to some advanced pandas!</h2>
 </section><section id="recap" class="slide level2">
 <h2>Recap</h2>
 </section></section>
+<section class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>One could construct an iterative parser that treats a language as a cumulative set of tokens; whether this parser would be the most effective is a different question.<a href="#/fnref1" class="footnote-back">↩</a></p></li>
+</ol>
+</section>
     </div>
   </div>
 
