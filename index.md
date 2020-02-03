@@ -37,9 +37,9 @@ Please be aware, lectures will be updated continuously, and may contain errors.
 | ---- | ----------------------------------------------- | ------------------------------------------- | --------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | --------------------------------------------------- |
 | 1    | [slides](/dpir-intro-python/Week1/lecture.html) | [pdf](/dpir-intro-python/Week1/lecture.pdf) | [examples](/dpir-intro-python/Week1/examples.ipynb) | [exercises](/dpir-intro-python/Week1/exercises.ipynb) | [solutions](/dpir-intro-python/Week1/solutions.ipynb) | None                                                |
 | 2    | [slides](/dpir-intro-python/Week2/lecture.html) | [pdf](/dpir-intro-python/Week2/lecture.pdf) | [examples](/dpir-intro-python/Week2/examples.ipynb) | [exercises](/dpir-intro-python/Week2/exercises.ipynb) | [solutions](/dpir-intro-python/Week2/solutions.ipynb) | [BES](/dpir-intro-python/Week2/data/data_week2.zip) |
-| 3    | [slides](placeholderWeek3/lecture.html)         | [pdf](placeholderWeek3/lecture.pdf)         | [examples](placeholderWeek3/examples.ipynb)         | [exercises](placeholderWeek3/exercises.ipynb)         | [solutions](placeholderWeek3/solutions.ipynb)         |                                                     |
+| 3    | [slides](/dpir-intro-python/Week3/lecture.html)         | [pdf](/dpir-intro-python/Week3/lecture.pdf)         | [examples](/dpir-intro-python/Week3/examples.ipynb)         | [exercises](/dpir-intro-python/Week3/exercises.ipynb)         | [solutions](/dpir-intro-python/Week3/solutions.ipynb)         |                                                     |
 
-<!--Replaceable with regex s\placeholder(Week[2-3])/([a-z]*)\.([a-z]*)//dpir-intro-python/(Week[2-3])/([a-z]*)\.([a-z]*)\g-->
+<!--Replaceable with regex s\/dpir-intro-python/(Week[2-3])/([a-z]*)\.([a-z]*)//dpir-intro-python/(Week[2-3])/([a-z]*)\.([a-z]*)\g-->
 
 #### About Me
 
