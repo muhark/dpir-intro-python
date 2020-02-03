@@ -696,5 +696,3 @@ Pandas provides two functions for changing between long and wide data format. Fo
 # Coding Tutorial
 
 ## Let's get to some advanced pandas!
-
-## Recap
