@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Musashi Harukawa, DPIR">
+  <title>Introduction to Python for Social Science</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../reveal.js/css/theme/../../../dpir-intro-theme.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal.js/css/print/pdf.css' : '../reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="../reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Introduction to Python for Social Science</h1>
+  <p class="subtitle">Lecture 4 - Data Visualization</p>
+  <p class="author">Musashi Harukawa, DPIR</p>
+  <p class="date">3rd Week Hilary 2020</p>
+</section>
+
+<section><section id="overview" class="title-slide slide level1"><h1>Overview</h1></section><section id="last-week" class="slide level2">
+<h2>Last Week</h2>
+<ul>
+<li class="fragment">Advanced Data Operations
+<ul>
+<li class="fragment">Applying Functions to Vectors and Matrices</li>
+<li class="fragment">Grouped Summaries</li>
+<li class="fragment">Concatenating and Merging Data</li>
+</ul></li>
+</ul>
+</section><section id="this-week" class="slide level2">
+<h2>This Week</h2>
+<p>This week we finally get to a fun topic: <strong>data visualisation</strong>.</p>
+<p>There’s more to data visualisation than I could possibly cover in 90 minutes, so I focus on <em>static</em>, <em>two-dimensional</em> visuals; these are the kind that you are most likely to use.</p>
+</section></section>
+<section><section id="theory" class="title-slide slide level1"><h1>Theory</h1></section></section>
+<section><section id="motivation" class="title-slide slide level1"><h1>Motivation</h1></section><section id="visual-summaries-as-an-aid" class="slide level2">
+<h2>Visual Summaries as an Aid</h2>
+<ul>
+<li class="fragment">Returning to the theme of this course, the aim of much of data science is to understand the whole picture of your data.</li>
+<li class="fragment">If you can do this without reading your entire dataset, all the better!</li>
+<li class="fragment">When making data visuals, I think it’s helpful to remember that they are, in many ways, a form of summary.</li>
+<li class="fragment">Visualising data is not just about communicating results; it is also a powerful tool for you to understand important features of your own data.</li>
+</ul>
+</section><section id="motivating-example" class="slide level2">
+<h2>Motivating Example</h2>
+<table border="1" class="dataframe">
+
+<thead>
+
+<tr style="text-align: right;">
+
+<th>
+</th>
+
+<th>
+x1
+</th>
+
+<th>
+x2
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<th>
+count
+</th>
+
+<td>
+300.000000
+</td>
+
+<td>
+300.000000
+</td>
+
+</tr>
+
+<tr>
+
+<th>
+mean
+</th>
+
+<td>
+4.048335
+</td>
+
+<td>
+4.066768
+</td>
+
+</tr>
+
+<tr>
+
+<th>
+std
+</th>
+
+<td>
+4.145384
+</td>
+
+<td>
+3.908675
+</td>
+
+</tr>
+
+<tr>
+
+<th>
+min
+</th>
+
+<td>
+-2.304990
+</td>
+
+<td>
+-6.892820
+</td>
+
+</tr>
+
+<tr>
+
+<th>
+25%
+</th>
+
+<td>
+0.102002
+</td>
+
+<td>
+1.528010
+</td>
+
+</tr>
+
+<tr>
+
+<th>
+50%
+</th>
+
+<td>
+3.389367
+</td>
+
+<td>
+4.125494
+</td>
+
+</tr>
+
+<tr>
+
+<th>
+75%
+</th>
+
+<td>
+8.039512
+</td>
+
+<td>
+6.871554
+</td>
+
+</tr>
+
+<tr>
+
+<th>
+max
+</th>
+
+<td>
+11.230459
+</td>
+
+<td>
+16.889281
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</section><section id="motivating-example-1" class="slide level2">
+<h2>Motivating Example</h2>
+<figure>
+<img data-src="figures/lecture_fig1.png" alt="The same data" /><figcaption>The same data</figcaption>
+</figure>
+</section></section>
+<section><section id="from-data-types-and-structures-to-visualisation" class="title-slide slide level1"><h1>From Data Types and Structures to Visualisation</h1></section><section id="data-typesstructures" class="slide level2">
+<h2>Data Types/Structures</h2>
+<p>The type and structure of your data tells you what <em>type</em> of figure you need:</p>
+<ul>
+<li class="fragment">Number of Dimensions</li>
+<li class="fragment">Ordered or Unordered?</li>
+<li class="fragment">Discrete or Continuous?</li>
+</ul>
+</section><section id="one-dimensional-data" class="slide level2">
+<h2>One-Dimensional Data</h2>
+<p>Visuals for one-dimensional data tend to be concerned with <em>distributions</em>; i.e. frequencies of values along some dimension.</p>
+<p>Useful plots include:</p>
+<ul>
+<li class="fragment">Histogram</li>
+<li class="fragment">Box (and whiskers) plot</li>
+<li class="fragment">Swarm plot</li>
+<li class="fragment">Violin plot</li>
+</ul>
+</section><section id="two-dimensional-data" class="slide level2">
+<h2>Two-Dimensional Data</h2>
+<p>Visuals for two-dimensional data often fulfil one of the following two purposes:</p>
+<ul>
+<li class="fragment">Comparing distributions</li>
+<li class="fragment">Plotting functions</li>
+</ul>
+<p>In addition to all of the aforementioned plots, some examples of the latter include:</p>
+<ul>
+<li class="fragment">Scatter plot</li>
+<li class="fragment">Line plot</li>
+<li class="fragment">Bar plot</li>
+<li class="fragment">Rug plot</li>
+</ul>
+</section><section id="three-dimensional-data" class="slide level2">
+<h2>Three-Dimensional Data</h2>
+<ul>
+<li class="fragment">While it is possible to draw plots that have a third, <em>z</em> axis, I hate how they look.</li>
+<li class="fragment">If you are trying to show data in three or more dimensions, I suggest that you use a <em>heatmap</em>.</li>
+<li class="fragment">More generally, you can use <em>colour</em> or <em>shape</em> as a means to distinguish on a third dimension (or higher).</li>
+</ul>
+</section></section>
+<section><section id="gallery" class="title-slide slide level1"><h1>Gallery</h1></section><section id="histogram-one-category" class="slide level2">
+<h2>Histogram (One Category)</h2>
+</section><section id="histogram-two-categories" class="slide level2">
+<h2>Histogram (Two Categories)</h2>
+</section><section id="box-and-whisker-plot" class="slide level2">
+<h2>Box and Whisker Plot</h2>
+</section><section id="swarm-plot-one-category" class="slide level2">
+<h2>Swarm Plot (One Category)</h2>
+</section><section id="swarm-plot-multiple-categories" class="slide level2">
+<h2>Swarm Plot (Multiple Categories)</h2>
+</section><section id="violin-plot-one-category" class="slide level2">
+<h2>Violin Plot (One Category)</h2>
+</section><section id="violin-plot-two-categories" class="slide level2">
+<h2>Violin Plot (Two Categories)</h2>
+</section><section id="scatter-plot" class="slide level2">
+<h2>Scatter Plot</h2>
+</section><section id="line-plot" class="slide level2">
+<h2>Line Plot</h2>
+</section><section id="bar-plot" class="slide level2">
+<h2>Bar Plot</h2>
+</section><section id="rug-plot" class="slide level2">
+<h2>Rug Plot</h2>
+</section><section id="data-typesstructures-cont." class="slide level2">
+<h2>Data Types/Structures cont.</h2>
+<p>The next question you should ask is <em>what am I trying to communicate?</em></p>
+<p>Am I:</p>
+<ul>
+<li class="fragment">Making a comparison between groups?</li>
+<li class="fragment">Trying to show conditional relationships between variables?</li>
+<li class="fragment">Exploring my own data?</li>
+</ul>
+</section></section>
+<section><section id="implementation" class="title-slide slide level1"><h1>Implementation</h1></section><section id="two-libraries" class="slide level2">
+<h2>Two Libraries</h2>
+<ul>
+<li class="fragment"><code>matplotlib</code> is the primary library for building data-based visuals in Python.
+<ul>
+<li class="fragment">Requires a lot of explicit commands to get it to look good, but allows for nearly complete customisation of all aspects.</li>
+</ul></li>
+<li class="fragment"><code>seaborn</code> is a more recent library, built on top of <code>matplotlib</code>.
+<ul>
+<li class="fragment">Provides fast and convenient methods for most figures you will ever need.</li>
+</ul></li>
+<li class="fragment">Both libraries can be used in conjunction.</li>
+</ul>
+</section><section id="the-anatomy-of-a-data-visual" class="slide level2">
+<h2>The Anatomy of a Data Visual</h2>
+<p>On the back end, all <code>matplotlib</code>-based visuals adhere to a similar <em>tree-like</em> structure. By learning this structure, you can locate and customise any element of a figure.</p>
+</section><section id="the-matplotlib-hierarchy" class="slide level2">
+<h2>The Matplotlib Hierarchy</h2>
+<p>Here is a truncated version of the matplotlib hierarchy:</p>
+<ul>
+<li class="fragment">Figure
+<ul>
+<li class="fragment">Figure-level Methods (e.g. Title)</li>
+<li class="fragment">Axes (Subplots)
+<ul>
+<li class="fragment">Subplot-level Methods (e.g. sub-title)</li>
+<li class="fragment">Graphical functions
+<ul>
+<li class="fragment">Graphical primitives (shapes)</li>
+</ul></li>
+<li class="fragment">Axis pairs (x-axis and y-axis)
+<ul>
+<li class="fragment">Axis labels</li>
+<li class="fragment">Axis ticks
+<ul>
+<li class="fragment">Location</li>
+<li class="fragment">Labels</li>
+</ul></li>
+</ul></li>
+<li class="fragment">Legend</li>
+</ul></li>
+</ul></li>
+</ul>
+</section><section id="figure" class="slide level2">
+<h2>Figure</h2>
+<p>The figure is essentially the “canvas” upon which all visuals are made. Some parameters/methods set at this level include:</p>
+<ul>
+<li class="fragment">Total size (in pixels)</li>
+<li class="fragment">Super-title</li>
+<li class="fragment">Saving to file</li>
+</ul>
+</section><section id="axes-subplots" class="slide level2">
+<h2>Axes (Subplots)</h2>
+<p>Subplots are the frames within which individual visuals are contained. - If there is only one plot in the figure, then there will only be one subplot. - If you want to put multiple plots, or “panel” your plots, then you will make use of multiple subplots.</p>
+</section><section id="axes-subplots-cont." class="slide level2">
+<h2>Axes (Subplots) cont.</h2>
+<p>Most drawing methods are called at the subplot level:</p>
+<ul>
+<li class="fragment">Plotting (drawing the graphical objects)</li>
+<li class="fragment">Individual plot labels</li>
+<li class="fragment">Legends</li>
+</ul>
+</section><section id="graphical-functions" class="slide level2">
+<h2>Graphical Functions</h2>
+<p><code>matplotlib</code> and <code>seaborn</code> provide an enormous number of plotting functions. These functions:</p>
+<ul>
+<li class="fragment">Take one or more equal-length vectors as inputs (the data)</li>
+<li class="fragment">Draw objects accordingly to the relevant subplot
+<ul>
+<li class="fragment">If the function is a <code>matplotlib</code> function, you should call it as a method of the relevant subplot.</li>
+<li class="fragment">If the function is a <code>seaborn</code> function, and there is more than one subplot, then you should pass the relevant subplot as a parameter to the function.</li>
+</ul></li>
+<li class="fragment">Take a large number of customisable parameters, such as:
+<ul>
+<li class="fragment">Color</li>
+<li class="fragment">Transparency</li>
+<li class="fragment">Line/dot style</li>
+</ul></li>
+</ul>
+</section><section id="x-and-y-axis" class="slide level2">
+<h2>X and Y Axis</h2>
+<p>Subplots have <code>xaxis</code> and <code>yaxis</code> methods. Call these to customise the following aspects:</p>
+<ul>
+<li class="fragment">Ticks (the little notches along the axes)
+<ul>
+<li class="fragment">Spacing/interval</li>
+<li class="fragment">Labels
+<ul>
+<li class="fragment">Text</li>
+<li class="fragment">Orientation</li>
+</ul></li>
+<li class="fragment">Top/Bottom, Left/Right</li>
+</ul></li>
+<li class="fragment">Axis labels</li>
+</ul>
+</section></section>
+<section><section id="anatomy-again-with-examples" class="title-slide slide level1"><h1>Anatomy, Again, with Examples</h1></section><section id="figure-1" class="slide level2">
+<h2>Figure</h2>
+<p>This does not create any visible objects, but it lays down the canvas that other things will go onto.</p>
+<p>Note:</p>
+<ul>
+<li class="fragment">Most of the plotting functionality is within the <code>pyplot</code> module of <code>matplotlib</code>.</li>
+<li class="fragment">The output of <code>plt.figure</code> has been assigned to a variable, <code>f</code>. This will be our means of accessing the figure and its methods.</li>
+<li class="fragment">The parameter <code>figsize=(15, 8)</code> has been passed to <code>plt.figure</code>. This tells <code>matplotlib</code> to create a canvas that is 1500x800 pixels.</li>
+</ul>
+<pre class="{python}"><code>import matplotlib.pyplot as plt
+f = plt.figure(figsize=(15, 8))</code></pre>
+</section><section id="axes-one-subplot" class="slide level2">
+<h2>Axes (One Subplot)</h2>
+<pre class="{python}"><code>f, ax = plt.subplots(1, 1, figsize=(15, 8))
+f.suptitle(&quot;This is a figure with a subplot&quot;)
+ax.set_title(&quot;This is a subplot&quot;, color=&quot;r&quot;)</code></pre>
+<figure>
+<img data-src="figures/lecture_emptysubplot1.png" alt="Figure with 1 Subplot" /><figcaption>Figure with 1 Subplot</figcaption>
+</figure>
+</section><section id="axes-two-subplots" class="slide level2">
+<h2>Axes (Two Subplots)</h2>
+<pre class="{python}"><code>f, ax = plt.subplots(1, 2, figsize=(15, 8))
+f.suptitle(&quot;This is a figure with two subplots&quot;)
+ax[0].set_title(&quot;This is a subplot&quot;, color=&quot;r&quot;)
+ax[1].set_title(&quot;This is another subplot&quot;, color=&quot;r&quot;)</code></pre>
+<figure>
+<img data-src="figures/lecture_emptysubplot2.png" alt="Figure with 2 Subplots" /><figcaption>Figure with 2 Subplots</figcaption>
+</figure>
+</section><section id="axes-subplot-grid-system" class="slide level2">
+<h2>Axes (Subplot Grid System)</h2>
+<pre class="{python}"><code>f, ax = plt.subplots(2, 2, figsize=(15, 8))
+f.suptitle(&quot;This is a figure with four subplots&quot;)
+for i in range(2):
+    for j in range(2):
+        ax[i][j].set_title(f&quot;Subplot [{i}][{j}]&quot;, color=&quot;r&quot;)</code></pre>
+<figure>
+<img data-src="figures/lecture_emptysubplot3.png" alt="Figure with Four Subplots" /><figcaption>Figure with Four Subplots</figcaption>
+</figure>
+</section><section id="graphical-functions-scatter" class="slide level2">
+<h2>Graphical Functions (Scatter)</h2>
+<pre class="{python}"><code>f, ax = plt.subplots(1, 1, figsize=(15, 8))
+ax.scatter(data[&#39;x2&#39;], data[&#39;x1&#39;], color=&#39;r&#39;)</code></pre>
+<figure>
+<img data-src="figures/lecture_scatter1.png" alt="Scatter Plot" /><figcaption>Scatter Plot</figcaption>
+</figure>
+</section><section id="graphical-functions-line" class="slide level2">
+<h2>Graphical Functions (Line)</h2>
+<pre class="{python}"><code>f, ax = plt.subplots(1, 1, figsize=(15, 8))
+ax.plot(np.linspace(0, 10, 100), np.linspace(0, 5, 100), color=&#39;r&#39;)</code></pre>
+<figure>
+<img data-src="figures/lecture_line1.png" alt="Line Plot" /><figcaption>Line Plot</figcaption>
+</figure>
+</section><section id="graphical-functions-scatter-line" class="slide level2">
+<h2>Graphical Functions (Scatter + Line)</h2>
+</section></section>
+    </div>
+  </div>
+
+  <script src="../reveal.js/lib/js/head.min.js"></script>
+  <script src="../reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: '../reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
