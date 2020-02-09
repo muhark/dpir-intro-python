@@ -23,7 +23,7 @@ Please be aware, lectures will be updated continuously, and may contain errors.
 
 1. [Introduction to Python and the Development Environment](/dpir-intro-python/Week1/lecture.html)
 2. [Data Structures and `pandas` I](/dpir-intro-python/Week2/lecture.html)
-3. ~~[Data Structures and `pandas` II](/dpir-intro-python/Week3/lecture.html)~~
+3. [Data Structures and `pandas` II](/dpir-intro-python/Week3/lecture.html)
 4. ~~[Data Visualisation]()~~
 5. ~~[Machine Learning with `scikit-learn` I]()~~
 6. ~~[Machine Learning with `scikit-learn` II]()~~
