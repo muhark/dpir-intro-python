@@ -31,7 +31,7 @@ There's more to data visualisation than I could possibly cover in 90 minutes, so
 
 ## Motivating Example
 
-<!-- <table border="1" class="dataframe">\n  <thead>\n    <tr style="text-align: right;">\n      <th></th>\n      <th>x1</th>\n      <th>x2</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>count</th>\n      <td>300.000000</td>\n      <td>300.000000</td>\n    </tr>\n    <tr>\n      <th>mean</th>\n      <td>4.048335</td>\n      <td>4.066768</td>\n    </tr>\n    <tr>\n      <th>std</th>\n      <td>4.145384</td>\n      <td>3.908675</td>\n    </tr>\n    <tr>\n      <th>min</th>\n      <td>-2.304990</td>\n      <td>-6.892820</td>\n    </tr>\n    <tr>\n      <th>25%</th>\n      <td>0.102002</td>\n      <td>1.528010</td>\n    </tr>\n    <tr>\n      <th>50%</th>\n      <td>3.389367</td>\n      <td>4.125494</td>\n    </tr>\n    <tr>\n      <th>75%</th>\n      <td>8.039512</td>\n      <td>6.871554</td>\n    </tr>\n    <tr>\n      <th>max</th>\n      <td>11.230459</td>\n      <td>16.889281</td>\n    </tr>\n  </tbody>\n</table> -->
+<table border="1" class="dataframe">\n  <thead>\n    <tr style="text-align: right;">\n      <th></th>\n      <th>x1</th>\n      <th>x2</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>count</th>\n      <td>300.000000</td>\n      <td>300.000000</td>\n    </tr>\n    <tr>\n      <th>mean</th>\n      <td>4.048335</td>\n      <td>4.066768</td>\n    </tr>\n    <tr>\n      <th>std</th>\n      <td>4.145384</td>\n      <td>3.908675</td>\n    </tr>\n    <tr>\n      <th>min</th>\n      <td>-2.304990</td>\n      <td>-6.892820</td>\n    </tr>\n    <tr>\n      <th>25%</th>\n      <td>0.102002</td>\n      <td>1.528010</td>\n    </tr>\n    <tr>\n      <th>50%</th>\n      <td>3.389367</td>\n      <td>4.125494</td>\n    </tr>\n    <tr>\n      <th>75%</th>\n      <td>8.039512</td>\n      <td>6.871554</td>\n    </tr>\n    <tr>\n      <th>max</th>\n      <td>11.230459</td>\n      <td>16.889281</td>\n    </tr>\n  </tbody>\n</table>
 
 ## Motivating Example
 
@@ -47,22 +47,11 @@ The type and structure of your data tells you what _type_ of figure you need:
 - Ordered or Unordered?
 - Discrete or Continuous?
 
-## Two Dimensions: X and Y
+## Visuals on a Two-Dimensional Medium
 
 Most figures are created on a two-dimensional plane, where the dimensions are usually referred to as _X_ (width) and _Y_ (height).
 
 These axes are the most versatile; they can be used to plot any kind of variable. The only tradeoff is the overall size of the figure is determined by these two dimensions.
-
-## Three Dimensions and Higher
-
-In addition to the two dimensions given by the x and y axes in a figure, the following graphical elements can be used to depict variation along an axis:
-
-- **Color**: Colors are an extremely useful means of showing categorical or ordinal differences.
-    - Discrete colors for a categorical dimension
-    - Color scale for an ordered/continuous dimension
-- **Panelling**: Can be used to show categorical or ordered/discrete differences.
-    - Cannot be used to show a continuous variable.
-
 
 ## One-Dimension: Distributions
 
@@ -90,12 +79,18 @@ In addition to all of the aforementioned plots, some examples of the latter incl
 
 ## Three-Dimensions and Higher: Levels
 
-- While it is possible to draw plots that have a third, _z_ axis, to show depth on a screen, I personally do not think it is very readable.
-- There are other ways to show variation in a third dimension:
-    - Panelling for an ordered or unordered categorical _z_.
-    - Color for an ordered, unordered, discrete or continuous _z_. Especially [heatmaps](#heatmap).
-    - Shapes for unordered, discrete _z_.
-    - Size, thickness and transparency for continuous _z_.
+While it is possible to draw plots that have a third, _z_ axis, to show depth on a screen, I personally do not think it is very readable.
+
+In addition to the two dimensions given by the x and y axes in a figure, the following graphical elements can be used to depict variation along an axis:
+
+- **Color**: Colors are an extremely useful means of showing categorical or ordinal differences.
+    - Discrete colors for a categorical dimension
+    - Color scale for an ordered/continuous dimension
+    - For example, see [heatmaps](#heatmap)
+- **Panelling**: Can be used to show categorical or ordered/discrete differences.
+    - Cannot be used to show a continuous variable.
+- **Shapes, Thickness and Transparency**
+    - These can all be used to show variation along a continuous dimension.
 
 ## Take-Away
 
