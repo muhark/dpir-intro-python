@@ -261,31 +261,42 @@ max
 </ul>
 </section><section id="three-dimensions-and-higher-levels" class="slide level2">
 <h2>Three-Dimensions and Higher: Levels</h2>
-<p>While it is possible to draw plots that have a third, <em>z</em> axis, to show depth on a screen, I personally do not think it is very readable.</p>
-<p>In addition to the two dimensions given by the x and y axes in a figure, the following graphical elements can be used to depict variation along an axis:</p>
 <ul>
-<li class="fragment"><strong>Color</strong>: Colors are an extremely useful means of showing categorical or ordinal differences.
+<li class="fragment">While it is possible to draw plots that have a third, <em>z</em> axis, to show depth on a screen, I personally do not think it is very readable.</li>
+<li class="fragment">There are many ways to vary visual elements to intuitively convey variation along further axes.</li>
+</ul>
+</section><section id="showing-variation-with-color" class="slide level2">
+<h2>Showing Variation with Color</h2>
+<p>Colors can show variation along a multitude of data types.</p>
 <ul>
-<li class="fragment">Discrete colors for a categorical dimension</li>
-<li class="fragment">Color scale for an ordered/continuous dimension</li>
+<li class="fragment">Discrete colors can differentiate unordered, discrete categories.</li>
+<li class="fragment">Gradiated colors can represent ordered, continuous variation.
+<ul>
 <li class="fragment">For example, see <a href="#/heatmap">heatmaps</a></li>
 </ul></li>
-<li class="fragment"><strong>Panelling</strong>: Can be used to show categorical or ordered/discrete differences.
+</ul>
+</section><section id="showing-variation-with-panels" class="slide level2">
+<h2>Showing Variation with Panels</h2>
+<p>Panelling is the use of multiple sub-plots within a single figure.</p>
 <ul>
-<li class="fragment">Cannot be used to show a continuous variable.</li>
-</ul></li>
-<li class="fragment"><strong>Shapes, Thickness and Transparency</strong>
+<li class="fragment">Panelling can only show variation along a discrete variable.</li>
+<li class="fragment">The order of the plots can be used to show variation along an ordered, discrete variable.</li>
+</ul>
+</section><section id="other-ways-of-showing-variation" class="slide level2">
+<h2>Other Ways of Showing Variation</h2>
+<p>Colors and panelling are not the only means.</p>
 <ul>
-<li class="fragment">These can all be used to show variation along a continuous dimension.</li>
-</ul></li>
+<li class="fragment">Shapes can be used to show categorical variation.</li>
+<li class="fragment">Size/thickness and transparency can be used to show continuous variation.</li>
 </ul>
 </section><section id="take-away" class="slide level2">
 <h2>Take-Away</h2>
-<p>When visualising data, ask yourself the following questions, then look through galleries to get an idea of what could work for you:</p>
+<p>When visualising data, ask yourself the following questions, then look through <a href="https://seaborn.pydata.org/examples/index.html">galleries</a> to get an idea of what could work for you.</p>
+<p>Are you:</p>
 <ul>
 <li class="fragment">Making a comparison between groups?</li>
 <li class="fragment">Trying to show conditional relationships between variables?</li>
-<li class="fragment">Exploring my own data?</li>
+<li class="fragment">Exploring your own data?</li>
 </ul>
 </section></section>
 <section><section id="implementation" class="title-slide slide level1"><h1>Implementation</h1></section><section id="two-libraries" class="slide level2">
@@ -342,12 +353,6 @@ max
 </section><section id="axes-subplots" class="slide level2">
 <h2>Axes (Subplots)</h2>
 <p>Subplots are the frames within which individual visuals are contained.</p>
-<ul>
-<li class="fragment">If there is only one plot in the figure, then there will only be one subplot.</li>
-<li class="fragment">If you want to put multiple plots, or “panel” your plots, then you will make use of multiple subplots.</li>
-</ul>
-</section><section id="axes-subplots-cont." class="slide level2">
-<h2>Axes (Subplots) cont.</h2>
 <p>Most drawing methods are called at the subplot level:</p>
 <ul>
 <li class="fragment">Plotting (drawing the graphical objects)</li>
@@ -358,7 +363,10 @@ max
 <h2>Graphical Functions</h2>
 <p><code>matplotlib</code> and <code>seaborn</code> provide an enormous number of plotting functions. These functions:</p>
 <ul>
-<li class="fragment">Take one or more equal-length vectors as inputs (the data)</li>
+<li class="fragment">Take one or more equal-length vectors as inputs (the data).
+<ul>
+<li class="fragment">This data may be in long- or wide-format.</li>
+</ul></li>
 <li class="fragment">Draw objects accordingly to the relevant subplot
 <ul>
 <li class="fragment">If the function is a <code>matplotlib</code> function, you should call it as a method of the relevant subplot.</li>

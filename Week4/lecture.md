@@ -79,26 +79,41 @@ In addition to all of the aforementioned plots, some examples of the latter incl
 
 ## Three-Dimensions and Higher: Levels
 
-While it is possible to draw plots that have a third, _z_ axis, to show depth on a screen, I personally do not think it is very readable.
+- While it is possible to draw plots that have a third, _z_ axis, to show depth on a screen, I personally do not think it is very readable.
+- There are many ways to vary visual elements to intuitively convey variation along further axes.
 
-In addition to the two dimensions given by the x and y axes in a figure, the following graphical elements can be used to depict variation along an axis:
+## Showing Variation with Color
 
-- **Color**: Colors are an extremely useful means of showing categorical or ordinal differences.
-    - Discrete colors for a categorical dimension
-    - Color scale for an ordered/continuous dimension
+Colors can show variation along a multitude of data types.
+
+- Discrete colors can differentiate unordered, discrete categories.
+- Gradiated colors can represent ordered, continuous variation.
     - For example, see [heatmaps](#heatmap)
-- **Panelling**: Can be used to show categorical or ordered/discrete differences.
-    - Cannot be used to show a continuous variable.
-- **Shapes, Thickness and Transparency**
-    - These can all be used to show variation along a continuous dimension.
+
+## Showing Variation with Panels
+
+Panelling is the use of multiple sub-plots within a single figure.
+
+- Panelling can only show variation along a discrete variable.
+- The order of the plots can be used to show variation along an ordered, discrete variable.
+
+## Other Ways of Showing Variation
+
+Colors and panelling are not the only means.
+
+- Shapes can be used to show categorical variation.
+- Size/thickness and transparency can be used to show continuous variation.
+
 
 ## Take-Away
 
-When visualising data, ask yourself the following questions, then look through galleries to get an idea of what could work for you:
+When visualising data, ask yourself the following questions, then look through [galleries](https://seaborn.pydata.org/examples/index.html) to get an idea of what could work for you.
+
+Are you:
 
 - Making a comparison between groups?
 - Trying to show conditional relationships between variables?
-- Exploring my own data?
+- Exploring your own data?
 
 
 # Implementation
@@ -132,7 +147,6 @@ Here is a truncated version of the matplotlib hierarchy:
                 - Labels
         - Legend
 
-
 ## Figure
 
 The figure is essentially the "canvas" upon which all visuals are made. Some parameters/methods set at this level include:
@@ -145,11 +159,6 @@ The figure is essentially the "canvas" upon which all visuals are made. Some par
 
 Subplots are the frames within which individual visuals are contained.
 
-- If there is only one plot in the figure, then there will only be one subplot.
-- If you want to put multiple plots, or "panel" your plots, then you will make use of multiple subplots.
-
-## Axes (Subplots) cont.
-
 Most drawing methods are called at the subplot level:
 
 - Plotting (drawing the graphical objects)
@@ -160,7 +169,8 @@ Most drawing methods are called at the subplot level:
 
 `matplotlib` and `seaborn` provide an enormous number of plotting functions. These functions:
 
-- Take one or more equal-length vectors as inputs (the data)
+- Take one or more equal-length vectors as inputs (the data).
+    - This data may be in long- or wide-format.
 - Draw objects accordingly to the relevant subplot
     - If the function is a `matplotlib` function, you should call it as a method of the relevant subplot.
     - If the function is a `seaborn` function, and there is more than one subplot, then you should pass the relevant subplot as a parameter to the function.
