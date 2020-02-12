@@ -54,8 +54,7 @@
 <p>This week we finally get to a fun topic: <strong>data visualisation</strong>.</p>
 <p>There’s more to data visualisation than I could possibly cover in 90 minutes, so I focus on <em>static</em>, <em>two-dimensional</em> visuals; these are the kind that you are most likely to use.</p>
 </section></section>
-<section><section id="theory" class="title-slide slide level1"><h1>Theory</h1></section></section>
-<section><section id="motivation" class="title-slide slide level1"><h1>Motivation</h1></section><section id="visual-summaries-as-an-aid" class="slide level2">
+<section><section id="theory-motivation" class="title-slide slide level1"><h1>Theory &amp; Motivation</h1></section><section id="visual-summaries-as-an-aid" class="slide level2">
 <h2>Visual Summaries as an Aid</h2>
 <ul>
 <li class="fragment">Returning to the theme of this course, the aim of much of data science is to understand the whole picture of your data.</li>
@@ -233,8 +232,26 @@ max
 <li class="fragment">Ordered or Unordered?</li>
 <li class="fragment">Discrete or Continuous?</li>
 </ul>
-</section><section id="one-dimensional-data" class="slide level2">
-<h2>One-Dimensional Data</h2>
+</section><section id="two-dimensions-x-and-y" class="slide level2">
+<h2>Two Dimensions: X and Y</h2>
+<p>Most figures are created on a two-dimensional plane, where the dimensions are usually referred to as <em>X</em> (width) and <em>Y</em> (height).</p>
+<p>These axes are the most versatile; they can be used to plot any kind of variable. The only tradeoff is the overall size of the figure is determined by these two dimensions.</p>
+</section><section id="three-dimensions-and-higher" class="slide level2">
+<h2>Three Dimensions and Higher</h2>
+<p>In addition to the two dimensions given by the x and y axes in a figure, the following graphical elements can be used to depict variation along an axis:</p>
+<ul>
+<li class="fragment"><strong>Color</strong>: Colors are an extremely useful means of showing categorical or ordinal differences.
+<ul>
+<li class="fragment">Discrete colors for a categorical dimension</li>
+<li class="fragment">Color scale for an ordered/continuous dimension</li>
+</ul></li>
+<li class="fragment"><strong>Panelling</strong>: Can be used to show categorical or ordered/discrete differences.
+<ul>
+<li class="fragment">Cannot be used to show a continuous variable.</li>
+</ul></li>
+</ul>
+</section><section id="one-dimension-distributions" class="slide level2">
+<h2>One-Dimension: Distributions</h2>
 <p>Visuals for one-dimensional data tend to be concerned with <em>distributions</em>; i.e. frequencies of values along some dimension.</p>
 <p>Useful plots include:</p>
 <ul>
@@ -243,8 +260,8 @@ max
 <li class="fragment">Swarm plot</li>
 <li class="fragment">Violin plot</li>
 </ul>
-</section><section id="two-dimensional-data" class="slide level2">
-<h2>Two-Dimensional Data</h2>
+</section><section id="two-dimensions-relationships" class="slide level2">
+<h2>Two-Dimensions: Relationships</h2>
 <p>Visuals for two-dimensional data often fulfil one of the following two purposes:</p>
 <ul>
 <li class="fragment">Comparing distributions</li>
@@ -257,40 +274,16 @@ max
 <li class="fragment">Bar plot</li>
 <li class="fragment">Rug plot</li>
 </ul>
-</section><section id="three-dimensional-data" class="slide level2">
-<h2>Three-Dimensional Data</h2>
+</section><section id="three-dimensions-and-higher-levels" class="slide level2">
+<h2>Three-Dimensions and Higher: Levels</h2>
 <ul>
 <li class="fragment">While it is possible to draw plots that have a third, <em>z</em> axis, I hate how they look.</li>
 <li class="fragment">If you are trying to show data in three or more dimensions, I suggest that you use a <em>heatmap</em>.</li>
 <li class="fragment">More generally, you can use <em>colour</em> or <em>shape</em> as a means to distinguish on a third dimension (or higher).</li>
 </ul>
-</section></section>
-<section><section id="gallery" class="title-slide slide level1"><h1>Gallery</h1></section><section id="histogram-one-category" class="slide level2">
-<h2>Histogram (One Category)</h2>
-</section><section id="histogram-two-categories" class="slide level2">
-<h2>Histogram (Two Categories)</h2>
-</section><section id="box-and-whisker-plot" class="slide level2">
-<h2>Box and Whisker Plot</h2>
-</section><section id="swarm-plot-one-category" class="slide level2">
-<h2>Swarm Plot (One Category)</h2>
-</section><section id="swarm-plot-multiple-categories" class="slide level2">
-<h2>Swarm Plot (Multiple Categories)</h2>
-</section><section id="violin-plot-one-category" class="slide level2">
-<h2>Violin Plot (One Category)</h2>
-</section><section id="violin-plot-two-categories" class="slide level2">
-<h2>Violin Plot (Two Categories)</h2>
-</section><section id="scatter-plot" class="slide level2">
-<h2>Scatter Plot</h2>
-</section><section id="line-plot" class="slide level2">
-<h2>Line Plot</h2>
-</section><section id="bar-plot" class="slide level2">
-<h2>Bar Plot</h2>
-</section><section id="rug-plot" class="slide level2">
-<h2>Rug Plot</h2>
-</section><section id="data-typesstructures-cont." class="slide level2">
-<h2>Data Types/Structures cont.</h2>
-<p>The next question you should ask is <em>what am I trying to communicate?</em></p>
-<p>Am I:</p>
+</section><section id="take-away" class="slide level2">
+<h2>Take-Away</h2>
+<p>When visualising data, ask yourself the following questions, then look through galleries to get an idea of what could work for you:</p>
 <ul>
 <li class="fragment">Making a comparison between groups?</li>
 <li class="fragment">Trying to show conditional relationships between variables?</li>
@@ -350,7 +343,11 @@ max
 </ul>
 </section><section id="axes-subplots" class="slide level2">
 <h2>Axes (Subplots)</h2>
-<p>Subplots are the frames within which individual visuals are contained. - If there is only one plot in the figure, then there will only be one subplot. - If you want to put multiple plots, or “panel” your plots, then you will make use of multiple subplots.</p>
+<p>Subplots are the frames within which individual visuals are contained.</p>
+<ul>
+<li class="fragment">If there is only one plot in the figure, then there will only be one subplot.</li>
+<li class="fragment">If you want to put multiple plots, or “panel” your plots, then you will make use of multiple subplots.</li>
+</ul>
 </section><section id="axes-subplots-cont." class="slide level2">
 <h2>Axes (Subplots) cont.</h2>
 <p>Most drawing methods are called at the subplot level:</p>
@@ -369,12 +366,14 @@ max
 <li class="fragment">If the function is a <code>matplotlib</code> function, you should call it as a method of the relevant subplot.</li>
 <li class="fragment">If the function is a <code>seaborn</code> function, and there is more than one subplot, then you should pass the relevant subplot as a parameter to the function.</li>
 </ul></li>
-<li class="fragment">Take a large number of customisable parameters, such as:
+</ul>
+</section><section id="customisable-aspects" class="slide level2">
+<h2>Customisable Aspects</h2>
+<p>Graphical objects take a large number of customisable parameters, such as:</p>
 <ul>
 <li class="fragment">Color</li>
 <li class="fragment">Transparency</li>
 <li class="fragment">Line/dot style</li>
-</ul></li>
 </ul>
 </section><section id="x-and-y-axis" class="slide level2">
 <h2>X and Y Axis</h2>
@@ -395,6 +394,8 @@ max
 </section></section>
 <section><section id="anatomy-again-with-examples" class="title-slide slide level1"><h1>Anatomy, Again, with Examples</h1></section><section id="figure-1" class="slide level2">
 <h2>Figure</h2>
+<pre class="{python}"><code>import matplotlib.pyplot as plt
+f = plt.figure(figsize=(15, 8))</code></pre>
 <p>This does not create any visible objects, but it lays down the canvas that other things will go onto.</p>
 <p>Note:</p>
 <ul>
@@ -402,8 +403,6 @@ max
 <li class="fragment">The output of <code>plt.figure</code> has been assigned to a variable, <code>f</code>. This will be our means of accessing the figure and its methods.</li>
 <li class="fragment">The parameter <code>figsize=(15, 8)</code> has been passed to <code>plt.figure</code>. This tells <code>matplotlib</code> to create a canvas that is 1500x800 pixels.</li>
 </ul>
-<pre class="{python}"><code>import matplotlib.pyplot as plt
-f = plt.figure(figsize=(15, 8))</code></pre>
 </section><section id="axes-one-subplot" class="slide level2">
 <h2>Axes (One Subplot)</h2>
 <pre class="{python}"><code>f, ax = plt.subplots(1, 1, figsize=(15, 8))
@@ -445,8 +444,69 @@ ax.plot(np.linspace(0, 10, 100), np.linspace(0, 5, 100), color=&#39;r&#39;)</cod
 <figure>
 <img data-src="figures/lecture_line1.png" alt="Line Plot" /><figcaption>Line Plot</figcaption>
 </figure>
-</section><section id="graphical-functions-scatter-line" class="slide level2">
-<h2>Graphical Functions (Scatter + Line)</h2>
+</section><section id="combining-graphical-functions-scatter-line" class="slide level2">
+<h2>Combining Graphical Functions (Scatter + Line)</h2>
+<pre class="{python}"><code>f, ax = plt.subplots(1, 1, figsize=(8, 4))
+ax.scatter(data[&#39;x2&#39;], data[&#39;x1&#39;], color=&#39;r&#39;, s=3)
+ax.plot(np.linspace(-10, 20, 150), np.linspace(-3.5, 4, 150)**2)
+ax.axhline(0, color=&#39;k&#39;, alpha=0.5, ls=&quot;--&quot;)
+ax.axvline(0, color=&#39;k&#39;, alpha=0.5, ls=&quot;--&quot;)</code></pre>
+<figure>
+<img data-src="figures/lecture_linescatter1.png" alt="Line and Scatter Plot" /><figcaption>Line and Scatter Plot</figcaption>
+</figure>
+</section><section id="adding-axis-labels" class="slide level2">
+<h2>Adding Axis Labels</h2>
+<pre class="{python}"><code>[...]
+ax.xaxis.set_label_text(&quot;X-Axis Label&quot;, color=&#39;r&#39;)
+ax.yaxis.set_label_text(&quot;Y-Axis Label&quot;, color=&#39;r&#39;)</code></pre>
+<figure>
+<img data-src="figures/lecture_linescatter2.png" alt="Custom Axis Labels" /><figcaption>Custom Axis Labels</figcaption>
+</figure>
+</section><section id="customising-tick-locations-manual" class="slide level2">
+<h2>Customising Tick Locations (Manual)</h2>
+<pre class="{python}"><code>[...]
+ax.xaxis.set_ticks(range(-10, 40, 10))
+ax.yaxis.set_ticks(range(-4, 25, 2))</code></pre>
+<figure>
+<img data-src="figures/lecture_linescatter3.png" alt="Manually Adjusted Ticks" /><figcaption>Manually Adjusted Ticks</figcaption>
+</figure>
+</section><section id="customising-tick-locations-automatic" class="slide level2">
+<h2>Customising Tick Locations (Automatic)</h2>
+<pre class="{python}"><code>ax.xaxis.set_major_locator(matplotlib.ticker.MultipleLocator(base=3))
+ax.yaxis.set_major_locator(matplotlib.ticker.MultipleLocator(base=2))</code></pre>
+<figure>
+<img data-src="figures/lecture_linescatter4.png" alt="Manually Adjusted Ticks" /><figcaption>Manually Adjusted Ticks</figcaption>
+</figure>
+</section><section id="customising-tick-labelsorientation" class="slide level2">
+<h2>Customising Tick Labels/Orientation</h2>
+<pre class="{python}"><code>f, ax = plt.subplots(1, 1, figsize=(8, 4))
+sns.boxenplot(bes_df[&#39;region&#39;], bes_df[&#39;Age&#39;], ax=ax)
+ax.xaxis.set_ticklabels(ax.xaxis.get_ticklabels(), rotation=30)</code></pre>
+<figure>
+<img data-src="figures/lecture_rotated_labels1.png" alt="Rotated Tick Labels" /><figcaption>Rotated Tick Labels</figcaption>
+</figure>
+</section></section>
+<section><section id="gallery" class="title-slide slide level1"><h1>Gallery</h1></section><section id="histogram-one-category" class="slide level2">
+<h2>Histogram (One Category)</h2>
+<p><img data-src="figures/lecture_hist1.png" /></p>
+</section><section id="histogram-two-categories" class="slide level2">
+<h2>Histogram (Two Categories)</h2>
+<p><img data-src="figures/lecture_hist2.png" /></p>
+</section><section id="box-and-whisker-plot" class="slide level2">
+<h2>Box and Whisker Plot</h2>
+<p><img data-src="figures/lecture_box1.png" /></p>
+</section><section id="swarm-plot-one-category" class="slide level2">
+<h2>Swarm Plot (One Category)</h2>
+<p><img data-src="figures/lecture_swarm1.png" /></p>
+</section><section id="swarm-plot-multiple-categories" class="slide level2">
+<h2>Swarm Plot (Multiple Categories)</h2>
+<p><img data-src="figures/lecture_swarm2.png" /></p>
+</section><section id="violin-plot-one-category" class="slide level2">
+<h2>Violin Plot (One Category)</h2>
+<p><img data-src="figures/lecture_violin1.png" /></p>
+</section><section id="heatmap" class="slide level2">
+<h2>Heatmap</h2>
+<p><img data-src="figures/lecture_heatmap1.png" /></p>
 </section></section>
     </div>
   </div>
