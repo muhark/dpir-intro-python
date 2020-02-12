@@ -20,9 +20,7 @@ This week we finally get to a fun topic: **data visualisation**.
 
 There's more to data visualisation than I could possibly cover in 90 minutes, so I focus on _static_, _two-dimensional_ visuals; these are the kind that you are most likely to use.
 
-# Theory
-
-# Motivation
+# Theory & Motivation
 
 ## Visual Summaries as an Aid
 
@@ -50,7 +48,24 @@ The type and structure of your data tells you what _type_ of figure you need:
 - Ordered or Unordered?
 - Discrete or Continuous?
 
-## One-Dimensional Data
+## Two Dimensions: X and Y
+
+Most figures are created on a two-dimensional plane, where the dimensions are usually referred to as _X_ (width) and _Y_ (height).
+
+These axes are the most versatile; they can be used to plot any kind of variable. The only tradeoff is the overall size of the figure is determined by these two dimensions.
+
+## Three Dimensions and Higher
+
+In addition to the two dimensions given by the x and y axes in a figure, the following graphical elements can be used to depict variation along an axis:
+
+- **Color**: Colors are an extremely useful means of showing categorical or ordinal differences.
+    - Discrete colors for a categorical dimension
+    - Color scale for an ordered/continuous dimension
+- **Panelling**: Can be used to show categorical or ordered/discrete differences.
+    - Cannot be used to show a continuous variable.
+
+
+## One-Dimension: Distributions
 
 Visuals for one-dimensional data tend to be concerned with _distributions_; i.e. frequencies of values along some dimension.
 
@@ -61,7 +76,7 @@ Useful plots include:
 - Swarm plot
 - Violin plot
 
-## Two-Dimensional Data
+## Two-Dimensions: Relationships
 
 Visuals for two-dimensional data often fulfil one of the following two purposes:
 
@@ -75,42 +90,15 @@ In addition to all of the aforementioned plots, some examples of the latter incl
 - Bar plot
 - Rug plot
 
-## Three-Dimensional Data
+## Three-Dimensions and Higher: Levels
 
 - While it is possible to draw plots that have a third, _z_ axis, I hate how they look.
 - If you are trying to show data in three or more dimensions, I suggest that you use a _heatmap_.
 - More generally, you can use _colour_ or _shape_ as a means to distinguish on a third dimension (or higher).
 
-# Gallery
+## Take-Away
 
-## Histogram (One Category)
-
-## Histogram (Two Categories)
-
-## Box and Whisker Plot
-
-## Swarm Plot (One Category)
-
-## Swarm Plot (Multiple Categories)
-
-## Violin Plot (One Category)
-
-## Violin Plot (Two Categories)
-
-## Scatter Plot
-
-## Line Plot
-
-## Bar Plot
-
-## Rug Plot
-
-
-## Data Types/Structures cont.
-
-The next question you should ask is _what am I trying to communicate?_
-
-Am I:
+When visualising data, ask yourself the following questions, then look through galleries to get an idea of what could work for you:
 
 - Making a comparison between groups?
 - Trying to show conditional relationships between variables?
@@ -160,6 +148,7 @@ The figure is essentially the "canvas" upon which all visuals are made. Some par
 ## Axes (Subplots)
 
 Subplots are the frames within which individual visuals are contained.
+
 - If there is only one plot in the figure, then there will only be one subplot.
 - If you want to put multiple plots, or "panel" your plots, then you will make use of multiple subplots.
 
@@ -179,10 +168,14 @@ Most drawing methods are called at the subplot level:
 - Draw objects accordingly to the relevant subplot
     - If the function is a `matplotlib` function, you should call it as a method of the relevant subplot.
     - If the function is a `seaborn` function, and there is more than one subplot, then you should pass the relevant subplot as a parameter to the function.
-- Take a large number of customisable parameters, such as:
-    - Color
-    - Transparency
-    - Line/dot style
+
+## Customisable Aspects
+
+Graphical objects take a large number of customisable parameters, such as:
+
+- Color
+- Transparency
+- Line/dot style
 
 ## X and Y Axis
 
@@ -201,6 +194,11 @@ Subplots have `xaxis` and `yaxis` methods. Call these to customise the following
 
 ## Figure
 
+```{python}
+import matplotlib.pyplot as plt
+f = plt.figure(figsize=(15, 8))
+```
+
 This does not create any visible objects, but it lays down the canvas that other things will go onto.
 
 Note:
@@ -209,10 +207,6 @@ Note:
 - The output of `plt.figure` has been assigned to a variable, `f`. This will be our means of accessing the figure and its methods.
 - The parameter `figsize=(15, 8)` has been passed to `plt.figure`. This tells `matplotlib` to create a canvas that is 1500x800 pixels.
 
-```{python}
-import matplotlib.pyplot as plt
-f = plt.figure(figsize=(15, 8))
-```
 
 ## Axes (One Subplot)
 
@@ -267,4 +261,82 @@ ax.plot(np.linspace(0, 10, 100), np.linspace(0, 5, 100), color='r')
 
 ![Line Plot](figures/lecture_line1.png)
 
-## Graphical Functions (Scatter + Line)
+## Combining Graphical Functions (Scatter + Line)
+
+```{python}
+f, ax = plt.subplots(1, 1, figsize=(8, 4))
+ax.scatter(data['x2'], data['x1'], color='r', s=3)
+ax.plot(np.linspace(-10, 20, 150), np.linspace(-3.5, 4, 150)**2)
+ax.axhline(0, color='k', alpha=0.5, ls="--")
+ax.axvline(0, color='k', alpha=0.5, ls="--")
+```
+
+![Line and Scatter Plot](figures/lecture_linescatter1.png)
+
+## Adding Axis Labels
+
+```{python}
+[...]
+ax.xaxis.set_label_text("X-Axis Label", color='r')
+ax.yaxis.set_label_text("Y-Axis Label", color='r')
+```
+
+![Custom Axis Labels](figures/lecture_linescatter2.png)
+
+## Customising Tick Locations (Manual)
+
+```{python}
+[...]
+ax.xaxis.set_ticks(range(-10, 40, 10))
+ax.yaxis.set_ticks(range(-4, 25, 2))
+```
+
+![Manually Adjusted Ticks](figures/lecture_linescatter3.png)
+
+## Customising Tick Locations (Automatic)
+
+```{python}
+ax.xaxis.set_major_locator(matplotlib.ticker.MultipleLocator(base=3))
+ax.yaxis.set_major_locator(matplotlib.ticker.MultipleLocator(base=2))
+```
+
+![Manually Adjusted Ticks](figures/lecture_linescatter4.png)
+
+## Customising Tick Labels/Orientation
+
+```{python}
+f, ax = plt.subplots(1, 1, figsize=(8, 4))
+sns.boxenplot(bes_df['region'], bes_df['Age'], ax=ax)
+ax.xaxis.set_ticklabels(ax.xaxis.get_ticklabels(), rotation=30)
+```
+![Rotated Tick Labels](figures/lecture_rotated_labels1.png)
+
+# Gallery
+
+## Histogram (One Category)
+
+![](figures/lecture_hist1.png)
+
+## Histogram (Two Categories)
+
+![](figures/lecture_hist2.png)
+
+## Box and Whisker Plot
+
+![](figures/lecture_box1.png)
+
+## Swarm Plot (One Category)
+
+![](figures/lecture_swarm1.png)
+
+## Swarm Plot (Multiple Categories)
+
+![](figures/lecture_swarm2.png)
+
+## Violin Plot (One Category)
+
+![](figures/lecture_violin1.png)
+
+## Heatmap
+
+![](figures/lecture_heatmap1.png)
