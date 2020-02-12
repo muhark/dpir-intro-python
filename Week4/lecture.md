@@ -31,8 +31,7 @@ There's more to data visualisation than I could possibly cover in 90 minutes, so
 
 ## Motivating Example
 
-
-<table border="1" class="dataframe">\n  <thead>\n    <tr style="text-align: right;">\n      <th></th>\n      <th>x1</th>\n      <th>x2</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>count</th>\n      <td>300.000000</td>\n      <td>300.000000</td>\n    </tr>\n    <tr>\n      <th>mean</th>\n      <td>4.048335</td>\n      <td>4.066768</td>\n    </tr>\n    <tr>\n      <th>std</th>\n      <td>4.145384</td>\n      <td>3.908675</td>\n    </tr>\n    <tr>\n      <th>min</th>\n      <td>-2.304990</td>\n      <td>-6.892820</td>\n    </tr>\n    <tr>\n      <th>25%</th>\n      <td>0.102002</td>\n      <td>1.528010</td>\n    </tr>\n    <tr>\n      <th>50%</th>\n      <td>3.389367</td>\n      <td>4.125494</td>\n    </tr>\n    <tr>\n      <th>75%</th>\n      <td>8.039512</td>\n      <td>6.871554</td>\n    </tr>\n    <tr>\n      <th>max</th>\n      <td>11.230459</td>\n      <td>16.889281</td>\n    </tr>\n  </tbody>\n</table>
+<!-- <table border="1" class="dataframe">\n  <thead>\n    <tr style="text-align: right;">\n      <th></th>\n      <th>x1</th>\n      <th>x2</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>count</th>\n      <td>300.000000</td>\n      <td>300.000000</td>\n    </tr>\n    <tr>\n      <th>mean</th>\n      <td>4.048335</td>\n      <td>4.066768</td>\n    </tr>\n    <tr>\n      <th>std</th>\n      <td>4.145384</td>\n      <td>3.908675</td>\n    </tr>\n    <tr>\n      <th>min</th>\n      <td>-2.304990</td>\n      <td>-6.892820</td>\n    </tr>\n    <tr>\n      <th>25%</th>\n      <td>0.102002</td>\n      <td>1.528010</td>\n    </tr>\n    <tr>\n      <th>50%</th>\n      <td>3.389367</td>\n      <td>4.125494</td>\n    </tr>\n    <tr>\n      <th>75%</th>\n      <td>8.039512</td>\n      <td>6.871554</td>\n    </tr>\n    <tr>\n      <th>max</th>\n      <td>11.230459</td>\n      <td>16.889281</td>\n    </tr>\n  </tbody>\n</table> -->
 
 ## Motivating Example
 
@@ -71,10 +70,10 @@ Visuals for one-dimensional data tend to be concerned with _distributions_; i.e.
 
 Useful plots include:
 
-- Histogram
-- Box (and whiskers) plot
-- Swarm plot
-- Violin plot
+- [Histogram](#histogram-one-category)
+- [Box (and whiskers) plot](#box-and-whisker-plot)
+- [Swarm plot](#swarm-plot-multiple-categories)
+- [Violin plot](#violin-plot-one-category)
 
 ## Two-Dimensions: Relationships
 
@@ -88,13 +87,15 @@ In addition to all of the aforementioned plots, some examples of the latter incl
 - Scatter plot
 - Line plot
 - Bar plot
-- Rug plot
 
 ## Three-Dimensions and Higher: Levels
 
-- While it is possible to draw plots that have a third, _z_ axis, I hate how they look.
-- If you are trying to show data in three or more dimensions, I suggest that you use a _heatmap_.
-- More generally, you can use _colour_ or _shape_ as a means to distinguish on a third dimension (or higher).
+- While it is possible to draw plots that have a third, _z_ axis, to show depth on a screen, I personally do not think it is very readable.
+- There are other ways to show variation in a third dimension:
+    - Panelling for an ordered or unordered categorical _z_.
+    - Color for an ordered, unordered, discrete or continuous _z_. Especially [heatmaps](#heatmap).
+    - Shapes for unordered, discrete _z_.
+    - Size, thickness and transparency for continuous _z_.
 
 ## Take-Away
 

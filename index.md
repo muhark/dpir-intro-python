@@ -24,7 +24,7 @@ Please be aware, lectures will be updated continuously, and may contain errors.
 1. [Introduction to Python and the Development Environment](/dpir-intro-python/Week1/lecture.html)
 2. [Data Structures and `pandas` I](/dpir-intro-python/Week2/lecture.html)
 3. [Data Structures and `pandas` II](/dpir-intro-python/Week3/lecture.html)
-4. [Data Visualisation](/dpir-intro-python/Week3/lecture.html)
+4. [Data Visualisation](/dpir-intro-python/Week4/lecture.html)
 5. ~~[Machine Learning with `scikit-learn` I]()~~
 6. ~~[Machine Learning with `scikit-learn` II]()~~
 7. ~~[Mining the Web]()~~
@@ -37,8 +37,8 @@ Please be aware, lectures will be updated continuously, and may contain errors.
 | ---- | ----------------------------------------------- | ------------------------------------------- | --------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | --------------------------------------------------- |
 | 1    | [slides](/dpir-intro-python/Week1/lecture.html) | [pdf](/dpir-intro-python/Week1/lecture.pdf) | [examples](/dpir-intro-python/Week1/examples.ipynb) | [exercises](/dpir-intro-python/Week1/exercises.ipynb) | [solutions](/dpir-intro-python/Week1/solutions.ipynb) | None                                                |
 | 2    | [slides](/dpir-intro-python/Week2/lecture.html) | [pdf](/dpir-intro-python/Week2/lecture.pdf) | [examples](/dpir-intro-python/Week2/examples.ipynb) | [exercises](/dpir-intro-python/Week2/exercises.ipynb) | [solutions](/dpir-intro-python/Week2/solutions.ipynb) | [BES](/dpir-intro-python/Week2/data/data_week2.zip) |
-| 3    | [slides](/dpir-intro-python/Week3/lecture.html)         | [pdf](/dpir-intro-python/Week3/lecture.pdf)         | [examples](/dpir-intro-python/Week3/examples.ipynb)         | [exercises](/dpir-intro-python/Week3/exercises.ipynb)         | [solutions](/dpir-intro-python/Week3/solutions.ipynb)         |                                                     |
-| 4    | [slides](/dpir-intro-python/Week4/lecture.html) | [pdf](/dpir-intro-python/Week4/lecture.pdf) | [examples](/dpir-intro-python/Week4/examples.ipynb) | [exercises](/dpir-intro-python/Week4/exercises.ipynb) | [solutions](/dpir-intro-python/Week4/solutions.ipynb) |
+| 3    | [slides](/dpir-intro-python/Week3/lecture.html) | [pdf](/dpir-intro-python/Week3/lecture.pdf) | [examples](/dpir-intro-python/Week3/examples.ipynb) | [exercises](/dpir-intro-python/Week3/exercises.ipynb) | [solutions](/dpir-intro-python/Week3/solutions.ipynb) |                                                     |
+| 4    | [slides](/dpir-intro-python/Week4/lecture.html) | ~~[pdf](/dpir-intro-python)~~               | [examples](/dpir-intro-python/Week4/examples.ipynb) | [exercises](/dpir-intro-python/Week4/exercises.ipynb) | [solutions](/dpir-intro-python/Week4/solutions.ipynb) |                                                     |
 
 
 <!--Replaceable with regex s\/dpir-intro-python/(Week[2-3])/([a-z]*)\.([a-z]*)//dpir-intro-python/(Week[2-3])/([a-z]*)\.([a-z]*)\g-->
