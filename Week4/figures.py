@@ -170,3 +170,6 @@ f, ax=plt.subplots(1, 1, figsize=(15, 8))
 sns.heatmap(pd.crosstab(bes_df['y01'], bes_df['region']), cmap="RdBu_r")
 f.savefig("figures/lecture_heatmap1.png", bbox_inches="tight")
 # This is an issue with this particular version of matplotlib
+
+# Not implented in beamer?
+data.describe().to_latex("latex_table.tex")
