@@ -72,7 +72,7 @@ By the end of this week, students should have a sufficient grounding in handling
     - Namespaces
 - Apply:
 - Groupby-Apply:
-    - Vectorization and performancea
+    - Vectorization and performance
 - Append, concat and merge
     - Performance, accessibility over indexed data
 -

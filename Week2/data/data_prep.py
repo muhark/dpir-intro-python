@@ -20,8 +20,9 @@ subset = cols[0:1]+cols[337:338]+cols[340:346]+cols[355:356]+['Age'] + \
 
 # Fixing data for Feather conversion
 
-df.loc[:, 'Age'] = df['Age'].replace({"Refused":np.nan}).astype(np.float)
-df.loc[:, 'q25_cses'] = df['q25_cses'].replace({'Not stated':np.nan}).astype(np.float)
+df.loc[:, 'Age'] = df['Age'].replace({"Refused": np.nan}).astype(np.float)
+df.loc[:, 'q25_cses'] = df['q25_cses'].replace(
+    {'Not stated': np.nan}).astype(np.float)
 
 
 # Creating a new dataframe with just these columns.
