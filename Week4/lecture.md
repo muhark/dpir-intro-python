@@ -2,7 +2,7 @@
 title: Introduction to Python for Social Science
 subtitle: Lecture 4 - Data Visualization
 author: Musashi Harukawa, DPIR
-date: 3rd Week Hilary 2020
+date: 4th Week Hilary 2020
 ---
 
 # Overview
