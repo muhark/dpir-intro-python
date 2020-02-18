@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Musashi Harukawa, DPIR">
+  <title>Introduction to Python for Social Science</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../reveal.js/css/theme/../../../dpir-intro-theme.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal.js/css/print/pdf.css' : '../reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="../reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Introduction to Python for Social Science</h1>
+  <p class="subtitle">Lecture 5 - Machine Learning I</p>
+  <p class="author">Musashi Harukawa, DPIR</p>
+  <p class="date">5th Week Hilary 2020</p>
+</section>
+
+<section><section id="overview" class="title-slide slide level1"><h1>Overview</h1></section><section id="last-week" class="slide level2">
+<h2>Last Week</h2>
+<ul>
+<li class="fragment">Data Visualisation</li>
+</ul>
+</section><section id="this-week" class="slide level2">
+<h2>This Week</h2>
+<p>For the next two weeks, we will be discussing <em>machine learning</em> and an accompanying library, <code>scikit-learn</code>.</p>
+<p>This week, we focus on <em>unsupervised learning</em>.</p>
+</section></section>
+<section><section id="background" class="title-slide slide level1"><h1>Background</h1></section><section id="what-is-machine-learning" class="slide level2">
+<h2>What is Machine Learning?</h2>
+<p><em>Machine learning</em> (ML) could be described as a field of study located between algorithms, statistics, econometrics, and numerical computation. In general, machine learning methods are concerned with algorithmic solutions to numerical and data-based problems, and their efficient implementation in modern computing.</p>
+</section><section id="some-ml-terminology" class="slide level2">
+<h2>Some ML Terminology</h2>
+<p>ML has its own terminology, separate to the fields of econometrics, statistics and computer science. Here are some key terms:</p>
+<ul>
+<li class="fragment"><em>Features</em>: Input variables, the column names of the input data, or <span class="math inline">\(X\)</span>.</li>
+<li class="fragment"><em>Labels</em>: Output variable, the column you are trying to predict, or <span class="math inline">\(Y\)</span>.</li>
+<li class="fragment"><em>Supervised Learning</em>: Methods where the within-sample labels are known.</li>
+<li class="fragment"><em>Unsupervised Learning</em>: Methods where the within-sample labels are not known.</li>
+</ul>
+</section><section id="unsupervised-learning-only-x-no-y" class="slide level2">
+<h2>Unsupervised Learning: Only X, no Y</h2>
+<p>In other words, <em>unsupervised learning</em> methods start with only <span class="math inline">\(X\)</span>, and discover some latent pattern within <span class="math inline">\(X\)</span>. They are therefore primarily <em>descriptive</em>, as they do not tell us the relationship between <span class="math inline">\(X\)</span> and some known quantity <span class="math inline">\(y\)</span>.</p>
+<p>In this course, we look at two general cases of unsupervised learning:</p>
+<ul>
+<li class="fragment">Clustering</li>
+<li class="fragment">Dimensionality Reduction</li>
+</ul>
+</section></section>
+<section><section id="clustering" class="title-slide slide level1"><h1>Clustering</h1></section><section id="what-is-clustering" class="slide level2">
+<h2>What is Clustering?</h2>
+<p>Clustering is the process of dividing observations in data into <em>groups</em>.</p>
+<p>Moreover, it is understood that:</p>
+<ul>
+<li class="fragment">Members of the same cluster are similar to each other, and</li>
+<li class="fragment">Members in different clusters are different from each other.</li>
+</ul>
+<p class="fragment">
+<strong>Many algorithms differ on how to define this <em>metric of similarity</em>.</strong>
+</p>
+</section><section id="why-cluster" class="slide level2">
+<h2>Why Cluster?</h2>
+<p>There are two main situations in which social science researchers may want to use clustering algorithms:</p>
+<ul>
+<li class="fragment"><em>Discovery</em>: The researcher has an <em>a priori</em> expectation that particular “natural” groups exist within the data, and wants to group their data accordingly.
+<ul>
+<li class="fragment">Measuring intra-party unity/coherence using voting data.</li>
+<li class="fragment">Recognising conflict hotspots from geospatial data.</li>
+</ul></li>
+<li class="fragment"><em>Exploration</em>: The researcher has no expectation of what groups may exist, but is seeking to better understand the information contained in their data.
+<ul>
+<li class="fragment">Exploring voter surveys to discover “types”.</li>
+</ul></li>
+</ul>
+</section><section id="in-notation" class="slide level2">
+<h2>In Notation</h2>
+<p>Given:</p>
+<ul>
+<li class="fragment"><span class="math inline">\(j\)</span>-dimensional feature space</li>
+<li class="fragment">Data matrix <span class="math inline">\(X_{ij}\)</span> of <span class="math inline">\(i\)</span> observations of <span class="math inline">\(j\)</span> features</li>
+</ul>
+<p>Clustering algorithms:</p>
+<ul>
+<li class="fragment">Assign each observation <span class="math inline">\(x_i\)</span> to a cluster <span class="math inline">\(k \in K\)</span></li>
+<li class="fragment">Where <span class="math inline">\(K \le j\)</span></li>
+</ul>
+</section><section id="parameters" class="slide level2">
+<h2>Parameters</h2>
+<p>Parameters are values you pass to the clustering algorithm that determine its behaviour.</p>
+<p>Some clustering algorithms require you to specify <span class="math inline">\(K\)</span>, the number of clusters you want returned, whereas others require you to specify a different metric such as minimum number of observations per cluster.</p>
+<p>As far as I am aware, <em>there is no completely non-parametric clustering algorithm</em>, as even those not requiring any user input (e.g. Gaussian Mixture Models) make parametric assumptions about the distribution of the clusters within the data.</p>
+</section><section id="algorithms" class="slide level2">
+<h2>Algorithms</h2>
+<p>There are many algorithms for clustering. We focus on the first one in detail:</p>
+<ul>
+<li class="fragment"><code>k-means</code> Clustering</li>
+<li class="fragment">Agglomerative (Hierarchical) Clustering</li>
+<li class="fragment">Density-based Clustering (DBSCAN)</li>
+<li class="fragment">Affinity Propogation</li>
+</ul>
+</section><section id="k-means" class="slide level2">
+<h2><code>k-means</code></h2>
+<p>The k-means algorithm separates <span class="math inline">\(X\)</span> into a specified number of <span class="math inline">\(k\)</span> groups with equal variance, minimizing the within-cluster-sum-of-squares (called <em>inertia</em>).</p>
+<p class="fragment">
+It has the following advantages:
+</p>
+<ul>
+<li class="fragment">Straightforward algorithm (to be explained) with intuitive clusterings.</li>
+<li class="fragment">Highly scalable: works well with large N.</li>
+</ul>
+<p class="fragment">
+And the following disadvantages:
+</p>
+<ul>
+<li class="fragment">The less “circular” the clusters are, the less well it performs; elongated or irregularly-shaped clusters are not usually found.</li>
+<li class="fragment">High-dimensional or mixed-type data often require regularisation for efficient and effective functioning.</li>
+</ul>
+</section><section id="k-means-the-problem" class="slide level2">
+<h2><code>k-means</code>: The Problem</h2>
+<p>Given <span class="math inline">\(N\)</span> samples <span class="math inline">\(X\)</span>, find <span class="math inline">\(K\)</span> disjoint clusters <span class="math inline">\(C\)</span>, such that the sum of squared distances of each point <span class="math inline">\(x_{i}\)</span> within cluster <span class="math inline">\(k\)</span> to the mean <span class="math inline">\(\mu_k\)</span> is minimised.</p>
+<p>In other words:</p>
+<p><span class="math display">\[
+\sum_{i=0}^{n}\min_{\mu_k \in C}((x_i - \mu_k)^2)
+\]</span></p>
+</section><section id="section" class="slide level2">
+<h2></h2>
+<p>Another way to think of this problem:</p>
+<p>Given some data, find the location for <span class="math inline">\(k\)</span> centroids whereby the distance from each observation to its closest centroid is minimised.</p>
+</section><section id="k-means-the-algorithm" class="slide level2">
+<h2><code>k-means</code>: The Algorithm</h2>
+<p>The algorithm to solve this problem (known as Lloyd’s Algorithm) has three steps. The first step is done once, and then steps 2 and 3 are repeated:</p>
+<ol type="1">
+<li class="fragment">Choose <span class="math inline">\(k\)</span> points <span class="math inline">\(\mu_k\)</span>, called “centroids”.</li>
+<li class="fragment">Assign each point <span class="math inline">\(x_i \in X_{ij}\)</span> to a cluster by finding the nearest centroid.</li>
+<li class="fragment">Re-calculate the centroids by taking the mean of each cluster.</li>
+</ol>
+<p class="fragment">
+At step 3, the distance each centroid has moved is calculated, and once this distance goes below some threshold for all clusters, the algorithm is understood to have converged.
+</p>
+</section><section id="section-1" class="slide level2">
+<h2></h2>
+<p>Some variations and issues:</p>
+<ul>
+<li class="fragment"><em>Multimodality</em>: For a given dataset, there are many possible clusterings that can result in the centroids no longer moving significantly at each step.
+<ul>
+<li class="fragment">The cluster assignments are therefore a result of the random initialisation, and they themselves random.</li>
+</ul></li>
+<li class="fragment"><code>k-means++</code>: This variant of the algorithm, implemented by default in <code>scikit-learn</code>, chooses random starting centroids that are far from each other, resulting in more efficient computation (faster convergence) and more consistent clusterings.</li>
+</ul>
+</section><section id="other-clustering-algorithms" class="slide level2">
+<h2>Other Clustering Algorithms</h2>
+<ul>
+<li class="fragment"><code>k-means</code> is an instance of a Euclidean centroid-based algorithm. We can cluster based on different distance metrics, or take a different approach to assigning and separating values into clusters.
+<ul>
+<li class="fragment">Other distance metrics include cosine distance, L1 (Cityblock) distance, or graph distance.</li>
+<li class="fragment">Other algorithms for separation/assignment include hierarchical splitting of the sample.</li>
+</ul></li>
+</ul>
+</section></section>
+<section><section id="dimensionality-reduction" class="title-slide slide level1"><h1>Dimensionality Reduction</h1></section><section id="what-is-dimensionality-reduction" class="slide level2">
+<h2>What is Dimensionality Reduction?</h2>
+<p>Whereas clustering is used to find “groups” within the data, dimensionality reduction methods aim to provide a lower-dimensional representation of the same data.</p>
+<p>This “reduced form” of the data can either contain a subset, or mix, of the original variables.</p>
+<p>Dimensionality reduction is almost always <em>lossy</em>, that is, the reduced representation of the data contains less information than original dataset.</p>
+</section><section id="use-cases" class="slide level2">
+<h2>Use Cases</h2>
+<ul>
+<li class="fragment"><em>Feature Selection</em>: The researcher may want to account for/rule out a great number of variables and interactions in their model, and uses a method such as LASSO/EN to show which variables “drop out” of their model.</li>
+<li class="fragment"><em>Latent Variable Discovery</em>: The researcher may have a large, especially unstructured dataset without strong priors over the individual variables, and wants to find underlying dimensions that drive the majority of variation in their dataset.</li>
+<li class="fragment"><em>Computational Efficiency</em>: The dataset is too large to be feasibly analysed with existing resources, so a reduced representation of the relevant information is obtained for use in analysis.</li>
+<li class="fragment"><em>Visualisation</em>: High dimensional data cannot be easily visualised; some DR methods are designed to account for exactly this.</li>
+</ul>
+</section><section id="in-notation-1" class="slide level2">
+<h2>In Notation</h2>
+<p>Given:</p>
+<ul>
+<li class="fragment"><span class="math inline">\(j\)</span>-dimensional feature space</li>
+<li class="fragment">Data matrix <span class="math inline">\(X_{ij}\)</span> of <span class="math inline">\(i\)</span> observations of <span class="math inline">\(j\)</span> features</li>
+</ul>
+<p>Dimensionality Reduction Methods:</p>
+<ul>
+<li class="fragment">Provide a transformation of <span class="math inline">\(X_{ij} \rightarrow X&#39;_{ik}\)</span>, where <span class="math inline">\(k \le j\)</span>.
+<ul>
+<li class="fragment"><em>Feature Selection</em>: <span class="math inline">\(k \subset j\)</span></li>
+<li class="fragment"><em>Latent Variable Discovery</em>: <span class="math inline">\(k \not \subset j\)</span></li>
+</ul></li>
+</ul>
+</section><section id="a-short-list-of-algorithms" class="slide level2">
+<h2>A Short List of Algorithms</h2>
+<ul>
+<li class="fragment">Principal Components Analysis (PCA)</li>
+<li class="fragment"><a href="https://pair-code.github.io/understanding-umap/">t-SNE/UMAP</a></li>
+<li class="fragment">Topic Modelling: Latent Dirichlet Allocations, Structural Topic Model, etc.</li>
+</ul>
+</section><section id="principal-components-analysis" class="slide level2">
+<h2>Principal Components Analysis</h2>
+<p>Given an <span class="math inline">\(i\)</span>-length dataset of <span class="math inline">\(j\)</span> variables, PCA returns a <span class="math inline">\(i \times K\)</span> transformed matrix of <span class="math inline">\(K\)</span> principal components indexed by <span class="math inline">\(i\)</span>.</p>
+<p>Each principal component <span class="math inline">\(k = \{1, 2, ..., K \le j\}\)</span> are orthogonal vectors that successively capture the most variance within <span class="math inline">\(X_{ij}\)</span>.</p>
+</section><section id="section-2" class="slide level2">
+<h2></h2>
+<p>Thus:</p>
+<ul>
+<li class="fragment">The first principal component (<span class="math inline">\(k=1\)</span>) maps the observations <span class="math inline">\(i = \{1, ..., N\}\)</span> onto the axis that contains the greatest degree of variance in <span class="math inline">\(X_{ij}\)</span>.</li>
+<li class="fragment">The second principal component (<span class="math inline">\(k=2\)</span>) maps the observations onto an axis that is perpendicular to the first principal component and captures the highest degree of remaining variance, once the axis captured by the first PC has been accounted for.</li>
+<li class="fragment">And so on for the third, fourth, etc.</li>
+</ul>
+</section><section id="interpreting-principal-components" class="slide level2">
+<h2>Interpreting Principal Components</h2>
+<p>Interpreting principal components can be complicated when the researcher has strong priors over the link betweeen the variables in the original dataset and the outcome (if there is one).</p>
+<p>As mentioned, the first principal component contains the location observations along the latent dimension along which observations in <span class="math inline">\(X_{ij}\)</span> vary the most. In a UK survey dataset, we could imagine that this dimension might be an aggregate of geography and class (or maybe not!)</p>
+</section><section id="section-3" class="slide level2">
+<h2></h2>
+<p>In order to interpret principal components, one can look at the feature-component weights in the <span class="math inline">\(j \times k\)</span> matrix, which shows the “prevalence” of each of the individual variables of <span class="math inline">\(X_{ij}\)</span> in each principal component <span class="math inline">\(k\)</span>.</p>
+</section><section id="combining-pca-and-k-means" class="slide level2">
+<h2>Combining PCA and <code>k-means</code></h2>
+<p>PCA and <code>k-means</code> can be used in conjunction; the data is reduced using PCA, and then clustered with <code>k-means</code>. There are a number of reasons/advantages to this:</p>
+<ul>
+<li class="fragment"><em>Visualisability</em>: Plotting the results of <code>k-means</code> in high-dimensional data is difficult.</li>
+<li class="fragment"><em>Normalization</em>: Given that principal components are orthogonal to the constituent variables, they can act as a way to “normalize” the variance between variables. Thus clustering will be done over a space in which relative distances between observations along variables will be accounted for similarly.</li>
+</ul>
+</section></section>
+<section><section id="implementation-scikit-learn" class="title-slide slide level1"><h1>Implementation: <code>scikit-learn</code></h1></section><section id="the-steps-to-machine-learning" class="slide level2">
+<h2>The Steps to Machine Learning</h2>
+<p>Once you have your data, machine learning consists of just three steps!</p>
+<ol type="1">
+<li class="fragment">Data Pre-Processing</li>
+<li class="fragment">Model Fit</li>
+<li class="fragment">Model Evaluation</li>
+</ol>
+</section><section id="pre-processing" class="slide level2">
+<h2>Pre-Processing</h2>
+<p><code>scikit-learn</code> models take <code>numpy</code> arrays as inputs. These arrays:</p>
+<ul>
+<li class="fragment">Must be numeric</li>
+<li class="fragment">Must not contain NA values</li>
+</ul>
+</section><section id="one-hot-encoding" class="slide level2">
+<h2>One-Hot Encoding</h2>
+<p>In order to convert all categorical variables into numeric ones, we do what is sometimes known as a one-hot encoding. This is also known as using dummy variables.</p>
+<p>Given a column containing a categorical variable with <span class="math inline">\(n\)</span> possible values, we can represent it as <span class="math inline">\(n\)</span> columns, each corresponding to one of the <span class="math inline">\(n\)</span> possible values. Each row, then, contains a single 1 for the cell corresponding to the value in the original series, and 0 for the rest.</p>
+</section><section id="one-hot-encoding-1" class="slide level2">
+<h2>One-Hot Encoding</h2>
+<p><span class="math display">\[
+\begin{bmatrix}
+    \mathbf{animal} \\
+    dog \\
+    cat \\
+    fox
+\end{bmatrix} \rightarrow
+\begin{bmatrix}
+    \mathbf{cat} &amp; \mathbf{dog} &amp; \mathbf{fox} \\
+    0 &amp; 1 &amp; 0 \\
+    1 &amp; 0 &amp; 0 \\
+    0 &amp; 0 &amp; 1
+\end{bmatrix}
+\]</span></p>
+</section><section id="accounting-for-nas" class="slide level2">
+<h2>Accounting for NAs</h2>
+<p>Here are three categories for dealing with NA values:</p>
+<ol type="1">
+<li class="fragment">Removal (<code>pd.DataFrame.dropna()</code>)</li>
+<li class="fragment">Treating NA in a categorical response as its own answer</li>
+<li class="fragment">Imputation</li>
+</ol>
+</section><section id="conversion-from-pandas-to-numpy" class="slide level2">
+<h2>Conversion from <code>pandas</code> to <code>numpy</code></h2>
+<p><code>pandas</code> dataframes have a convenient method for converting to a numpy ndarray:</p>
+<p><code>pd.DataFrame.values</code></p>
+</section><section id="model-fit" class="slide level2">
+<h2>Model Fit</h2>
+<p>Most <code>scikit-learn</code> models follow the same pattern:</p>
+<ol type="1">
+<li class="fragment">Import the model</li>
+<li class="fragment">Instantiate the model with parameters</li>
+<li class="fragment">Fit the model to data</li>
+</ol>
+<p class="fragment">
+Steps 2 and 3 can sometimes be combined
+</p>
+</section><section id="model-output" class="slide level2">
+<h2>Model Output</h2>
+<p>Once you have a fitted model object, the method for accessing the output depends on the model in question.</p>
+<ul>
+<li class="fragment">For <code>k-means</code>, it is the <code>.labels_</code> method.</li>
+<li class="fragment">For <code>PCA</code>, you need to apply the <code>fit_transform(X)</code> method to get a reduced version of the input data.</li>
+</ul>
+</section><section id="model-evaluation" class="slide level2">
+<h2>Model Evaluation</h2>
+<p><em>For next week!</em></p>
+</section><section id="readings" class="slide level2">
+<h2>Readings</h2>
+<ul>
+<li class="fragment">Clustering in General:
+<ul>
+<li class="fragment"><a href="https://scikit-learn.org/stable/modules/clustering.html"><code>scikit-learn</code> Documentation</a></li>
+<li class="fragment"><a href="https://www.cc.gatech.edu/~isbell/reading/papers/berkhin02survey.pdf">Survey of Techniques</a></li>
+</ul></li>
+<li class="fragment">Dimensionality Reduction:
+<ul>
+<li class="fragment"><a href="http://setosa.io/ev/principal-component-analysis/">PCA Visually Explained</a></li>
+<li class="fragment"><a href="https://pair-code.github.io/understanding-umap/">UMAP Visually Explained</a></li>
+</ul></li>
+</ul>
+</section></section>
+    </div>
+  </div>
+
+  <script src="../reveal.js/lib/js/head.min.js"></script>
+  <script src="../reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: '../reveal.js/plugin/math/math.js', async: true },
+          { src: '../reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
