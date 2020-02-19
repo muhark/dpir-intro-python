@@ -159,7 +159,6 @@ Dimensionality reduction is almost always _lossy_, that is, the reduced represen
 - _Feature Selection_: The researcher may want to account for/rule out a great number of variables and interactions in their model, and uses a method such as LASSO/EN to show which variables "drop out" of their model.
 - _Latent Variable Discovery_: The researcher may have a large, especially unstructured dataset without strong priors over the individual variables, and wants to find underlying dimensions that drive the majority of variation in their dataset.
 - _Computational Efficiency_: The dataset is too large to be feasibly analysed with existing resources, so a reduced representation of the relevant information is obtained for use in analysis.
-- _Visualisation_: High dimensional data cannot be easily visualised; some DR methods are designed to account for exactly this.
 
 ## In Notation
 
@@ -208,7 +207,8 @@ In order to interpret principal components, one can look at the feature-componen
 
 PCA and `k-means` can be used in conjunction; the data is reduced using PCA, and then clustered with `k-means`. There are a number of reasons/advantages to this:
 
-- _Visualisability_: Plotting the results of `k-means` in high-dimensional data is difficult.
+- _Visualisability_: Plotting the results of `k-means` in high-dimensional data is difficult. Note that `t-SNE` and `UMAP` are alternative, and arguably better methods for this.
+- _Clustering over Latent Variables_: Where we can interpret the principal components, clustering over them means that we are clustering over normalised axes that contribute variance to the data.
 
 ## A Short Warning
 
@@ -277,7 +277,7 @@ Here are three categories for dealing with NA values:
 
 ## Normalization
 
-Normalizing data consists of subtracting the mean and dividing by the variance. This ensures that all variable are on the same "scale":
+Normalizing data consists of subtracting the mean and dividing by the variance. This ensures that all features are on the same "scale":
 
 $$
 f(x) = \frac{(x-\mu_x)}{s_x}
