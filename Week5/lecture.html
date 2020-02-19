@@ -75,7 +75,7 @@
 <p>Clustering is the process of dividing observations in data into <em>groups</em>.</p>
 <p>Moreover, it is understood that:</p>
 <ul>
-<li class="fragment">Members of the same cluster are similar to each other, and</li>
+<li class="fragment">Members of the same cluster are similar to each other.</li>
 <li class="fragment">Members in different clusters are different from each other.</li>
 </ul>
 <p class="fragment">
@@ -109,9 +109,11 @@
 </ul>
 </section><section id="parameters" class="slide level2">
 <h2>Parameters</h2>
-<p>Parameters are values you pass to the clustering algorithm that determine its behaviour.</p>
-<p>Some clustering algorithms require you to specify <span class="math inline">\(K\)</span>, the number of clusters you want returned, whereas others require you to specify a different metric such as minimum number of observations per cluster.</p>
-<p>As far as I am aware, <em>there is no completely non-parametric clustering algorithm</em>, as even those not requiring any user input (e.g. Gaussian Mixture Models) make parametric assumptions about the distribution of the clusters within the data.</p>
+<ul>
+<li class="fragment">Parameters are values you pass to the clustering algorithm that determine its behaviour.</li>
+<li class="fragment">Some clustering algorithms require you to specify <span class="math inline">\(K\)</span>, the number of clusters you want returned, whereas others require you to specify a different metric such as minimum number of observations per cluster.</li>
+<li class="fragment">As far as I am aware, <em>there is no completely non-parametric clustering algorithm</em>, as even those not requiring any user input (e.g. Gaussian Mixture Models) make parametric assumptions about the distribution of the clusters within the data.</li>
+</ul>
 </section><section id="algorithms" class="slide level2">
 <h2>Algorithms</h2>
 <p>There are many algorithms for clustering. We focus on the first one in detail:</p>
@@ -123,7 +125,7 @@
 </ul>
 </section><section id="k-means" class="slide level2">
 <h2><code>k-means</code></h2>
-<p>The k-means algorithm separates <span class="math inline">\(X\)</span> into a specified number of <span class="math inline">\(k\)</span> groups with equal variance, minimizing the within-cluster-sum-of-squares (called <em>inertia</em>).</p>
+<p>The k-means algorithm separates <span class="math inline">\(X\)</span> into a specified number of <span class="math inline">\(K\)</span> groups with equal variance, minimizing the within-cluster-sum-of-squares (called <em>inertia</em>).</p>
 <p class="fragment">
 It has the following advantages:
 </p>
@@ -145,22 +147,21 @@ And the following disadvantages:
 <p><span class="math display">\[
 \sum_{i=0}^{n}\min_{\mu_k \in C}((x_i - \mu_k)^2)
 \]</span></p>
-</section><section id="section" class="slide level2">
-<h2></h2>
-<p>Another way to think of this problem:</p>
-<p>Given some data, find the location for <span class="math inline">\(k\)</span> centroids whereby the distance from each observation to its closest centroid is minimised.</p>
+</section><section id="another-way-to-think-of-this-problem" class="slide level2">
+<h2>Another way to think of this problem:</h2>
+<p>Given some data, find the location for <span class="math inline">\(K\)</span> centroids whereby the distance from each observation to its closest centroid is minimised.</p>
 </section><section id="k-means-the-algorithm" class="slide level2">
 <h2><code>k-means</code>: The Algorithm</h2>
 <p>The algorithm to solve this problem (known as Lloyd’s Algorithm) has three steps. The first step is done once, and then steps 2 and 3 are repeated:</p>
 <ol type="1">
-<li class="fragment">Choose <span class="math inline">\(k\)</span> points <span class="math inline">\(\mu_k\)</span>, called “centroids”.</li>
+<li class="fragment">Choose <span class="math inline">\(K\)</span> points <span class="math inline">\(\mu_{k \in K}\)</span>, called “centroids”.</li>
 <li class="fragment">Assign each point <span class="math inline">\(x_i \in X_{ij}\)</span> to a cluster by finding the nearest centroid.</li>
 <li class="fragment">Re-calculate the centroids by taking the mean of each cluster.</li>
 </ol>
 <p class="fragment">
 At step 3, the distance each centroid has moved is calculated, and once this distance goes below some threshold for all clusters, the algorithm is understood to have converged.
 </p>
-</section><section id="section-1" class="slide level2">
+</section><section id="section" class="slide level2">
 <h2></h2>
 <p>Some variations and issues:</p>
 <ul>
@@ -219,7 +220,7 @@ At step 3, the distance each centroid has moved is calculated, and once this dis
 <h2>Principal Components Analysis</h2>
 <p>Given an <span class="math inline">\(i\)</span>-length dataset of <span class="math inline">\(j\)</span> variables, PCA returns a <span class="math inline">\(i \times K\)</span> transformed matrix of <span class="math inline">\(K\)</span> principal components indexed by <span class="math inline">\(i\)</span>.</p>
 <p>Each principal component <span class="math inline">\(k = \{1, 2, ..., K \le j\}\)</span> are orthogonal vectors that successively capture the most variance within <span class="math inline">\(X_{ij}\)</span>.</p>
-</section><section id="section-2" class="slide level2">
+</section><section id="section-1" class="slide level2">
 <h2></h2>
 <p>Thus:</p>
 <ul>
@@ -231,7 +232,7 @@ At step 3, the distance each centroid has moved is calculated, and once this dis
 <h2>Interpreting Principal Components</h2>
 <p>Interpreting principal components can be complicated when the researcher has strong priors over the link betweeen the variables in the original dataset and the outcome (if there is one).</p>
 <p>As mentioned, the first principal component contains the location observations along the latent dimension along which observations in <span class="math inline">\(X_{ij}\)</span> vary the most. In a UK survey dataset, we could imagine that this dimension might be an aggregate of geography and class (or maybe not!)</p>
-</section><section id="section-3" class="slide level2">
+</section><section id="section-2" class="slide level2">
 <h2></h2>
 <p>In order to interpret principal components, one can look at the feature-component weights in the <span class="math inline">\(j \times k\)</span> matrix, which shows the “prevalence” of each of the individual variables of <span class="math inline">\(X_{ij}\)</span> in each principal component <span class="math inline">\(k\)</span>.</p>
 </section><section id="combining-pca-and-k-means" class="slide level2">
@@ -239,10 +240,25 @@ At step 3, the distance each centroid has moved is calculated, and once this dis
 <p>PCA and <code>k-means</code> can be used in conjunction; the data is reduced using PCA, and then clustered with <code>k-means</code>. There are a number of reasons/advantages to this:</p>
 <ul>
 <li class="fragment"><em>Visualisability</em>: Plotting the results of <code>k-means</code> in high-dimensional data is difficult.</li>
-<li class="fragment"><em>Normalization</em>: Given that principal components are orthogonal to the constituent variables, they can act as a way to “normalize” the variance between variables. Thus clustering will be done over a space in which relative distances between observations along variables will be accounted for similarly.</li>
+</ul>
+</section><section id="a-short-warning" class="slide level2">
+<h2>A Short Warning</h2>
+<p>Finally, a short warning on the appropriate use of unsupervised models for social sciences:</p>
+<ul>
+<li class="fragment">While these models excel at discovering latent patterns within the data, our ability to interpret what those patterns indicate in “real terms” is much weaker.</li>
+<li class="fragment">It is easy to fall into the trap of assigning a label to a pattern, and then letting the label do all of the heavy theoretical lifting.</li>
+<li class="fragment">The best remedy is a clear understanding of how the algorithm works: what kinds of distances does it measure, what do these distances mean, etc.</li>
 </ul>
 </section></section>
-<section><section id="implementation-scikit-learn" class="title-slide slide level1"><h1>Implementation: <code>scikit-learn</code></h1></section><section id="the-steps-to-machine-learning" class="slide level2">
+<section><section id="implementation" class="title-slide slide level1"><h1>Implementation</h1></section><section id="scikit-learn" class="slide level2">
+<h2><code>scikit-learn</code></h2>
+<p><code>scikit-learn</code> is a Python library containing many of machine learning algorithms that you might be interested in using. Its strengths include:</p>
+<ul>
+<li class="fragment"><em>Compatibility</em>: it’s designed to be compatible with many of the standard data science libraries, e.g. <code>numpy</code> and <code>matplotlib</code>.</li>
+<li class="fragment"><em>Consistent Interface</em>: most <code>scikit-learn</code> models use the same syntax, meaning if you learn to use one model, then you learn to use almost all!</li>
+<li class="fragment"><em>Diagnostic and Validation Tools</em>: in addition to algorithms and models, <code>scikit-learn</code> provides a huge array of tools for evaluating your model.</li>
+</ul>
+</section><section id="the-steps-to-machine-learning" class="slide level2">
 <h2>The Steps to Machine Learning</h2>
 <p>Once you have your data, machine learning consists of just three steps!</p>
 <ol type="1">
@@ -256,6 +272,7 @@ At step 3, the distance each centroid has moved is calculated, and once this dis
 <ul>
 <li class="fragment">Must be numeric</li>
 <li class="fragment">Must not contain NA values</li>
+<li class="fragment">Optional: Normalization</li>
 </ul>
 </section><section id="one-hot-encoding" class="slide level2">
 <h2>One-Hot Encoding</h2>
@@ -285,6 +302,12 @@ At step 3, the distance each centroid has moved is calculated, and once this dis
 <li class="fragment">Treating NA in a categorical response as its own answer</li>
 <li class="fragment">Imputation</li>
 </ol>
+</section><section id="normalization" class="slide level2">
+<h2>Normalization</h2>
+<p>Normalizing data consists of subtracting the mean and dividing by the variance. This ensures that all variable are on the same “scale”:</p>
+<p><span class="math display">\[
+f(x) = \frac{(x-\mu_x)}{s_x}
+\]</span></p>
 </section><section id="conversion-from-pandas-to-numpy" class="slide level2">
 <h2>Conversion from <code>pandas</code> to <code>numpy</code></h2>
 <p><code>pandas</code> dataframes have a convenient method for converting to a numpy ndarray:</p>

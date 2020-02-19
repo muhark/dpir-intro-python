@@ -49,7 +49,7 @@ Clustering is the process of dividing observations in data into _groups_.
 
 Moreover, it is understood that:
 
-- Members of the same cluster are similar to each other, and
+- Members of the same cluster are similar to each other.
 - Members in different clusters are different from each other.
 
 <p class="fragment">**Many algorithms differ on how to define this _metric of similarity_.**</p>
@@ -78,11 +78,9 @@ Clustering algorithms:
 
 ## Parameters
 
-Parameters are values you pass to the clustering algorithm that determine its behaviour.
-
-Some clustering algorithms require you to specify $K$, the number of clusters you want returned, whereas others require you to specify a different metric such as minimum number of observations per cluster.
-
-As far as I am aware, _there is no completely non-parametric clustering algorithm_, as even those not requiring any user input (e.g. Gaussian Mixture Models) make parametric assumptions about the distribution of the clusters within the data.
+- Parameters are values you pass to the clustering algorithm that determine its behaviour.
+- Some clustering algorithms require you to specify $K$, the number of clusters you want returned, whereas others require you to specify a different metric such as minimum number of observations per cluster.
+- As far as I am aware, _there is no completely non-parametric clustering algorithm_, as even those not requiring any user input (e.g. Gaussian Mixture Models) make parametric assumptions about the distribution of the clusters within the data.
 
 ## Algorithms
 
@@ -96,7 +94,7 @@ There are many algorithms for clustering. We focus on the first one in detail:
 
 ## `k-means`
 
-The k-means algorithm separates $X$ into a specified number of $k$ groups with equal variance, minimizing the within-cluster-sum-of-squares (called _inertia_).
+The k-means algorithm separates $X$ into a specified number of $K$ groups with equal variance, minimizing the within-cluster-sum-of-squares (called _inertia_).
 
 <p class="fragment">It has the following advantages:</p>
 
@@ -118,17 +116,15 @@ $$
 \sum_{i=0}^{n}\min_{\mu_k \in C}((x_i - \mu_k)^2)
 $$
 
-##
+## Another way to think of this problem:
 
-Another way to think of this problem:
-
-Given some data, find the location for $k$ centroids whereby the distance from each observation to its closest centroid is minimised.
+Given some data, find the location for $K$ centroids whereby the distance from each observation to its closest centroid is minimised.
 
 ## `k-means`: The Algorithm
 
 The algorithm to solve this problem (known as Lloyd's Algorithm) has three steps. The first step is done once, and then steps 2 and 3 are repeated:
 
-1. Choose $k$ points $\mu_k$, called "centroids".
+1. Choose $K$ points $\mu_{k \in K}$, called "centroids".
 2. Assign each point $x_i \in X_{ij}$ to a cluster by finding the nearest centroid.
 3. Re-calculate the centroids by taking the mean of each cluster.
 
@@ -213,9 +209,18 @@ In order to interpret principal components, one can look at the feature-componen
 PCA and `k-means` can be used in conjunction; the data is reduced using PCA, and then clustered with `k-means`. There are a number of reasons/advantages to this:
 
 - _Visualisability_: Plotting the results of `k-means` in high-dimensional data is difficult.
-- _Normalization_: Given that principal components are orthogonal to the constituent variables, they can act as a way to "normalize" the variance between variables. Thus clustering will be done over a space in which relative distances between observations along variables will be accounted for similarly.
 
-# Implementation: `scikit-learn`
+## A Short Warning
+
+Finally, a short warning on the appropriate use of unsupervised models for social sciences:
+
+- While these models excel at discovering latent patterns within the data, our ability to interpret what those patterns indicate in "real terms" is much weaker.
+- It is easy to fall into the trap of assigning a label to a pattern, and then letting the label do all of the heavy theoretical lifting.
+- The best remedy is a clear understanding of how the algorithm works: what kinds of distances does it measure, what do these distances mean, etc.
+
+# Implementation
+
+## `scikit-learn`
 
 `scikit-learn` is a Python library containing many of machine learning algorithms that you might be interested in using. Its strengths include:
 
@@ -237,6 +242,7 @@ Once you have your data, machine learning consists of just three steps!
 
 - Must be numeric
 - Must not contain NA values
+- Optional: Normalization
 
 ## One-Hot Encoding
 
@@ -268,6 +274,14 @@ Here are three categories for dealing with NA values:
 1. Removal (`pd.DataFrame.dropna()`)
 2. Treating NA in a categorical response as its own answer
 3. Imputation
+
+## Normalization
+
+Normalizing data consists of subtracting the mean and dividing by the variance. This ensures that all variable are on the same "scale":
+
+$$
+f(x) = \frac{(x-\mu_x)}{s_x}
+$$
 
 ## Conversion from `pandas` to `numpy`
 
