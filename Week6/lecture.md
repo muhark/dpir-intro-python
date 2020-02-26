@@ -149,6 +149,8 @@ Cross validation is one such of these strategies. It consists of dividing the da
 - There are some obvious shortcomings to dividing the data into a training at test set just once.
 - A slightly more advanced method for train-test splitting is known a k-fold CV, which consists of splitting the training data randomly into $k$ bins, and then iteratively using the $k$th bin as a test set for all bins not $k$.
 
+## Cross Validation Visualised
+
 ![K-Fold Cross Validation](https://scikit-learn.org/stable/_images/grid_search_cross_validation.png)
 
 ## Choosing Parameters
