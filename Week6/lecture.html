@@ -201,10 +201,10 @@ There are multiple aggregate measures of prediction error, but a common one is <
 <h2>k-fold Cross Validation</h2>
 <ul>
 <li class="fragment">There are some obvious shortcomings to dividing the data into a training at test set just once.</li>
-<li class="fragment">A slightly more advanced method for train-test splitting is known a k-fold CV, which consists of splitting the data randomly into <span class="math inline">\(k\)</span> bins, and then iteratively using the <span class="math inline">\(k\)</span>th bin as a test set for all bins not <span class="math inline">\(k\)</span>.</li>
+<li class="fragment">A slightly more advanced method for train-test splitting is known a k-fold CV, which consists of splitting the training data randomly into <span class="math inline">\(k\)</span> bins, and then iteratively using the <span class="math inline">\(k\)</span>th bin as a test set for all bins not <span class="math inline">\(k\)</span>.</li>
 </ul>
 <figure>
-<img data-src="https://upload.wikimedia.org/wikipedia/commons/1/1c/K-fold_cross_validation_EN.jpg" alt="K-Fold Cross Validation" /><figcaption>K-Fold Cross Validation</figcaption>
+<img data-src="https://scikit-learn.org/stable/_images/grid_search_cross_validation.png" alt="K-Fold Cross Validation" /><figcaption>K-Fold Cross Validation</figcaption>
 </figure>
 </section><section id="choosing-parameters" class="slide level2">
 <h2>Choosing Parameters</h2>
@@ -221,7 +221,7 @@ There are multiple aggregate measures of prediction error, but a common one is <
 <ul>
 <li class="fragment">Hyperparameter tuning is the practice of choosing model parameters by maximising an <em>objective function</em>. Some possible objective functions include:
 <ul>
-<li class="fragment"><em>Mean Squared Prediction Error</em>: Combine with train-test splits.</li>
+<li class="fragment"><em>Mean Absolute Prediction Error</em>: Combine with train-test splits.</li>
 <li class="fragment"><em>Goodness-of-Fit</em>: Measures such as R-squared, AIC, etc.</li>
 <li class="fragment"><em>Coherence/Entropy Measures</em>: Most algorithms have a measure of the complexity/information tradeoff, which can be optimised.</li>
 </ul></li>

@@ -147,9 +147,9 @@ Cross validation is one such of these strategies. It consists of dividing the da
 ## k-fold Cross Validation
 
 - There are some obvious shortcomings to dividing the data into a training at test set just once.
-- A slightly more advanced method for train-test splitting is known a k-fold CV, which consists of splitting the data randomly into $k$ bins, and then iteratively using the $k$th bin as a test set for all bins not $k$.
+- A slightly more advanced method for train-test splitting is known a k-fold CV, which consists of splitting the training data randomly into $k$ bins, and then iteratively using the $k$th bin as a test set for all bins not $k$.
 
-![K-Fold Cross Validation](https://upload.wikimedia.org/wikipedia/commons/1/1c/K-fold_cross_validation_EN.jpg)
+![K-Fold Cross Validation](https://scikit-learn.org/stable/_images/grid_search_cross_validation.png)
 
 ## Choosing Parameters
 
@@ -165,7 +165,7 @@ Most, if not all algorithms have some parameters that affect predictions in very
 ## Hyperparameter Tuning
 
 - Hyperparameter tuning is the practice of choosing model parameters by maximising an _objective function_. Some possible objective functions include:
-    - _Mean Squared Prediction Error_: Combine with train-test splits.
+    - _Mean Absolute Prediction Error_: Combine with train-test splits.
     - _Goodness-of-Fit_: Measures such as R-squared, AIC, etc.
     - _Coherence/Entropy Measures_: Most algorithms have a measure of the complexity/information tradeoff, which can be optimised.
 - Hyperparameter tuning is computationally costly, but also easily parallelisable.
