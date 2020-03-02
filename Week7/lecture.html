@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Musashi Harukawa, DPIR">
+  <title>Introduction to Python for Social Science</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../reveal.js/css/theme/../../../dpir-intro-theme.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal.js/css/print/pdf.css' : '../reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="../reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Introduction to Python for Social Science</h1>
+  <p class="subtitle">Lecture 7 - Mining the Web</p>
+  <p class="author">Musashi Harukawa, DPIR</p>
+  <p class="date">7th Week Hilary 2020</p>
+</section>
+
+<section><section id="this-week" class="title-slide slide level1"><h1>This Week</h1></section><section id="mining-the-web" class="slide level2">
+<h2>Mining the Web</h2>
+<ul>
+<li class="fragment">This week we learn about automating data collection from the Internet.</li>
+<li class="fragment">This is a powerful tool in your research arsenal, and a frequently sought-after skill by social science researchers.</li>
+<li class="fragment">This also lays bare a broader goal that computational methods seek to accomplish: <em>automation</em>.</li>
+</ul>
+</section><section id="roadmap" class="slide level2">
+<h2>Roadmap</h2>
+<ul>
+<li class="fragment">How does the Internet work? (Short version)</li>
+<li class="fragment">What kinds of data can we collect from the Internet?</li>
+<li class="fragment">How can Python assist us in conducting this collection on a large scale?</li>
+<li class="fragment">When is it (in)appropriate to scrape?</li>
+<li class="fragment">Coding Tutorial</li>
+</ul>
+</section><section id="final-note" class="slide level2">
+<h2>Final Note</h2>
+<p>The aim of this lecture/tutorial is twofold:</p>
+<ul>
+<li class="fragment">To learn the <em>logic</em> behind a web scraper: understanding how data is structured on the web.</li>
+<li class="fragment">To learn the <em>mechanics</em> of a web scraper: the tools for searching, selecting and filtering the data within these structures.</li>
+</ul>
+<p class="fragment">
+Writing a web scraper takes a lot of time and effort. Mastery of the tools will enable you to build these more efficiently, and focus on the <em>logic</em> instead of the <em>mechanics</em>.
+</p>
+</section></section>
+<section><section id="how-does-the-internet-work-abridged" class="title-slide slide level1"><h1>How does the Internet work? (Abridged)</h1></section><section id="our-experience" class="slide level2">
+<h2>Our Experience</h2>
+<p>We are all familiar with how to access information on the Internet. We:</p>
+<ul>
+<li class="fragment">Open our preferred browser.</li>
+<li class="fragment">EITHER:
+<ul>
+<li class="fragment">Type in the <code>URL</code> of the website we want to visit, OR</li>
+<li class="fragment">Type a query into our preferred search engine.</li>
+</ul></li>
+<li class="fragment">Navigate the webpage with scrolling and clicks until we find what we want.</li>
+</ul>
+<p class="fragment">
+To understand how to automate this process, we need to understand which portions of this process can be <em>automated</em>.
+</p>
+<p class="fragment">
+To understand this, let’s look under the hood to see what actually happens.
+</p>
+</section><section id="step-1-request" class="slide level2">
+<h2>STEP 1: <strong>REQUEST</strong></h2>
+<p>When you type a website into your browser’s <code>URL</code> bar and hit <code>enter</code>:</p>
+<ul>
+<li class="fragment">Your computer sends a hypertext transfer protocol (secure) (<code>HTTPS</code>) <code>GET</code> request to the specified <code>URL</code>.</li>
+</ul>
+<p class="fragment">
+Let’s break this down:
+</p>
+<ul>
+<li class="fragment">Protocol: <code>HTTP(S)</code></li>
+<li class="fragment">Action: <code>GET</code></li>
+<li class="fragment">Destination: <code>URL</code></li>
+</ul>
+</section><section id="protocol" class="slide level2">
+<h2>Protocol</h2>
+<ul>
+<li class="fragment"><code>HTTP</code> is an application-level data transfer protocol used on the Internet.</li>
+<li class="fragment"><code>HTTPS</code> is a secured version of this protocol.</li>
+<li class="fragment">Other protocols include <code>FTP</code> (file transfer protocol), <code>SSH</code> (secure shell), etc.</li>
+</ul>
+</section><section id="action" class="slide level2">
+<h2>Action</h2>
+<ul>
+<li class="fragment">A <code>GET</code> request is an <code>HTTP</code> request for retrieving information from the target webserver.
+<ul>
+<li class="fragment">Keep this in mind: accessing a webpage is similar to requesting a book or document from a library.</li>
+</ul></li>
+</ul>
+</section><section id="destination-url" class="slide level2">
+<h2>Destination: <code>URL</code></h2>
+<p>A <code>URL</code> (uniform resource locator) is a reference to a web resource. They have the generic syntax<a href="#/fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>:</p>
+<pre><code>URI = scheme:[//authority]path[?query][#fragment]
+authority = [userinfo@]host[:port]
+
+userinfo       host      port
+┌──┴───┐ ┌──────┴──────┐ ┌┴┐
+https://john.doe@www.example.com:123/forum/questions/?tag=networking&amp;order=newest#top
+└─┬─┘   └───────────┬──────────────┘└───────┬───────┘ └───────────┬─────────────┘ └┬┘
+scheme          authority                  path                 query             fragment</code></pre>
+</section><section id="urls-explained" class="slide level2">
+<h2><code>URL</code>s Explained</h2>
+<pre><code>              host
+        ┌──────┴───────┐
+https://muhark.github.io/dpir-intro-python/Week7/lecture.html#/urls-explained
+└─┬─┘   └──────┬───────┘└─────────────────┬─────────────────┘└──────┬───────┘
+scheme     authority                     path                     fragment</code></pre>
+<ul>
+<li class="fragment"><strong>scheme</strong>: Protocol, as mentioned in the slide above.</li>
+<li class="fragment"><strong>authority</strong>: Constructed of three <em>subcomponents</em>.
+<ul>
+<li class="fragment">Two of them are optional (<code>userinfo@</code> and <code>:port</code>), and not seen here.</li>
+<li class="fragment"><code>host</code> is essentially the name of the webserver.</li>
+</ul></li>
+<li class="fragment"><strong>path</strong>: A path in the internal filesystem of the webserver.</li>
+<li class="fragment"><strong>fragment</strong>: Optional, “scrolls” to a specific sub-element within the webpage.</li>
+</ul>
+</section><section id="aside-ip-addresses-dns" class="slide level2">
+<h2>Aside: IP Addresses, DNS</h2>
+<p><em>(Heavy oversimplification on this slide)</em></p>
+<ul>
+<li class="fragment">The destination webserver’s “location” within the Internet is stored not as a <code>URL</code>, but usually as an IP address, e.g. <code>216.58.210.206</code></li>
+<li class="fragment">You can think of an IP address as acting exactly like a physical address for mail.</li>
+<li class="fragment">To make sure that your request gets sent to the right desintation the host in the <code>URL</code> must be converted to an IP address. This conversion is done by <code>DNS</code>.
+<ul>
+<li class="fragment">DNS resolvers are essentially the address books of the web. They maintain records of urls and IP addresses.</li>
+<li class="fragment">These resolvers are within the browser, our OS, and also maintained by third parties such as our ISPs, Google or Cloudflare.</li>
+</ul></li>
+<li class="fragment">This usually does not matter too heavily for web scraping.</li>
+</ul>
+</section><section id="step-2-response" class="slide level2">
+<h2>STEP 2: <strong>RESPONSE</strong></h2>
+<p>Your request now having been routed to the correct address, the webserver:</p>
+<ul>
+<li class="fragment">Reads the header, and accepts or declines the request.</li>
+<li class="fragment">Reads the contents of the request (i.e. the path, query, fragment)</li>
+<li class="fragment">Returns the data to the IP address given in the request packet header.</li>
+<li class="fragment">Usually, this information will be in the formatted as a mixture of an <code>html</code>, <code>css</code> and <code>javascript</code>.
+<ul>
+<li class="fragment">Exceptions: requesting <code>pdf</code> documents directly from webpages, interacting with a <code>php</code> server.</li>
+</ul></li>
+</ul>
+</section><section id="step-3-render" class="slide level2">
+<h2>STEP 3: <strong>RENDER</strong></h2>
+<p>A web browser is actually a specialised piece of software that can render and display all kinds of document formats, and allow you to interact with them via a graphical interface<a href="#/fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.</p>
+<p>Many websites you deal with will be a mixture of <code>html</code>, <code>css</code> and <code>javascript</code>.</p>
+<ul>
+<li class="fragment"><code>html</code> is more appropriately described as a data structure than a language. It provides the “skeleton” of the webpage and the textual elements.</li>
+<li class="fragment"><code>css</code> is also a data structure, but provides <em>styling</em> information that informs much of the aesthetics of the webpage.</li>
+<li class="fragment"><code>javascript</code> is a programming language that runs programs on the <em>client side</em> (i.e. in your computer) and creates interactive elements on webpages.</li>
+</ul>
+</section><section id="html" class="slide level2">
+<h2><code>html</code></h2>
+<p><em>Hypertext Markup Language</em>, or <code>html</code>, is the core of all webpages.</p>
+<ul>
+<li class="fragment">Consists of <em>elements</em>, beginning and ending with a <em>tag</em>.</li>
+<li class="fragment">Nested structure (like a dictionary).</li>
+</ul>
+</section><section id="html-tags" class="slide level2">
+<h2><code>html</code> tags</h2>
+<ul>
+<li class="fragment">Tags define the type of element contained between them:
+<ul>
+<li class="fragment"><code>&lt;head&gt;...&lt;/head&gt;</code>: Defines the header block</li>
+<li class="fragment"><code>&lt;h1&gt;...&lt;/h1&gt;</code>: Section header level 1</li>
+<li class="fragment"><code>&lt;p&gt;...&lt;/p&gt;</code>: Paragraph</li>
+<li class="fragment"><code>&lt;div&gt;...&lt;/div&gt;</code>: Defines a section in a document</li>
+<li class="fragment">For a full reference see <a href="https://www.w3schools.com/TAGs/">here</a></li>
+</ul></li>
+<li class="fragment">The front tag can contain additional attributes:
+<ul>
+<li class="fragment"><code>&lt;section id=&quot;title-slide&quot;&gt;...&lt;/section&gt;</code></li>
+<li class="fragment">The <code>class</code> attribute allows for style inheritance from <code>css</code>.</li>
+</ul></li>
+</ul>
+</section><section id="html-example" class="slide level2">
+<h2><code>html</code> example</h2>
+<pre class="{html}"><code>&lt;section id=&quot;title-slide&quot;&gt;
+  &lt;h1 class=&quot;title&quot;&gt;Introduction to Python for Social Science&lt;/h1&gt;
+  &lt;p class=&quot;subtitle&quot;&gt;Lecture 7 - Mining the Web&lt;/p&gt;
+  &lt;p class=&quot;author&quot;&gt;Musashi Harukawa, DPIR&lt;/p&gt;
+  &lt;p class=&quot;date&quot;&gt;7th Week Hilary 2020&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+</section><section id="inspecting-source" class="slide level2">
+<h2>Inspecting Source</h2>
+<p>Most browsers allow you to inspect the source of the webpage that you are viewing. I recommend that you use Chrome/Chromium/Firefox.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Mac</th>
+<th>Windows/Linux</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Command+Option+I</code></td>
+<td><code>F12</code> or <code>Control+Shift+I</code></td>
+</tr>
+</tbody>
+</table>
+<p>The devtools in the browser allow you to inspect the <code>html</code> and <code>css</code> files that generate the webpages. Recognising how these are structured is key to web scraping.</p>
+</section></section>
+<section><section id="web-mining-for-social-scientists" class="title-slide slide level1"><h1>Web Mining for Social Scientists?</h1></section><section id="note-on-terminology" class="slide level2">
+<h2>Note on Terminology</h2>
+<p>I use the following three terms to refer to different things:</p>
+<ul>
+<li class="fragment"><em>Web Scraping</em>: The automated collection of data from web pages.</li>
+<li class="fragment"><em>Data Collection via API</em>: The automated collection of data from the web, via a server-provided API.</li>
+<li class="fragment"><em>Web Crawling</em>: The automated traversing of web pages to search for information.</li>
+</ul>
+<p class="fragment">
+The difference will become clearer as I discuss them.
+</p>
+</section><section id="social-science-use-cases" class="slide level2">
+<h2>Social Science Use Cases</h2>
+<ul>
+<li class="fragment">Collecting parliamentary transcripts.</li>
+<li class="fragment">Collecting pdfs of referendum texts (in Switzerland).</li>
+<li class="fragment">Collecting government statistics (on education, for example).</li>
+<li class="fragment">Collecting press releases.</li>
+<li class="fragment">Gathering news articles stored online.</li>
+<li class="fragment">Recording user interactions on Reddit.</li>
+<li class="fragment">Gathering tweets.</li>
+<li class="fragment">Analysing precinct-level crime data.</li>
+<li class="fragment">…</li>
+</ul>
+</section><section id="trace-data-vs-embedded-structured-data" class="slide level2">
+<h2>Trace Data vs Embedded Structured Data</h2>
+<p>It’s useful to distinguish between <em>trace</em> data, and structured data embedded in websites.</p>
+<ul>
+<li class="fragment">Trace data is incidental; it is generated by usage of online resources. Examples include Facebook or Reddit posts, website visit counts, Tweets, and so on.
+<ul>
+<li class="fragment">Much of “big data” refers to massive volumes of trace data generated on a secondly basis by users on these websites.</li>
+<li class="fragment">Using trace data requires you to think more carefully about what exists, how that connects to the activity you are trying to measure. Missingness is less clear; it could be erased/censored entries, or offline activity.</li>
+</ul></li>
+<li class="fragment">Embedded structured data (my term) refers to online archives of structured data. This could take the form of statistics stored in spreadsheets, transcripts of debates, and so on.
+<ul>
+<li class="fragment">The objective here is entirely different; it may make sense to collect large portions of the archive and leverage other libraries to parse it afterwards.</li>
+</ul></li>
+<li class="fragment">This is not a dichotomy; many things fall somewhere in between, such as press releases.</li>
+</ul>
+</section><section id="apis" class="slide level2">
+<h2>APIs</h2>
+<p>Some websites provide an <em>application programming interface</em> (API), which is an interface specifically designed for automated querying/retrieval.</p>
+<ul>
+<li class="fragment">If an API exists, <em>use it</em>. APIs are more resource efficient than webpages, and exist in part to prevent unstructured scraping.</li>
+<li class="fragment">Check for an API at the bottom of the webpage, sometimes in a section “for developers”.</li>
+<li class="fragment">There will usually be documentation for an API, and sometimes even a specific Python library (e.g. <code>tweepy</code> for Twitter).</li>
+<li class="fragment">Because APIs are so specific to websites, I will not go over them in this class.</li>
+</ul>
+</section></section>
+<section><section id="using-python-for-web-mining" class="title-slide slide level1"><h1>Using Python for Web Mining</h1></section><section id="libraries" class="slide level2">
+<h2>Libraries</h2>
+<p>The following libraries are key for building web scrapers:</p>
+<ul>
+<li class="fragment"><code>requests</code>: For making generic http(s) requests.</li>
+<li class="fragment"><code>beautifulsoup</code>: “Cleans up” and provides powerful interface for navigating html.</li>
+<li class="fragment"><code>re</code>: Regular expressions library for powerful string matching.</li>
+</ul>
+<p class="fragment">
+Some glaring omissions from this list:
+</p>
+<ul>
+<li class="fragment"><code>scrapy</code>: For building deployable web crawlers</li>
+<li class="fragment"><code>selenium</code>: Web testing library, can handle <code>javascript</code> and be programmed to behave much more like a human than a bot.</li>
+</ul>
+</section><section id="retrieving-web-pages" class="slide level2">
+<h2>Retrieving Web Pages</h2>
+<p>Here’s a function I wrote/adapted from <a href="https://www.oreilly.com/library/view/web-scraping-with/9781491985564/"><em>Web Scraping with Python, 2nd Ed.</em></a></p>
+<pre class="{python}"><code>def safe_get(url, parser=&#39;html.parser&#39;):
+    try:
+        session = requests.Session()
+        headers = {&quot;Accept&quot;: &quot;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&quot;,
+                   &quot;User-Agent&quot;: &quot;Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:64.0) Gecko/20100101 Firefox/64.0&quot;
+                   }
+        req = session.get(url, headers=headers)
+    except requests.exceptions.RequestsWarning:
+        return None
+    return BeautifulSoup(req.text, parser)</code></pre>
+</section><section id="tryexcept" class="slide level2">
+<h2><code>try</code>/<code>except</code></h2>
+<pre class="{python}"><code>    try:
+        session = requests.Session()
+        [...]
+        req = session.get(url, headers=headers)
+    except requests.exceptions.RequestsWarning:
+        return None</code></pre>
+<p><code>try</code>/<code>except</code> is a control flow structure that runs the code in the <code>try</code> block until an <em>exception</em> occurs, and if the <em>exception</em> is of the kind defined after <code>except</code>, then it executes the <code>except</code> block.</p>
+<ul>
+<li class="fragment">In this case the function first runs the code from <code>session = ...</code> to <code>... headers=headers)</code></li>
+<li class="fragment">If in the execution of this code, a <code>requests.exceptions.RequestsWarning</code> is <em>raised</em>, then the code <code>return None</code> is executed.</li>
+<li class="fragment">If a different kind of exception occurs, then it is not <em>handled</em> by this except statement, and is raised normally (resulting in an error).</li>
+</ul>
+</section><section id="requests" class="slide level2">
+<h2><code>requests</code></h2>
+<p>There are just three things the <code>requests</code> library is being used for:</p>
+<ul>
+<li class="fragment">Initiating a session.</li>
+<li class="fragment">Sending a <code>GET</code> command to the provided url with a customized header.
+<ul>
+<li class="fragment">This header is copied from a standard browser, to make the request appear as a regular user (and not a bot).</li>
+</ul></li>
+<li class="fragment">Web-request specific errors/exceptions.</li>
+</ul>
+</section><section id="beautifulsoup" class="slide level2">
+<h2><code>BeautifulSoup</code></h2>
+</section><section id="re" class="slide level2">
+<h2><code>re</code></h2>
+<p>A regular expression (RegEx) is a sequence of characters that defines a <em>search pattern</em>. These patterns are used to systematically and flexibly search through strings.</p>
+<p>Python provides its own implementation of regular expressions, along with the built-in library <code>re</code>.</p>
+</section><section id="understanding-regular-expressions" class="slide level2">
+<h2>Understanding Regular Expressions</h2>
+<p>Regular expressions are constructed of:</p>
+<ul>
+<li class="fragment"><em>regular characters</em>, which are the literal characters themselves</li>
+<li class="fragment"><em>metacharacters</em>, which have special meanings</li>
+</ul>
+<p class="fragment">
+For instance, the regular expression <code>a.</code> contains:
+</p>
+<ul>
+<li class="fragment"><code>a</code>: the regular character lowercase ‘a’</li>
+<li class="fragment"><code>.</code>: the metacharacter matching any character except a newline.</li>
+</ul>
+</section><section id="metacharacters-for-character-sets" class="slide level2">
+<h2>Metacharacters for Character Sets</h2>
+<ul>
+<li class="fragment"><code>.</code>: Any character other than <code>newline</code> (the character denoting that the subsequent character should be on a new line)</li>
+<li class="fragment"><code>[]</code>: Defines a character set.</li>
+</ul>
+</section><section id="metacharacters-defining-repetition" class="slide level2">
+<h2>Metacharacters Defining Repetition</h2>
+<ul>
+<li class="fragment"><code>*</code>: Matches 0 or more consecutive instances of the previous regular expression. Matches as many as possible.</li>
+<li class="fragment"><code>+</code>: Matches 1 or more consecutive instances of the previous regular expression. Matches as many as possible.</li>
+<li class="fragment"><code>?</code>: Matches 0 or 1 instances of the previous regular expression.</li>
+<li class="fragment"><code>{m}</code>: Matches exactly <code>m</code> instances of the previous regular expression.</li>
+<li class="fragment"><code>{m, n}</code>: Matches between <code>m</code> and <code>n</code> instances of the previous regular expression.</li>
+</ul>
+</section><section id="other-special-characters" class="slide level2">
+<h2>Other Special Characters</h2>
+<ul>
+<li class="fragment"><code>^</code>: Matches the null character at the beginning of a string.</li>
+<li class="fragment"><code>$</code>: Matches the null character at the end of a string.</li>
+<li class="fragment"><code>\</code>: Converts the subsequent metacharacter to a literal.</li>
+</ul>
+<p>This following pattern will match strings beginning with “comput”: <code>comput.*</code></p>
+<ul>
+<li class="fragment">The letters <code>comput</code> match EXACTLY those letters.</li>
+<li class="fragment">The <code>.</code> symbol denotes ANY non-whitespace character.</li>
+</ul>
+</section></section>
+<section class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>This example is taken directly from https://en.wikipedia.org/wiki/Uniform_Resource_Identifier#Generic_syntax<a href="#/fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>There are CLI web browsers, such as <code>lynx</code>. These are fun to play around with if you want to explore the Internet without any graphical elements.<a href="#/fnref2" class="footnote-back">↩</a></p></li>
+</ol>
+</section>
+    </div>
+  </div>
+
+  <script src="../reveal.js/lib/js/head.min.js"></script>
+  <script src="../reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: '../reveal.js/plugin/math/math.js', async: true },
+          { src: '../reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
