@@ -74,8 +74,8 @@ A `URL` (uniform resource locator) is a reference to a web resource. They have t
 URI = scheme:[//authority]path[?query][#fragment]
 authority = [userinfo@]host[:port]
 
-userinfo       host      port
-┌──┴───┐ ┌──────┴──────┐ ┌┴┐
+        userinfo       host      port
+        ┌──┴───┐ ┌──────┴──────┐ ┌┴┐
 https://john.doe@www.example.com:123/forum/questions/?tag=networking&order=newest#top
 └─┬─┘   └───────────┬──────────────┘└───────┬───────┘ └───────────┬─────────────┘ └┬┘
 scheme          authority                  path                 query             fragment

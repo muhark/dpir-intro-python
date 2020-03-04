@@ -115,8 +115,8 @@ Let’s break this down:
 <pre><code>URI = scheme:[//authority]path[?query][#fragment]
 authority = [userinfo@]host[:port]
 
-userinfo       host      port
-┌──┴───┐ ┌──────┴──────┐ ┌┴┐
+        userinfo       host      port
+        ┌──┴───┐ ┌──────┴──────┐ ┌┴┐
 https://john.doe@www.example.com:123/forum/questions/?tag=networking&amp;order=newest#top
 └─┬─┘   └───────────┬──────────────┘└───────┬───────┘ └───────────┬─────────────┘ └┬┘
 scheme          authority                  path                 query             fragment</code></pre>
