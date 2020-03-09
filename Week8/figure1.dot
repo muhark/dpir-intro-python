@@ -1,0 +1,20 @@
+digraph G {
+  rankdir=LR;
+  /* Entities */
+  a [label="I"];
+  b [label="will"];
+  c [label="not"];
+  d [label="endorse"];
+  e [label="Sanders"];
+  f [label="Biden"];
+  g [label=".", shape="doublecircle"];
+  /* Relationships */
+  a -> b [label="p(will|I)"]
+  b -> c
+  b -> d
+  c -> d
+  d -> e
+  d -> f
+  e -> g
+  f -> g
+}

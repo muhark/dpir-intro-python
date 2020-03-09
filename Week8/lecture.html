@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Musashi Harukawa, DPIR">
+  <title>Introduction to Python for Social Science</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../reveal.js/css/theme/../../../dpir-intro-theme.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal.js/css/print/pdf.css' : '../reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="../reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Introduction to Python for Social Science</h1>
+  <p class="subtitle">Lecture 8 - Intro to Natural Language Processing</p>
+  <p class="author">Musashi Harukawa, DPIR</p>
+  <p class="date">8th Week Hilary 2020</p>
+</section>
+
+<section><section id="this-week" class="title-slide slide level1"><h1>This Week</h1></section><section id="roadmap" class="slide level2">
+<h2>Roadmap</h2>
+<p>This week we dive into my favourite field, <em>Natural Language Processing</em> (NLP), and look at the opportunities and difficulties that come with trying to harness text-as-data.</p>
+<p>Points covered:</p>
+<ul>
+<li class="fragment">What is NLP?</li>
+<li class="fragment">Considerations about language as a data source</li>
+<li class="fragment">Representations of Language and Relevant Metrics</li>
+<li class="fragment">Application: POS-taggers, NER, and noun extraction.</li>
+</ul>
+</section></section>
+<section><section id="intro-to-natural-language-processing" class="title-slide slide level1"><h1>Intro to Natural Language Processing</h1></section><section id="what-is-nlp" class="slide level2">
+<h2>What is NLP?</h2>
+<p><em>Natural Language Processing</em> (NLP) is an cross-disciplinary field drawing on linguistics, computer science, information retrieval, machine learning and artificial intelligence (among other fields) focused on computational methods for language. Applications include <em>speech recognition</em>, <em>natural language generation</em>, and <em>natural language understanding</em>.</p>
+<ul>
+<li class="fragment"><em>Natural Language</em> is most easily defined in contrast to artificial or constructed languages. It includes all world languages, but excludes languages such as programming languages or Esperanto.</li>
+</ul>
+</section><section id="social-science-applications" class="slide level2">
+<h2>Social Science Applications</h2>
+<p>Applications in social science are usually focused on the <em>information retrieval</em>/<em>understanding</em> aspect of NLP. In other words, our focus is on using language as a data source, rather than building a working model for languages. As such, some major applications include:</p>
+<pre><code>- _Topic segmentation_
+- _Summarisation_
+- _Scaling_
+- _Sentiment analysis_</code></pre>
+</section><section id="terminology" class="slide level2">
+<h2>Terminology</h2>
+<p>NLP has its own terminology, related to but separate from machine learning. Key terms include:</p>
+<ul>
+<li class="fragment"><em>Text-as-data</em>: Applications of NLP focused on the extraction of information from textual data.</li>
+<li class="fragment"><em>String</em>: A sequence of characters.</li>
+<li class="fragment"><em>Token</em>: A string having a semantic function, often delineated by spaces in English. Otherwise a word, or a word fragment.</li>
+<li class="fragment"><em>Document</em>: Sentences aggregated to a unit of analysis; can be a paragraph, a speech, a Tweet, etc.</li>
+<li class="fragment"><em>Corpus</em>: A set of documents.</li>
+<li class="fragment"><em>Vocabulary</em>: The set of all tokens. Usually the unique set of tokens contained within a given corpus.</li>
+</ul>
+</section><section id="further-terminology" class="slide level2">
+<h2>Further Terminology</h2>
+<ul>
+<li class="fragment"><em>Lemmatization</em>: The reduction of a word to its grammatical root.</li>
+<li class="fragment"><em>Stemming</em>: A set of rules for removing suffixes (and prefixes) from a word to reduce it to a word “stem”.</li>
+<li class="fragment"><em>Part-of-Speech Tagging</em>: The process of identifying the syntactic function of each token in a sentence, e.g. noun, verb, quantifier, etc.</li>
+<li class="fragment"><em>Named Entity Recognition</em>: The</li>
+</ul>
+</section><section id="a-brief-timeline-of-political-science-and-nlp" class="slide level2">
+<h2>A Brief Timeline of Political Science and NLP</h2>
+<ul>
+<li class="fragment">“A Scaling Model for Estimating Time-Series Party Positions from Texts”, <a href="http://www.wordfish.org/uploads/1/2/9/8/12985397/slapin_proksch_ajps_2008.pdf">Slapin and Proksch, AJPS 2008</a></li>
+<li class="fragment">[A Bayesian Hierarchical Topic Model</li>
+</ul>
+</section></section>
+<section><section id="language-as-a-data-source" class="title-slide slide level1"><h1>Language as a Data Source</h1></section><section id="text-as-data" class="slide level2">
+<h2>Text-as-Data?</h2>
+<p>In general, as social scientists, we are not intrinsically interested in the process by which utterances and texts are generated (natural language generation) but rather the conditions which influence the generation of one text over another.</p>
+<p>Put differently, we use language as a proxy to measure the states and processes that both produce and are produced by the data.</p>
+</section><section id="example-question" class="slide level2">
+<h2>Example Question</h2>
+<ul>
+<li class="fragment">Imagine we are interested in the following question: <em>What is the effect of electoral system on legislators’ Twitter usage?</em></li>
+<li class="fragment">How do we go about answering this question?</li>
+</ul>
+</section><section id="formalizing-language" class="slide level2">
+<h2>Formalizing Language</h2>
+<p>A tweet by legislator <span class="math inline">\(i\)</span> of party <span class="math inline">\(j\)</span> at time <span class="math inline">\(t\)</span> can be described as an ordered set of tokens, drawn from the vocabulary <span class="math inline">\(V\)</span>:</p>
+<p><span class="math display">\[
+d_{ijt} := \langle w_1, w_2, ..., w_n, w_\omega \rangle \; \forall w_i \in V
+\]</span></p>
+</section><section id="language-automata" class="slide level2">
+<h2>Language Automata</h2>
+<p>Given this chain of tokens, we can describe the tokens as being probabilisitcally generated by an <em>automaton</em>, process which places probabilities over selecting one token given that another one came prior.</p>
+<figure>
+<img data-src="./figure1.svg" alt="I will (not) endorse (Sanders|Biden)." /><figcaption>I will (not) endorse (Sanders|Biden).</figcaption>
+</figure>
+</section><section id="generative-process" class="slide level2">
+<h2>Generative Process</h2>
+<p>The probabilities in these automata can be described as a function placing probabilities over all tokens (the vocabulary) given the current state of the automaton. Aggregating this process up to the level of <em>document</em>, we can think of there as being a <em>document-generating process</em>.</p>
+</section><section id="the-tweet-generating-process" class="slide level2">
+<h2>The Tweet-Generating Process</h2>
+<p>The DGP describing the tweet by legislator <span class="math inline">\(i\)</span> in party <span class="math inline">\(j\)</span> at time <span class="math inline">\(t\)</span> could be described:</p>
+<p><span class="math display">\[
+d_{ijt} \leftarrow M(t, s_i, u_i, \lambda(\mathbf{w}_j, e_i, [...]), \mathcal{L}, [...])
+\]</span></p>
+<p>Where: - <span class="math inline">\(t\)</span> is the substantive <em>topic</em> of the Tweet. - <span class="math inline">\(s_i\)</span> is the authorial <em>style</em> of legislator <span class="math inline">\(i\)</span>. - <span class="math inline">\(u_i\)</span> is the preferences, or <em>position</em> of legislator <span class="math inline">\(i\)</span>. - <span class="math inline">\(\lambda()\)</span> is a constraint function on the preferences of legislator <span class="math inline">\(i\)</span>. - <span class="math inline">\(\mathbf{w}_j\)</span> is the aggregated preferences, or <em>position</em> of party <span class="math inline">\(j\)</span>’s elite. - <span class="math inline">\(e_j\)</span> is the electoral formula faced by legislator <span class="math inline">\(i\)</span>. - <span class="math inline">\(\mathcal{L}\)</span> is the linguistic constraints on <span class="math inline">\(d\)</span>, i.e. the language rules.</p>
+</section><section id="sources-of-variance" class="slide level2">
+<h2>Sources of Variance</h2>
+<p>Each of these inputs and constraints contribute <em>variance</em> to the DGP. <a href="http://benjaminlauderdale.net/files/papers/2016LauderdaleHerzogPA.pdf">Lauderdale and Herzog (<em>PA</em>, 2016)</a> provide a rough hierarchy of these sources of variance:</p>
+<ol type="1">
+<li class="fragment">Language</li>
+<li class="fragment">Style</li>
+<li class="fragment">Topic</li>
+<li class="fragment">Position</li>
+</ol>
+</section><section id="our-goal" class="slide level2">
+<h2>Our Goal</h2>
+<p>As we are social scientists, and not computational linguists, we are usually not interested in <em>recreating</em> the document-generating process.</p>
+<ul>
+<li class="fragment">Rather, we are usually interested in <em>quantifying</em> the effect of exogenous constraints on political processes.</li>
+<li class="fragment">Thinking of text as a proxy for the states that produced those texts, we are interested in quantifying the effect of particular aspects of those states.</li>
+<li class="fragment">Ultimately, our use case involves using statistical and machine learning methods to disentangle and quantify the heterogeneous sources of variance in our data.</li>
+</ul>
+</section><section id="social-science-examples" class="slide level2">
+<h2>Social Science Examples</h2>
+<ul>
+<li class="fragment">“A Scaling Model for Estimating Time-Series Party Positions from Texts”, <a href="http://www.wordfish.org/uploads/1/2/9/8/12985397/slapin_proksch_ajps_2008.pdf">Slapin and Proksch, AJPS 2008</a>: Looks to infer party positions along a single ideological dimension with a model that assumes word counts are generated by a Poisson distribution.</li>
+<li class="fragment">“How Words and Money Cultivate a Personal Vote: The Effect of Legislator Credit Claiming on Constituent Credit Allocation” <a href="https://projects.iq.harvard.edu/ptr/files/grimmercreditclaiming.pdf">(Grimmer, Messing and Westwood 2012)</a></li>
+</ul>
+</section></section>
+<section><section id="models" class="title-slide slide level1"><h1>Models</h1></section><section id="representing-language" class="slide level2">
+<h2>Representing Language</h2>
+<ul>
+<li class="fragment">We are already familiar with one computational representation of language: <em>strings</em>.</li>
+<li class="fragment">All of the models we have encountered thus far require data that is both <em>numeric</em> and <em>tabular</em>.</li>
+<li class="fragment">String data is <em>non-numeric</em> and <em>non-tabular</em>.</li>
+<li class="fragment">Therefore we either need new kinds of models that can handle this structure of data, or a representation of language that can work with the kinds of models we have seen thus far.</li>
+</ul>
+</section><section id="frequency-based-approaches" class="slide level2">
+<h2>Frequency-Based Approaches</h2>
+<p>The simplest numeric representation of language data is to simply count occurrences of words.</p>
+<p>The document “The fox jumped over the fence.” can be represented:</p>
+<table>
+<thead>
+<tr class="header">
+<th>the</th>
+<th>fox</th>
+<th>jumped</th>
+<th>over</th>
+<th>fence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</section><section id="bag-of-words" class="slide level2">
+<h2>Bag-of-Words</h2>
+<p>When we apply word counts to a <em>corpus</em>, we get a representation of language known as <em>bag-of-words</em>. Given two documents <span class="math inline">\(d_1\)</span> and <span class="math inline">\(d_2\)</span>, “the fox jumped over the fence” and “the buffalo kicked the fence”, we can write:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Sentence</th>
+<th>buffalo</th>
+<th>fence</th>
+<th>fox</th>
+<th>jumped</th>
+<th>kicked</th>
+<th>over</th>
+<th>the</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(s_1\)</span></td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(s_2\)</span></td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+</section><section id="variations" class="slide level2">
+<h2>Variations</h2>
+<p>Some common variations of bag-of-words include:</p>
+<ul>
+<li class="fragment"><em>Bag-of-ngrams</em>: An <em>ngram</em> is an ordered set of <span class="math inline">\(n\)</span> words. Therefore a bag of bi-grams is the frequency of word pairs.</li>
+<li class="fragment"><em>tf-idf</em>: Words are weighted by the product of two statistics:
+<ul>
+<li class="fragment"><em>Term Frequency</em>: The frequency of terms in the document, same as bag-of-words.</li>
+<li class="fragment"><em>Inverse Document Frequency</em>: <span class="math inline">\(log(\frac{number of documents}{number of documents containing w})\)</span></li>
+<li class="fragment">This measure penalises words that occur across documents (e.g. “the”, “and”), therefore favouring “unique” high-frequency words.</li>
+</ul></li>
+</ul>
+</section><section id="limitations" class="slide level2">
+<h2>Limitations</h2>
+<ul>
+<li class="fragment"><em>Syntactic Information Loss</em>: Frequency-based approaches are purely <em>semantic</em> representations of language, and lose all <em>syntactic</em> information. i.e. they measure <em>what words people choose</em>, and not <em>what these words mean in conjunction</em> or <em>how these words are used</em>.</li>
+<li class="fragment"><em>False equivalence</em>: Sentences containing the same words can have radically different meanings due to singular differences, or word order.
+<ul>
+<li class="fragment">e.g. “The panda eats shoots and leaves” and “The panda eats, shoots and leaves”.</li>
+</ul></li>
+</ul>
+<p class="fragment">
+Keep all this in mind when using models based on word frequencies—⁥they often do not measure what you might think!
+</p>
+</section><section id="vector-representation" class="slide level2">
+<h2>Vector Representation</h2>
+<p><em>Word</em> and <em>document embeddings</em> refer to the vector representation of words and documents respectively.</p>
+</section></section>
+    </div>
+  </div>
+
+  <script src="../reveal.js/lib/js/head.min.js"></script>
+  <script src="../reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: '../reveal.js/plugin/math/math.js', async: true },
+          { src: '../reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
