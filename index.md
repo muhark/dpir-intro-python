@@ -28,7 +28,7 @@ Please be aware, lectures will be updated continuously, and may contain errors.
 5. [Machine Learning with `scikit-learn` I](/dpir-intro-python/Week5/lecture.html)
 6. [Machine Learning with `scikit-learn` II](/dpir-intro-python/Week6/lecture.html)
 7. [Mining the Web](/dpir-intro-python/Week7/lecture.html)
-8. ~~[Introduction to Natural Language Processing]()~~
+8. [Introduction to Natural Language Processing](/dpir-intro-python/Week8/lecture.html)
 
 
 # Materials
@@ -42,6 +42,7 @@ Please be aware, lectures will be updated continuously, and may contain errors.
 | 5    | [slides](/dpir-intro-python/Week5/lecture.html) | [pdf](/dpir-intro-python/Week5/lecture.pdf) | [examples](/dpir-intro-python/Week5/examples.ipynb) | [exercises](/dpir-intro-python/Week5/exercises.ipynb) | [solutions](/dpir-intro-python/Week5/solutions.ipynb) |                                                     |
 | 6    | [slides](/dpir-intro-python/Week6/lecture.html) | [pdf](/dpir-intro-python/Week6/lecture.pdf) | [examples](/dpir-intro-python/Week6/examples.ipynb) | [exercises](/dpir-intro-python/Week6/exercises.ipynb) | [solutions](/dpir-intro-python/Week6/solutions.ipynb) |                                                     |
 | 7    | [slides](/dpir-intro-python/Week7/lecture.html) | [pdf](/dpir-intro-python/Week7/lecture.pdf) | [examples](/dpir-intro-python/Week7/examples.ipynb) | [exercises](/dpir-intro-python/Week7/exercises.ipynb) | [solutions](/dpir-intro-python/Week7/solutions.ipynb) |                                                     |
+| 8    | [slides](/dpir-intro-python/Week8/lecture.html) | [pdf](/dpir-intro-python/Week8/lecture.pdf) | [examples](/dpir-intro-python/Week8/examples.ipynb) | [exercises](/dpir-intro-python/Week8/exercises.ipynb) | [solutions](/dpir-intro-python/Week8/solutions.ipynb) |                                                     |
 
 
 

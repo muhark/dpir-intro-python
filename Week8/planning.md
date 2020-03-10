@@ -20,8 +20,18 @@ Students will be introduced to an advanced and increasingly popular natural lang
     - Sources of variance within the language generating process
     - Complex information structures within language
         - Simplistically, automatons
-- Computational Representations of Language
+- Representations of Language and Related Metrics
     - Word-frequency approaches
         - Bag of Words
         - _tf-idf_
-    - 
+    - Embedding/Vector Representation
+        - Word embeddings
+            - word2vec
+            - GloVE
+        - Document embeddings
+            - doc2vec
+    - Language Metrics
+        - Why Euclidean distance is problematic
+        - Cosine Distance
+        - Clustering
+-
