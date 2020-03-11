@@ -82,7 +82,7 @@
 <li class="fragment"><em>Lemmatization</em>: The reduction of a word to its grammatical root.</li>
 <li class="fragment"><em>Stemming</em>: A set of rules for removing suffixes (and prefixes) from a word to reduce it to a word “stem”.</li>
 <li class="fragment"><em>Part-of-Speech Tagging</em>: The process of identifying the syntactic function of each token in a sentence, e.g. noun, verb, quantifier, etc.</li>
-<li class="fragment"><em>Named Entity Recognition</em>: The</li>
+<li class="fragment"><em>Named Entity Recognition</em>: Automatic tagging of “named entities” within a text, usually proper nouns such as companies, people or places.</li>
 </ul>
 </section></section>
 <section><section id="language-as-a-data-source" class="title-slide slide level1"><h1>Language as a Data Source</h1></section><section id="text-as-data" class="slide level2">
@@ -112,7 +112,6 @@ d_{ijt} := \langle w_1, w_2, ..., w_n, w_\omega \rangle \; \forall w_i \in V
 <p>The probabilities in these automata can be described as a function placing probabilities over all tokens (the vocabulary) given the current state of the automaton. Aggregating this process up to the level of <em>document</em>, we can think of there as being a <em>document-generating process</em>.</p>
 </section><section id="the-tweet-generating-process" class="slide level2">
 <h2>The Tweet-Generating Process</h2>
-<p>The DGP describing the tweet by legislator <span class="math inline">\(i\)</span> in party <span class="math inline">\(j\)</span> at time <span class="math inline">\(t\)</span> could be described:</p>
 <p><span class="math display">\[
 d_{ijt} \leftarrow M(t, s_i, u_i, \lambda(\mathbf{w}_j, e_i, [...]), \mathcal{L}, [...])
 \]</span></p>
@@ -245,7 +244,7 @@ d_{ijt} \leftarrow M(t, s_i, u_i, \lambda(\mathbf{w}_j, e_i, [...]), \mathcal{L}
 </ul></li>
 </ul>
 <p class="fragment">
-Keep all this in mind when using models based on word frequencies—⁥they often do not measure what you might think!
+Keep all this in mind when using models based on word frequencies— they often do not measure what you might think!
 </p>
 </section><section id="vector-representation" class="slide level2">
 <h2>Vector Representation</h2>
@@ -325,7 +324,6 @@ Keep all this in mind when using models based on word frequencies—⁥they ofte
 <ul>
 <li class="fragment">One common alternative to Euclidean distances is <em>cosine similarity</em>.</li>
 <li class="fragment">The cosine similarity between two vectors is a function of the angle created by the two vectors from the origin.</li>
-<li class="fragment">This measure is less sensitive to differences in magnitude.</li>
 </ul>
 <figure>
 <img data-src="https://www.oreilly.com/library/view/statistics-for-machine/9781788295758/assets/2b4a7a82-ad4c-4b2a-b808-e423a334de6f.png" alt="Cosine Distance" /><figcaption>Cosine Distance</figcaption>

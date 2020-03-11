@@ -51,7 +51,7 @@ NLP has its own terminology, related to but separate from machine learning. Key 
 - _Lemmatization_: The reduction of a word to its grammatical root.
 - _Stemming_: A set of rules for removing suffixes (and prefixes) from a word to reduce it to a word "stem".
 - _Part-of-Speech Tagging_: The process of identifying the syntactic function of each token in a sentence, e.g. noun, verb, quantifier, etc.
-- _Named Entity Recognition_: The
+- _Named Entity Recognition_: Automatic tagging of "named entities" within a text, usually proper nouns such as companies, people or places.
 
 # Language as a Data Source
 
@@ -86,8 +86,6 @@ Given this chain of tokens, we can describe the tokens as being probabilisitcall
 The probabilities in these automata can be described as a function placing probabilities over all tokens (the vocabulary) given the current state of the automaton. Aggregating this process up to the level of _document_, we can think of there as being a _document-generating process_.
 
 ## The Tweet-Generating Process
-
-The DGP describing the tweet by legislator $i$ in party $j$ at time $t$ could be described:
 
 $$
 d_{ijt} \leftarrow M(t, s_i, u_i, \lambda(\mathbf{w}_j, e_i, [...]), \mathcal{L}, [...])
@@ -219,7 +217,6 @@ In terms of accuracy, `GloVe` performs the same, or often _better_ than `word2ve
 
 - One common alternative to Euclidean distances is _cosine similarity_.
 - The cosine similarity between two vectors is a function of the angle created by the two vectors from the origin.
-- This measure is less sensitive to differences in magnitude.
 
 ![Cosine Distance](https://www.oreilly.com/library/view/statistics-for-machine/9781788295758/assets/2b4a7a82-ad4c-4b2a-b808-e423a334de6f.png)
 
