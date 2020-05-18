@@ -55,3 +55,9 @@ My name is Musashi Harukawa, I am a DPhil Politics student at the University of 
 My research interests fall into two areas: computational methods, and the use of personal data for microtargeting by political campaigns. On the methods side, I work mostly on natural language processing, especially word and document embedding models and their use in ensemble approaches. My current project is improving unsupervised methods for measuring the similarity of presented positions held by legislators based on their communication strategies.
 
 I use python and `R` as a regular part of my work, and am a big advocate of more social scientists learning to leverage these techniques.
+
+#### Misc.
+
+Sometimes I use this website to host slides. I'll clean these up at some point.
+
+[DPhil Research Design Seminar](/dpir-intro-python/misc_presentations/presentation.html)

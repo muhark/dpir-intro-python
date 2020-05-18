@@ -36,7 +36,7 @@ Two broad themes in my research:
 
 # Paper 1
 
-## Marginal Information Gain: An Information Theoretic Response to Classifier Accuracy as a Quantity of Substantive Interest
+## Marginal Information Gain- An Information Theoretic Response to Classifier Accuracy as a Quantity of Substantive Interest
 
 Breaking this down:
 
@@ -189,7 +189,7 @@ Some key concepts:
 - Mutual Information
 - Interaction Information
 
-## Entropy: Definition
+## Entropy- Definition
 
 _The entropy $H_X$ of a discrete random variable $X$ with probability distribution $p(x)$ is defined as:_
 
@@ -200,13 +200,13 @@ $$
 \end{align*}
 $$
 
-## Entropy: Intuition
+## Entropy- Intuition
 
 - Intuitively, the entropy $H_X$ is a measure of the uncertainty of the random variable $X$.
 - It can be thought of as missing information: larger entropy means less _a priori_ information on the realised value of the random variable.
 - The base of the $log$ determines the units of entropy. Base 2 means that entropy is expressed in bits, and is therefore common in computer science and digital applications.
 
-## Entropy: Example 1
+## Entropy- Example 1
 
 A fair coin takes two values with equal probability. Its entropy is 1 bit.
 
@@ -219,7 +219,7 @@ $$
 \end{align*}
 $$
 
-## Entropy: Example 2
+## Entropy- Example 2
 
 A Bernoulli random variable $X$ is distributed:
 
@@ -297,7 +297,7 @@ $$
 
 The latter formula offers a useful intuition: _given two random variables, mutual information measures the extent to which the entropy of a random variable is reduced by knowing values of the other_.
 
-## Mutual Information: Toy Example
+## Mutual Information- Toy Example
 
 Suppose I ask you to guess the temperature in Kagoshima.
 
