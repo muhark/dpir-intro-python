@@ -40,23 +40,19 @@
   <p class="date">19 May 2020</p>
 </section>
 
-<section class="slide level2">
-
-<!--  pandoc -t revealjs --slide-level 2 -V revealjs-url=../reveal.js -V theme=../../../dpir-intro-theme --mathjax -s -o presentation.html presentation.md -->
-</section>
 <section><section id="introduction" class="title-slide slide level1"><h1>Introduction</h1></section><section id="two-themes" class="slide level2">
 <h2>Two Themes</h2>
 <p>Two broad themes in my research:</p>
 <ul>
 <li><strong>Methodological</strong>: Measurement Inference in Complex Data Structures</li>
-<li><strong>Substantive</strong>: Micro-targeted Political Campaigning</li>
+<li><strong>Substantive</strong>: Microtargeted Political Campaigning</li>
 </ul>
 </section><section id="three-papers" class="slide level2">
 <h2>Three Papers</h2>
 <ol type="1">
 <li><em>Marginal Information Gain: An Information Theoretic Response to Classifier Accuracy as a Quantity of Substantive Interest</em></li>
-<li><em>This Ad was Tailored for You: Quantifying the Micro-targeting Effect and Inducing Informed Skepticism</em></li>
-<li><em>Micro-targetable Information: the Data that Helps Campaigns the Most</em></li>
+<li><em>This Ad was Tailored for You: Quantifying the Microtargeting Effect and Inducing Informed Skepticism</em></li>
+<li><em>Microtargetable Information: the Data that Helps Campaigns the Most</em></li>
 </ol>
 </section><section id="questions-before-i-start" class="slide level2">
 <h2>Questions Before I Start</h2>
@@ -77,8 +73,8 @@
 </ul></li>
 </ul>
 </section></section>
-<section><section id="paper-1" class="title-slide slide level1"><h1>Paper 1</h1></section><section id="marginal-information-gain--an-information-theoretic-response-to-classifier-accuracy-as-a-quantity-of-substantive-interest" class="slide level2">
-<h2>Marginal Information Gain- An Information Theoretic Response to Classifier Accuracy as a Quantity of Substantive Interest</h2>
+<section><section id="paper-1" class="title-slide slide level1"><h1>Paper 1</h1></section><section id="marginal-information-gain---an-information-theoretic-response-to-classifier-accuracy-as-a-quantity-of-substantive-interest" class="slide level2">
+<h2>Marginal Information Gain - An Information Theoretic Response to Classifier Accuracy as a Quantity of Substantive Interest</h2>
 <p>Breaking this down:</p>
 <ul>
 <li>Classifier Accuracy as a Measure of Polarization</li>
@@ -225,8 +221,8 @@
 <li>Mutual Information</li>
 <li>Interaction Information</li>
 </ul>
-</section><section id="entropy--definition" class="slide level2">
-<h2>Entropy- Definition</h2>
+</section><section id="entropy---definition" class="slide level2">
+<h2>Entropy - Definition</h2>
 <p><em>The entropy <span class="math inline">\(H_X\)</span> of a discrete random variable <span class="math inline">\(X\)</span> with probability distribution <span class="math inline">\(p(x)\)</span> is defined as:</em></p>
 <p><span class="math display">\[
 \begin{align*}
@@ -234,15 +230,15 @@
         &amp;= \mathbb{E}log_{2}[\frac{1}{p(x)}]
 \end{align*}
 \]</span></p>
-</section><section id="entropy--intuition" class="slide level2">
-<h2>Entropy- Intuition</h2>
+</section><section id="entropy---intuition" class="slide level2">
+<h2>Entropy - Intuition</h2>
 <ul>
 <li>Intuitively, the entropy <span class="math inline">\(H_X\)</span> is a measure of the uncertainty of the random variable <span class="math inline">\(X\)</span>.</li>
 <li>It can be thought of as missing information: larger entropy means less <em>a priori</em> information on the realised value of the random variable.</li>
 <li>The base of the <span class="math inline">\(log\)</span> determines the units of entropy. Base 2 means that entropy is expressed in bits, and is therefore common in computer science and digital applications.</li>
 </ul>
-</section><section id="entropy--example-1" class="slide level2">
-<h2>Entropy- Example 1</h2>
+</section><section id="entropy---example-1" class="slide level2">
+<h2>Entropy - Example 1</h2>
 <p>A fair coin takes two values with equal probability. Its entropy is 1 bit.</p>
 <p><span class="math display">\[
 \begin{align*}
@@ -252,14 +248,14 @@
         &amp;= 1 \\
 \end{align*}
 \]</span></p>
-</section><section id="entropy--example-2" class="slide level2">
-<h2>Entropy- Example 2</h2>
+</section><section id="entropy---example-2" class="slide level2">
+<h2>Entropy - Example 2</h2>
 <p>A Bernoulli random variable <span class="math inline">\(X\)</span> is distributed:</p>
 <p><span class="math display">\[
 f(k;p) =
     \begin{cases}
-        p     &amp; \text{if $k = 1$}, \\
-        1 - p &amp; \text{if $k = 0$}.
+        q     &amp; \text{if $k = 1$}, \\
+        1 - q &amp; \text{if $k = 0$}.
     \end{cases}
 \]</span></p>
 <p>its entropy is:</p>
@@ -313,8 +309,8 @@ f(k;p) =
 </section><section id="understanding-mutual-information" class="slide level2">
 <h2>Understanding Mutual Information</h2>
 <p>The latter formula offers a useful intuition: <em>given two random variables, mutual information measures the extent to which the entropy of a random variable is reduced by knowing values of the other</em>.</p>
-</section><section id="mutual-information--toy-example" class="slide level2">
-<h2>Mutual Information- Toy Example</h2>
+</section><section id="mutual-information---toy-example" class="slide level2">
+<h2>Mutual Information - Toy Example</h2>
 <p>Suppose I ask you to guess the temperature in Kagoshima.</p>
 <ul>
 <li>You don’t know where it is, but you assume it’s in the Northern Hemisphere, so you know it’s currently late Spring. <em>The value is probably somwhere between 5-35 C</em>.</li>
@@ -377,6 +373,142 @@ f(k;p) =
 <li>Show that the Interaction Information and Classifier Accuracy are positively correlated in Peterson and Spirling’s (2018) data.</li>
 <li>Write computationally efficient implementation of MIG (this may not be straightforward, MI assumes knowledge of population probability distribution).</li>
 <li>Apply new measure to Peterson and Spirling (2018) and subsequent works using same method (e.g. Goet (2019)). Where possible, show how their estimates of polarization may have been confounded by other factors.</li>
+</ul>
+</section></section>
+<section><section id="paper-2" class="title-slide slide level1"><h1>Paper 2</h1></section><section id="this-ad-was-tailored-for-you---quantifying-the-microtargeting-effect-and-inducing-informed-skepticism" class="slide level2">
+<h2><em>This Ad was Tailored for You</em> - Quantifying the Microtargeting Effect and Inducing Informed Skepticism</h2>
+<p>This paper leverages a two-stage experiment simulating a microtargeted campaign in order to answer the following questions:</p>
+<ol type="1">
+<li>Does microtargeting work?</li>
+<li>Is the effect of microtargeted ads mitigated by informing voters how they are being targeted?</li>
+</ol>
+</section><section id="working-definition-for-microtargeted-campaigning" class="slide level2">
+<h2>Working Definition for Microtargeted Campaigning</h2>
+<p>Three Key Conditions:</p>
+<ul>
+<li>Messages are designated for mutually exclusive groups within the population.</li>
+<li>Messages are served by means that primarily only expose the target audience, and not others.</li>
+<li>Targeted groups are constructed on the basis of data points that are individual-specific, and cannot be inferred at the group level.</li>
+</ul>
+</section><section id="literature-gap" class="slide level2">
+<h2>Literature Gap</h2>
+<ul>
+<li>The use of microtargeted campaigning by political actors has been subject of considerable media and legal attention.</li>
+<li>The academic attention to this matter has been multidisciplinary, from law to psychology to political theory to computer science.</li>
+<li>Few of these articles are sufficiently critical of the efficacy of microtargeting. As a result, many of their conclusions rest on the assumption that microtargeted campaigning <em>works</em>.</li>
+<li>This paper seeks to address that particular gap.</li>
+</ul>
+</section><section id="informed-skepticism" class="slide level2">
+<h2>Informed Skepticism</h2>
+<ul>
+<li>The second aim of the paper is to test whether the standard text accompanying targeted advertisements, “this ad has been tailored for you”, has any effect.</li>
+<li>It also attempts to show that a more explicit message, detailing the nature of the targeting, will activate an “informed skepticism” that allows individuals to engage with targeted messaging in a more critical manner.</li>
+</ul>
+</section><section id="data-and-case-selection" class="slide level2">
+<h2>Data and Case Selection</h2>
+<ul>
+<li>Data for this paper (and the following one) will be generated by a two-stage online experiment.</li>
+<li>My original plan was to conduct this in the United States during the run up to the 2020 Presidential Election. For reasons I will discuss at the end, this may have to change.</li>
+<li>The United States was chosen for the following reasons:
+<ul>
+<li>the availability of actual targeted political ads</li>
+<li>the likelihood that highly sophisticated campaigns are in play</li>
+<li>the salience of democratic outcomes in the US (I know, I know)</li>
+</ul></li>
+</ul>
+</section><section id="experiment-design" class="slide level2">
+<h2>Experiment Design</h2>
+<p><strong>Two-stage Survey Experiment</strong>:</p>
+<ul>
+<li><em>Stage 1</em> of the survey experiment aims to collect data to fit five predictive models, one for each advertisement used in the experiment. These fitted models will be used for targeting in the second stage.</li>
+<li><em>Stage 2</em> is used to estimate the average treatment effect (ATE) of assignment to the microtargeted group, as well as assignment to the pseudo-informed and informed targeted groups.</li>
+</ul>
+</section><section id="stage-1---questions" class="slide level2">
+<h2>Stage 1 - Questions</h2>
+<p>The experiment begins with a battery of questions to gather information that can or is typically used to target voters with political ads.</p>
+<p>Two approaches for deciding on which questions to include in the survey:</p>
+<ul>
+<li>emulate Facebook’s ad targeting platform as closely as possible, or</li>
+<li>choose variables that the political science and psychological literatures believe are most relevant to persuasion.</li>
+</ul>
+<p>The experiment aims to emulate the kind of targeting done by Facebook, so one approach is to collect as much of the their covariate set as possible.</p>
+</section><section id="stage-1---concerns" class="slide level2">
+<h2>Stage 1 - Concerns</h2>
+<ul>
+<li><em>Privacy Concerns</em>: respondents should not be asked questions that would violate the ethical requirements of the research.</li>
+<li><em>Truthful Response</em>: some respondents will naturally be hesitant or skeptical to provide this information. The more personal the questions, the more we are likely to prime respondents to the idea that they are being targeted.</li>
+<li><em>Facebook’s Secrets</em>: Facebook does not share its strategies or algorithms for targeting. Although we can infer some of their data sources and attempt to emulate their targeting, we do not know the functional form of their targeting model nor other sources of information being merged into their user data.</li>
+</ul>
+</section><section id="stage-1---treatment" class="slide level2">
+<h2>Stage 1 - Treatment</h2>
+<p>There are five treatments in the first stage: five negative political ads. These should be:</p>
+<ul>
+<li>Released by same campaign.</li>
+<li>Likely to be targeted at different audiences.</li>
+</ul>
+<p>Assignment to treatment is block-randomised; in order to maximise the efficiency of the sample, similar individuals will be less likely to be assigned the same treatment.</p>
+<p>Treatment effect is pre-post difference in perception of candidate subject of negative ads, and self-reported likelihood of voting.</p>
+</section><section id="stage-1---outcome" class="slide level2">
+<h2>Stage 1 - Outcome</h2>
+<p>Given:</p>
+<ul>
+<li>Five treatments <span class="math inline">\(T_{i}\)</span> indexed <span class="math inline">\(i \in N=\{1, 2, 3, 4, 5\}\)</span></li>
+<li>A pair of length-<span class="math inline">\(j\)</span> vectors <span class="math inline">\(\mathbf{X}_{j}\)</span> covariates</li>
+<li>The pre-post difference in candidate perception <span class="math inline">\(Y\)</span></li>
+</ul>
+<p>I fit five Bayesian Additive Regression Tree (BART) models <span class="math inline">\(f_{i}(T_i, \mathbf{X}_j)\)</span>:</p>
+<p><span class="math display">\[
+    \hat{Y}_i = \hat{f}_{i}(T_i, \mathbf{X}_j),\; \forall i \in N
+\]</span></p>
+<p>Where <span class="math inline">\(\hat{Y}_i\)</span> is the predicted treatment effect of exposure to treatment <span class="math inline">\(i\)</span>. These predicted treatment effects are key to stage 2.</p>
+</section><section id="stage-2---using-predicted-effect" class="slide level2">
+<h2>Stage 2 - Using Predicted Effect</h2>
+<ul>
+<li>The survey begins by collecting the same targeting covariates that were used to fit the models at stage 1.</li>
+<li>By passing their answers to these questions to the five fitted models from the previous stage, I get an predicted effect for exposure to each of the five ads.</li>
+<li>These predicted values are used depending on which treatment group the subject is assigned to.</li>
+</ul>
+</section><section id="stage-2---treatment-groups" class="slide level2">
+<h2>Stage 2 - Treatment Groups</h2>
+<ol type="1">
+<li><em>Control</em>: A random ad is provided. May be redundant, as this is identical to stage 1.</li>
+<li><em>Targeted Uninformed</em>: The ad with the highest predicted treatment effect is shown.</li>
+<li><em>Targeted Semi-Informed</em>: The ad with the highest predicted treatment effect is shown, with the caveat first shown that “this advertisement has been personalised for you”.</li>
+<li><em>Targeted Fully Informed</em>: The ad with the highest predicted treatment effect is shown, with a screen explaining that the answers given in the previous section were used to decide which ad would be employed and what other kinds of individuals would or wouldn’t be shown this ad, is shown prior.</li>
+</ol>
+</section><section id="quantities-of-interest" class="slide level2">
+<h2>Quantities of Interest</h2>
+<p><em>Difference in ATEs</em>: The following differences in average pre-post difference in candidate perception per-group, denoted <span class="math inline">\(ATE_{group number}\)</span> are of key interest:</p>
+<ul>
+<li><span class="math inline">\(ATE_2-ATE_1\)</span>: This quantity is the “microtargeting effect”. I hypothesise that this value will be positive and significant.</li>
+<li><span class="math inline">\(ATE_2-ATE_3\)</span>: This quantity shows the extent to which a standard personalisation caveat moderates the effect of microtargeting.</li>
+<li><span class="math inline">\(ATE_4-ATE_2\)</span>: This quantity shows the extent to which explaining the targeting mediates the impact of microtargeting.</li>
+</ul>
+</section><section id="hypothesis-1" class="slide level2">
+<h2>Hypothesis 1</h2>
+<p><code>Hypothesis 1</code> (<em>Microtargeting Works</em>): <span class="math inline">\(ATE_2 &gt; ATE_1\)</span></p>
+<p>If the targeted uninformed group has a higher average treatment effect than the untargeted group, then <em>by randomization we can claim that being microtargeted has a causal effect</em>. If the difference in the ATEs is insignificant, then we fail to show that microtargeting has an effect. This is still a substantively interesting conclusion.</p>
+</section><section id="hypothesis-2" class="slide level2">
+<h2>Hypothesis 2</h2>
+<p><code>Hypothesis 2</code> (<em>Token Caveats Do Nothing</em>): <span class="math inline">\(ATE_3 = ATE_2\)</span></p>
+<p>If the targeted semi-informed and targeted uninformed groups have the same average treatment effect, then <em>we can infer that there is no effect to including a token “this ad has been personalised for you” caveat</em>. If group 3 has a significantly smaller ATE than group 2, then we can infer that this caveat reduces or nullifies the microtargeting effect.</p>
+</section><section id="hypothesis-3" class="slide level2">
+<h2>Hypothesis 3</h2>
+<p><code>Hypothesis 3.1</code> (<em>Motivated Skepticism</em>): <span class="math inline">\(ATE_4 &lt; ATE_2\)</span></p>
+<p>If the targeted fully informed group has a smaller average treatment effect than the targeted uninformed group, this indicates that informing voters of the manner in which they are being targeted nullifies or reduces the microtargeting effect. If the difference between the two groups is not significant, then we may suspect that voters, on aggregate, do not care whether they are being targeted.</p>
+<p><code>Hypothesis 3.2</code> (<em>Motivated Rejection</em>): <span class="math inline">\(ATE_4 &lt; ATE_1\)</span></p>
+<p>If the targeted fully informed group has a smaller average treatment effect than the untargeted group, this indicates that informing voters of the manner in which they are being targeted makes them react negatively to the message</p>
+</section><section id="potential-pitfalls-1" class="slide level2">
+<h2>Potential Pitfalls 1</h2>
+<ul>
+<li><em>One advertisement outperforms the rest</em>:<br />
+This depends on the five ads that I choose from the ad library, and stresses the importance of choosing ads on the basis that they appear to be targeted at different audiences, and not by how persuasive they are. However, I also want to choose ads that I think are likely to be persuasive, otherwise I will have no treatment effect whatsoever.</li>
+</ul>
+</section><section id="potential-pitfalls-2" class="slide level2">
+<h2>Potential Pitfalls 2</h2>
+<ul>
+<li><em>Informing voters of how they are being targeted <strong>and</strong> what kinds of voters would be shown the same ad obfuscates the underlying causal mechanism</em>:<br />
+I do not think that I am trying to expose the exact psychological mechanism by which informing voters of how they are being targeted results in the message having less, no, or the opposite effect. However, as I develop the normative/theoretical aspect of this paper, I may change my mind on this point.</li>
 </ul>
 </section></section>
     </div>

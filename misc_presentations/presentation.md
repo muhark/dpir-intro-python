@@ -5,8 +5,6 @@ author: Musashi Harukawa
 date: 19 May 2020
 ---
 
-<!--  pandoc -t revealjs --slide-level 2 -V revealjs-url=../reveal.js -V theme=../../../dpir-intro-theme --mathjax -s -o presentation.html presentation.md -->
-
 # Introduction
 
 ## Two Themes
@@ -14,13 +12,13 @@ date: 19 May 2020
 Two broad themes in my research:
 
 - **Methodological**: Measurement Inference in Complex Data Structures
-- **Substantive**: Micro-targeted Political Campaigning
+- **Substantive**: Microtargeted Political Campaigning
 
 ## Three Papers
 
 1. _Marginal Information Gain: An Information Theoretic Response to Classifier Accuracy as a Quantity of Substantive Interest_
-2. _This Ad was Tailored for You: Quantifying the Micro-targeting Effect and Inducing Informed Skepticism_
-3. _Micro-targetable Information: the Data that Helps Campaigns the Most_
+2. _This Ad was Tailored for You: Quantifying the Microtargeting Effect and Inducing Informed Skepticism_
+3. _Microtargetable Information: the Data that Helps Campaigns the Most_
 
 ## Questions Before I Start
 
@@ -36,7 +34,7 @@ Two broad themes in my research:
 
 # Paper 1
 
-## Marginal Information Gain- An Information Theoretic Response to Classifier Accuracy as a Quantity of Substantive Interest
+## Marginal Information Gain - An Information Theoretic Response to Classifier Accuracy as a Quantity of Substantive Interest
 
 Breaking this down:
 
@@ -189,7 +187,7 @@ Some key concepts:
 - Mutual Information
 - Interaction Information
 
-## Entropy- Definition
+## Entropy - Definition
 
 _The entropy $H_X$ of a discrete random variable $X$ with probability distribution $p(x)$ is defined as:_
 
@@ -200,13 +198,13 @@ $$
 \end{align*}
 $$
 
-## Entropy- Intuition
+## Entropy - Intuition
 
 - Intuitively, the entropy $H_X$ is a measure of the uncertainty of the random variable $X$.
 - It can be thought of as missing information: larger entropy means less _a priori_ information on the realised value of the random variable.
 - The base of the $log$ determines the units of entropy. Base 2 means that entropy is expressed in bits, and is therefore common in computer science and digital applications.
 
-## Entropy- Example 1
+## Entropy - Example 1
 
 A fair coin takes two values with equal probability. Its entropy is 1 bit.
 
@@ -219,15 +217,15 @@ $$
 \end{align*}
 $$
 
-## Entropy- Example 2
+## Entropy - Example 2
 
 A Bernoulli random variable $X$ is distributed:
 
 $$
 f(k;p) =
     \begin{cases}
-        p     & \text{if $k = 1$}, \\
-        1 - p & \text{if $k = 0$}.
+        q     & \text{if $k = 1$}, \\
+        1 - q & \text{if $k = 0$}.
     \end{cases}
 $$
 
@@ -297,7 +295,7 @@ $$
 
 The latter formula offers a useful intuition: _given two random variables, mutual information measures the extent to which the entropy of a random variable is reduced by knowing values of the other_.
 
-## Mutual Information- Toy Example
+## Mutual Information - Toy Example
 
 Suppose I ask you to guess the temperature in Kagoshima.
 
@@ -373,3 +371,146 @@ This can be understood as the marginal change in our knowledge of $Y$ given the 
 - Show that the Interaction Information and Classifier Accuracy are positively correlated in Peterson and Spirling's (2018) data.
 - Write computationally efficient implementation of MIG (this may not be straightforward, MI assumes knowledge of population probability distribution).
 - Apply new measure to Peterson and Spirling (2018) and subsequent works using same method (e.g. Goet (2019)). Where possible, show how their estimates of polarization may have been confounded by other factors.
+
+# Paper 2
+
+## _This Ad was Tailored for You_ - Quantifying the Microtargeting Effect and Inducing Informed Skepticism
+
+This paper leverages a two-stage experiment simulating a microtargeted campaign in order to answer the following questions:
+
+1. Does microtargeting work?
+2. Is the effect of microtargeted ads mitigated by informing voters how they are being targeted?
+
+## Working Definition for Microtargeted Campaigning
+
+Three Key Conditions:
+
+- Messages are designated for mutually exclusive groups within the population.
+- Messages are served by means that primarily only expose the target audience, and not others.
+- Targeted groups are constructed on the basis of data points that are individual-specific, and cannot be inferred at the group level.
+
+## Literature Gap
+
+- The use of microtargeted campaigning by political actors has been subject of considerable media and legal attention.
+- The academic attention to this matter has been multidisciplinary, from law to psychology to political theory to computer science.
+- Few of these articles are sufficiently critical of the efficacy of microtargeting. As a result, many of their conclusions rest on the assumption that microtargeted campaigning _works_.
+- This paper seeks to address that particular gap.
+
+## Informed Skepticism
+
+- The second aim of the paper is to test whether the standard text accompanying targeted advertisements, "this ad has been tailored for you", has any effect.
+- It also attempts to show that a more explicit message, detailing the nature of the targeting, will activate an "informed skepticism" that allows individuals to engage with targeted messaging in a more critical manner.
+
+## Data and Case Selection
+
+- Data for this paper (and the following one) will be generated by a two-stage online experiment.
+- My original plan was to conduct this in the United States during the run up to the 2020 Presidential Election. For reasons I will discuss at the end, this may have to change.
+- The United States was chosen for the following reasons:
+    - the availability of actual targeted political ads
+    - the likelihood that highly sophisticated campaigns are in play
+    - the salience of democratic outcomes in the US (I know, I know)
+
+## Experiment Design
+
+**Two-stage Survey Experiment**:
+
+- _Stage 1_ of the survey experiment aims to collect data to fit five predictive models, one for each advertisement used in the experiment. These fitted models will be used for targeting in the second stage.
+- _Stage 2_ is used to estimate the average treatment effect (ATE) of assignment to the microtargeted group, as well as assignment to the pseudo-informed and informed targeted groups.
+
+## Stage 1 - Questions
+
+The experiment begins with a battery of questions to gather information that can or is typically used to target voters with political ads.
+
+Two approaches for deciding on which questions to include in the survey:
+
+- emulate Facebook's ad targeting platform as closely as possible, or
+- choose variables that the political science and psychological literatures believe are most relevant to persuasion.
+
+The experiment aims to emulate the kind of targeting done by Facebook, so one approach is to collect as much of the their covariate set as possible.
+
+## Stage 1 - Concerns
+
+- _Privacy Concerns_: respondents should not be asked questions that would violate the ethical requirements of the research.
+- _Truthful Response_: some respondents will naturally be hesitant or skeptical to provide this information. The more personal the questions, the more we are likely to prime respondents to the idea that they are being targeted.
+- _Facebook's Secrets_: Facebook does not share its strategies or algorithms for targeting. Although we can infer some of their data sources and attempt to emulate their targeting, we do not know the functional form of their targeting model nor other sources of information being merged into their user data.
+
+
+## Stage 1 - Treatment
+
+There are five treatments in the first stage: five negative political ads. These should be:
+
+- Released by same campaign.
+- Likely to be targeted at different audiences.
+
+Assignment to treatment is block-randomised; in order to maximise the efficiency of the sample, similar individuals will be less likely to be assigned the same treatment.
+
+Treatment effect is pre-post difference in perception of candidate subject of negative ads, and self-reported likelihood of voting.
+
+## Stage 1 - Outcome
+
+Given:
+
+- Five treatments $T_{i}$ indexed $i \in N=\{1, 2, 3, 4, 5\}$
+- A pair of length-$j$ vectors $\mathbf{X}_{j}$ covariates
+- The pre-post difference in candidate perception $Y$
+
+I fit five Bayesian Additive Regression Tree (BART) models $f_{i}(T_i, \mathbf{X}_j)$:
+
+$$
+    \hat{Y}_i = \hat{f}_{i}(T_i, \mathbf{X}_j),\; \forall i \in N
+$$
+
+Where $\hat{Y}_i$ is the predicted treatment effect of exposure to treatment $i$. These predicted treatment effects are key to stage 2.
+
+## Stage 2 - Using Predicted Effect
+
+- The survey begins by collecting the same targeting covariates that were used to fit the models at stage 1.
+- By passing their answers to these questions to the five fitted models from the previous stage, I get an predicted effect for exposure to each of the five ads.
+- These predicted values are used depending on which treatment group the subject is assigned to.
+
+## Stage 2 - Treatment Groups
+
+1. _Control_: A random ad is provided. May be redundant, as this is identical to stage 1.
+2. _Targeted Uninformed_: The ad with the highest predicted treatment effect is shown.
+3. _Targeted Semi-Informed_: The ad with the highest predicted treatment effect is shown, with the caveat first shown that "this advertisement has been personalised for you".
+4. _Targeted Fully Informed_: The ad with the highest predicted treatment effect is shown, with a screen explaining that the answers given in the previous section were used to decide which ad would be employed and what other kinds of individuals would or wouldn't be shown this ad, is shown prior.
+
+## Quantities of Interest
+
+_Difference in ATEs_: The following differences in average pre-post difference in candidate perception per-group, denoted $ATE_{group number}$ are of key interest:
+
+- $ATE_2-ATE_1$: This quantity is the "microtargeting effect". I hypothesise that this value will be positive and significant.
+- $ATE_2-ATE_3$: This quantity shows the extent to which a standard personalisation caveat moderates the effect of microtargeting.
+- $ATE_4-ATE_2$: This quantity shows the extent to which explaining the targeting mediates the impact of microtargeting.
+
+## Hypothesis 1
+
+`Hypothesis 1` (_Microtargeting Works_): $ATE_2 > ATE_1$
+
+If the targeted uninformed group has a higher average treatment effect than the untargeted group, then _by randomization we can claim that being microtargeted has a causal effect_. If the difference in the ATEs is insignificant, then we fail to show that microtargeting has an effect. This is still a substantively interesting conclusion.
+
+## Hypothesis 2
+
+`Hypothesis 2` (_Token Caveats Do Nothing_): $ATE_3 = ATE_2$
+
+If the targeted semi-informed and targeted uninformed groups have the same average treatment effect, then _we can infer that there is no effect to including a token "this ad has been personalised for you" caveat_. If group 3 has a significantly smaller ATE than group 2, then we can infer that this caveat reduces or nullifies the microtargeting effect.
+
+## Hypothesis 3
+
+`Hypothesis 3.1` (_Motivated Skepticism_): $ATE_4 < ATE_2$
+
+If the targeted fully informed group has a smaller average treatment effect than the targeted uninformed group, this indicates that informing voters of the manner in which they are being targeted nullifies or reduces the microtargeting effect. If the difference between the two groups is not significant, then we may suspect that voters, on aggregate, do not care whether they are being targeted.
+
+`Hypothesis 3.2` (_Motivated Rejection_): $ATE_4 < ATE_1$
+
+If the targeted fully informed group has a smaller average treatment effect than the untargeted group, this indicates that informing voters of the manner in which they are being targeted makes them react negatively to the message
+
+## Potential Pitfalls 1
+
+- _One advertisement outperforms the rest_: \
+This depends on the five ads that I choose from the ad library, and stresses the importance of choosing ads on the basis that they appear to be targeted at different audiences, and not by how persuasive they are. However, I also want to choose ads that I think are likely to be persuasive, otherwise I will have no treatment effect whatsoever.
+
+## Potential Pitfalls 2
+
+- _Informing voters of how they are being targeted **and** what kinds of voters would be shown the same ad obfuscates the underlying causal mechanism_: \
+I do not think that I am trying to expose the exact psychological mechanism by which informing voters of how they are being targeted results in the message having less, no, or the opposite effect. However, as I develop the normative/theoretical aspect of this paper, I may change my mind on this point.
