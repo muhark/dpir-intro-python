@@ -2,7 +2,7 @@
 title: Information, Microtargeting and Skepticism
 subtitle: Research Proposal and Outline
 author: Musashi Harukawa
-date: Trinity Term 2020
+date: 19 May 2020
 ---
 
 <!--  pandoc -t revealjs --slide-level 2 -V revealjs-url=../reveal.js -V theme=../../../dpir-intro-theme --mathjax -s -o presentation.html presentation.md -->
@@ -31,7 +31,7 @@ Two broad themes in my research:
     - Paper 2: Experimental design, normative arguments.
     - Paper 3: Clarity, normative arguments.
 - _Why this order?_
-    - The third paper relies on the data from the second, and a methodological result from the first.
+    - The third paper relies on the data from the second and a methodological result from the first.
 
 
 # Paper 1
