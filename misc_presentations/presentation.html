@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Musashi Harukawa">
+  <title>Information, Microtargeting and Skepticism</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../reveal.js/css/theme/../../../dpir-intro-theme.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal.js/css/print/pdf.css' : '../reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="../reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Information, Microtargeting and Skepticism</h1>
+  <p class="subtitle">Research Proposal and Outline</p>
+  <p class="author">Musashi Harukawa</p>
+  <p class="date">Trinity Term 2020</p>
+</section>
+
+<section class="slide level2">
+
+<!--  pandoc -t revealjs --slide-level 2 -V revealjs-url=../reveal.js -V theme=../../../dpir-intro-theme --mathjax -s -o presentation.html presentation.md -->
+</section>
+<section><section id="introduction" class="title-slide slide level1"><h1>Introduction</h1></section><section id="two-themes" class="slide level2">
+<h2>Two Themes</h2>
+<p>Two broad themes in my research:</p>
+<ul>
+<li><strong>Methodological</strong>: Measurement Inference in Complex Data Structures</li>
+<li><strong>Substantive</strong>: Micro-targeted Political Campaigning</li>
+</ul>
+</section><section id="three-papers" class="slide level2">
+<h2>Three Papers</h2>
+<ol type="1">
+<li><em>Marginal Information Gain: An Information Theoretic Response to Classifier Accuracy as a Quantity of Substantive Interest</em></li>
+<li><em>This Ad was Tailored for You: Quantifying the Micro-targeting Effect and Inducing Informed Skepticism</em></li>
+<li><em>Micro-targetable Information: the Data that Helps Campaigns the Most</em></li>
+</ol>
+</section><section id="questions-before-i-start" class="slide level2">
+<h2>Questions Before I Start</h2>
+<ul>
+<li><em>What can I expect?</em>
+<ul>
+<li>As I have no empirical results yet, this presentation will be mostly about design and methodology.</li>
+</ul></li>
+<li><em>What feedback is useful?</em>
+<ul>
+<li>Paper 1: Does this paper seem relevant and clear?</li>
+<li>Paper 2: Experimental design, normative arguments.</li>
+<li>Paper 3: Clarity, normative arguments.</li>
+</ul></li>
+<li><em>Why this order?</em>
+<ul>
+<li>The third paper relies on the data from the second, and a methodological result from the first.</li>
+</ul></li>
+</ul>
+</section></section>
+<section><section id="paper-1" class="title-slide slide level1"><h1>Paper 1</h1></section><section id="marginal-information-gain-an-information-theoretic-response-to-classifier-accuracy-as-a-quantity-of-substantive-interest" class="slide level2">
+<h2>Marginal Information Gain: An Information Theoretic Response to Classifier Accuracy as a Quantity of Substantive Interest</h2>
+<p>Breaking this down:</p>
+<ul>
+<li>Classifier Accuracy as a Measure of Polarization</li>
+<li>Information Theory and Mutual Information</li>
+</ul>
+</section><section id="context" class="slide level2">
+<h2>Context</h2>
+<ul>
+<li>This paper began as a response to what I see as the shortcomings of a method first presented in <a href="https://doi.org/10.1017/pan.2017.39">Peterson &amp; Spirling (2018)</a>, “Classification Accuracy as a Substantive Quantity of Interest: Measuring Polarization in Westminster Systems”.</li>
+<li>The paper presents a novel method for measuring polarization in parliaments.</li>
+<li>Their method uses the classifier accuracy of a supervised machine learning model trained on the bag-of-words representation of parliamentary speech as a measure of polarization.</li>
+</ul>
+<p><em>Much of the motivation for my method can be understood by exploring this paper, so I’ll spend a few slides on explaining their paper in detail.</em></p>
+</section><section id="peterson-and-spirling-2018-explained-data" class="slide level2">
+<h2>Peterson and Spirling (2018) Explained: Data</h2>
+<p><strong>Corpus:</strong> 3.5 million UK parliamentary debate transcripts over 78 years from Hansard Archive</p>
+<ul>
+<li>Represented as <strong>bag-of-words</strong>, a count matrix indicating frequency of all unique terms across all documents. Called a document-token matrix (<strong>DTM</strong>).</li>
+<li>Rows are the set of all speeches (documents) across all sessions, also known as the corpus, <span class="math inline">\(K\)</span>.</li>
+<li>Columns are the set of all unique terms (vocabulary, <span class="math inline">\(V\)</span>).</li>
+<li>I denote this as matrix <span class="math inline">\(\mathbf{X}\)</span> with given element <span class="math inline">\(x_{w \in V,\,d \in K}\)</span> indicating the frequency of token <span class="math inline">\(w\)</span> in document <span class="math inline">\(d\)</span>.</li>
+</ul>
+</section><section id="peterson-and-spirling-2018-explained-model" class="slide level2">
+<h2>Peterson and Spirling (2018) Explained: Model</h2>
+<p>Train supervised machine learning algorithm to predict <strong>party label of speaker</strong> from <strong>word frequencies in speech</strong>.</p>
+<p><span class="math display">\[
+    Y_{d} = f(\mathbf{X}_{d}) + \epsilon
+\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(Y_{d}\)</span> is the party label of the speaker of speech <span class="math inline">\(d\)</span>, and <span class="math inline">\(X_{d}\)</span> is the length-<span class="math inline">\(V\)</span> vector of word counts for speech <span class="math inline">\(d \in K\)</span>.</li>
+<li><span class="math inline">\(f(\cdot)\)</span> is a mapping from the <span class="math inline">\(V\)</span>-dimensional feature space to the binary party label space.</li>
+<li><span class="math inline">\(\epsilon\)</span> is an error term.</li>
+</ul>
+</section><section id="peterson-and-spirling-2018-explained-algorithm" class="slide level2">
+<h2>Peterson and Spirling (2018) Explained: Algorithm</h2>
+<p>Note that I did not specify a functional form for <span class="math inline">\(f(\cdot)\)</span>. This is because authors use four different algorithms:</p>
+<ul>
+<li><em>perceptron+SGD</em></li>
+<li><em>SGD+batch sampler</em></li>
+<li><em>passive-aggressive classifier with hinge-loss</em></li>
+<li><em>logistic regression with L2 penalty</em></li>
+</ul>
+<p>The model is trained on a stratified 10-fold cross-validation training-test split.</p>
+</section><section id="peterson-and-spirling-2018-explained-accuracy" class="slide level2">
+<h2>Peterson and Spirling (2018) Explained: Accuracy</h2>
+<p>Given a speech (i.e. vector of word counts), the fitted model gives a predicted party label of the speaker:</p>
+<p><span class="math display">\[
+    \hat{Y}_d = \hat{f}(\mathbf{X}_d)
+\]</span></p>
+<p>Associated with this prediction is an error, defined as:</p>
+<p><span class="math display">\[
+    \hat{\epsilon}_d \equiv |Y_d - \hat{Y}_d|
+\]</span></p>
+<p>In the binary case, we can describe the classifier accuracy as:</p>
+<p><span class="math display">\[
+    p(\epsilon) \equiv P[\hat{\epsilon_d}&gt;0] = P[\hat{Y}_d \ne Y_d]
+\]</span></p>
+</section><section id="peterson-and-spirling-2018-explained-output-and-intuition" class="slide level2">
+<h2>Peterson and Spirling (2018) Explained: Output and Intuition</h2>
+<ul>
+<li>The fitted model will not always be able to infer the party label of the speaker from what they have said.</li>
+<li>The classifier accuracy over time is a summary of the ability of the model to infer party label based on speech.</li>
+<li>The intuition is that <em>in highly polarised parliaments, it is easier to guess the party identity of a speaker based on what they say</em>.</li>
+<li>Therefore, the accuracy of the classifier is a measure of the level of polarization.</li>
+</ul>
+</section><section id="peterson-and-spirling-2018-explained-innovations-and-relevance" class="slide level2">
+<h2>Peterson and Spirling (2018) Explained: Innovations and Relevance</h2>
+<ul>
+<li>A common response to new measures is “ok great, now we have yet another way to measure this thing we already had fifteen measures for”.</li>
+<li>I argue that the focus on <em>speech</em> reveals an aspect of polarization that is not captured by looking at other indicators such as voting record.</li>
+<li>However, rather than a new measure of polarization, I think their use of classifier accuracy as a measure of substantive interest is more interesting and important.</li>
+<li>Supervised methods for latent concept measurement are extremely useful in a context where we have enormous quantities of complex trace data.</li>
+</ul>
+</section><section id="critiques-of-peterson-and-spirling-2018" class="slide level2">
+<h2>Critiques of Peterson and Spirling (2018)</h2>
+<ul>
+<li>If you think that the link between <em>the ease of predicting the party of a speaker</em> and <em>polarization</em> is problematic at best, I wholeheartedly agree with you.</li>
+<li>I think it is more helpful, however, to focus on the potential methodological contribution of their approach; substantive interpretations of meta-parameters of supervised models.</li>
+<li>Therefore my criticism of their work, and my proposed solution, is made with the aim of improving the method in order to achieve the goal of building valid measures from complex data in social sciences.</li>
+</ul>
+</section><section id="brief-aside-on-measurement-theory" class="slide level2">
+<h2>Brief Aside on Measurement Theory</h2>
+<ul>
+<li>To make clear my criticism of Peterson and Spirling’s (2018) approach, I draw on some ideas from <em>Measurement Theory</em>.</li>
+<li>Measurement theory is an area of social science methodology concerned with the construction of <em>measures</em>.</li>
+<li>In the interest of time I will keep my discussion of this brief, but it’s a fascinating field of social science methodology. Ben Lauderdale provides <a href="https://uclspp.github.io/POLS0013/index.html">an excellent introduction</a> to the subject.</li>
+</ul>
+</section><section id="concepts-indicators-and-measures" class="slide level2">
+<h2>Concepts, Indicators and Measures</h2>
+<p>Distinction between <em>concepts</em>, <em>indicators</em> and <em>measures</em>.</p>
+<ul>
+<li><strong>Concepts</strong> are (often latent) theoretical constructs. <em>Will not provide an ontology of concepts here but Goertz is a good resource</em>.</li>
+<li><strong>Indicators</strong> are empirical phenomena, and therefore realizable, regular and measurable.</li>
+<li><strong>Measures</strong> are constructs that systematize our observations of indicators, and make specific relational claims about the comparability of realizations of the indicators.</li>
+</ul>
+<p>We usually have some theoretical reasons for believing that concepts are linked to indicators (maybe even causally!)</p>
+</section><section id="visualizing-peterson-and-spirling-2018" class="slide level2">
+<h2>Visualizing Peterson and Spirling (2018)</h2>
+<ul>
+<li><em>Concept</em>: Polarization</li>
+<li><em>Indicator</em>: Link Between Speech and Party Label</li>
+<li><em>Measure</em>: Supervised Classifier Accuracy</li>
+</ul>
+<figure>
+<img data-src="MeasurementFig1.png" alt="Polarization Measurement Diagram" /><figcaption>Polarization Measurement Diagram</figcaption>
+</figure>
+</section><section id="confounded-measurement" class="slide level2">
+<h2>Confounded Measurement</h2>
+<ul>
+<li>A confounding concept, such as diversity, can affect the link between speeches and party label.</li>
+<li>Variations in classifier accuracy may be due to changes in polarization or changes in other factors.</li>
+</ul>
+<figure>
+<img data-src="ConfoundedMeasurement.png" alt="Confounded Measurement Diagram" /><figcaption>Confounded Measurement Diagram</figcaption>
+</figure>
+</section><section id="partialling-out-confounders" class="slide level2">
+<h2>“Partialling Out” Confounders</h2>
+<ul>
+<li>Those familiar with multivariate regression know that for the standard approach to ruling out confounders is to include them in the model and calculate the partial derivative of the treatment holding confounders constant.</li>
+<li>This solution is not possible in this case because the relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(p(\epsilon)\)</span> is neither linear nor continuous.</li>
+<li>I want to provide a revision of this approach that:
+<ul>
+<li>is able to “control” for the “effect” of confounding concepts, and</li>
+<li>does not rely on a particular functional specification of the statisitcal model.</li>
+</ul></li>
+</ul>
+</section><section id="what-does-it-mean-when-a-classifier-is-wrong" class="slide level2">
+<h2>What does it mean when a classifier is wrong?</h2>
+<p>I claim that there are three sources of prediction error:</p>
+<ul>
+<li>Model Misspecification (<span class="math inline">\(f(\cdot)\)</span> is wrong)</li>
+<li>Random Noise (<span class="math inline">\(|e|&gt;|Y|\)</span>)</li>
+<li>Uninformative Features (<span class="math inline">\(X\)</span> tells us little about <span class="math inline">\(Y\)</span>)</li>
+</ul>
+<p>I assert that <span class="math inline">\(f(\cdot)\)</span> is sufficiently flexible to capture the relationship between <span class="math inline">\(\mathbf{X}\)</span> and <span class="math inline">\(Y\)</span>, and that <span class="math inline">\(\mathbb{E}(e)=0\)</span>. My focus is therefore on formalising the third point.</p>
+</section></section>
+<section><section id="primer-in-information-theory" class="title-slide slide level1"><h1>Primer in Information Theory</h1></section><section id="information-theory" class="slide level2">
+<h2>Information Theory</h2>
+<p>Information Theory is a field of statisitcs/mathematics that, among other things, formalises the <em>information</em> contained in random processes.</p>
+<p>Some key concepts:</p>
+<ul>
+<li>Entropy</li>
+<li>Mutual Information</li>
+<li>Interaction Information</li>
+</ul>
+</section><section id="entropy-definition" class="slide level2">
+<h2>Entropy: Definition</h2>
+<p><em>The entropy <span class="math inline">\(H_X\)</span> of a discrete random variable <span class="math inline">\(X\)</span> with probability distribution <span class="math inline">\(p(x)\)</span> is defined as:</em></p>
+<p><span class="math display">\[
+\begin{align*}
+    H_X &amp;\equiv - \sum_{x \in \mathfrak{X}}{p(x)log_2p(x)} \\
+        &amp;= \mathbb{E}log_{2}[\frac{1}{p(x)}]
+\end{align*}
+\]</span></p>
+</section><section id="entropy-intuition" class="slide level2">
+<h2>Entropy: Intuition</h2>
+<ul>
+<li>Intuitively, the entropy <span class="math inline">\(H_X\)</span> is a measure of the uncertainty of the random variable <span class="math inline">\(X\)</span>.</li>
+<li>It can be thought of as missing information: larger entropy means less <em>a priori</em> information on the realised value of the random variable.</li>
+<li>The base of the <span class="math inline">\(log\)</span> determines the units of entropy. Base 2 means that entropy is expressed in bits, and is therefore common in computer science and digital applications.</li>
+</ul>
+</section><section id="entropy-example-1" class="slide level2">
+<h2>Entropy: Example 1</h2>
+<p>A fair coin takes two values with equal probability. Its entropy is 1 bit.</p>
+<p><span class="math display">\[
+\begin{align*}
+    H_X &amp;= -\frac{1}{2}log_2(\frac{1}{2}) - \frac{1}{2}(log_2\frac{1}{2}) \\
+        &amp;= -log_2(\frac{1}{2}) \\
+        &amp;= -(-1) \\
+        &amp;= 1 \\
+\end{align*}
+\]</span></p>
+</section><section id="entropy-example-2" class="slide level2">
+<h2>Entropy: Example 2</h2>
+<p>A Bernoulli random variable <span class="math inline">\(X\)</span> is distributed:</p>
+<p><span class="math display">\[
+f(k;p) =
+    \begin{cases}
+        p     &amp; \text{if $k = 1$}, \\
+        1 - p &amp; \text{if $k = 0$}.
+    \end{cases}
+\]</span></p>
+<p>its entropy is:</p>
+<p><span class="math display">\[
+    H_X = -qlog_2q - (1-q)log_2(1-q)
+\]</span></p>
+</section><section id="entropy-of-bernoulli-variable-visualised" class="slide level2">
+<h2>Entropy of Bernoulli Variable Visualised</h2>
+<p><img data-src="fig_bernoulli.png" /></p>
+<ul>
+<li>When <span class="math inline">\(q=0\)</span> or <span class="math inline">\(q=1\)</span>, the outcome is certain, and therefore <span class="math inline">\(H_X=0\)</span>.</li>
+<li><span class="math inline">\(H_X\)</span> is maximised at <span class="math inline">\(q=0.5\)</span>, because then we have the least information on what value <span class="math inline">\(X\)</span> might take.</li>
+</ul>
+</section><section id="joint-entropy" class="slide level2">
+<h2>Joint Entropy</h2>
+<p>The joint entropy of two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is given by:</p>
+<p><span class="math display">\[
+    H_{X, Y} \equiv -
+      \sum_{x \in \mathfrak{X}, Y \in \mathfrak{Y}}
+      p(x, y)log_2 p(x, y)
+\]</span></p>
+<p>If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent, then:</p>
+<p><span class="math display">\[
+    H_{X, Y} = H_X + H_Y
+\]</span></p>
+</section><section id="conditional-entropy" class="slide level2">
+<h2>Conditional Entropy</h2>
+<p>Conditional Entropy is given by</p>
+<p><span class="math display">\[
+    H_{Y|X} \equiv -
+      \sum_{x \in \mathfrak{X}}p(x)
+      \sum_{y \in \mathfrak{Y}}p(y|x)
+      log_2 p(y|x)
+\]</span></p>
+<p>It can be shown that the joint entropy of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is equal to the sum of the entropy of <span class="math inline">\(X\)</span> and the conditional entropy of <span class="math inline">\(Y\)</span> given <span class="math inline">\(X\)</span>:</p>
+<p><span class="math display">\[
+    H_{X, Y} = H_X + H_{Y|X}
+\]</span></p>
+</section><section id="shannons-mutual-information" class="slide level2">
+<h2>Shannon’s Mutual Information</h2>
+<p>Shannon’s Mutual Information is a measures the amount of information shared between two variables, and is defined as:</p>
+<p><span class="math display">\[
+    I_{X, Y} \equiv
+    \sum_{x \in \mathfrak{X}, Y \in \mathfrak{Y}}
+    p(x, y) log_2 \frac{p(x, y)}{p(x)p(y)}
+\]</span></p>
+<p>This is related to conditional entropy by:</p>
+<p><span class="math display">\[
+    I_{X, Y} = H_Y - H_{Y|X} = H_X - H_{X|Y}
+\]</span></p>
+</section><section id="understanding-mutual-information" class="slide level2">
+<h2>Understanding Mutual Information</h2>
+<p>The latter formula offers a useful intuition: <em>given two random variables, mutual information measures the extent to which the entropy of a random variable is reduced by knowing values of the other</em>.</p>
+</section><section id="mutual-information-toy-example" class="slide level2">
+<h2>Mutual Information: Toy Example</h2>
+<p>Suppose I ask you to guess the temperature in Kagoshima.</p>
+<ul>
+<li>You don’t know where it is, but you assume it’s in the Northern Hemisphere, so you know it’s currently late Spring. <em>The value is probably somwhere between 5-35 C</em>.</li>
+<li>I tell you that Kagoshima is in the south of Japan. <em>Knowing this information, you can place lower weights on temperatures below 15 degrees</em>.</li>
+<li><strong>Each piece of knowledge alters the weights you place on the likely values of a random variable.</strong></li>
+</ul>
+</section><section id="interaction-information" class="slide level2">
+<h2>Interaction Information</h2>
+<p>McGill (1954) provides a multivariate generalization of Shannon’s Mutual Information:</p>
+<p><span class="math display">\[
+    I(\{X_1, X_2, X_3\}) = I(X_1, X_2 | X_3) - I(X_1, X_2)
+\]</span></p>
+<p>with the general form for a set of <span class="math inline">\(S\)</span> random variables defined as:</p>
+<p><span class="math display">\[
+    I(\{S \cup X\}) = I(S|X) - I(S)
+\]</span></p>
+</section><section id="interaction-information-applied-to-text-data" class="slide level2">
+<h2>Interaction Information Applied to Text Data</h2>
+<p>Given the length-<span class="math inline">\(d\)</span>:</p>
+<ul>
+<li>document-token matrix <span class="math inline">\(\mathbf{X}_{wd}\)</span></li>
+<li>matrix of <span class="math inline">\(j\)</span> covariates <span class="math inline">\(\mathbf{Z}_{jd}\)</span></li>
+<li>vector of speaker party labels <span class="math inline">\(Y_d\)</span></li>
+</ul>
+<p>I can describe the model presented in Peterson and Spirling (2018) as an information theoretic one:</p>
+<p><span class="math display">\[
+    I(\{Y_d, \mathbf{X}_{wd}\})
+\]</span></p>
+<p>This describes the extent to which values of the DTM inform us of the values of <span class="math inline">\(Y\)</span>.</p>
+</section><section id="partialling-out-covariates" class="slide level2">
+<h2>“Partialling Out” Covariates</h2>
+<p>In order to remove the informational effect of confounding concepts, we need a set of indicators that contain the information from our target concept, but without the information of the confounding concepts.</p>
+<p>In essence, I want to measure the change in mutual information for when we add or subtract confounders.</p>
+<p><span class="math display">\[
+    \frac{\delta I}{\delta \mathbf{Z}_{jd}} \approx
+      I(\{Y_d, \mathbf{X}_{wd}, \mathbf{Z}_{jd}\}) -
+      I(\{Y_d, \mathbf{X}_{wd}\})
+\]</span></p>
+</section><section id="marginal-information-gain" class="slide level2">
+<h2>Marginal Information Gain</h2>
+<p>I define <em>Marginal Information Gain</em> (MIG) as the partial derivative of McGill’s Interaction Information with respect to <span class="math inline">\(X_i\)</span>, holding all other <span class="math inline">\(\mathbf{X}_{¬i}\)</span> constant:</p>
+<p><span class="math display">\[
+    MIG_{Y, X_i} \equiv \frac
+    {\delta I(\{Y, X_i, \mathbf{X}_{¬i}\})}
+    {\delta X_i}
+\]</span></p>
+<p>This can be understood as the marginal change in our knowledge of <span class="math inline">\(Y\)</span> given the addition of <span class="math inline">\(X_i\)</span> to our model, holding the informational effect of all covariates not <span class="math inline">\(X_i\)</span> constant.</p>
+</section><section id="mig-vs-classifier-accuracy" class="slide level2">
+<h2>MIG vs Classifier Accuracy</h2>
+<ul>
+<li>Both capture the extent to which knowing <span class="math inline">\(X\)</span> tells us the value of <span class="math inline">\(Y\)</span>.</li>
+<li>Moreover <strong>I want to show that the two values are empirically correlated</strong>.</li>
+<li>However, MIG allows us to partial out the effect of individual features.</li>
+<li>No generalizable mathematical solution with classifier accuracy, although a computationally costly numerical solution is possible. However, no guarantee that this approach could provide stable estimates.</li>
+</ul>
+</section><section id="remaining-work" class="slide level2">
+<h2>Remaining Work</h2>
+<ul>
+<li>Make sure nobody has already formulated MIG (I suspect they may have, but cannot find it).</li>
+<li>Show that the Interaction Information and Classifier Accuracy are positively correlated in Peterson and Spirling’s (2018) data.</li>
+<li>Write computationally efficient implementation of MIG (this may not be straightforward, MI assumes knowledge of population probability distribution).</li>
+<li>Apply new measure to Peterson and Spirling (2018) and subsequent works using same method (e.g. Goet (2019)). Where possible, show how their estimates of polarization may have been confounded by other factors.</li>
+</ul>
+</section></section>
+    </div>
+  </div>
+
+  <script src="../reveal.js/lib/js/head.min.js"></script>
+  <script src="../reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: '../reveal.js/plugin/math/math.js', async: true },
+          { src: '../reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
