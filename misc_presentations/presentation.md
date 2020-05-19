@@ -16,18 +16,18 @@ Two broad themes in my research:
 
 ## Three Papers
 
-1. _Marginal Information Gain: An Information Theoretic Response to Classifier Accuracy as a Quantity of Substantive Interest_
-2. _This Ad was Tailored for You: Quantifying the Microtargeting Effect and Inducing Informed Skepticism_
-3. _Microtargetable Information: the Data that Helps Campaigns the Most_
+1. _Marginal Information Gain_: An Information Theoretic Response to Classifier Accuracy as a Quantity of Substantive Interest
+2. _This Ad was Tailored for You_: Quantifying the Microtargeting Effect and Inducing Informed Skepticism
+3. _Microtargetable Information_: the Data that Helps Campaigns the Most
 
 ## Questions Before I Start
 
-- _What can I expect?_
+- _What to expect?_
     - As I have no empirical results yet, this presentation will be mostly about design and methodology.
 - _What feedback is useful?_
-    - Paper 1: Does this paper seem relevant and clear?
+    - Paper 1: Relevance, clarity
     - Paper 2: Experimental design, normative arguments.
-    - Paper 3: Clarity, normative arguments.
+    - Paper 3: Still an early stage.
 - _Why this order?_
     - The third paper relies on the data from the second and a methodological result from the first.
 
@@ -222,7 +222,7 @@ $$
 A Bernoulli random variable $X$ is distributed:
 
 $$
-f(k;p) =
+f(k;q) =
     \begin{cases}
         q     & \text{if $k = 1$}, \\
         1 - q & \text{if $k = 0$}.
@@ -514,3 +514,18 @@ This depends on the five ads that I choose from the ad library, and stresses the
 
 - _Informing voters of how they are being targeted **and** what kinds of voters would be shown the same ad obfuscates the underlying causal mechanism_: \
 I do not think that I am trying to expose the exact psychological mechanism by which informing voters of how they are being targeted results in the message having less, no, or the opposite effect. However, as I develop the normative/theoretical aspect of this paper, I may change my mind on this point.
+
+## Other Issues
+
+- _Scope_: The scope of my causal estimates is limited to American voters, **for the five ads that I have chosen**.
+- _Corona_: I have concerns about the effect that a global pandemic will have on the content of campaigns, as well as how people react to fear-based messages. This may make it hard to justify the generalisability of my results to a non-crisis setting.
+
+# Paper 3
+
+## _Microtargetable Information - the Data that Helps Campaigns the Most_
+
+This paper is still at an extremely early stage. The core idea is to apply the marginal information gain to the experimental data in order to infer the change in "targetability" of a user for the inclusion of a covariate in the dataset.
+
+Depending on what covariates are the most targetable, the implications of this paper will vary greatly.
+
+# Thanks for Listening!
