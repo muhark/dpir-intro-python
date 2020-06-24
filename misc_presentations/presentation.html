@@ -44,15 +44,15 @@
 <h2>Two Themes</h2>
 <p>Two broad themes in my research:</p>
 <ul>
-<li><strong>Methodological</strong>: Measurement Inference in Complex Data Structures</li>
+<li><strong>Methodological</strong>: Feature Selection and Measurement in Complex Data Structures</li>
 <li><strong>Substantive</strong>: Microtargeted Political Campaigning</li>
 </ul>
 </section><section id="three-papers" class="slide level2">
 <h2>Three Papers</h2>
 <ol type="1">
-<li><em>Marginal Information Gain</em>: An Information Theoretic Response to Classifier Accuracy as a Quantity of Substantive Interest</li>
+<li><em>Information Theoretic Approaches to Model Testing and Measurement</em>: Social Science Applications of Mutual Information and its Estimators</li>
 <li><em>This Ad was Tailored for You</em>: Quantifying the Microtargeting Effect and Inducing Informed Skepticism</li>
-<li><em>Microtargetable Information</em>: the Data that Helps Campaigns the Most</li>
+<li><em>tbd</em></li>
 </ol>
 </section><section id="questions-before-i-start" class="slide level2">
 <h2>Questions Before I Start</h2>
@@ -63,39 +63,448 @@
 </ul></li>
 <li><em>What feedback is useful?</em>
 <ul>
-<li>Paper 1: Relevance, clarity</li>
-<li>Paper 2: Experimental design, normative arguments.</li>
-<li>Paper 3: Still an early stage.</li>
-</ul></li>
-<li><em>Why this order?</em>
-<ul>
-<li>The third paper relies on the data from the second and a methodological result from the first.</li>
+<li>Paper 1: Relevance and clarity</li>
+<li>Paper 2: Experimental design, normative aspects</li>
 </ul></li>
 </ul>
 </section></section>
-<section><section id="paper-1" class="title-slide slide level1"><h1>Paper 1</h1></section><section id="marginal-information-gain---an-information-theoretic-response-to-classifier-accuracy-as-a-quantity-of-substantive-interest" class="slide level2">
-<h2>Marginal Information Gain - An Information Theoretic Response to Classifier Accuracy as a Quantity of Substantive Interest</h2>
-<p>Breaking this down:</p>
-<ul>
-<li>Classifier Accuracy as a Measure of Polarization</li>
-<li>Information Theory and Mutual Information</li>
-</ul>
+<section><section id="paper-1" class="title-slide slide level1"><h1>Paper 1</h1></section><section id="information-theoretic-approaches-to-model-testing-and-measurement---social-science-applications-of-mutual-information-and-its-estimators" class="slide level2">
+<h2>Information Theoretic Approaches to Model Testing and Measurement - Social Science Applications of Mutual Information and its Estimators</h2>
 </section><section id="context" class="slide level2">
 <h2>Context</h2>
+<ul>
+<li>This paper began as a response to what I see as the shortcomings of a method first presented in Peterson and Spirling (2018), “Classification Accuracy as a Substantive Quantity of Interest: Measuring Polarization in Westminster Systems”.</li>
+<li>It has since evolved into a much more broadly framed paper responding to a wider body of literature.</li>
+</ul>
+</section><section id="objective" class="slide level2">
+<h2>Objective</h2>
+<p>As it currently stands, this paper argues: <em>Information theoretic statistics are straightforward to implement and interpret, and researchers can benefit from incorporating them into their research designs when asking the following kinds of questions:</em></p>
+<ul>
+<li>Which (set of) factors best explains my outcome?</li>
+<li>What does change in the informative of <span class="math inline">\(X\)</span> on <span class="math inline">\(Y\)</span> say about the underlying states that produced both <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>?</li>
+</ul>
+</section><section id="information-theoretic-statistics" class="slide level2">
+<h2><em>Information Theoretic Statistics</em></h2>
+<p>This refers primarily to Shannon’s Mutual Information (Shannon 1948) and an estimator of this statistic (MIC, Reshef et al 2011).</p>
+<p>Compared with more widely-used statistics, the advantage of MIC is that it is <em>intuitive</em>, <em>powerful</em> and <em>equitable</em> (Reshef et al 2016).</p>
+<ul>
+<li><em>Intuitive</em>: MIC measures theoretically meaningful concepts of information and uncertainty.</li>
+<li><em>Powerful</em>: able to detect and identify statistically dependent relationships between random variables <strong>regardless of the non-linearity of the relationship</strong>.</li>
+<li><em>Equitable</em>: generates scores that measure similar strengths of relationship regardless of the functional form of the relationship.</li>
+</ul>
+</section><section id="research-design-1---what-explains-y" class="slide level2">
+<h2>Research Design 1 - What explains <span class="math inline">\(Y\)</span>?</h2>
+<p>Sometimes research questions ask <em>which independent variables are relevant to their outcome</em>.</p>
+<ul>
+<li>“what best explains vote choice in Britain?” (Fieldhouse et al 2019, Chapter 9)</li>
+<li>“which factors do (not) explain breakdown of democracy in Latin America” (Mainwaring and Perez-Liñán 2013)</li>
+</ul>
+<p>Answering this requires a statistical test that accepts variables that are linked to the outcome and rejects those that are not.</p>
+<p>I argue that MIC is a better candidate for these kinds of tests than the typical candidates, such as R-squared, Deviance, Log-Likelihood or AIC, because it is less likely to reject variables due to model misspecification.</p>
+</section><section id="research-design-2---informativeness-of-x-on-y" class="slide level2">
+<h2>Research Design 2 - Informativeness of <span class="math inline">\(X\)</span> on <span class="math inline">\(Y\)</span></h2>
+<p>Sometimes the relationship between the independent and dependent variables itself varies geographically or longitudinally, <em>and the strength of this association is the quantity of interest</em>. Examples include:</p>
+<ul>
+<li>Measuring polarisation (Peterson and Spirling 2018)</li>
+<li>Assessing changing frames in voter judgments (Jerit and Barabas 2011).</li>
+</ul>
+<p>I argue that information theoretic statistics allow researchers to:</p>
+<ul>
+<li>make valid and intuitive claims about the nature of this relationship over time</li>
+<li>control for the effect of confounders to this relationship</li>
+<li>minimise the risk of erroneous inference due to model misspecification.</li>
+</ul>
+</section></section>
+<section><section id="primer-in-information-theory" class="title-slide slide level1"><h1>Primer in Information Theory</h1></section><section id="overview" class="slide level2">
+<h2>Overview</h2>
+<ul>
+<li>The first point that I will try to make is that mutual information and its estimator MIC estimate a quantity that is both intuitive and theoretically useful.</li>
+<li>The second point I will try to make is that this can be easily estimated and incorporated into research designs.</li>
+<li>This section explains their derivation and gives a number of examples illustrating what quantity this statistic actually captures.</li>
+</ul>
+</section><section id="information-theory" class="slide level2">
+<h2>Information Theory</h2>
+<ul>
+<li>First detailed in Shannon (1948), Mutual Information is one of a number of statistics that is at the core of a sub-field of probability known as Information Theory.</li>
+<li>Concerned with formalising the information and uncertainty contained in random processes.</li>
+<li>Applications are widespread, from electrical engineering and the design of efficient encodings on noisy channels, to machine learning and algorithm design.</li>
+</ul>
+</section><section id="four-pre-requisite-concepts" class="slide level2">
+<h2>Four Pre-requisite Concepts</h2>
+<p>Some key concepts:</p>
+<ul>
+<li><em>Entropy</em></li>
+<li><em>Joint Entropy</em></li>
+<li><em>Conditional Entropy</em></li>
+<li><em>Mutual Information</em></li>
+</ul>
+<aside class="notes">
+I use the definitions, theorems and formulas as written in Ash (1965), and therefore follow their notational conventions. Unless otherwise noted, all definitions, theorems and examples are either directly copied or adapted from this text.
+</aside>
+</section><section id="entropy---definition" class="slide level2">
+<h2>Entropy - Definition</h2>
+<p><em>Entropy</em> is a measure of the uncertainty of a random variable. The entropy <span class="math inline">\(H_X\)</span> of a discrete random variable <span class="math inline">\(X\)</span> with probability distribution <span class="math inline">\(p(x)\)</span> is defined as:</p>
+<p><span class="math display">\[\begin{align*}
+    H(X) &amp;\equiv - \sum_{x \in X}{p(x)\,log_2\,p(x)} \\
+         &amp;= \mathbb{E}[log_{2}\,\frac{1}{p(x)}]
+\end{align*}\]</span></p>
+<aside class="notes">
+The base of the <span class="math inline">\(log\)</span> determines the units of entropy. Base 2 means that entropy is expressed in bits, and is therefore common in computer science and digital applications. However, as changing the base is a linear transformation of the formula, it does not in fact matter what base is used.
+</aside>
+</section><section id="entropy---intuition" class="slide level2">
+<h2>Entropy - Intuition</h2>
+<p>Good starting point for understanding entropy is to note that there are different degrees of randomness.</p>
+<p>Two senses in which an event or process can be more or less random, and how this randomness is related to our certainty about the post-event state of the world:</p>
+<ul>
+<li>The range of possible values that a random event might take. The greater the number of possible outcomes, the less certainty we have about what the post-event state of the world will look like.</li>
+<li>The relative weights (probabilities) placed on each of the possible outcomes. If a single outcome is extremely likely, and all other outcomes extremely unlikely, then we have a greater degree of certainty about the post-event state of the world.</li>
+</ul>
+</section><section id="entropy---example-1" class="slide level2">
+<h2>Entropy - Example 1</h2>
+<p>A fair coin takes two values with equal probability. Using the above formula:</p>
+<p><span class="math display">\[\begin{align*}
+    H(X) &amp;= -\frac{1}{2}log_2(\frac{1}{2}) - \frac{1}{2}(log_2\frac{1}{2}) \\
+         &amp;= -log_2(\frac{1}{2}) \\
+         &amp;= -(-1) \\
+         &amp;= 1 \\
+\end{align*}\]</span></p>
+<p>A fair coin therefore encodes an entropy of <em>1 bit</em>.</p>
+</section><section id="entropy---example-1-cont." class="slide level2">
+<h2>Entropy - Example 1 cont.</h2>
+<p>Compare this to a fair six-sided die:</p>
+<p><span class="math display">\[\begin{align*}
+    H(X) &amp;= -6(\frac{1}{6}log_2(\frac{1}{6})) \\
+         &amp;= -log_2(\frac{1}{6})
+\end{align*}\]</span></p>
+<p>which encodes approximately 2.584 (3 s.f.) bits of entropy. This is greater than 1 bit, reflecting that we are less certain about the outcome of a six-sided die than a fair coin.</p>
+</section><section id="entropy---example-2" class="slide level2">
+<h2>Entropy - Example 2</h2>
+<p>A Bernoulli random variable <span class="math inline">\(X\)</span> is distributed:</p>
+<p><span class="math display">\[
+f(k;q) =
+    \begin{cases}
+        q     &amp; \text{if $k = 1$}, \\
+        1 - q &amp; \text{if $k = 0$}.
+    \end{cases}
+\]</span></p>
+<p>its entropy is:</p>
+<p><span class="math display">\[
+    H(X) = -qlog_2q - (1-q)\,log_2\,(1-q)
+\]</span></p>
+</section><section id="entropy---example-2-visualised" class="slide level2">
+<h2>Entropy - Example 2 visualised</h2>
+<figure>
+<img data-src="fig_bernoulli.png" alt="Bernoulli Entropy" /><figcaption>Bernoulli Entropy</figcaption>
+</figure>
+<aside class="notes">
+It can be seen here that when <span class="math inline">\(q=0\)</span> or <span class="math inline">\(q=1\)</span>, the outcome is certain, and therefore entropy <span class="math inline">\(H(X)=0\)</span>. On the other hand, <span class="math inline">\(H(X)\)</span> is maximised at <span class="math inline">\(q=0.5\)</span>, because then we are the least certain about what value <span class="math inline">\(X\)</span> might take. From these two values it should be clear that entropy captures the degree to which the outcome of a random variable is uncertain.
+</aside>
+</section><section id="entropy-as-information" class="slide level2">
+<h2>Entropy as Information</h2>
+<ul>
+<li>Higher entropy indicates less <em>a priori</em> information on the realised value of a random variable.</li>
+<li>In the above examples, knowledge of the range of outcomes and probability density functions of the random variables determined the value of entropy.</li>
+<li>If, as in many cases in empirical research, pdfs and ranges are estimates with associated uncertainty, then entropy captures the information we have on the likely value of the random variable once it realises.</li>
+</ul>
+</section><section id="entropy-as-binary-questions" class="slide level2">
+<h2>Entropy as Binary Questions</h2>
+<p>A useful interpretation of entropy as a measure of information provided in Ash (1965) is as the lower bound of the average number of questions required to determine the realised value of a random variable.</p>
+<p>Using the above examples, a fair coin requires exactly one question (&quot;<em>Is it heads?&quot;</em>) to determine the outcome. A fair six-sided die requires on average 2.584 (3 s.f.) questions:</p>
+</section><section id="entropy-as-binary-questions-cont." class="slide level2">
+<h2>Entropy as Binary Questions cont.</h2>
+<pre><code>- X&gt;3?
+    - Yes:
+        - X&gt;2?
+            - Yes: ------&gt; X=3 (P=1/6, 2 Qs)
+            - No:
+                - X&gt;1?
+                    - Yes: X=2 (P=1/6, 3 Qs)
+                    - No:  X=1 (P=1/6, 3 Qs)
+    - No:
+        - X&gt;4?
+            - Yes:
+                - X&gt;5?
+                    - Yes: X=6 (P=1/6, 3 Qs)
+                    - No:  X=5 (P=1/6, 3 Qs)
+            - No: -------&gt; X=4 (P=1/6, 2 Qs)</code></pre>
+<p><span class="math display">\[
+(\frac{1}{6}+\frac{1}{6})2 + (\frac{1}{6}+\frac{1}{6}+\frac{1}{6}+\frac{1}{6})3 = 2.66 &gt; 2.584
+\]</span></p>
+<p class="notes">
+The proof of this theorem is beyond the scope of this paper, but the intuition is that <em>uncertainty</em> is measured by the number of questions required to eliminate the uncertainty, and entropy is the minimum average number of questions required to remove that uncertainty.
+</p>
+</section><section id="joint-entropy" class="slide level2">
+<h2>Joint Entropy</h2>
+<p>The <em>joint entropy</em> of two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is given by:</p>
+<p><span class="math display">\[
+    H(X, Y) \equiv -
+      \sum_{x \in X, Y \in Y}
+      p(x, y)\,log_2\,p(x, y)
+\]</span></p>
+</section><section id="joint-entropy-in-n-variables" class="slide level2">
+<h2>Joint Entropy in n Variables</h2>
+<p>This definition can be expanded to <span class="math inline">\(n\)</span> random variables <span class="math inline">\(X_1, X_2, ..., X_n\)</span>:</p>
+<p><span class="math display">\[
+    H(X_1, X_2, ..., X_n) = -
+    \sum_{x_1, x_2, ..., x_n}
+        p(x_1, x_2, ..., x_n)\,log\,p(x_1, x_2, ..., x_n)
+\]</span></p>
+<p>Where <span class="math inline">\(p(x_1, x_2, ..., x_n) = P\{X_1=x_1, X_2=x_2, ..., X_n=x_n\}\)</span> is the joint probability distribution of <span class="math inline">\(X_1, X_2, ..., X_n\)</span>.</p>
+<aside class="notes">
+Put simply, joint entropy is the simple extension entropy applied to joint events and joint probability distributions. The intuitions here are essentially the same.
+</aside>
+</section><section id="joint-entropy-and-entropy" class="slide level2">
+<h2>Joint Entropy and Entropy</h2>
+<p>Note that <span class="math inline">\(H(X, Y) \le H(X) + H(Y)\)</span>, with equality if and only if <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent.</p>
+<p>A straightforward example is the joint entropy of <span class="math inline">\(M\)</span> independent fair coin flips. This has <span class="math inline">\(2^M\)</span> outcomes and an entropy of <span class="math inline">\(M\)</span> bits. To the extent that the events are not independent, the entropy <em>decreases</em>, as there is less overall randomness.</p>
+</section><section id="conditional-entropy" class="slide level2">
+<h2>Conditional Entropy</h2>
+<p>The <em>conditional entropy</em> of <span class="math inline">\(Y\)</span> given <span class="math inline">\(X\)</span> is defined as a weighted average of the entropies <span class="math inline">\(H(Y|X=x_{i\in M})\)</span>:</p>
+<p><span class="math display">\[\begin{align*}
+    H(Y|X) &amp;\equiv p(x_1)H(Y|X=x_1)+ ... + p(x_M)H(Y|X=x_M) \\
+           &amp;= - \sum^M_{i=1}p(x_i)\sum^{L}_{j=1}p(y_j|x_i)log\,p(y_j|x_i) \\
+           &amp;= - \sum^M_{i=1}\sum^{L}_{j=1}p(x_i, y_j)\,log\,p(y_j|x_i)
+\end{align*}\]</span></p>
+<p>where <span class="math inline">\(L\)</span> and <span class="math inline">\(M\)</span> are the supports over <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> respectively.</p>
+</section><section id="conditional-entropy-in-n-variables" class="slide level2">
+<h2>Conditional Entropy in n Variables</h2>
+<p>Conditional uncertainties concerning more than two random variables are similarly defined:</p>
+<p><span class="math display">\[\begin{align*}
+    H(Y,Z|X) &amp;= -\sum_{i,j,k}p(x_i, y_j, z_k)\,log\,p(y_j, z_k|x_i) \\
+             &amp;= \text{the uncertainty about Y and Z given X} \\
+    H(Z|X,Y) &amp;= -\sum_{i,j,k}p(x_i, y_j, z_k)\,log\,p(z_k|x_i, y_j) \\
+             &amp;= \text{the uncertainty about Z given X and Y}
+\end{align*}\]</span></p>
+</section><section id="theorem---joint-and-conditional-entropy" class="slide level2">
+<h2>Theorem - Joint and Conditional Entropy</h2>
+<p>Conditional entropy is related joint entropy by the following theorem:</p>
+<p><span class="math display">\[
+    H(X, Y) = H(X) + H(Y|X) = H(Y) + H(X|Y)
+\]</span></p>
+<p>This result is generalisable to <span class="math inline">\(n\)</span> random variables:</p>
+<p><span class="math display">\[\begin{align*}
+    H(X, Y, Z) &amp;= H(X) + H(Y|X) + H(Z|X, Y) \\
+               &amp;= H(X, Y) + H(Z| X, Y) \\
+               &amp;= H(X) + H(Y, Z | X)
+\end{align*}\]</span></p>
+<p>And so on.</p>
+<!-- $$
+    H(X_1, ..., X_n, Y_1, ..., Y_m) = \\ H(X_1, ..., X_n) + H(Y_1, ...,Y_m|X_1, ..., X_n)
+$$ -->
+</section><section id="intuition---joint-and-conditional-entropy" class="slide level2">
+<h2>Intuition - Joint and Conditional Entropy</h2>
+<ul>
+<li>The joint entropy of two events can be decomposed into the entropy of one of the events plus the entropy of the other conditional on the realisation of the former.</li>
+<li>In other words, the extent of uncertainty over two events <em>A</em> and <em>B</em> can be thought of as either the uncertainty surrounding <em>A</em> plus the uncertainty of <em>B given A</em>, or vice versa.</li>
+<li>Similarly, the uncertainty of <em>A given B</em> can be understood as the combined uncertainty of <em>A and B</em> minus the uncertainty of <em>B</em>.</li>
+</ul>
+</section><section id="theorem---conditional-entropy-and-entropy" class="slide level2">
+<h2>Theorem - Conditional Entropy and Entropy</h2>
+<p>Using this result, we can show that <span class="math inline">\(H(Y|X) \le H(Y)\)</span> with equality if and only if X and Y are independent. The proof follows easily from two of the previous results:</p>
+<ul>
+<li><span class="math inline">\(H(X, Y) = H(X) + H(Y|X)\)</span> and</li>
+<li><span class="math inline">\(H(X, Y) \le H(X) + H(Y)\)</span> with equality if and only if <span class="math inline">\(X\)</span> an <span class="math inline">\(Y\)</span> are independent</li>
+</ul>
+<p>Therefore <span class="math inline">\(H(Y|X) \le H(Y)\)</span> with equality if and only if X and Y are independent.</p>
+</section><section id="intuition---conditional-entropy-and-entropy" class="slide level2">
+<h2>Intuition - Conditional Entropy and Entropy</h2>
+<p>This reveals a final key intuition:</p>
+<blockquote>
+<p><em>as long as two random variables are not statistically independent, knowing something about one reduces uncertainty over the other</em>.</p>
+</blockquote>
+<p>The changes in uncertainty over random variables given knowledge of others is the dynamic at the heart of the measure I am building up to.</p>
+</section><section id="mutual-information" class="slide level2">
+<h2>Mutual Information</h2>
+<p><em>Mutual Information</em> is a measure of the amount of information shared between two variables, and is defined as:</p>
+<p><span class="math display">\[\begin{align*}
+    I(X|Y) &amp;\equiv H(X) - H(X|Y) \\
+            &amp;= - \sum^M_{i=1}\sum^{L}_{j=1}p(x_i, y_j)\,log\,
+            \frac{p(x_i)}{p(x_i|y_j)}
+\end{align*}\]</span></p>
+<p>This may be defined for the amount of information one set of random variables <span class="math inline">\(X_1,...,X_n\)</span> conveys about another <span class="math inline">\(Y_1, ..., Y_m\)</span>:</p>
+<p><span class="math display">\[
+    I(X_1, ..., X_n|Y_1, ..., Y_m) = \\
+        H(X_1, ..., X_n) - H(X_1, ..., X_n|Y_1, ..., Y_m)
+\]</span></p>
+</section><section id="mutual-information---symmetry" class="slide level2">
+<h2>Mutual Information - Symmetry</h2>
+<p><span class="math display">\[\begin{align*}
+    I(X|Y) &amp;= H(X) - H(X|Y) \\
+           &amp;= H(X) - (H(X, Y) - H(Y)) \\
+           &amp;= H(Y) - (H(Y, X) - H(X)) \\
+           &amp;= H(Y) - H(Y|X) \\
+           &amp;= I(Y|X)
+\end{align*}\]</span></p>
+</section><section id="intuition---mutual-information-as-reduction-in-entropy" class="slide level2">
+<h2>Intuition - Mutual Information as Reduction in Entropy</h2>
+<p>The intuition in this measure is clearest when looking at the definition in terms of entropies:</p>
+<p>The extent to which knowing values of <span class="math inline">\(X\)</span> is informative of the values of <span class="math inline">\(Y\)</span>, is equal to the uncertainty over <span class="math inline">\(X\)</span> <em>minus</em> the uncertainty of <span class="math inline">\(X\)</span> given <span class="math inline">\(Y\)</span> (and vice versa).</p>
+</section><section id="mi---example-3" class="slide level2">
+<h2>MI - Example 3</h2>
+<ul>
+<li>There is an online game <em>geoguesser</em>, in which you are placed into the Google streetview of a random place on the planet and asked to guess the longitude-latitude coordinates of the location.</li>
+<li>As you play, you use various visual clues to narrow the range of possible locations you might be in:
+<ul>
+<li>For instance, if you see that the street signs are written in Cyrillic, you know that you are likely in Russia, Belarus, Bulgaria, etc.</li>
+<li>If the location looks very cold, then you could eliminate Bulgaria from the list.</li>
+</ul></li>
+<li>For each “clue” that you notice, you reduce the uncertainty (entropy) surrounding where you might be.</li>
+</ul>
+</section><section id="mi---example-3-1" class="slide level2">
+<h2>MI - Example 3</h2>
+<ul>
+<li>Thinking of the long-lat coordinates as a one random variable, and the language of the street signs as another, the above formula can be read:</li>
+</ul>
+<p><span class="math display">\[
+I(\text{location}|\text{language}) = H(\text{location}) - H(\text{location}|\text{language})
+\]</span></p>
+<ul>
+<li>The information provided by knowing the language of the signs on your location is equal to the total uncertainty of where in the world you might be (anywhere with street views) minus the uncertainty of your location given that the signs are in Cyrillic.</li>
+</ul>
+</section><section id="mi---example-4" class="slide level2">
+<h2>MI - Example 4</h2>
+<ul>
+<li>Suppose that you have a loaf of bread in the oven, but your timer has broken and you do not know whether it has finished baking or not.</li>
+<li>In the absence of any other information, it is difficult to even make an “educated guess” about the state of the loaf in the oven.</li>
+<li>Various clues will provide information that helps inform these guesses, e.g. looking at your watch and having a rough idea of the time you put the loaf in will reduce the uncertainty about the state of the bread.</li>
+<li>The reduction in uncertainty is equal to the uncertainty over the state of the loaf minus the uncertainty over the state of the loaf <em>given your estimate of the time already passed</em>.</li>
+</ul>
+</section><section id="mi---example-4-1" class="slide level2">
+<h2>MI - Example 4</h2>
+<ul>
+<li>If the additional information “reveals” the state of the bread (e.g. there is smoke coming out of the oven), then <span class="math inline">\(H(X|Y) = 0\)</span>, and the gain in information is equal to the total original uncertainty.</li>
+<li>To the extent that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent, <span class="math inline">\(H(X|Y) \rightarrow H(X)\)</span>, and thus <span class="math inline">\(I(X, Y) \rightarrow 0\)</span>.</li>
+</ul>
+</section><section id="mi---intuition" class="slide level2">
+<h2>MI - Intuition</h2>
+<p>Put succintly: <em>given two random variables, mutual information measures the extent to which the entropy of a random variable is reduced by knowing values of the other</em>.</p>
+<p>By an earlier noted theorem, in the case where the two variables are independent <span class="math inline">\(H(X|Y)=H(X)\)</span>, thus neither variable provides any information about the values of the other.</p>
+</section><section id="estimating-mutual-information" class="slide level2">
+<h2>Estimating Mutual Information</h2>
+<p>A major shortcoming of estimating MI for continuous random variables that researchers are required to discretize the variables by assigning its values to a number of bins, from which the population distribution of the variable is estimated.</p>
+<p>Unfortunately, the number of bins has a non-trivial effect on the downstream analysis, and there is no clear optimal method for selecting this parameter.</p>
+</section><section id="introducing-mic" class="slide level2">
+<h2>Introducing MIC</h2>
+<p>Reshef et al (2011, 2016) provide an alternative metric, <em>maximal information coefficient</em> (MIC), which estimates MI with a grid of bin size and locations, and takes the maximum MI coefficient calculated.</p>
+<p>The intuition behind the following is that MIC is an optimised estimate of mutual information across many possible discretizations.</p>
+</section><section id="mic---preliminaries" class="slide level2">
+<h2>MIC - Preliminaries</h2>
+<p>Given a grid <span class="math inline">\(G\)</span> and point <span class="math inline">\((x, y)\)</span>:</p>
+<ul>
+<li><span class="math inline">\(row_G(y)\)</span> returns the row of <span class="math inline">\(G\)</span> containing <span class="math inline">\(y\)</span></li>
+<li><span class="math inline">\(col_G(x)\)</span> is analogous</li>
+</ul>
+<p>For a pair <span class="math inline">\((X, Y)\)</span> of jointly distributed random variables:</p>
+<ul>
+<li><span class="math inline">\((X, Y)|_G\)</span> denotes <span class="math inline">\((col_G(X), col_G(Y))\)</span></li>
+<li><span class="math inline">\(I((X, Y)|_G)\)</span> denotes the discrete mutual information between <span class="math inline">\(col_G(X)\)</span> and <span class="math inline">\(row_G(Y)\)</span></li>
+</ul>
+<p><span class="math inline">\(D\)</span> refers both to a finite sample from the distribution of <span class="math inline">\((X, Y)\)</span></p>
+<ul>
+<li>Sometimes refers to a specific point <span class="math inline">\((x, y)\)</span>, in which case it makes sense to talk about <span class="math inline">\(D|_G\)</span> or <span class="math inline">\(I(D)|_G\)</span></li>
+</ul>
+<p>For <span class="math inline">\(k, l \in \mathbb{N}\)</span>:</p>
+<ul>
+<li><span class="math inline">\(G(k, l)\)</span> denotes the set of all <span class="math inline">\(k\)</span>-by-<span class="math inline">\(l\)</span> grids.</li>
+</ul>
+</section><section id="population-maximal-information-coefficient---definition" class="slide level2">
+<h2>Population Maximal Information Coefficient - Definition</h2>
+<p>The defintion demonstrates that the population MIC is a regularization of MI that penalises complicated grid and is normalised to fall between 0 and 1.</p>
+<p><span class="math display">\[
+MIC_*(X, Y) = sup_G \frac{I((X, Y)|G)}{log||G||}
+\]</span></p>
+<p>where <span class="math inline">\(||G||\)</span> denotes the minimum of the number of rows of <span class="math inline">\(G\)</span> and the number of columns of <span class="math inline">\(G\)</span>.</p>
+</section><section id="maximal-information-coeficient---definition" class="slide level2">
+<h2>Maximal Information Coeficient - Definition</h2>
+<p><span class="math inline">\(MIC_*\)</span> is the population value of the actual sample statistic we calculate, <span class="math inline">\(MIC\)</span>. Given set of ordered pairs <span class="math inline">\(D \subset \mathbb{R}^2\)</span>, the sample characteristic matrix <span class="math inline">\(\hat{M}(D)\)</span> of <span class="math inline">\(D\)</span> is given by:</p>
+<p><span class="math display">\[
+\hat{M}(D)_{k, l} = \frac{I^*(D, k, l)}{log\;min\{k,l\}}
+\]</span></p>
+<p>Then MIC is defined:</p>
+<p><span class="math display">\[
+MIC_B(D) = max_{kl \le B(n)}\hat{M}(D)_{k, l}
+\]</span></p>
+</section><section id="mic---visualised" class="slide level2">
+<h2>MIC - Visualised</h2>
+<figure>
+<img data-src="https://minepy.readthedocs.io/en/latest/_images/relationships.png" alt="MIC Examples" /><figcaption>MIC Examples</figcaption>
+</figure>
+</section></section>
+<section><section id="research-design-1" class="title-slide slide level1"><h1>Research Design 1</h1></section><section id="what-explains-x" class="slide level2">
+<h2>What explains <span class="math inline">\(X\)</span>?</h2>
+<ul>
+<li>Though many quantitative research designs focus on estimating the effect of <span class="math inline">\(X\)</span> on <span class="math inline">\(Y\)</span>, a related but overlooked question is <em>which <span class="math inline">\(X\)</span> explains <span class="math inline">\(Y\)</span></em>?</li>
+<li>One name for this problem in a broad sense is <em>feature selection</em>; which IVs do you include in your model explaining your DV?</li>
+<li>Standard quantitative social science wisdom suggests that you should choose IVs based on the theory you are testing.</li>
+<li>But what to do when you have multiple competing theories?</li>
+</ul>
+</section><section id="competing-theories" class="slide level2">
+<h2>Competing Theories</h2>
+<p>A variety of methods exist for comparing models and sets of IVs to explain your DV. In political science, these tend to be goodness-of-fit statistics:</p>
+<ul>
+<li>Fieldhouse et al. (2019) compare the R-squared of models fit with different categories of explanation.</li>
+<li>Mainwaring and Perez-Linan (2013) inspect the change in significance (p-value) on individual parameters across multiple specifications.</li>
+</ul>
+</section><section id="likelihood-based-statistics" class="slide level2">
+<h2>Likelihood-Based Statistics</h2>
+<ul>
+<li>Other methods, used more in econometrics, use statistics related to maximum likelihood estimates.</li>
+<li>Two examples are Deviance and Log-Likelihood.</li>
+<li>In essence, these statistics are based on <em>maximising the likelihood of the data given the model</em>.</li>
+<li>AIC and BIC similarly use ideas of the likelihood of the data given the model.</li>
+</ul>
+</section><section id="changes-in-goodness-of-fit" class="slide level2">
+<h2>Changes in Goodness-of-Fit</h2>
+<p>Suppose you fit two versions of a model, one including <span class="math inline">\(X_2\)</span> and one excluding it, and the goodness-of-fit indicators do not improve. I argue there are two possible things that could be happening:</p>
+<ul>
+<li>Uninformative Feature (<span class="math inline">\(X_2\)</span> tells us little about <span class="math inline">\(Y\)</span>)</li>
+<li>Model Misspecification (<span class="math inline">\(X_2\)</span> matters, but not in the way you used it)</li>
+</ul>
+<p>Barring <em>trying every possible specification of your model <span class="math inline">\(f(\cdot)\)</span>, there is no way to be sure which reason is true</em>.</p>
+</section><section id="model-misspecification" class="slide level2">
+<h2>Model Misspecification</h2>
+<ul>
+<li>I do not think we can ignore the risk of model misspecification, as empirical phenomena are rarely perfectly describable with GLM.</li>
+<li>I do not claim to have a solution for model misspecification.</li>
+</ul>
+<p>However, I argue that <em>in some cases our question does not require us to specify a model</em>.</p>
+</section><section id="information-as-relevance" class="slide level2">
+<h2>Information as Relevance</h2>
+<ul>
+<li>Although we are accustomed to equating “what explains <span class="math inline">\(Y\)</span>” with “which model best explains <span class="math inline">\(Y\)</span>”, a useful first step is filtering out which IVs are actually relevant.</li>
+<li>I argue that Mutual Information, and its estimator MIC, are satisfactory indicators of theoretical relevance:
+<ul>
+<li>If knowing <span class="math inline">\(X\)</span> does not reduce our uncertainty about <span class="math inline">\(Y\)</span>, then how could it be theoretically relevant?</li>
+</ul></li>
+<li>Simply knowing which IVs matter is a theoretically relevant question, and an important first step in research.</li>
+</ul>
+</section><section id="model-agnostic-estimation" class="slide level2">
+<h2>Model-Agnostic Estimation</h2>
+<ul>
+<li>MI and MIC are <em>extremely general</em> measures of statistical dependence.</li>
+<li>There is a trade-off from remaining agnostic to exact specification of the model <span class="math inline">\(f(\cdot)\)</span>:
+<ul>
+<li>Negative: We do not recover the size, or direction of the effect of <span class="math inline">\(X\)</span> on <span class="math inline">\(Y\)</span>.</li>
+<li>Positive: We minimise the risk of erroneously rejecting/accepting variables due to model misspecification.</li>
+</ul></li>
+</ul>
+<p>Before trying to estimate our model, we should first be checking if our IVs are informative.</p>
+</section><section id="roadmap" class="slide level2">
+<h2>Roadmap</h2>
+<ul>
+<li>Simulation: Does MIC identify/differntiate statistically dependent variables more consistently than alternative methods?</li>
+<li>Replication: How do the results of major works, e.g. Evans et al, Inglehart, etc., change if I first use MIC for feature selection?
+<ul>
+<li>Will I find that ideology is <em>not</em> the only relevant predictor of vote choice in Britain in 2019?</li>
+</ul></li>
+</ul>
+</section></section>
+<section><section id="research-design-2" class="title-slide slide level1"><h1>Research Design 2</h1></section><section id="informativeness-as-a-quantity-of-substantive-interest" class="slide level2">
+<h2>Informativeness as a Quantity of Substantive Interest</h2>
 <ul>
 <li>This paper began as a response to what I see as the shortcomings of a method first presented in <a href="https://doi.org/10.1017/pan.2017.39">Peterson &amp; Spirling (2018)</a>, “Classification Accuracy as a Substantive Quantity of Interest: Measuring Polarization in Westminster Systems”.</li>
 <li>The paper presents a novel method for measuring polarization in parliaments.</li>
 <li>Their method uses the classifier accuracy of a supervised machine learning model trained on the bag-of-words representation of parliamentary speech as a measure of polarization.</li>
-</ul>
-<p><em>Much of the motivation for my method can be understood by exploring this paper, so I’ll spend a few slides on explaining their paper in detail.</em></p>
-</section><section id="peterson-and-spirling-2018-explained-data" class="slide level2">
-<h2>Peterson and Spirling (2018) Explained: Data</h2>
-<p><strong>Corpus:</strong> 3.5 million UK parliamentary debate transcripts over 78 years from Hansard Archive</p>
-<ul>
-<li>Represented as <strong>bag-of-words</strong>, a count matrix indicating frequency of all unique terms across all documents. Called a document-token matrix (<strong>DTM</strong>).</li>
-<li>Rows are the set of all speeches (documents) across all sessions, also known as the corpus, <span class="math inline">\(K\)</span>.</li>
-<li>Columns are the set of all unique terms (vocabulary, <span class="math inline">\(V\)</span>).</li>
-<li>I denote this as matrix <span class="math inline">\(\mathbf{X}\)</span> with given element <span class="math inline">\(x_{w \in V,\,d \in K}\)</span> indicating the frequency of token <span class="math inline">\(w\)</span> in document <span class="math inline">\(d\)</span>.</li>
 </ul>
 </section><section id="peterson-and-spirling-2018-explained-model" class="slide level2">
 <h2>Peterson and Spirling (2018) Explained: Model</h2>
@@ -109,30 +518,6 @@
 <li><span class="math inline">\(f(\cdot)\)</span> is a mapping from the <span class="math inline">\(V\)</span>-dimensional feature space to the binary party label space.</li>
 <li><span class="math inline">\(\epsilon\)</span> is an error term.</li>
 </ul>
-</section><section id="peterson-and-spirling-2018-explained-algorithm" class="slide level2">
-<h2>Peterson and Spirling (2018) Explained: Algorithm</h2>
-<p>Note that I did not specify a functional form for <span class="math inline">\(f(\cdot)\)</span>. This is because authors use four different algorithms:</p>
-<ul>
-<li><em>perceptron+SGD</em></li>
-<li><em>SGD+batch sampler</em></li>
-<li><em>passive-aggressive classifier with hinge-loss</em></li>
-<li><em>logistic regression with L2 penalty</em></li>
-</ul>
-<p>The model is trained on a stratified 10-fold cross-validation training-test split.</p>
-</section><section id="peterson-and-spirling-2018-explained-accuracy" class="slide level2">
-<h2>Peterson and Spirling (2018) Explained: Accuracy</h2>
-<p>Given a speech (i.e. vector of word counts), the fitted model gives a predicted party label of the speaker:</p>
-<p><span class="math display">\[
-    \hat{Y}_d = \hat{f}(\mathbf{X}_d)
-\]</span></p>
-<p>Associated with this prediction is an error, defined as:</p>
-<p><span class="math display">\[
-    \hat{\epsilon}_d \equiv |Y_d - \hat{Y}_d|
-\]</span></p>
-<p>In the binary case, we can describe the classifier accuracy as:</p>
-<p><span class="math display">\[
-    p(\epsilon) \equiv P[\hat{\epsilon_d}&gt;0] = P[\hat{Y}_d \ne Y_d]
-\]</span></p>
 </section><section id="peterson-and-spirling-2018-explained-output-and-intuition" class="slide level2">
 <h2>Peterson and Spirling (2018) Explained: Output and Intuition</h2>
 <ul>
@@ -155,13 +540,6 @@
 <li>If you think that the link between <em>the ease of predicting the party of a speaker</em> and <em>polarization</em> is problematic at best, I wholeheartedly agree with you.</li>
 <li>I think it is more helpful, however, to focus on the potential methodological contribution of their approach; substantive interpretations of meta-parameters of supervised models.</li>
 <li>Therefore my criticism of their work, and my proposed solution, is made with the aim of improving the method in order to achieve the goal of building valid measures from complex data in social sciences.</li>
-</ul>
-</section><section id="brief-aside-on-measurement-theory" class="slide level2">
-<h2>Brief Aside on Measurement Theory</h2>
-<ul>
-<li>To make clear my criticism of Peterson and Spirling’s (2018) approach, I draw on some ideas from <em>Measurement Theory</em>.</li>
-<li>Measurement theory is an area of social science methodology concerned with the construction of <em>measures</em>.</li>
-<li>In the interest of time I will keep my discussion of this brief, but it’s a fascinating field of social science methodology. Ben Lauderdale provides <a href="https://uclspp.github.io/POLS0013/index.html">an excellent introduction</a> to the subject.</li>
 </ul>
 </section><section id="concepts-indicators-and-measures" class="slide level2">
 <h2>Concepts, Indicators and Measures</h2>
@@ -202,177 +580,21 @@
 <li>does not rely on a particular functional specification of the statisitcal model.</li>
 </ul></li>
 </ul>
-</section><section id="what-does-it-mean-when-a-classifier-is-wrong" class="slide level2">
-<h2>What does it mean when a classifier is wrong?</h2>
-<p>I claim that there are three sources of prediction error:</p>
-<ul>
-<li>Model Misspecification (<span class="math inline">\(f(\cdot)\)</span> is wrong)</li>
-<li>Random Noise (<span class="math inline">\(|e|&gt;|Y|\)</span>)</li>
-<li>Uninformative Features (<span class="math inline">\(X\)</span> tells us little about <span class="math inline">\(Y\)</span>)</li>
-</ul>
-<p>I assert that <span class="math inline">\(f(\cdot)\)</span> is sufficiently flexible to capture the relationship between <span class="math inline">\(\mathbf{X}\)</span> and <span class="math inline">\(Y\)</span>, and that <span class="math inline">\(\mathbb{E}(e)=0\)</span>. My focus is therefore on formalising the third point.</p>
-</section></section>
-<section><section id="primer-in-information-theory" class="title-slide slide level1"><h1>Primer in Information Theory</h1></section><section id="information-theory" class="slide level2">
-<h2>Information Theory</h2>
-<p>Information Theory is a field of statisitcs/mathematics that, among other things, formalises the <em>information</em> contained in random processes.</p>
-<p>Some key concepts:</p>
-<ul>
-<li>Entropy</li>
-<li>Mutual Information</li>
-<li>Interaction Information</li>
-</ul>
-</section><section id="entropy---definition" class="slide level2">
-<h2>Entropy - Definition</h2>
-<p><em>The entropy <span class="math inline">\(H_X\)</span> of a discrete random variable <span class="math inline">\(X\)</span> with probability distribution <span class="math inline">\(p(x)\)</span> is defined as:</em></p>
-<p><span class="math display">\[
-\begin{align*}
-    H_X &amp;\equiv - \sum_{x \in \mathfrak{X}}{p(x)log_2p(x)} \\
-        &amp;= \mathbb{E}log_{2}[\frac{1}{p(x)}]
-\end{align*}
-\]</span></p>
-</section><section id="entropy---intuition" class="slide level2">
-<h2>Entropy - Intuition</h2>
-<ul>
-<li>Intuitively, the entropy <span class="math inline">\(H_X\)</span> is a measure of the uncertainty of the random variable <span class="math inline">\(X\)</span>.</li>
-<li>It can be thought of as missing information: larger entropy means less <em>a priori</em> information on the realised value of the random variable.</li>
-<li>The base of the <span class="math inline">\(log\)</span> determines the units of entropy. Base 2 means that entropy is expressed in bits, and is therefore common in computer science and digital applications.</li>
-</ul>
-</section><section id="entropy---example-1" class="slide level2">
-<h2>Entropy - Example 1</h2>
-<p>A fair coin takes two values with equal probability. Its entropy is 1 bit.</p>
-<p><span class="math display">\[
-\begin{align*}
-    H_X &amp;= -\frac{1}{2}log_2(\frac{1}{2}) - \frac{1}{2}(log_2\frac{1}{2}) \\
-        &amp;= -log_2(\frac{1}{2}) \\
-        &amp;= -(-1) \\
-        &amp;= 1 \\
-\end{align*}
-\]</span></p>
-</section><section id="entropy---example-2" class="slide level2">
-<h2>Entropy - Example 2</h2>
-<p>A Bernoulli random variable <span class="math inline">\(X\)</span> is distributed:</p>
-<p><span class="math display">\[
-f(k;q) =
-    \begin{cases}
-        q     &amp; \text{if $k = 1$}, \\
-        1 - q &amp; \text{if $k = 0$}.
-    \end{cases}
-\]</span></p>
-<p>its entropy is:</p>
-<p><span class="math display">\[
-    H_X = -qlog_2q - (1-q)log_2(1-q)
-\]</span></p>
-</section><section id="entropy-of-bernoulli-variable-visualised" class="slide level2">
-<h2>Entropy of Bernoulli Variable Visualised</h2>
-<p><img data-src="fig_bernoulli.png" /></p>
-<ul>
-<li>When <span class="math inline">\(q=0\)</span> or <span class="math inline">\(q=1\)</span>, the outcome is certain, and therefore <span class="math inline">\(H_X=0\)</span>.</li>
-<li><span class="math inline">\(H_X\)</span> is maximised at <span class="math inline">\(q=0.5\)</span>, because then we have the least information on what value <span class="math inline">\(X\)</span> might take.</li>
-</ul>
-</section><section id="joint-entropy" class="slide level2">
-<h2>Joint Entropy</h2>
-<p>The joint entropy of two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is given by:</p>
-<p><span class="math display">\[
-    H_{X, Y} \equiv -
-      \sum_{x \in \mathfrak{X}, Y \in \mathfrak{Y}}
-      p(x, y)log_2 p(x, y)
-\]</span></p>
-<p>If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent, then:</p>
-<p><span class="math display">\[
-    H_{X, Y} = H_X + H_Y
-\]</span></p>
-</section><section id="conditional-entropy" class="slide level2">
-<h2>Conditional Entropy</h2>
-<p>Conditional Entropy is given by</p>
-<p><span class="math display">\[
-    H_{Y|X} \equiv -
-      \sum_{x \in \mathfrak{X}}p(x)
-      \sum_{y \in \mathfrak{Y}}p(y|x)
-      log_2 p(y|x)
-\]</span></p>
-<p>It can be shown that the joint entropy of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is equal to the sum of the entropy of <span class="math inline">\(X\)</span> and the conditional entropy of <span class="math inline">\(Y\)</span> given <span class="math inline">\(X\)</span>:</p>
-<p><span class="math display">\[
-    H_{X, Y} = H_X + H_{Y|X}
-\]</span></p>
-</section><section id="shannons-mutual-information" class="slide level2">
-<h2>Shannon’s Mutual Information</h2>
-<p>Shannon’s Mutual Information is a measures the amount of information shared between two variables, and is defined as:</p>
-<p><span class="math display">\[
-    I_{X, Y} \equiv
-    \sum_{x \in \mathfrak{X}, Y \in \mathfrak{Y}}
-    p(x, y) log_2 \frac{p(x, y)}{p(x)p(y)}
-\]</span></p>
-<p>This is related to conditional entropy by:</p>
-<p><span class="math display">\[
-    I_{X, Y} = H_Y - H_{Y|X} = H_X - H_{X|Y}
-\]</span></p>
-</section><section id="understanding-mutual-information" class="slide level2">
-<h2>Understanding Mutual Information</h2>
-<p>The latter formula offers a useful intuition: <em>given two random variables, mutual information measures the extent to which the entropy of a random variable is reduced by knowing values of the other</em>.</p>
-</section><section id="mutual-information---toy-example" class="slide level2">
-<h2>Mutual Information - Toy Example</h2>
-<p>Suppose I ask you to guess the temperature in Kagoshima.</p>
-<ul>
-<li>You don’t know where it is, but you assume it’s in the Northern Hemisphere, so you know it’s currently late Spring. <em>The value is probably somwhere between 5-35 C</em>.</li>
-<li>I tell you that Kagoshima is in the south of Japan. <em>Knowing this information, you can place lower weights on temperatures below 15 degrees</em>.</li>
-<li><strong>Each piece of knowledge alters the weights you place on the likely values of a random variable.</strong></li>
-</ul>
-</section><section id="interaction-information" class="slide level2">
-<h2>Interaction Information</h2>
-<p>McGill (1954) provides a multivariate generalization of Shannon’s Mutual Information:</p>
-<p><span class="math display">\[
-    I(\{X_1, X_2, X_3\}) = I(X_1, X_2 | X_3) - I(X_1, X_2)
-\]</span></p>
-<p>with the general form for a set of <span class="math inline">\(S\)</span> random variables defined as:</p>
-<p><span class="math display">\[
-    I(\{S \cup X\}) = I(S|X) - I(S)
-\]</span></p>
-</section><section id="interaction-information-applied-to-text-data" class="slide level2">
-<h2>Interaction Information Applied to Text Data</h2>
-<p>Given the length-<span class="math inline">\(d\)</span>:</p>
-<ul>
-<li>document-token matrix <span class="math inline">\(\mathbf{X}_{wd}\)</span></li>
-<li>matrix of <span class="math inline">\(j\)</span> covariates <span class="math inline">\(\mathbf{Z}_{jd}\)</span></li>
-<li>vector of speaker party labels <span class="math inline">\(Y_d\)</span></li>
-</ul>
-<p>I can describe the model presented in Peterson and Spirling (2018) as an information theoretic one:</p>
-<p><span class="math display">\[
-    I(\{Y_d, \mathbf{X}_{wd}\})
-\]</span></p>
-<p>This describes the extent to which values of the DTM inform us of the values of <span class="math inline">\(Y\)</span>.</p>
-</section><section id="partialling-out-covariates" class="slide level2">
-<h2>“Partialling Out” Covariates</h2>
-<p>In order to remove the informational effect of confounding concepts, we need a set of indicators that contain the information from our target concept, but without the information of the confounding concepts.</p>
-<p>In essence, I want to measure the change in mutual information for when we add or subtract confounders.</p>
-<p><span class="math display">\[
-    \frac{\delta I}{\delta \mathbf{Z}_{jd}} \approx
-      I(\{Y_d, \mathbf{X}_{wd}, \mathbf{Z}_{jd}\}) -
-      I(\{Y_d, \mathbf{X}_{wd}\})
-\]</span></p>
-</section><section id="marginal-information-gain" class="slide level2">
-<h2>Marginal Information Gain</h2>
-<p>I define <em>Marginal Information Gain</em> (MIG) as the partial derivative of McGill’s Interaction Information with respect to <span class="math inline">\(X_i\)</span>, holding all other <span class="math inline">\(\mathbf{X}_{¬i}\)</span> constant:</p>
-<p><span class="math display">\[
-    MIG_{Y, X_i} \equiv \frac
-    {\delta I(\{Y, X_i, \mathbf{X}_{¬i}\})}
-    {\delta X_i}
-\]</span></p>
-<p>This can be understood as the marginal change in our knowledge of <span class="math inline">\(Y\)</span> given the addition of <span class="math inline">\(X_i\)</span> to our model, holding the informational effect of all covariates not <span class="math inline">\(X_i\)</span> constant.</p>
-</section><section id="mig-vs-classifier-accuracy" class="slide level2">
-<h2>MIG vs Classifier Accuracy</h2>
+</section><section id="mic-vs-classifier-accuracy" class="slide level2">
+<h2>MIC vs Classifier Accuracy</h2>
 <ul>
 <li>Both capture the extent to which knowing <span class="math inline">\(X\)</span> tells us the value of <span class="math inline">\(Y\)</span>.</li>
-<li>Moreover <strong>I want to show that the two values are empirically correlated</strong>.</li>
-<li>However, MIG allows us to partial out the effect of individual features.</li>
+<li>However, MIC allows us to partial out the effect of individual features.</li>
 <li>No generalizable mathematical solution with classifier accuracy, although a computationally costly numerical solution is possible. However, no guarantee that this approach could provide stable estimates.</li>
 </ul>
-</section><section id="remaining-work" class="slide level2">
-<h2>Remaining Work</h2>
+</section><section id="mic-as-a-quantity-of-interest" class="slide level2">
+<h2>MIC as a Quantity of Interest</h2>
 <ul>
-<li>Make sure nobody has already formulated MIG (I suspect they may have, but cannot find it).</li>
-<li>Show that the Interaction Information and Classifier Accuracy are positively correlated in Peterson and Spirling’s (2018) data.</li>
-<li>Write computationally efficient implementation of MIG (this may not be straightforward, MI assumes knowledge of population probability distribution).</li>
-<li>Apply new measure to Peterson and Spirling (2018) and subsequent works using same method (e.g. Goet (2019)). Where possible, show how their estimates of polarization may have been confounded by other factors.</li>
+<li>I believe their strategy provides a template for how we can use MIC as a measure of quantities of substantive interest:
+<ul>
+<li>The extent to which word choice reduces uncertainty about party identity at different point in times.</li>
+<li>The extent to which race reduces uncertainty about job acceptance across different firms.</li>
+</ul></li>
 </ul>
 </section></section>
 <section><section id="paper-2" class="title-slide slide level1"><h1>Paper 2</h1></section><section id="this-ad-was-tailored-for-you---quantifying-the-microtargeting-effect-and-inducing-informed-skepticism" class="slide level2">
@@ -517,12 +739,6 @@ I do not think that I am trying to expose the exact psychological mechanism by w
 <li><em>Corona</em>: I have concerns about the effect that a global pandemic will have on the content of campaigns, as well as how people react to fear-based messages. This may make it hard to justify the generalisability of my results to a non-crisis setting.</li>
 </ul>
 </section></section>
-<section><section id="paper-3" class="title-slide slide level1"><h1>Paper 3</h1></section><section id="microtargetable-information---the-data-that-helps-campaigns-the-most" class="slide level2">
-<h2><em>Microtargetable Information - the Data that Helps Campaigns the Most</em></h2>
-<p>This paper is still at an extremely early stage. The core idea is to apply the marginal information gain to the experimental data in order to infer the change in “targetability” of a user for the inclusion of a covariate in the dataset.</p>
-<p>Depending on what covariates are the most targetable, the implications of this paper will vary greatly.</p>
-</section></section>
-<section><section id="thanks-for-listening" class="title-slide slide level1"><h1>Thanks for Listening!</h1></section></section>
     </div>
   </div>
 
