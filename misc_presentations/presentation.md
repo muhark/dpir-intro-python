@@ -277,7 +277,7 @@ $$
 
 ## Shannon's Mutual Information
 
-Shannon's Mutual Information is a measures the amount of information shared between two variables, and is defined as:
+Shannon's Mutual Information is a measure of the amount of information shared between two variables, and is defined as:
 
 $$
     I_{X, Y} \equiv
