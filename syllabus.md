@@ -1,56 +1,48 @@
-# Introduction to Python for Social Science
-
-_Musashi Harukawa, DPIR_
+---
+title: "Introduction to Python for Social Science Course Syllabus"
+author: "Musashi Harukawa"
+date: "HT 2021"
+geometry: margin=2cm
+---
 
 ## Course Description
 
-Students have the option of taking an 8-week fast-paced introduction to conducting social science research with Python. This will take the form of a weekly 1-hour lecture, 1-hour workshop, and optional 1-hour clinic. These run consecutively from 16:15-19:15 on Wednesdays (dates provisional).
+_Introduction to Python for Social Science_ is an 8-week optional methods module aimed at social science researchers seeking to learn programming skills for their research. There will be weekly lectures, lasting 60 to 90 minutes, followed by a workshop, and supplemented by weekly office hours. All of the above will be conducted on Teams and communicated on Canvas.
 
-The aim of this course is two-fold. The first goal is to teach students essential _data analysis_ and _scripting_ skills so that they are able to put together short programs and run their own analyses. The second aim is to give a introduction to the numerous techniques and technologies that researchers can integrate into their own research, and to provide incentives to invest in computational methods and skills. Some of the techiniques that will be taught include:
+This course begins with an extremely brief introduction to the Python programming language, then teaches four key skills for social science research:
 
-- Using Jupyter as a Research and Development Tool
 - Data Cleaning and Merging with `pandas`
-- Static Data Visualisation with `matplotlib` and `seaborn`
-- Introduction to Machine Learning with `scikit-learn`
-- Introduction to Web Scraping with `beautifulsoup`
-- Introduction to Natural Language Processing with `spaCy`
+- Data Visualization with `matplotlib` and `seaborn`
+- Introductory Machine Learning with `scikit-learn`
+- Automated Data Collection with `beautifulsoup` and `selenium`
 
-Note that this course is not a course in _programming_. Students will learn how to use Python for data analysis and research, but the primary focus is on teaching them about the available methods and the bare minimum level of programming to implement these methods. Also note that this course is optional, and there will be no marked assignments, but there will be weekly tasks designed to aid learning. Students are encouraged to complete these tasks, and to ask questions about them during the workshop and clinic.
+As an optional course, there will be no marked assignments, but there are weekly problem sets and readings designed to aid learning. Students are encouraged to complete these tasks, and will have the opportunity to discuss them during the workshop or office hours.
 
-This course is aimed at complete beginners, although experience with other programming languages (such as `R`) may provide some useful reference points. As spaces are limited, priority will be given to students without prior experience using Python, and those who have a use case for computational tools in their research.
+This course is aimed at complete beginners, although experience with other programming languages (such as `R`) may provide some useful reference points. Note that those intending to attend the Trinity Term text-as-data module are **strongly** encouraged to attend this course, as the skills taught here will be assumed knowledge.
 
-Students are required to bring their own laptop to class. The recommended minimum specifications are:
+## Information Regarding Attendance
 
-- _Operating System_: Linux or MacOS optimal, Windows 10 acceptable.[^6dc0]
-- _RAM_: 4GB minimum
-- _Storage_: 10GB free space minimum
+_Please read this information prior to attending, as I will not have time to help with problems that arise during lectures or the workshop._
 
-Students will also be required to install relevant software prior to coming to class (details below).
+Students will require the means to read, write, and execute code in Jupyter notebooks. For the purposes of the course, [`Google Colab`](https://colab.research.google.com/) is sufficient, but students who desire to have a local installation should read the attached [installation guide](/dpir-intro-python/InstallationGuide.pdf).
 
-The course does not follow any particular textbook. However, students are encouraged to look at [_Python for Data Analysis: Data Wrangling with Pandas, NumPy and IPython, 2nd edition_](http://solo.bodleian.ox.ac.uk/permalink/f/89vilt/oxfaleph021507068) by Wes McKinney. This text is slightly more advanced than the course, but provides clear explanations and a lot of coding examples.
+## Readings
 
-More generally though, given the rapidly changing nature of the field, students will be encouraged to learn how to solve programming problems by consulting the broader Python community, whether through stackoverflow, Reddit, or package documentation.
+The course does not follow any particular textbook. However, readings will be assigned primarily from the following books:
+
+- Week 1: [_Automate the Boring Stuff with Python_](https://automatetheboringstuff.com/) by Al Sweigart. Excellent introduction to Python and what it can do for you. Free from website.
+- Weeks 2 and 3: [_Python for Data Analysis: Data Wrangling with Pandas, NumPy and IPython, 2nd edition_](http://solo.bodleian.ox.ac.uk/permalink/f/89vilt/oxfaleph021507068) by Wes McKinney. Available for free via SOLO.
+- Weeks 5 and 6: [_Elements of Statistical Learning, 2nd Edition_](https://web.stanford.edu/~hastie/ElemStatLearn/) by Hastie, Tibshirani and Friedman. This book provides an excellent and comprehensive introduction to machine learning. Free from website.
+- Weeks 7 and 8: [_Web Scraping with Python, 2nd Edition_](https://www.oreilly.com/library/view/web-scraping-with/9781491985564/) by Ryan Mitchell, 2018. Can be accessed for free via SOLO.
 
 For further questions regarding course specifics or accessibility requirements, please feel free to write to me at [musashi.harukawa@merton.ox.ac.uk](musashi.harukawa@merton.ox.ac.uk).
 
-[^6dc0]: If you have something other than Windows, Mac or Linux (e.g. Windows RT, iPadOS, Android), come talk to me.
 
 \newpage
 
 ## Course Outline
 
-_Please note that this course outline is still provisional, and the exact structure of the course may change. Please also refer to the final published version of this course, which will be available from -1st Week of Hilary Term 2020._
-
-
-### _Week 0_: Installing Anaconda
-
-**Aim**: Install Python and Development Tools
-
-Prior to beginning the course, students need to install Python 3 and the relevant development tools. Although there are many ways to go about this, I recommend that students use Anaconda, which offers an easy-to-use graphical interface for package installation.
-
-Anaconda can be downloaded from [https://www.anaconda.com/distribution/](https://www.anaconda.com/distribution/). Follow the instructions on the website, and _install the Python **3.x** (i.e. 3.7, unless 3.8 comes out in the next few months) edition_ for your operating system.
-
-Once you have downloaded the installer, simply follow the instructions provided by the installer. Note that the installation size is somewhat large; 2.9 to 3.7GB, depending on your operating system. In general, the default settings should work, but please feel free to opt out of Anaconda Cloud, mail subscription, and error reporting.
+_Please note that do to my own evolving situation, this syllabus may be subject to change._
 
 
 ### _Week 1_: Introduction to Python and the Development Environment
@@ -96,7 +88,7 @@ The third week builds on students' knowledge of `pandas`, introducing two key to
 
 By the end of this week, students should have a sufficient grounding in handling tabular data with base Python and `pandas` to deal with most data cleaning and reshaping tasks they use in their own research.
 
-### _Week 4_: Data Visualisation
+### _Week 4_: Data Visualization
 
 **Learning Aims**:
 
@@ -104,9 +96,9 @@ By the end of this week, students should have a sufficient grounding in handling
 2. Figures, subplots, axes, legends
 3. Plotting uni- and bivariate datasets in `matplotlib`
 4. The convenience of `seaborn`
-5. Customising your plots
+5. Customizing your plots
 
-The fourth week introduces two key libraries for data visualisation: `matplotlib` and `seaborn`. Students will learn the philosophy behind data visualisation, and how to create a number of useful 2D graphs.
+The fourth week introduces two key libraries for data visualization: `matplotlib` and `seaborn`. Students will learn the philosophy behind data visualization, and how to create a number of useful 2D graphs.
 
 ### _Week 5_: Machine Learning I
 
@@ -127,7 +119,7 @@ The fifth week introduces to students to machine learning with the `scikit-learn
 The sixth week introduces supervised machine learning with the random forest algorithm. Students then learn about cross-validation techniques and their implementation in `scikit-learn`. Finally students learn about hyperparameters, and how to choose the optimal initialising parameters for the model. The lesson ends with a discussion about the difference between prediction and explanation.
 
 
-### _Week 7_: Mining the Web
+### _Week 7_: Web Scraping I
 
 1. The Structure of Websites: `html`
 2. Requesting webpages with `requests` or `urllib`
@@ -138,10 +130,9 @@ Students will learn the fundamentals of writing a script to automate web-based d
 
 Students will learn the basics of the structure of every webpage; `html`, and how the library `beautifulsoup` can help them parse and navigate this in order to extract data from webpages. Students will also learn a basic introduction to regular expressions with the `re` library.
 
-### _Week 8_: Introduction to Natural Language Processing
+### _Week 8_: Web Scraping II
 
-1. What is NLP?
-2. Syntactic Parsing with `spaCy`
-3. Entity recognition and document similarity with `spacy`
+1. Working with APIs
+2. Browser automation with `Selenium`
 
-Students will be introduced to an advanced and increasingly popular natural language processing library: `spaCy`, and discuss how it can be useful in their own research. Students will learn basic concepts in natural language processing, and the challenges of operationalising text. References for more advanced models will also be included in the readings.
+Students will learn further techniques in web scraping, using APIs and browser automation to interact with a further variety of data sources on the web.
