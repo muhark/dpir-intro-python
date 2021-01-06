@@ -1,48 +1,49 @@
 ---
 title: Introduction to Python for Social Science
 author: Musashi Harukawa
+date: "Last Updated: 06 Jan 21"
 ---
 
 # Introduction to Python for Social Science
 
-This is an work-in-progress website to accompany the optional Introduction to Python for Social Science held at the DPIR in Hilary Term 2020. I aim to keep all slides, exercises, and other supplementary materials on this website.
+Welcome to the official course website for the Introduction to Python for Social Science optional methods module at the Department of Politics and International Relations, University of Oxford.
+
+I will be posting all slides, workbooks, practice sets and solutions on this website. Recorded lectures will be hosted on Canvas/Panopto (and linked here if possible). Information regarding office hours will be sent out in the coming days.
 
 # Course Details
 
-The lectures will be held weekly on Wednesdays, from 4:15pm to 7:15pm at the IT Lab in the Manor Road Building.
+Lectures will be held weekly on Wednesdays from 4pm to 6pm (GMT) on Teams. Office hours will be confirmed in the coming days. I will do my best to upload recorded lectures as quickly as I can.
 
 You can find a syllabus for the course [here](/dpir-intro-python/syllabus.pdf).
 
-**Please install the relevant software prior to coming to the first class. Instructions for installation can be found [here](/dpir-intro-python/InstallationGuide.pdf).**
-
 # Lecture Slides
 
-I'm experimenting with [`reveal.js`](https://revealjs.com/#/) for the lecture slides. Links to the lectures are provided below, and will be made available as the lectures are completed. Slides will also be made available in `pdf` (beamer) format.
+I'm using [`reveal.js`](https://revealjs.com/#/) for the lecture slides, so they should be viewable in the browser on any device. `pdf` (beamer) format slides are also available lower down the page.
 
-Please be aware, lectures will be updated continuously, and may contain errors.
+You might note that the previous year's slides are still accessible via the linked GitHub. Please note that there are some substantial changes being made to the course, and the slides in the GitHub may not reflect this yet.
 
-1. [Introduction to Python and the Development Environment](/dpir-intro-python/Week1/lecture.html)
-2. [Data Structures and `pandas` I](/dpir-intro-python/Week2/lecture.html)
+<!-- 1. [Introduction to Python and the Development Environment](/dpir-intro-python/Week1/lecture.html) -->
+<!-- 2. [Data Structures and `pandas` I](/dpir-intro-python/Week2/lecture.html)
 3. [Data Structures and `pandas` II](/dpir-intro-python/Week3/lecture.html)
 4. [Data Visualisation](/dpir-intro-python/Week4/lecture.html)
 5. [Machine Learning with `scikit-learn` I](/dpir-intro-python/Week5/lecture.html)
 6. [Machine Learning with `scikit-learn` II](/dpir-intro-python/Week6/lecture.html)
 7. [Mining the Web](/dpir-intro-python/Week7/lecture.html)
-8. [Introduction to Natural Language Processing](/dpir-intro-python/Week8/lecture.html)
+8. [Introduction to Natural Language Processing](/dpir-intro-python/Week8/lecture.html) -->
 
 
 # Materials
 
 | Week | `reveal.js`                                     | `pdf`                                       | Code Examples                                       | Code Exercises                                        | Code Solutions                                        | Data                                                |
 | ---- | ----------------------------------------------- | ------------------------------------------- | --------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | --------------------------------------------------- |
-| 1    | [slides](/dpir-intro-python/Week1/lecture.html) | [pdf](/dpir-intro-python/Week1/lecture.pdf) | [examples](/dpir-intro-python/Week1/examples.ipynb) | [exercises](/dpir-intro-python/Week1/exercises.ipynb) | [solutions](/dpir-intro-python/Week1/solutions.ipynb) | None                                                |
-| 2    | [slides](/dpir-intro-python/Week2/lecture.html) | [pdf](/dpir-intro-python/Week2/lecture.pdf) | [examples](/dpir-intro-python/Week2/examples.ipynb) | [exercises](/dpir-intro-python/Week2/exercises.ipynb) | [solutions](/dpir-intro-python/Week2/solutions.ipynb) | [BES](/dpir-intro-python/Week2/data/data_week2.zip) |
+<!-- | 1    | [slides](/dpir-intro-python/Week1/lecture.html) | [pdf](/dpir-intro-python/Week1/lecture.pdf) | [examples](/dpir-intro-python/Week1/examples.ipynb) | [exercises](/dpir-intro-python/Week1/exercises.ipynb) | [solutions](/dpir-intro-python/Week1/solutions.ipynb) | None                                                | -->
+<!-- | 2    | [slides](/dpir-intro-python/Week2/lecture.html) | [pdf](/dpir-intro-python/Week2/lecture.pdf) | [examples](/dpir-intro-python/Week2/examples.ipynb) | [exercises](/dpir-intro-python/Week2/exercises.ipynb) | [solutions](/dpir-intro-python/Week2/solutions.ipynb) | [BES](/dpir-intro-python/Week2/data/data_week2.zip) |
 | 3    | [slides](/dpir-intro-python/Week3/lecture.html) | [pdf](/dpir-intro-python/Week3/lecture.pdf) | [examples](/dpir-intro-python/Week3/examples.ipynb) | [exercises](/dpir-intro-python/Week3/exercises.ipynb) | [solutions](/dpir-intro-python/Week3/solutions.ipynb) |                                                     |
 | 4    | [slides](/dpir-intro-python/Week4/lecture.html) | [pdf](/dpir-intro-python/Week4/lecture.pdf) | [examples](/dpir-intro-python/Week4/examples.ipynb) | [exercises](/dpir-intro-python/Week4/exercises.ipynb) | [solutions](/dpir-intro-python/Week4/solutions.ipynb) |                                                     |
 | 5    | [slides](/dpir-intro-python/Week5/lecture.html) | [pdf](/dpir-intro-python/Week5/lecture.pdf) | [examples](/dpir-intro-python/Week5/examples.ipynb) | [exercises](/dpir-intro-python/Week5/exercises.ipynb) | [solutions](/dpir-intro-python/Week5/solutions.ipynb) |                                                     |
 | 6    | [slides](/dpir-intro-python/Week6/lecture.html) | [pdf](/dpir-intro-python/Week6/lecture.pdf) | [examples](/dpir-intro-python/Week6/examples.ipynb) | [exercises](/dpir-intro-python/Week6/exercises.ipynb) | [solutions](/dpir-intro-python/Week6/solutions.ipynb) |                                                     |
 | 7    | [slides](/dpir-intro-python/Week7/lecture.html) | [pdf](/dpir-intro-python/Week7/lecture.pdf) | [examples](/dpir-intro-python/Week7/examples.ipynb) | [exercises](/dpir-intro-python/Week7/exercises.ipynb) | [solutions](/dpir-intro-python/Week7/solutions.ipynb) |                                                     |
-| 8    | [slides](/dpir-intro-python/Week8/lecture.html) | [pdf](/dpir-intro-python/Week8/lecture.pdf) | [examples](/dpir-intro-python/Week8/examples.ipynb) | [exercises](/dpir-intro-python/Week8/exercises.ipynb) | [solutions](/dpir-intro-python/Week8/solutions.ipynb) |                                                     |
+| 8    | [slides](/dpir-intro-python/Week8/lecture.html) | [pdf](/dpir-intro-python/Week8/lecture.pdf) | [examples](/dpir-intro-python/Week8/examples.ipynb) | [exercises](/dpir-intro-python/Week8/exercises.ipynb) | [solutions](/dpir-intro-python/Week8/solutions.ipynb) |                                                     | -->
 
 
 
@@ -50,14 +51,13 @@ Please be aware, lectures will be updated continuously, and may contain errors.
 
 #### About Me
 
-My name is Musashi Harukawa, I am a DPhil Politics student at the University of Oxford. Prior to the DPhil (and the MSc in Politics Research the year prior), I worked as a data scientist for a financial conglomerate in Tokyo. Before that, I worked as a teacher in Tokyo and Moscow.
+My name is Musashi Harukawa, I am a DPhil Politics student at the University of Oxford. Prior to returning to academia, I worked as a quantitative analyst/data scientist at a stock exchange in Tokyo and an English teacher in Moscow.
 
-My research interests fall into two areas: computational methods, and the use of personal data for microtargeting by political campaigns. On the methods side, I work mostly on natural language processing, especially word and document embedding models and their use in ensemble approaches. My current project is improving unsupervised methods for measuring the similarity of presented positions held by legislators based on their communication strategies.
+My research interests fall into two areas. In methods, I am working on non-parametric methods for model selection and applications of manifold learning to descriptive inference with social trace data. My substantive research looks at micro-targeted political advertising.
 
-I use python and `R` as a regular part of my work, and am a big advocate of more social scientists learning to leverage these techniques.
-
-#### Misc.
+<!-- #### Misc.
 
 Sometimes I use this website to host slides. I'll clean these up at some point.
 
 [DPhil Research Design Seminar](/dpir-intro-python/misc_presentations/presentation.html)
+[Survey Design Presentation](/dpir-intro-python/misc_presentations/survey-design.html) -->
