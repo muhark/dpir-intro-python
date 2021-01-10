@@ -57,9 +57,6 @@ My name is Musashi Harukawa, I am a DPhil Politics student at the University of 
 
 My research interests fall into two areas. In methods, I am working on non-parametric methods for model selection and applications of manifold learning to descriptive inference with social trace data. My substantive research looks at micro-targeted political advertising.
 
-<!-- #### Misc.
+#### Misc.
 
-Sometimes I use this website to host slides. I'll clean these up at some point.
-
-[DPhil Research Design Seminar](/dpir-intro-python/misc_presentations/presentation.html)
-[Survey Design Presentation](/dpir-intro-python/misc_presentations/survey-design.html) -->
+["Estimating the Micro_Targeting Effect: Evidence from a Survey Experiment During the 2020 U.S. Presidential Election", _WIP_](/misc_presentations/draft4.pdf)
