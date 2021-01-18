@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Musashi Harukawa">
+  <title>Estimating the Micro-Targeting Effect</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="../reveal.js/dist/theme/../../../dpir-intro-theme.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Estimating the Micro-Targeting Effect</h1>
+  <p class="subtitle">Evidence from a Survey Experiment<br>during the 2020 US Election</p>
+  <p class="author">Musashi Harukawa</p>
+  <p class="date">Politics in Progress Colloquium, HT21</p>
+</section>
+
+<section>
+<section id="introduction" class="title-slide slide level1">
+<h1>Introduction</h1>
+<aside class="notes">
+<ul>
+<li>Begin by thanking:</li>
+<li>Mats for organizing</li>
+<li>Supervisor Andy</li>
+<li>Peers for the help they’ve provided so far.</li>
+<li>Coppock and co-authors for sharing data.</li>
+</ul>
+</aside>
+</section>
+<section id="tldr" class="slide level2">
+<h2>tl;dr</h2>
+<aside class="notes">
+<ul>
+<li><em>too long; didn’t read</em>. Let’s get started with the exciting bits of this:</li>
+<li>I ran a survey during the recent US presidential election. My aim was to test whether micro-targeting works</li>
+<li>So I trained an algorithm to target participants with anti-Biden ads</li>
+<li>and I found that among respondents who had not pre-voted at the time of the survey and identified with neither party</li>
+<li><strong>READ FROM RESULTS</strong></li>
+</ul>
+</aside>
+<ul>
+<li class="fragment">Survey experiment during 2020 US election to estimate effect of micro-targeting.</li>
+<li class="fragment">Trained algorithm to target participants with anti-Biden ads run by Trump campaign.</li>
+<li class="fragment">Among unaligned respondents who had not pre-voted at time of survey <strong>targeting</strong>:
+<ul>
+<li class="fragment"><strong>Increased proportion anti-Biden by 8.7 percentage points</strong>.</li>
+<li class="fragment"><strong>Decreased proportion intending to vote Biden by 7.1 percentage points</strong>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="definitions-and-scope" class="slide level2">
+<h2>Definitions and Scope</h2>
+<aside class="notes">
+<ul>
+<li>Before I proceed further, I want to clarify two terms that are often implicitly used interchangeably.</li>
+<li><strong>READ DEFINITIONS</strong></li>
+<li>The scope of this paper is limited strictly to the latter. In other words, I am focusing on mechanisms for matching/assignment, not on how to construct ads that appeal to specific people.</li>
+</ul>
+</aside>
+<ul>
+<li class="fragment"><strong>Tailoring</strong> is constructing a message so that it appeals to a specific audience.</li>
+<li class="fragment"><strong>Targeting</strong> is delivering the message so only the intended audience sees it.</li>
+<li class="fragment"><strong>Micro-</strong> is on the basis of individual characteristics.</li>
+</ul>
+</section>
+<section id="context" class="slide level2">
+<h2>Context</h2>
+<aside class="notes">
+<ul>
+<li>You’re probably all familiar with Cambridge Analytica and their purported role high profile events such as Brexit and the election of Donald Trump.</li>
+<li>They claimed to have a sophisticated voter psychology model, built on the Facebook data of millions, capable of mass manipulation.</li>
+<li>You may also be familiar with the subsequent backlash and warnings from media and scholarship.</li>
+<li>A frequently cited danger of micro-targeted political campaigning is the creation of informational filter bubbles.</li>
+<li>The point, however, is that many of these arguments presume that micro-targeting works.</li>
+<li>Here’s a good quote: <strong>read quote</strong></li>
+</ul>
+</aside>
+<ul>
+<li class="fragment">In 2016 <em>Cambridge Analytica</em> reportedly able to affect election outcomes using individuals’ Facebook data (Simon 2019).</li>
+<li class="fragment">Significant media and scholarly attention warning of threats and consequences for society:
+<ul>
+<li class="fragment">informational “filter bubbles” threaten civil discourse (e.g. Burkell &amp; Regan 2020).</li>
+</ul></li>
+<li class="fragment">Many of these arguments presume that micro-targeting <em>works</em>:
+<ul>
+<li class="fragment">“micro-targeting of voters can pay very handsome electoral dividends for a relatively modest investment” (Krotoszynski Jr. 2020).</li>
+</ul></li>
+</ul>
+</section>
+<section id="contradicting-evidence" class="slide level2">
+<h2>Contradicting Evidence</h2>
+<aside class="notes">
+<ul>
+<li>The issue is that it’s not so clear that micro-targeting does, in fact, work.</li>
+<li>The political science literature in particular casts a lot of doubt on CA’s claims.
+<ul>
+<li>A recent panel study by Coppock et al testing 49 ads with over 34,000 people finds little evidence of heterogeneous effects. They specifically point out the incompatibility of this result with claims about the efficacy of micro-targeting (no heterogeneity means no improvements from better targeting)</li>
+</ul></li>
+<li>Research in psychology, on the other hand, suggests that micro-targeting should work.
+<ul>
+<li>Jens Madsen (here at Oxford) and co-authors simulate a campaign with agent-based modelling and show that campaigns that micro-target are more successful.</li>
+<li>A very recent paper by Zarouali et al (2020) simulates micro-targeting with an experiment where they use a writing prompt to profile respondents’ extroversion traits, and match them with ads accordingly. Persuasion effects were stronger amongst respondents matched on the basis of personality.</li>
+</ul></li>
+</ul>
+</aside>
+<ul>
+<li class="fragment">Decade of political science research leaves little space for micro-targeting to make a difference.
+<ul>
+<li class="fragment">Coppock et al (2020) test 49 advertisements on 34,000 people, find little evidence of heterogeneous effects.</li>
+</ul></li>
+<li class="fragment">Psychology research simulating targeting suggests it should work:
+<ul>
+<li class="fragment">Madsen and Pilditch (2018) use ABM.</li>
+<li class="fragment">Zarouali et al (2020) use experiment (N=158).</li>
+</ul></li>
+</ul>
+</section>
+<section id="gaps-and-challenges" class="slide level2">
+<h2>Gaps and Challenges</h2>
+<aside class="notes">
+<ul>
+<li>It’s worth noting, as many of the authors in the area do, that the lack of consensus on this topic reflects the difficulty of researching this topic. The question relates to the behaviour of private agents, namely campaigns.</li>
+<li>Political campaigns and campaigning consultancies are not particularly open with their strategies and data.</li>
+<li>Even data on the advertisements themselves is very difficult to obtain with a lot of authors relying on proxies such as ad auction prices.</li>
+</ul>
+</aside>
+<ul>
+<li class="fragment">Strategies and algorithms proprietary (Edelson et al 2019).</li>
+<li class="fragment">Data difficult to obtain (Liberini et al 2020).</li>
+</ul>
+</section>
+<section id="research-question" class="slide level2">
+<h2>Research Question</h2>
+<aside class="notes">
+All this leads me to the research question that I’ve been asking myself since 2016:
+</aside>
+<p class="fragment" style="text-align: center;">
+<strong>Does micro-targeting <em>work</em>?</strong>
+</p>
+<p style="text-align: center;" class="fragment">
+<em>or:</em>
+</p>
+<p style="text-align: center;" class="fragment">
+<strong>Is it possible to improve the effectiveness of a campaign by optimally allocating advertisements on the basis of individual traits?</strong>
+</p>
+</section></section>
+<section>
+<section id="research-design" class="title-slide slide level1">
+<h1>Research Design</h1>
+
+</section>
+<section id="case-selection" class="slide level2">
+<h2>Case Selection</h2>
+<aside class="notes">
+<ul>
+<li>I used the recent Presidential election in the US as my setting.</li>
+<li>There were several reasons for this:
+<ul>
+<li>The US has weak regulation on political advertising, especially when compared to Europe (Dobbins 2019). This meant I was more likely to find advertisements that were run as part of a micro-targeted campaign.</li>
+<li>I chose Presidential instead of Congressional races for a similar reason, and to ensure the relevancy of ads to all participants (as well as finding a sufficiently large pool)</li>
+</ul></li>
+<li>The pool was recruited via Prolific</li>
+<li>And they were then redirected to a survey website that I hosted and set up.</li>
+</ul>
+</aside>
+<ul>
+<li class="fragment">US 2020 Presidential Election</li>
+<li class="fragment">Participants US citizens, resident in US, of voting age.</li>
+<li class="fragment">Payment and recruitment via Prolific.</li>
+<li class="fragment">Redirected to external website <code>https://survey.polinfo.org</code></li>
+</ul>
+</section>
+<section id="design-summarized" class="slide level2">
+<h2>Design Summarized</h2>
+<aside class="notes">
+<ul>
+<li>I’ll go over the design at a high level first, then go into each part in more detail.</li>
+<li>I used five anti-Biden attack advertisements run by the Trump campaign.</li>
+<li>Respondents in the first stage were randomly assigned an advertisement using permuted block randomization.</li>
+<li>This data was used to train a machine learning model that learned the relationship between individual traits, ad assignment, and Biden favorability.</li>
+<li>In the second stage, respondents were assigned the ad that this model predicted as being the most effective.</li>
+<li>The difference in outcome between the individuals in the first stage and second stage is the ATE of targeting.</li>
+<li>Again, I’ll go through each one of these points in a bit more detail.</li>
+</ul>
+</aside>
+<ul>
+<li class="fragment">Five advertisements.</li>
+<li class="fragment">First stage (N=1,500), respondents shown random ad.</li>
+<li class="fragment">This data used to train targeting algorithm.</li>
+<li class="fragment">Second stage (N=900), respondents shown optimal ad.</li>
+<li class="fragment">Difference between Stage 1 and 2 is treatment effect of targeting.</li>
+</ul>
+</section>
+<section id="advertisements" class="slide level2">
+<h2>Advertisements</h2>
+<aside class="notes">
+<ul>
+<li>This table describes the five ads that were used in the experiment.
+<ul>
+<li>The first ad depicted Hillary Clinton and Biden mocking Trump supporters, calling them deplorables.</li>
+<li>The second ad detailed Hunter Biden’s ostensible corruption, and blamed it on Joseph Biden.</li>
+<li>The third ad was a standard 2nd amendment ad warning voters that Biden would steal their guns.</li>
+<li>The fourth ad focused on a quote by Biden where he stated that black Trump supporters are not Black.</li>
+<li>The final ad blamed Obama and Biden for wars and neglected veterans.</li>
+</ul></li>
+<li>These ads were chosen from the set of all ads run by the Trump campaign in the final months of the race.</li>
+<li>After watching all of the ads, I asked a panel of a dozen other DPhil students to help me narrow down my choice from a shortlist of 12. The criteria for inclusion are that the ads were clearly targeted to a specific, and distinct audiences, and that no one ad was likely to have a universal appeal above all others.</li>
+</ul>
+</aside>
+<table>
+<thead>
+<tr class="header">
+<th>Title</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>“They Mock Us”</td>
+<td>In-group: Clinton and Biden mocking</td>
+</tr>
+<tr class="even">
+<td>“Why did Biden let him do it?”</td>
+<td>Hunter Biden’s ostensible corruption</td>
+</tr>
+<tr class="odd">
+<td>“Biden will come for your guns”</td>
+<td>2A; Biden will steal guns</td>
+</tr>
+<tr class="even">
+<td>“Insult”</td>
+<td>Biden: Black Trump supporters not Black</td>
+</tr>
+<tr class="odd">
+<td>“Real Leadership”</td>
+<td>Obama/Biden caused wars, neglected veterans</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="stage-1" class="slide level2">
+<h2>Stage 1</h2>
+<aside class="notes">
+<ul>
+<li>Stage 1 was both a control and a training set. I describe it in notation on this slide.</li>
+<li>On the first page, each respondent answered a range of pre-treatment questions. This included standard demographic questions such as age, gender, income band, as well as political opinions such as a seven-point partisan self-identification and a five-point ideological self-identification.</li>
+<li>Respondents were then shown one of the five ads from the previous slide, each with an equal probability, using permuted block randomization.</li>
+<li>Three post-treatment questions were asked:</li>
+<li>1-5 rating of Biden and Trump</li>
+<li>Who they intended to vote for or had already voted for.</li>
+</ul>
+</aside>
+<p>For individual <span class="math inline">\(i \in \{1,...,1500\}\)</span>:</p>
+<ul>
+<li class="fragment">Pre-treatment covariates <span class="math inline">\(\mathbf{X}_i\)</span>.</li>
+<li class="fragment">Shown <span class="math inline">\(d_a\)</span>, where <span class="math inline">\(a \sim \mathcal{U}\{1, 5\}\)</span>.</li>
+<li class="fragment">Post-treatment outcome(s) <span class="math inline">\(Y_i\)</span>
+<ul>
+<li class="fragment">Biden and Trump favorability (1-5)</li>
+<li class="fragment">Voting preference</li>
+</ul></li>
+</ul>
+</section>
+<section id="predicting-optimal-advertisement" class="slide level2">
+<h2>Predicting Optimal Advertisement</h2>
+<aside class="notes">
+<ul>
+<li>I used this data to fit a model predicting Biden favorability as a function of pre-treatment traits and advertisement.</li>
+<li>From this fitted model, I can predict the hypothetical outcome of an individual under each of the five advertisements</li>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+</aside>
+<div class="fragment">
+<p>Results of stage 1 used to learn outcome as function of pre-treatment traits and advertisement:</p>
+<p><span class="math display">\[
+    Y_i = f(X_i, d_a)
+\]</span></p>
+</div>
+<div class="fragment">
+<p>Thus for any person, I can predict their hypothetical outcome under each of the five advertisements:</p>
+<p><span class="math display">\[
+    \hat{f}(X_i, d_1) = \hat{Y}(d_1)
+\]</span> <span class="math display">\[
+    \{\hat{Y}(d_1), \hat{Y}(d_2), ... \hat{Y}(d_5)\}
+\]</span></p>
+</div>
+</section>
+<section id="five-candidate-algorithms" class="slide level2">
+<h2>Five Candidate Algorithms</h2>
+<aside class="notes">
+<ul>
+<li>I fitted five different candidate algorithms to learn this relationship.</li>
+<li>I chose these algorithms primarily for their ability to learn highly conditional relationships. I am interested in detecting highly conditional relationships because I want to target small subsets of the population, not the effect of individual factors.</li>
+<li>Three of the algorithms were therefore tree-based, which has conditional logic built into its structure.</li>
+<li>I also included MLPR and SVM, primarily for variety in case my assumptions about conditionality were wrong.</li>
+</ul>
+</aside>
+<p>Chosen for speed and ability to learn highly conditional relationships:</p>
+<ul>
+<li class="fragment">Random Forest (RF)</li>
+<li class="fragment">AdaBoost</li>
+<li class="fragment">Gradient Boosted Decision Trees (GBDT)</li>
+<li class="fragment">Multi-Layer Perceptron Regressor (MLPR)</li>
+<li class="fragment">Support Vector Machine (SVM)</li>
+</ul>
+</section>
+<section id="choosing-the-best-model" class="slide level2">
+<h2>Choosing the Best Model</h2>
+<aside class="notes">
+<ul>
+<li>Once I fit the five models, I determined which was the best using standard ML approaches.</li>
+<li>Models were compared with 30-fold cross validation</li>
+<li>Compared on root mean squared error, max error and prediction time.</li>
+<li>Random Forest and AdaBoost generally out-performed the other 3, and RF was less likely to give ties. Ties were undesirable because I wanted the model to give me a single optimum (and in the case of ties, I randomly chose one of the optima).</li>
+<li>Finally, I installed the pre-fitted RF model to the web server.</li>
+</ul>
+</aside>
+<ul>
+<li class="fragment">Models trained/tested with 30-fold cross-validation</li>
+<li class="fragment">Compared on RMSE, max error and prediction time</li>
+<li class="fragment">RF and AdaBoost generally better, RF weakly better than AdaBoost and less likely to give ties</li>
+<li class="fragment">Fitted model uploaded to web server</li>
+</ul>
+</section>
+<section id="stage-2" class="slide level2">
+<h2>Stage 2</h2>
+<aside class="notes">
+<ul>
+<li>From the perspective of a respondent, they would be unable to tell whether they were part of stage 1 or stage 2.</li>
+<li>After answering the same first-page set of pre-treatment questions, their answers were sent to a modified Jupyter kernel hosting the pre-fitted Random Forest model.</li>
+<li>The kernel returned the advertisement predicted to have the strongest effect (in this case, minimum Biden favorability).</li>
+</ul>
+</aside>
+<ul>
+<li class="fragment">Same pre-treatment questions <span class="math inline">\(\mathbf{X}_i\)</span>.</li>
+<li class="fragment">Predictive model chooses optimal advertisement as a function of <span class="math inline">\(\mathbf{X}_i\)</span>:</li>
+</ul>
+<div class="fragment">
+<p><span class="math display">\[
+    d^*(X_i): opt_a \; f(X_i, d_{i, a})
+\]</span></p>
+</div>
+</section>
+<section id="average-targeting-effect" class="slide level2">
+<h2>Average Targeting Effect</h2>
+<aside class="notes">
+<ul>
+<li>Following with this notation, the average treatment effect of targeting is the difference in outcome between randomly assigned stage 1 and optimally assigned stage 2.</li>
+<li>The right-hand term is the average outcome for stage 1. This is the outcome averaged over individuals and advertisements. The right hand term is only averaged over individuals, as the ads are “fixed” with respect to the outcome.</li>
+</ul>
+</aside>
+<p>Compare average outcome between randomly assigned stage 1 and optimally assigned stage 2:</p>
+<div class="fragment">
+<p><span class="math display">\[
+    ATE = \mathbb{E}_i[Y_i(d^*(X_i))] - \mathbb{E}_a[\mathbb{E}_i[Y_i(d_{i, a})]]
+\]</span></p>
+</div>
+</section>
+<section id="hypotheses" class="slide level2">
+<h2>Hypotheses</h2>
+<aside class="notes">
+<ul>
+<li>Varying the outcome, we get three testable hypotheses.</li>
+<li>The first hypothesis states that expected Biden favorability is lower when individuals are shown the “optimal” ad versus a random one.</li>
+<li>The second and third hypotheses state the same, but for propensity to vote for Biden, and propensity to vote at all.</li>
+<li>Note that by definition, so long as the predictive model provides an optimal assignment for at least one individual, these hypotheses should be true. The question here is therefore an empirical one; does that difference actually exist? How large is it?</li>
+</ul>
+</aside>
+<p>Three outcomes of interest:</p>
+<ul>
+<li class="fragment"><code>Hypothesis 1</code> (<em>Micro-targeting Affects Favorability</em>): <span class="math inline">\(\mathbb{E}_i[y_{i, Biden}(d^*)] &lt; \mathbb{E}_a[\mathbb{E}_i[y_{i, Biden}(d_{i, a})]]\)</span></li>
+<li class="fragment"><code>Hypothesis 2</code> (<em>Micro-targeting Affects Voting Preference</em>): <span class="math inline">\(\mathbb{E}_i[v_{i, Biden}(d^*)] &lt; \mathbb{E}_a[\mathbb{E}_i[v_{i, Biden}(d_{i, a})]]\)</span></li>
+<li class="fragment"><code>Hypothesis 3</code> (<em>Micro-targeting Affects Turnout</em>): <span class="math inline">\(\mathbb{E}_i[u_{i}(d^*)] &lt; \mathbb{E}_a[\mathbb{E}_i[u_{i}(d_{i, a})]]\)</span></li>
+</ul>
+</section>
+<section id="cates-of-interest" class="slide level2">
+<h2>CATEs of Interest</h2>
+<aside class="notes">
+<ul>
+<li><em>A priori</em>, there are two pre-treatment covariates that I want to account for.</li>
+<li>The first is partisan self-identification. The literature provides various reasons to suspect that the effect of targeting an anti-Biden campaign may have differing effects for Democrats, Republicans, and unaligned voters.</li>
+<li>The second is whether the respondent has pre-voted. I hypothesized that respondents who had already cast their vote would be less likely to change their mind due to an advertisement, as it was essentialy no longer relevant to them.</li>
+</ul>
+</aside>
+<p>Account for conditional effect of two pre-treatment covariates:</p>
+<ul>
+<li class="fragment">Partisan self-identification</li>
+<li class="fragment">Early voting</li>
+</ul>
+</section></section>
+<section>
+<section id="results" class="title-slide slide level1">
+<h1>Results</h1>
+
+</section>
+<section id="stage-1---treatment-assignments" class="slide level2">
+<h2>Stage 1 - Treatment Assignments</h2>
+<aside class="notes">
+<ul>
+<li>After filtering for irregularities and failed manipulation checks, the experiment provided a total of 2261 valid responses, with 1416 in the first stage and 845 in the treatment.</li>
+<li>Chi-squared tests found no dependence between the treatment indicator andany of the pre-treatment covariates, once conducting Holm and Benjamini-Hochberg multiple comparisons corrections.</li>
+<li>It can be seen in the right-hand panel that the Race advertisement was shown to the most participants in the targeted group; in other words, the fitted model determined that it was the optimal advertisement for the greatest proportion of respondents.</li>
+<li>The in-group ad was the second most likely to be assigned.</li>
+</ul>
+</aside>
+<iframe src="../../Writings/Paper1/figures/allocations.pdf" width="100%" height="500px">
+</iframe>
+</section>
+<section id="stage-1---feature-importances" class="slide level2">
+<h2>Stage 1 - Feature Importances</h2>
+<aside class="notes">
+<ul>
+<li>This figure shows the normalized mean GINI decrease statistic of each feature.</li>
+<li>Feature importance should not be interpreted in the same way as regression coefficients.</li>
+<li>The random forest algorithm aggregates individual decision trees. The mean GINI decrease tells us the extent to which splits made on a feature result in homogeneous partitions of the target space.</li>
+<li>In other words, this shows the extent to which a particular variable helped the algorithm learn to correctly predict the outcome.</li>
+<li>A notable thing about this figure is that ad assignment has a relatively high score. Given that ad assignment was random, that the algorithm learned to sort on this variable more than, for example, gender, indicates that there is some connection between ad assignment and the outcome.</li>
+</ul>
+</aside>
+<iframe src="../../Writings/Paper1/figures/feature_importance.pdf" width="100%" height="500px">
+</iframe>
+</section>
+<section id="stage-1---predicted-outcome-as-function-of-partisanship" class="slide level2">
+<h2>Stage 1 - Predicted Outcome as Function of Partisanship</h2>
+<aside class="notes">
+<ul>
+<li>This figure I created the most recently after speaking to Alex Coppock.</li>
+<li>To create this figure, I calculated predicted Biden favorability for each respondent in the second stage for all ads and levels of partisanship. This figure shows the mean level of Biden favorability at each level of partisanship, averaged across all second-stage respondents.</li>
+<li>This figure essentially shows which ad the algorithm predicts will be most effective, on average, across different levels of partisanship.</li>
+<li>It can be seen that the Race ad, referencing the time when Biden stated that Black Trump supporters are not Black, is the most effective for 1-3, individuals who are very Democrat to Neither but leaning Dem.</li>
+<li>For the rest of the levels, the In-Group advertisement (they called us deplorable, they’re mocking us) appears to be the most effective at getting respondents to dislike Biden.</li>
+<li>It’s interesting to note that the 2A advertisement is generally predicted to be ineffective, even for very Rep respondents.</li>
+<li>Again, these are not regression coefficients; this is basically a representation of what the model “thinks”.</li>
+</ul>
+</aside>
+<iframe src="../../Writings/Paper1/figures/predicted_favorability_f_pid.pdf" width="100%" height="500px">
+</iframe>
+</section>
+<section id="stage-2-1" class="slide level2">
+<h2>Stage 2</h2>
+<aside class="notes">
+<ul>
+<li>This figure started out as a series of regression tables.</li>
+<li>This figure shows the effect of receiving the targeted ad on intent on Biden favorability, intent to vote biden, and turnout among respondents who had not voted at the time of the survey (N=1,160).</li>
+<li>The panels, from left to right, show Democrat, Unaligned and Republican voters.</li>
+<li>Each pair of bars shows the predicted proportions when untargeted and targeted.</li>
+<li>The number above each pair of bars shows the regression coefficient on the corresponding model.</li>
+<li>The key pairs are in the centre panel, above “Dislike Biden” and “Vote Biden”. The pair above “Dislike Biden” shows that the effect of targeting on Biden favorability operationalized as a binary outcome (1-2=Dislike, 3-5=Not Dislike), and the pair above “Vote Biden” pshows the effect of targeting on propensity to state that the respondent will vote for Biden.</li>
+<li>In this group, of unaligned voters who had not already voted at the time of the survey, showing respondents an optimized ad increased the likelihood that they would state that they dislike Biden by 8.7 p.p. and decreased the likelihood that they would state that they intended to vote for Biden by 7.1 p.p., relative to receiving a random advertisement. Both of these statistics are significant at <span class="math inline">\(\alpha=0.5\)</span>.</li>
+<li>Other results</li>
+</ul>
+</aside>
+<iframe src="../../Writings/Paper1/figures/effect_of_targeting_total.pdf" width="100%" height="500px">
+</iframe>
+</section>
+<section id="robustness" class="slide level2">
+<h2>Robustness</h2>
+<aside class="notes">
+</aside>
+<ul>
+<li class="fragment">Pre-treatment covariate balance check.</li>
+<li class="fragment">Multiple comparisons correction (Holm, Benjamini-Hochberg).</li>
+<li class="fragment">Variety of operationalizations of outcome (linear, binary, ordered categorical)</li>
+<li class="fragment">Pre-experimental power check using Coppock et al (2020) data (along with permutation test for bias in mechanism).</li>
+</ul>
+</section></section>
+<section>
+<section id="discussion" class="title-slide slide level1">
+<h1>Discussion</h1>
+
+</section>
+<section id="key-results" class="slide level2">
+<h2>Key Results</h2>
+<aside class="notes">
+<ul>
+<li><strong>READ LINES</strong></li>
+</ul>
+</aside>
+<ul>
+<li class="fragment">Among unaligned respondents who had not pre-voted at time of the survey, <strong>targeting</strong>:
+<ul>
+<li class="fragment"><strong>Increased proportion anti-Biden by 8.7 percentage points</strong>.</li>
+<li class="fragment"><strong>Decreased proportion intending to vote Biden by 7.1 percentage points</strong>.</li>
+</ul></li>
+<li class="fragment">These margins are greater than those seen in many crucial districts.</li>
+</ul>
+</section>
+<section id="normative-aspects" class="slide level2">
+<h2>Normative Aspects</h2>
+<aside class="notes">
+<ul>
+<li>This project started off as a normatively motivated one; I am uncomfortable with the idea that a political campaign, using individuals’ data and algorithms, can influence the outcome of an election.</li>
+<li>This speaks against the idea that elections, and thereby democracy, are the product of public preference.</li>
+<li>The clearest issue, perhaps, is pointed out by Krotoszynski Jr. 2020</li>
+<li>On the other hand, the issue is not so clearcut. If targeting was used to serve voters with personally relevant parts of a manifesto, in order to increase engagement, then would it be so problematic?</li>
+<li>There is a clear issue with using non-consensually obtained data. But what about unknowingly inferring these states with an algorithm?</li>
+</ul>
+</aside>
+<ul>
+<li class="fragment">Data and algorithms to influence the outcome of elections?
+<ul>
+<li class="fragment">Whose preferences are being represented?</li>
+<li class="fragment">Creates incentives to harvest voter data (Krotoszynski Jr. 2020)</li>
+</ul></li>
+<li class="fragment"><em>When is it permissible to target political advertisements?</em>
+<ul>
+<li class="fragment">Is negative advertising the problem?</li>
+<li class="fragment">Issues of consent and privacy.</li>
+</ul></li>
+</ul>
+</section>
+<section id="ethical-conisderations" class="slide level2">
+<h2>Ethical Conisderations</h2>
+<aside class="notes">
+<ul>
+<li>Normally wouldn’t discuss this in a seminar, but I want to assure everyone that proper ethical guidelines were followed, especially in an experiment like this.</li>
+<li>CUREC approval was gained prior to the experiment.</li>
+<li>Obtained participant consent, with period for revoking. I also went beyond standard data protection requirements.</li>
+<li>At the end of the experiment, I provided participants with a full debrief explaining the purpose of the experiment, and where applicable, that their data had either been used to train a targeting algorithm, or they had been served an advertisement by an algorithm.</li>
+</ul>
+</aside>
+<ul>
+<li class="fragment">CUREC approved</li>
+<li class="fragment">Participant consent obtained</li>
+<li class="fragment">Extensive end-of-survey debrief detailing purpose and potential manipulation</li>
+</ul>
+</section>
+<section id="limitations" class="slide level2">
+<h2>Limitations</h2>
+<aside class="notes">
+<ul>
+<li>This experiment and study obviously have a number of limitations.</li>
+<li>As pointed out to me, there is a difference between answering a survey and actually voting. My claims do not include the latter in scope.</li>
+<li>Due to budget constraints, I was not able to guarantee a representative sample.</li>
+<li>This approach to targeting is quite different to that by Cambridge Analytica. Their approach involved inferring psychological profiles, and then matching advertisements to these inferred characteristics. I skip this middle step and directly optimize allocation. If it turns out CA approach is better, then my point still stands, however.</li>
+<li>I don’t really reveal much about mechanisms here.</li>
+<li>As was also pointed out to me, “random allocation” may not be an appropriate comparison category because no ad assignment is ever completely random. This should instead be understood “as good as any ad” vs “the best ad”</li>
+</ul>
+</aside>
+<ul>
+<li class="fragment">Survey Response vs. Vote Choice</li>
+<li class="fragment">Convenience Sample</li>
+<li class="fragment">Psychometric Profiling vs Data-Driven Optimization
+<ul>
+<li class="fragment">Relatedly: Mechanisms?</li>
+</ul></li>
+<li class="fragment">Reference Category?</li>
+</ul>
+</section>
+<section id="whats-next" class="slide level2">
+<h2>What’s Next</h2>
+<aside class="notes">
+<ul>
+<li>I actually had several more hypotheses that I wanted to test, and had to cut due to budget constraints. This was more of a pilot than anything.</li>
+<li>I’m planning a follow up experiment, maybe in Germany, depending on the prevalence of targeted advertising there.</li>
+<li>This includes testing the effect of disclosing that respondents are being targeted prior to viewing the ad.</li>
+<li>Finally there is clearly a lot to be explored normatively.</li>
+</ul>
+</aside>
+<ul>
+<li class="fragment">Follow up experiment planned, Germany?
+<ul>
+<li class="fragment">Additional treatments to test effect of informing participants of targeting.</li>
+</ul></li>
+<li class="fragment">Further exploration of normative aspects</li>
+</ul>
+</section></section>
+    </div>
+  </div>
+
+  <script src="../reveal.js/dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="../reveal.js/plugin/notes/notes.js"></script>
+  <script src="../reveal.js/plugin/search/search.js"></script>
+  <script src="../reveal.js/plugin/zoom/zoom.js"></script>
+  <script src="../reveal.js/plugin/math/math.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
