@@ -58,4 +58,4 @@ My research interests fall into two areas. In methods, I am working on non-param
 
 #### Misc.
 
-["Estimating the Micro_Targeting Effect: Evidence from a Survey Experiment During the 2020 U.S. Presidential Election", _WIP_](/misc_presentations/draft4.pdf)
+["Estimating the Micro_Targeting Effect: Evidence from a Survey Experiment During the 2020 U.S. Presidential Election", _WIP_](/misc_presentations/draft4.pdf), [Link to Presentation](/misc_presentations/pip-colloquium.html)
