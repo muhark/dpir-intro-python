@@ -1,7 +1,6 @@
 ---
 title: "Introduction to Python for Social Science Course Syllabus"
 author: "Musashi Harukawa"
-date: "HT 2021"
 geometry: margin=2cm
 ---
 
