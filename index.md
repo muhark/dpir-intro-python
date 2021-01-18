@@ -1,7 +1,6 @@
 ---
 title: Introduction to Python for Social Science
 author: Musashi Harukawa
-date: "Last Updated: 06 Jan 21"
 ---
 
 # Introduction to Python for Social Science
