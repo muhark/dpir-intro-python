@@ -8,25 +8,17 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="../reveal.js/css/reveal.css">
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
   </style>
-  <link rel="stylesheet" href="../reveal.js/css/theme/../../../dpir-intro-theme.css" id="theme">
-  <!-- Printing and PDF exports -->
-  <script>
-    var link = document.createElement( 'link' );
-    link.rel = 'stylesheet';
-    link.type = 'text/css';
-    link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal.js/css/print/pdf.css' : '../reveal.js/css/print/paper.css';
-    document.getElementsByTagName( 'head' )[0].appendChild( link );
-  </script>
-  <!--[if lt IE 9]>
-  <script src="../reveal.js/lib/js/html5shiv.js"></script>
-  <![endif]-->
+  <link rel="stylesheet" href="../reveal.js/dist/theme/../../../dpir-intro-theme.css" id="theme">
 </head>
 <body>
   <div class="reveal">
@@ -36,10 +28,15 @@
   <h1 class="title">Introduction to Python for Social Science</h1>
   <p class="subtitle">Lecture 2 - Data Structures and Pandas I</p>
   <p class="author">Musashi Harukawa, DPIR</p>
-  <p class="date">2nd Week Hilary 2020</p>
+  <p class="date">2nd Week Hilary 2021</p>
 </section>
 
-<section><section id="overview" class="title-slide slide level1"><h1>Overview</h1></section><section id="last-week" class="slide level2">
+<section>
+<section id="overview" class="title-slide slide level1">
+<h1>Overview</h1>
+
+</section>
+<section id="last-week" class="slide level2">
 <h2>Last Week</h2>
 <ul>
 <li class="fragment">What is Python, and what can I use it for?</li>
@@ -54,7 +51,8 @@
 <li class="fragment">Data Structures</li>
 </ul></li>
 </ul>
-</section><section id="this-week" class="slide level2">
+</section>
+<section id="this-week" class="slide level2">
 <h2>This Week</h2>
 <p>This week we will continue talking about data:</p>
 <ul>
@@ -63,7 +61,12 @@
 <li class="fragment">Using <code>pandas</code> for data analysis</li>
 </ul>
 </section></section>
-<section><section id="methodological-motivation-and-background" class="title-slide slide level1"><h1>Methodological Motivation and Background</h1></section><section id="thinking-about-data" class="slide level2">
+<section>
+<section id="methodological-motivation-and-background" class="title-slide slide level1">
+<h1>Methodological Motivation and Background</h1>
+
+</section>
+<section id="thinking-about-data" class="slide level2">
 <h2>Thinking About Data</h2>
 <p>We can think of a data point as having two properties:</p>
 <ol type="1">
@@ -72,11 +75,12 @@
 </ol>
 <aside class="notes">
 <ul>
-<li class="fragment">Inherent in value is an abstract type that the value is an instance of.</li>
-<li class="fragment">In data science, we are often more concerned with the latter than the former for the bulk of the analysis. I say this because we don’t tend to care about the exact values, beyond type, until the end, when we look at the output of our model. When building our pipeline, what matters most is the type and structure of data.</li>
+<li>Inherent in value is an abstract type that the value is an instance of.</li>
+<li>In data science, we are often more concerned with the latter than the former for the bulk of the analysis. I say this because we don’t tend to care about the exact values, beyond type, until the end, when we look at the output of our model. When building our pipeline, what matters most is the type and structure of data.</li>
 </ul>
 </aside>
-</section><section id="data-structures" class="slide level2">
+</section>
+<section id="data-structures" class="slide level2">
 <h2>Data Structures</h2>
 <p>Three Ways of Structuring Data:</p>
 <ul>
@@ -87,28 +91,29 @@
 <aside class="notes">
 Option: Do an example of how we can structure data about the members of the class.
 </aside>
-</section><section id="graph" class="slide level2">
+</section>
+<section id="graph" class="slide level2">
 <h2>Graph</h2>
 <ul>
 <li class="fragment">Graphs are constructed of nodes (vertices) and edges.</li>
 </ul>
 <figure>
-<img data-src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Graphe_initial_avant_contraction.png" alt="Graph" /><figcaption>Graph</figcaption>
+<img data-src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Graphe_initial_avant_contraction.png" alt="Graph" /><figcaption aria-hidden="true">Graph</figcaption>
 </figure>
 <aside class="notes">
 <ul>
-<li class="fragment">Nodes and edges can have values associated with them.</li>
-<li class="fragment">A special case of graphs, called directed graphs, have edges with directions associated with them.</li>
+<li>Nodes and edges can have values associated with them.</li>
 </ul>
 </aside>
-</section><section id="trees" class="slide level2">
+</section>
+<section id="trees" class="slide level2">
 <h2>Trees</h2>
 <ul>
 <li class="fragment">A tree is a type of graph with <a href="https://en.wikipedia.org/wiki/Tree_(graph_theory)#Tree">a number of properties</a></li>
 <li class="fragment">Commonly used to represent hierarchical data structures, such as nested sets or dependency/flow diagrams.</li>
 </ul>
 <figure>
-<img data-src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Arbol3.PNG" alt="Tree" /><figcaption>Tree</figcaption>
+<img data-src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Arbol3.PNG" alt="Tree" /><figcaption aria-hidden="true">Tree</figcaption>
 </figure>
 <aside class="notes">
 <ul>
@@ -119,20 +124,22 @@ Option: Do an example of how we can structure data about the members of the clas
 </ul></li>
 </ul>
 </aside>
-</section><section id="tabular-data" class="slide level2">
+</section>
+<section id="tabular-data" class="slide level2">
 <h2>Tabular Data</h2>
 <ul>
 <li class="fragment">Tabular data consists of an ordered arrangement of rows and columns.</li>
 <li class="fragment">A common example is a spreadsheet.</li>
-<li class="fragment">In this class will often be referred to as a matrix <span class="math inline"><strong>X</strong><sub><strong>i</strong><strong>j</strong></sub></span> of <span class="math inline"><em>i</em></span> observations of <span class="math inline"><em>j</em></span> variables.
+<li class="fragment">In this class will often be referred to as a matrix <span class="math inline">\(\mathbf{X_{ij}}\)</span> of <span class="math inline">\(i\)</span> observations of <span class="math inline">\(j\)</span> variables.
 <ul>
-<li class="fragment">Note all columns must be of equal length (<span class="math inline"><em>i</em></span>), and all rows must be of equal length (<span class="math inline"><em>j</em></span>).</li>
+<li class="fragment">Note all columns must be of equal length (<span class="math inline">\(i\)</span>), and all rows must be of equal length (<span class="math inline">\(j\)</span>).</li>
 </ul></li>
 </ul>
 <aside class="notes">
 In this class we are primarily focused on tabular data. If your data is not tabular, you may want to figure out some way to coerce it to a tabular format because most statistical/ML models assume tabular data.
 </aside>
-</section><section id="coercing-data-structures" class="slide level2">
+</section>
+<section id="coercing-data-structures" class="slide level2">
 <h2>Coercing Data Structures</h2>
 <p>Here’s a challenge:</p>
 <ul>
@@ -144,24 +151,31 @@ Extra challenge:
 <ul>
 <li class="fragment"><em>Could you do this without NAs?</em></li>
 </ul>
-</section><section id="issues" class="slide level2">
+</section>
+<section id="issues" class="slide level2">
 <h2>Issues</h2>
 <ul>
 <li class="fragment">In reality, processes we observe are rarely tabular.
 <ul>
-<li class="fragment">Some observations may have special characteristics that others do not. (<span class="math inline"><em>j</em></span> is not equal for all <span class="math inline"><em>i</em></span>)</li>
-<li class="fragment">There may no be inherent ordering in our observations, or the characteristics (<span class="math inline"><em>i</em></span> or <span class="math inline"><em>j</em></span> are not orderable).</li>
+<li class="fragment">Some observations may have special characteristics that others do not. (<span class="math inline">\(j\)</span> is not equal for all <span class="math inline">\(i\)</span>)</li>
+<li class="fragment">There may no be inherent ordering in our observations, or the characteristics (<span class="math inline">\(i\)</span> or <span class="math inline">\(j\)</span> are not orderable).</li>
 <li class="fragment">Observations may be nested within other observations (e.g. tweets, retweets and replies).</li>
 </ul></li>
 </ul>
-</section><section id="take-away" class="slide level2">
+</section>
+<section id="take-away" class="slide level2">
 <h2>Take Away</h2>
 <ul>
 <li class="fragment">When we receive or generate tabular data, we should keep in mind the <em>data-generating process</em> and decide whether we are systematically losing information that is relevant to our model.</li>
 <li class="fragment">Trade-offs and subjective decisions are always necessary; make these clear and do your best to justify them.</li>
 </ul>
 </section></section>
-<section><section id="implementation" class="title-slide slide level1"><h1>Implementation</h1></section><section id="data-formats" class="slide level2">
+<section>
+<section id="implementation" class="title-slide slide level1">
+<h1>Implementation</h1>
+
+</section>
+<section id="data-formats" class="slide level2">
 <h2>Data Formats</h2>
 <ul>
 <li class="fragment">Data analysis is usually done <em>in-memory</em>.</li>
@@ -173,7 +187,8 @@ Extra challenge:
 <li class="fragment">Silent casting: data may change in unpredictable ways when converted between formats and programs.</li>
 </ul></li>
 </ul>
-</section><section id="on-disk-formats" class="slide level2">
+</section>
+<section id="on-disk-formats" class="slide level2">
 <h2>On-disk Formats</h2>
 <table>
 <thead>
@@ -230,7 +245,8 @@ Extra challenge:
 </tr>
 </tbody>
 </table>
-</section><section id="human-readable-formats" class="slide level2">
+</section>
+<section id="human-readable-formats" class="slide level2">
 <h2>Human-Readable Formats</h2>
 <p><code>csv</code> (“comma separated-values”) is an extremely common tabular data storage format.</p>
 <ul>
@@ -244,30 +260,33 @@ Extra challenge:
 </ul>
 <aside class="notes">
 <ul>
-<li class="fragment">There are reasons to not use commas, especially when working with text data.</li>
+<li>There are reasons to not use commas, especially when working with text data.</li>
 </ul>
 </aside>
-</section><section id="closed-source-binary-formats" class="slide level2">
+</section>
+<section id="closed-source-binary-formats" class="slide level2">
 <h2>Closed-source Binary Formats</h2>
 <p><code>xls(x)</code> and <code>dta</code></p>
 <ul>
-<li class="fragment"><code>xls(x)</code> is the format used by Microsoft Excel</li>
-<li class="fragment">If there is only one sheet, then this is tabular and essentially equivalent to <code>csv</code>.</li>
+<li class="fragment"><p><code>xls(x)</code> is the format used by Microsoft Excel</p></li>
+<li class="fragment"><p>If there is only one sheet, then this is tabular and essentially equivalent to <code>csv</code>.</p></li>
 <li class="fragment"><p>If there are multiple sheets, <code>pandas</code> represents it as a list of tabular data frames.</p></li>
-<li class="fragment"><code>dta</code> is the format used by STATA.</li>
-<li class="fragment">More common in social sciences, but essentially unheard of in professional contexts.</li>
+<li class="fragment"><p><code>dta</code> is the format used by STATA.</p></li>
+<li class="fragment"><p>More common in social sciences, but essentially unheard of in professional contexts.</p></li>
 <li class="fragment"><p>May be preferred for compatibility with STATA, otherwise would not recommend.</p></li>
 </ul>
-</section><section id="data-science-specific-formats" class="slide level2">
+</section>
+<section id="data-science-specific-formats" class="slide level2">
 <h2>Data Science-Specific Formats</h2>
 <p><code>HDF5</code> and <code>Feather</code></p>
 <ul>
-<li class="fragment"><code>HDF5</code> is a commonly-used data storage format in data science, but not in academia.</li>
+<li class="fragment"><p><code>HDF5</code> is a commonly-used data storage format in data science, but not in academia.</p></li>
 <li class="fragment"><p>Has a lot of nice properties, including efficient compression and fast reading.</p></li>
-<li class="fragment"><code>Feather</code> was created by Hadley Wickham and Wes McKinney as a fast, consistent and convenient data storage format for cross-usage between R and Python.</li>
+<li class="fragment"><p><code>Feather</code> was created by Hadley Wickham and Wes McKinney as a fast, consistent and convenient data storage format for cross-usage between R and Python.</p></li>
 <li class="fragment"><p>I highly recommend this if you work a lot with R and Python, or want to use both in the same project.</p></li>
 </ul>
-</section><section id="dbms-and-sql" class="slide level2">
+</section>
+<section id="dbms-and-sql" class="slide level2">
 <h2>DBMS and <code>SQL</code></h2>
 <ul>
 <li class="fragment">In industry, database management systems (DBMS) are used to store and query large quantities of data in a reliable way.</li>
@@ -275,7 +294,12 @@ Extra challenge:
 <li class="fragment">If your research requires you to constantly be collecting data and ensuring its reliability, you should opt for a DBMS instead of one of the filetypes mentioned above.</li>
 </ul>
 </section></section>
-<section><section id="pandas" class="title-slide slide level1"><h1><code>pandas</code></h1></section><section id="the-hard-truth-about-data-science" class="slide level2">
+<section>
+<section id="pandas" class="title-slide slide level1">
+<h1><code>pandas</code></h1>
+
+</section>
+<section id="the-hard-truth-about-data-science" class="slide level2">
 <h2>The Hard Truth About Data Science…</h2>
 <p><code>pandas</code> is a very popular library for working with tabular data structures in Python. Before we start using it, let’s go over some of the ways it can be useful to you as a social science researcher.</p>
 <ul>
@@ -283,14 +307,16 @@ Extra challenge:
 <li class="fragment">&gt;50% of your time will be spent reading, cleaning, checking, storing, and cursing your data.</li>
 <li class="fragment">Data cleaning is meticulous work, but that doesn’t mean you can’t be efficient.</li>
 </ul>
-</section><section id="advantages-of-pandas" class="slide level2">
+</section>
+<section id="advantages-of-pandas" class="slide level2">
 <h2>Advantages of <code>pandas</code></h2>
 <ul>
 <li class="fragment">provides fast, flexible data structures</li>
 <li class="fragment">extensive array of convenient functions</li>
 <li class="fragment">compatible with most data science libraries and data types</li>
 </ul>
-</section><section id="when-you-should-not-use-pandas" class="slide level2">
+</section>
+<section id="when-you-should-not-use-pandas" class="slide level2">
 <h2>When you should <strong>not</strong> use <code>pandas</code></h2>
 <ul>
 <li class="fragment">Your data is not coercible to a tabular structure.</li>
@@ -298,11 +324,12 @@ Extra challenge:
 </ul>
 <aside class="notes">
 <ul>
-<li class="fragment"><code>pandas</code> is so standard, that it makes more sense to talk about the scenarios in which you would not want to use pandas</li>
-<li class="fragment">Note on RAM: It’s not straightforward to predict the size of a dataset loaded into <code>pandas</code>. There are also options for dealing with datasets this large, although those are beyond what I can discuss in the lecture.</li>
+<li><code>pandas</code> is so standard, that it makes more sense to talk about the scenarios in which you would not want to use pandas</li>
+<li>Note on RAM: It’s not straightforward to predict the size of a dataset loaded into <code>pandas</code>. There are also options for dealing with datasets this large, although those are beyond what I can discuss in the lecture.</li>
 </ul>
 </aside>
-</section><section id="data-io" class="slide level2">
+</section>
+<section id="data-io" class="slide level2">
 <h2>Data I/O</h2>
 <p><code>pandas</code> comes with functions for reading and writing to all kinds of data formats. A quick list can be viewed using tab completion:</p>
 <pre class="{python}"><code>In [1]: import pandas as pd
@@ -316,11 +343,12 @@ In [2]: pd.read_&lt;TAB&gt;
  read_gbq()       read_pickle()    read_table</code></pre>
 <aside class="notes">
 <ul>
-<li class="fragment">Explain what I/O means.</li>
-<li class="fragment">This is a good moment to mention tab completion. Revisit it later during the coding tutorial.</li>
+<li>Explain what I/O means.</li>
+<li>This is a good moment to mention tab completion. Revisit it later during the coding tutorial.</li>
 </ul>
 </aside>
-</section><section id="coding-tutorial" class="slide level2">
+</section>
+<section id="coding-tutorial" class="slide level2">
 <h2>Coding Tutorial</h2>
 <p>Today, we learn about the following in <code>pandas</code>:</p>
 <ul>
@@ -330,13 +358,15 @@ In [2]: pd.read_&lt;TAB&gt;
 <li class="fragment">First look at the data</li>
 <li class="fragment">Summary functions</li>
 </ul>
-</section><section id="data-io-1" class="slide level2">
+</section>
+<section id="data-io-1" class="slide level2">
 <h2>Data I/O</h2>
 <ul>
 <li class="fragment">As seen earlier, pandas has methods for reading in data from various formats.</li>
 <li class="fragment">A strength of learning a library like <code>pandas</code> is that we can analyse tabular data regardless of the source format.</li>
 </ul>
-</section><section id="understanding-dataframe-and-series" class="slide level2">
+</section>
+<section id="understanding-dataframe-and-series" class="slide level2">
 <h2>Understanding <code>DataFrame</code> and <code>Series</code></h2>
 <ul>
 <li class="fragment"><code>pandas</code> contains two native data containers:
@@ -348,14 +378,16 @@ In [2]: pd.read_&lt;TAB&gt;
 <p class="fragment">
 *Can be higher-dimensional with the use of hierarchical indices
 </p>
-</section><section id="indexing-and-slicing" class="slide level2">
+</section>
+<section id="indexing-and-slicing" class="slide level2">
 <h2>Indexing and Slicing</h2>
 <ul>
 <li class="fragment">The most fundamental action in data analysis is the ability to “select” elements within your dataset.</li>
 <li class="fragment">With tabular data, we usually want to select some rows, some columns, or specific cells.</li>
 <li class="fragment"><code>pandas</code> data frames have explicit (named) row- and column-indices, as well as implicit indices because they all elements are ordered and named. We will learn methods for leveraging both.</li>
 </ul>
-</section><section id="first-look-at-the-data" class="slide level2">
+</section>
+<section id="first-look-at-the-data" class="slide level2">
 <h2>First Look at the Data</h2>
 <ul>
 <li class="fragment">When working with data, your first step should always be <em>getting to know the data</em>. Ask questions like:
@@ -368,7 +400,8 @@ In [2]: pd.read_&lt;TAB&gt;
 </ul></li>
 <li class="fragment">There’s nothing worse than trying to debug code that’s taken hours to write only to discover that the problem lies in your data!</li>
 </ul>
-</section><section id="summary-functions" class="slide level2">
+</section>
+<section id="summary-functions" class="slide level2">
 <h2>Summary Functions</h2>
 <ul>
 <li class="fragment">Part of the function and appeal of data analysis is to reduce millions of data points to a few summary numbers that capture key information that you are looking for.</li>
@@ -376,32 +409,71 @@ In [2]: pd.read_&lt;TAB&gt;
 <li class="fragment">Basic examples include mean, sum, variance, skew, but also more advanced statistics such as regression coefficients, Kolmogorov-Smirnov tests, and even the output of machine learning algorithms!</li>
 </ul>
 </section></section>
-<section><section id="readings" class="title-slide slide level1"><h1>Readings</h1></section><section id="section" class="slide level2">
+<section>
+<section id="readings" class="title-slide slide level1">
+<h1>Readings</h1>
+
+</section>
+<section id="section" class="slide level2">
 <h2></h2>
 <p>The following sections of <a href="http://solo.bodleian.ox.ac.uk/permalink/f/89vilt/oxfaleph021507068"><em>Python for Data Analysis: Data Wrangling with Pandas, NumPy and IPython, 2nd edition</em></a> are relevant to this lecture:</p>
-<p><em>Useful</em>: - 5.<em>: Getting Started with pandas - 6.</em>: Data Loading, Storage and File Formats - 7.1-2: Data Cleaning and Preparation</p>
-<p><em>Advanced</em>: - 7.3: String Manipulation (regex covered in further weeks) - 12.1: Categorical Data</p>
-<p><em>Blog Posts</em>: - Pandas Data: https://pbpython.com/pandas_dtypes.html</p>
+<p><em>Useful</em>:</p>
+<ul>
+<li class="fragment">5.*: Getting Started with pandas</li>
+<li class="fragment">6.*: Data Loading, Storage and File Formats</li>
+<li class="fragment">7.1-2: Data Cleaning and Preparation</li>
+</ul>
+<p><em>Advanced</em>:</p>
+<ul>
+<li class="fragment">7.3: String Manipulation (regex covered in further weeks)</li>
+<li class="fragment">12.1: Categorical Data</li>
+</ul>
+<p><em>Blog Posts</em>:</p>
+<ul>
+<li class="fragment">Pandas Data: https://pbpython.com/pandas_dtypes.html</li>
+</ul>
 </section></section>
     </div>
   </div>
 
-  <script src="../reveal.js/lib/js/head.min.js"></script>
-  <script src="../reveal.js/js/reveal.js"></script>
+  <script src="../reveal.js/dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="../reveal.js/plugin/notes/notes.js"></script>
+  <script src="../reveal.js/plugin/search/search.js"></script>
+  <script src="../reveal.js/plugin/zoom/zoom.js"></script>
+  <script src="../reveal.js/plugin/math/math.js"></script>
 
   <script>
 
       // Full list of configuration options available at:
-      // https://github.com/hakimel/reveal.js#configuration
+      // https://revealjs.com/config/
       Reveal.initialize({
         // Push each slide change to the browser history
         history: true,
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
 
-        // Optional reveal.js plugins
-        dependencies: [
-          { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true },
-          { src: '../reveal.js/plugin/notes/notes.js', async: true }
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
         ]
       });
     </script>
