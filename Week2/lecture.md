@@ -2,7 +2,7 @@
 title: Introduction to Python for Social Science
 subtitle: Lecture 2 - Data Structures and Pandas I
 author: Musashi Harukawa, DPIR
-date: 2nd Week Hilary 2020
+date: 2nd Week Hilary 2021
 ---
 
 # Overview
@@ -36,8 +36,8 @@ We can think of a data point as having two properties:
 2. Relation (to other values)
 
 <aside class="notes">
-- Inherent in value is an abstract type that the value is an instance of.
-- In data science, we are often more concerned with the latter than the former for the bulk of the analysis. I say this because we don't tend to care about the exact values, beyond type, until the end, when we look at the output of our model. When building our pipeline, what matters most is the type and structure of data.
+> - Inherent in value is an abstract type that the value is an instance of.
+> - In data science, we are often more concerned with the latter than the former for the bulk of the analysis. I say this because we don't tend to care about the exact values, beyond type, until the end, when we look at the output of our model. When building our pipeline, what matters most is the type and structure of data.
 </aside>
 
 ## Data Structures
@@ -59,8 +59,7 @@ Option: Do an example of how we can structure data about the members of the clas
 ![Graph](https://upload.wikimedia.org/wikipedia/commons/9/9c/Graphe_initial_avant_contraction.png)
 
 <aside class="notes">
-- Nodes and edges can have values associated with them.
-- A special case of graphs, called directed graphs, have edges with directions associated with them.
+> - Nodes and edges can have values associated with them.
 </aside>
 
 ## Trees
@@ -146,7 +145,7 @@ Here's a challenge:
 - Working with `json` usually requires us to coerce hierarchical data to tabular data.
 
 <aside class="notes">
-- There are reasons to not use commas, especially when working with text data.
+> - There are reasons to not use commas, especially when working with text data.
 </aside>
 
 
@@ -200,8 +199,8 @@ Here's a challenge:
 - When your dataset is too large to load in your computer's memory (or loading it uses most of your RAM).
 
 <aside class="notes">
-- `pandas` is so standard, that it makes more sense to talk about the scenarios in which you would not want to use pandas
-- Note on RAM: It's not straightforward to predict the size of a dataset loaded into `pandas`. There are also options for dealing with datasets this large, although those are beyond what I can discuss in the lecture.
+> - `pandas` is so standard, that it makes more sense to talk about the scenarios in which you would not want to use pandas
+> - Note on RAM: It's not straightforward to predict the size of a dataset loaded into `pandas`. There are also options for dealing with datasets this large, although those are beyond what I can discuss in the lecture.
 </aside>
 
 
@@ -222,8 +221,8 @@ In [2]: pd.read_<TAB>
 ```
 
 <aside class="notes">
-- Explain what I/O means.
-- This is a good moment to mention tab completion. Revisit it later during the coding tutorial.
+> - Explain what I/O means.
+> - This is a good moment to mention tab completion. Revisit it later during the coding tutorial.
 </aside>
 
 ## Coding Tutorial
@@ -279,13 +278,16 @@ Today, we learn about the following in `pandas`:
 The following sections of [_Python for Data Analysis: Data Wrangling with Pandas, NumPy and IPython, 2nd edition_](http://solo.bodleian.ox.ac.uk/permalink/f/89vilt/oxfaleph021507068) are relevant to this lecture:
 
 _Useful_:
+
 - 5.*: Getting Started with pandas
 - 6.*: Data Loading, Storage and File Formats
 - 7.1-2: Data Cleaning and Preparation
 
 _Advanced_:
+
 - 7.3: String Manipulation (regex covered in further weeks)
 - 12.1: Categorical Data
 
 _Blog Posts_:
+
 - Pandas Data: https://pbpython.com/pandas_dtypes.html
