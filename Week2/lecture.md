@@ -70,9 +70,9 @@ Option: Do an example of how we can structure data about the members of the clas
 ![Tree](https://upload.wikimedia.org/wikipedia/commons/c/cd/Arbol3.PNG)
 
 <aside class="notes">
-- Websites are all trees in their backend.
-- A lot of the data you encounter will be tree-like in nature.
-    - A key point about this is that each element in this tree may not have the same properties. This can cause problems when attempting to convert to tabular data.
+> - Websites are all trees in their backend.
+> - A lot of the data you encounter will be tree-like in nature.
+>    - A key point about this is that each element in this tree may not have the same properties. This can cause problems when attempting to convert to tabular data.
 </aside>
 
 ## Tabular Data
