@@ -8,25 +8,17 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="../reveal.js/css/reveal.css">
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
   </style>
-  <link rel="stylesheet" href="../reveal.js/css/theme/../../../dpir-intro-theme.css" id="theme">
-  <!-- Printing and PDF exports -->
-  <script>
-    var link = document.createElement( 'link' );
-    link.rel = 'stylesheet';
-    link.type = 'text/css';
-    link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal.js/css/print/pdf.css' : '../reveal.js/css/print/paper.css';
-    document.getElementsByTagName( 'head' )[0].appendChild( link );
-  </script>
-  <!--[if lt IE 9]>
-  <script src="../reveal.js/lib/js/html5shiv.js"></script>
-  <![endif]-->
+  <link rel="stylesheet" href="../reveal.js/dist/theme/../../../dpir-intro-theme.css" id="theme">
 </head>
 <body>
   <div class="reveal">
@@ -36,17 +28,23 @@
   <h1 class="title">Introduction to Python for Social Science</h1>
   <p class="subtitle">Lecture 3 - Data Structures and Pandas II</p>
   <p class="author">Musashi Harukawa, DPIR</p>
-  <p class="date">3rd Week Hilary 2020</p>
+  <p class="date">3rd Week Hilary 2021</p>
 </section>
 
-<section><section id="overview" class="title-slide slide level1"><h1>Overview</h1></section><section id="last-week" class="slide level2">
+<section>
+<section id="overview" class="title-slide slide level1">
+<h1>Overview</h1>
+
+</section>
+<section id="last-week" class="slide level2">
 <h2>Last Week</h2>
 <ul>
 <li class="fragment">Graph, Tree and Tabular Data Structures</li>
 <li class="fragment">Representations of information</li>
 <li class="fragment">Introduction to <code>pandas</code></li>
 </ul>
-</section><section id="this-week" class="slide level2">
+</section>
+<section id="this-week" class="slide level2">
 <h2>This Week</h2>
 <p>This week we learn more advanced methods for working with data:</p>
 <ul>
@@ -57,7 +55,12 @@
 <li class="fragment">Long- vs wide-form data; melting data</li>
 </ul>
 </section></section>
-<section><section id="methods-and-theory" class="title-slide slide level1"><h1>Methods and Theory</h1></section><section id="functions" class="slide level2">
+<section>
+<section id="methods-and-theory" class="title-slide slide level1">
+<h1>Methods and Theory</h1>
+
+</section>
+<section id="functions" class="slide level2">
 <h2>Functions</h2>
 <ul>
 <li class="fragment">A function is a mapping of two sets that relates each element of the first set to exactly one element of the second set.
@@ -67,7 +70,8 @@
 <li class="fragment"><span class="math inline">\(y\)</span> is the <em>image</em> or <em>value</em> of <span class="math inline">\(f\)</span> applied to the argument <span class="math inline">\(x\)</span>.</li>
 </ul></li>
 </ul>
-</section><section id="functions-cont." class="slide level2">
+</section>
+<section id="functions-cont." class="slide level2">
 <h2>Functions cont.</h2>
 <ul>
 <li class="fragment">Practically, a function is an operation that takes one or more inputs, and returns zero or more outputs.
@@ -76,7 +80,8 @@
 <li class="fragment"><span class="math inline">\(y\)</span> can be the null set, in the sense that functions can return <em>nothing</em>.</li>
 </ul></li>
 </ul>
-</section><section id="functions-and-vectors" class="slide level2">
+</section>
+<section id="functions-and-vectors" class="slide level2">
 <h2>Functions and Vectors</h2>
 <p>There are several ways to think about applying a function to a vector <span class="math inline">\(X_i\)</span> of <span class="math inline">\(i\)</span> values:</p>
 <ul>
@@ -91,7 +96,8 @@
 <li class="fragment">Grouped Summaries</li>
 </ul></li>
 </ul>
-</section><section id="transformation" class="slide level2">
+</section>
+<section id="transformation" class="slide level2">
 <h2>Transformation</h2>
 <p>The vector of all values in <span class="math inline">\(X_i\)</span>, <span class="math inline">\([x_1, x_2, ... x_i]\)</span> is in the domain of <span class="math inline">\(f\)</span>, and a vector <span class="math inline">\(Y_i\)</span> of equal length <span class="math inline">\(i\)</span> is returned.</p>
 <p>Examples/Use Cases per Datatype:</p>
@@ -105,7 +111,7 @@
 <tbody>
 <tr class="odd">
 <td>Numeric</td>
-<td>Multiple Regression</td>
+<td>Normalization by Mean</td>
 </tr>
 <tr class="even">
 <td>Date/Time</td>
@@ -117,23 +123,14 @@
 </tr>
 </tbody>
 </table>
-</section><section id="transformation-1" class="slide level2">
+</section>
+<section id="transformation-1" class="slide level2">
 <h2>Transformation</h2>
 <p><span class="math display">\[
-f \begin{bmatrix}
-    x_1 \\
-    x_2 \\
-    \vdots \\
-    x_i
-\end{bmatrix} \rightarrow
-\begin{bmatrix}
-    y_1 \\
-    y_2 \\
-    \vdots \\
-    y_i \\
-\end{bmatrix}
+f(X_{i}) = Y_{i}
 \]</span></p>
-</section><section id="element-wise-operations" class="slide level2">
+</section>
+<section id="element-wise-operations" class="slide level2">
 <h2>Element-wise Operations</h2>
 <p>Element-wise operations are a special case of transformation. Individual elements of <span class="math inline">\(X_i\)</span> are in the domain of <span class="math inline">\(f\)</span>, and <span class="math inline">\(f\)</span> is applied to each element of <span class="math inline">\(X_i\)</span> to return a vector of length <span class="math inline">\(i\)</span> where the <span class="math inline">\(i\)</span>th element is the value of <span class="math inline">\(f(x_i)\)</span>.</p>
 <p>Examples/Use Cases per Datatype:</p>
@@ -159,24 +156,25 @@ f \begin{bmatrix}
 </tr>
 </tbody>
 </table>
-</section><section id="element-wise-operations-illustration" class="slide level2">
+</section>
+<section id="element-wise-operations-illustration" class="slide level2">
 <h2>Element-wise Operations: Illustration</h2>
 <p><span class="math display">\[
-f \odot
-\begin{bmatrix}
-    x_1 \\
-    x_2 \\
-    \vdots \\
-    x_i
-\end{bmatrix} \rightarrow
 \begin{bmatrix}
     f(x_1) \\
     f(x_2) \\
     \vdots \\
     f(x_i)
+\end{bmatrix} = 
+\begin{bmatrix}
+    y_1 \\
+    y_2 \\
+    \vdots \\
+    y_i
 \end{bmatrix}
 \]</span></p>
-</section><section id="cumulative-operations" class="slide level2">
+</section>
+<section id="cumulative-operations" class="slide level2">
 <h2>Cumulative Operations</h2>
 <p>Cumulative operations apply a function with an expanding scope iteratively over a vector. Thus the first value is takes the first element as its argument, the second value takes the first two elements as arguments, the third value takes the first three elements as arguments, and so on.</p>
 <table>
@@ -193,27 +191,29 @@ f \odot
 </tr>
 <tr class="even">
 <td>Language</td>
-<td>Grammar Parsing<a href="#/fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></td>
+<td>Grammar Parsing<a href="#/fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></td>
 </tr>
 </tbody>
 </table>
-</section><section id="cumulative-operations-illustration" class="slide level2">
+</section>
+<section id="cumulative-operations-illustration" class="slide level2">
 <h2>Cumulative Operations: Illustration</h2>
 <p><span class="math display">\[
 f_{cum}(X_i) = \begin{bmatrix}
-    f_{1}^{1}(x_1) \\
-    f_{1}^{2}(x_1, x_2) \\
+    f(x_1) \\
+    f(x_1, x_2) \\
     \vdots \\
-    f_{1}^{i}(x_1, x_2, ..., x_i)
+    f(x_1, x_2, ..., x_i)
 \end{bmatrix} =
 \begin{bmatrix}
-    f_{1}^{1}x_i \\
-    f_{1}^{2}x_i \\
+    f_{1}^{1}(x_i) \\
+    f_{1}^{2}(x_i) \\
     \vdots \\
-    f_{1}^{i}x_i
+    f_{1}^{i}(x_i)
 \end{bmatrix}
 \]</span></p>
-</section><section id="summaries" class="slide level2">
+</section>
+<section id="summaries" class="slide level2">
 <h2>Summaries</h2>
 <p>A summary reduces a vector <span class="math inline">\(X_i\)</span> of length <span class="math inline">\(i\)</span> to a single value <span class="math inline">\(\theta\)</span>. Thus vector <span class="math inline">\(X_i\)</span> is within the domain of <span class="math inline">\(f\)</span>, and <span class="math inline">\(\theta\)</span> is value of <span class="math inline">\(f\)</span> applied to <span class="math inline">\(X_i\)</span>.</p>
 <p>Examples/Use Cases per Datatype:</p>
@@ -239,7 +239,8 @@ f_{cum}(X_i) = \begin{bmatrix}
 </tr>
 </tbody>
 </table>
-</section><section id="point-summaries" class="slide level2">
+</section>
+<section id="point-summaries" class="slide level2">
 <h2>Point Summaries</h2>
 <p><span class="math display">\[
 f \begin{bmatrix}
@@ -250,9 +251,10 @@ f \begin{bmatrix}
 \end{bmatrix} \rightarrow
 \theta
 \]</span></p>
-</section><section id="grouped-summaries" class="slide level2">
+</section>
+<section id="grouped-summaries" class="slide level2">
 <h2>Grouped Summaries</h2>
-<p>Elements of <span class="math inline">\(X_{i, g}\)</span> are groupable in that each element <span class="math inline">\(x_i\)</span> is a member of some group <span class="math inline">\(g \in G\)</span>. In a sense they are somewhere between element-wise operations and summaries. <!-- A grouped summary therefore returns a vector $Y_g$ of length $g$, where each element $y_g'$ is the value of $f(\{x_{i, g=g'}\})$. --></p>
+<p>Elements of <span class="math inline">\(X_{i, g}\)</span> are groupable in that each element <span class="math inline">\(x_i\)</span> is a member of some group <span class="math inline">\(g \in G\)</span>. In a sense they are somewhere between element-wise operations and summaries. <!-- Observations $i \in N$ have an additional characteristic $G_i$. We calculate summary statistics conditional on each value of $G$. --> <!-- A grouped summary therefore returns a vector $Y_g$ of length $g$, where each element $y_g'$ is the value of $f(\{x_{i, g=g'}\})$. --></p>
 <p><span class="math display">\[
 f \odot_g \begin{bmatrix}
     x_{1, g=1} \\
@@ -274,14 +276,16 @@ f \odot_g \begin{bmatrix}
     y_g
 \end{bmatrix}
 \]</span></p>
-</section><section id="combining-data" class="slide level2">
+</section>
+<section id="combining-data" class="slide level2">
 <h2>Combining Data</h2>
 <p>Here are two different ways that two tabular datasets can be combined:</p>
 <ul>
 <li class="fragment">Concatenating/Appending</li>
 <li class="fragment">Joining/Merging</li>
 </ul>
-</section><section id="concatenating" class="slide level2">
+</section>
+<section id="concatenating" class="slide level2">
 <h2>Concatenating</h2>
 <p>We can concatenate two or more tabular datasets so long as they all share at least one dimension (“height” or “width”).</p>
 <p><span class="math display">\[
@@ -304,10 +308,12 @@ XY = \begin{bmatrix}
     y &amp; z
 \end{bmatrix}
 \]</span></p>
-</section><section id="appending" class="slide level2">
+</section>
+<section id="appending" class="slide level2">
 <h2>Appending</h2>
 <p>The case of adding one dataset onto the “end” of another is referred to typically as “appending”.</p>
-</section><section id="joiningmerging" class="slide level2">
+</section>
+<section id="joiningmerging" class="slide level2">
 <h2>Joining/Merging</h2>
 <p>Joining/merging is the combination of two datasets on one or more <em>keys</em>. In general, merging is done “horizontally”. There are four kinds of joins:</p>
 <ul>
@@ -316,11 +322,13 @@ XY = \begin{bmatrix}
 <li class="fragment">Right</li>
 <li class="fragment">Outer</li>
 </ul>
-</section><section id="keys" class="slide level2">
+</section>
+<section id="keys" class="slide level2">
 <h2>Keys</h2>
 <p>Let’s begin with the simple case of joining on a single key.</p>
 <p>A key is a column, present in both <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, which usually shares some number of elements. These common elements are used to determine how the merge is conducted.</p>
-</section><section id="our-data" class="slide level2">
+</section>
+<section id="our-data" class="slide level2">
 <h2>Our Data</h2>
 <p>Suppose we have two datasets. The first, <span class="math inline">\(X\)</span>, details the first names and roles of a number of employees working on some project. The second, <span class="math inline">\(Y\)</span>, details the names and employee ids of all full-time employees at that company.</p>
 <p><span class="math display">\[
@@ -341,7 +349,8 @@ Y=\begin{bmatrix}
     Frankie &amp; 006
 \end{bmatrix}
 \]</span></p>
-</section><section id="inner-join" class="slide level2">
+</section>
+<section id="inner-join" class="slide level2">
 <h2>Inner Join</h2>
 <p>An inner join retains rows that contain the <em>intersection</em> of the sets of the keys. In other words, it only retains rows from either dataframe that have a corresponding key in the other dataframe.</p>
 <p>In the above example, the INNER JOIN of the two tables on NAME would result in the following table:</p>
@@ -371,7 +380,8 @@ Y=\begin{bmatrix}
 </tr>
 </tbody>
 </table>
-</section><section id="left-join" class="slide level2">
+</section>
+<section id="left-join" class="slide level2">
 <h2>Left Join</h2>
 <p>A left join only retains rows that contain the keys of the left-hand dataset, inserting N/A where the right-hand key does not contain the corresponding left-hand one.</p>
 <p>In the above example, the LEFT JOIN of the two tables on NAME would result in the following table. Note how Ryan’s id is N/A.</p>
@@ -406,7 +416,8 @@ Y=\begin{bmatrix}
 </tr>
 </tbody>
 </table>
-</section><section id="right-join" class="slide level2">
+</section>
+<section id="right-join" class="slide level2">
 <h2>Right Join</h2>
 <p>A right join retains rows that contain the keys of the right-hand dataset, inserting N/A where the left-hand key does not contain the corresponding right-hand one.</p>
 <table>
@@ -450,7 +461,8 @@ Y=\begin{bmatrix}
 </tr>
 </tbody>
 </table>
-</section><section id="outer-join" class="slide level2">
+</section>
+<section id="outer-join" class="slide level2">
 <h2>Outer Join</h2>
 <p>A (full) outer join retains all rows of both datasets, filling NAs where there is no key in common. NAs are inserted where a key does not exist in the opposing dataset.</p>
 <table>
@@ -499,14 +511,16 @@ Y=\begin{bmatrix}
 </tr>
 </tbody>
 </table>
-</section><section id="long--vs.wide-form-data" class="slide level2">
+</section>
+<section id="long--vs.-wide-form-data" class="slide level2">
 <h2>Long- vs. Wide-Form Data</h2>
 <ul>
 <li class="fragment">“Long” and “wide” refer to two different ways of organising data that contains repeated observations of the same variable across (usually) time.</li>
 <li class="fragment">In long format, each row represents an observation on a single unit at a single point in time. The temporal component is recorded in a separate column to the observations.</li>
 <li class="fragment">In wide format, each row represents a single unit observed at multiple points in time. A separate column is used for each combination of time <span class="math inline">\(\times\)</span> quantity.</li>
 </ul>
-</section><section id="example-long-format" class="slide level2">
+</section>
+<section id="example-long-format" class="slide level2">
 <h2>Example: Long Format</h2>
 <table>
 <thead>
@@ -559,7 +573,8 @@ Y=\begin{bmatrix}
 </tr>
 </tbody>
 </table>
-</section><section id="example-wide-format" class="slide level2">
+</section>
+<section id="example-wide-format" class="slide level2">
 <h2>Example: Wide Format</h2>
 <table>
 <thead>
@@ -589,7 +604,20 @@ Y=\begin{bmatrix}
 </tbody>
 </table>
 </section></section>
-<section><section id="implementation" class="title-slide slide level1"><h1>Implementation</h1></section><section id="functions-in-python" class="slide level2">
+<section>
+<section id="coding-tutorial" class="title-slide slide level1">
+<h1>Coding Tutorial</h1>
+
+</section>
+<section id="lets-get-to-some-advanced-pandas" class="slide level2">
+<h2>Let’s get to some advanced pandas!</h2>
+</section></section>
+<section>
+<section id="recap" class="title-slide slide level1">
+<h1>Recap</h1>
+
+</section>
+<section id="functions-in-python" class="slide level2">
 <h2>Functions in Python</h2>
 <p>Here’s a simple function that adds 1 to the input:</p>
 <pre class="{python}"><code>def add_one(x):
@@ -598,7 +626,8 @@ Y=\begin{bmatrix}
     &quot;&quot;&quot;
     y = x+1
     return y</code></pre>
-</section><section id="def-add_onex" class="slide level2">
+</section>
+<section id="def-add_onex" class="slide level2">
 <h2><code>def add_one(x):</code></h2>
 <pre class="{python}"><code>def add_one(x):
     &quot;&quot;&quot;
@@ -612,15 +641,17 @@ Y=\begin{bmatrix}
 <li class="fragment">The <em>arguments</em> of the function are given after the function name, inside <code>()</code>.</li>
 <li class="fragment">The <code>:</code> says that the definition line is done. The following line must be indented by four spaces.</li>
 </ul>
-</section><section id="docstrings" class="slide level2">
+</section>
+<section id="docstrings" class="slide level2">
 <h2>Docstrings</h2>
 <ul>
 <li class="fragment">A string immediately after a function definition is automatically assigned as the <strong>docstring</strong> for that function.</li>
 <li class="fragment">The docstring is the documentation that appears when you use the <code>func?</code> command.</li>
 <li class="fragment"><em>This is optional</em>, but a great way to document your code. It also helps you remember and read your code faster.</li>
-<li class="fragment">NB: I use a triple-double quote <code>&quot;&quot;&quot;</code> to create a multiline string. This is convenient, but not necessary (you can use a simple <code>&quot;</code> or <code>'</code>).</li>
+<li class="fragment">NB: I use a triple-double quote <code>"""</code> to create a multiline string. This is convenient, but not necessary (you can use a simple <code>"</code> or <code>'</code>).</li>
 </ul>
-</section><section id="namespaces" class="slide level2">
+</section>
+<section id="namespaces" class="slide level2">
 <h2>Namespaces</h2>
 <ul>
 <li class="fragment">Python uses <em>namespaces</em> for variables.</li>
@@ -632,7 +663,8 @@ Y=\begin{bmatrix}
 <li class="fragment">Variables defined <em>outside</em> a function are created within the <em>global</em> namespace.</li>
 <li class="fragment">If a function contains a reference to a variable, it will first check to see whether the variable exists in the <em>local</em> namespace, and then the <em>global</em> one.</li>
 </ul>
-</section><section id="local-variables-not-accessibly-globally" class="slide level2">
+</section>
+<section id="local-variables-not-accessibly-globally" class="slide level2">
 <h2>Local Variables not Accessibly Globally</h2>
 <p>The following code will result in an error:</p>
 <pre class="{python}"><code>def f(x):
@@ -640,7 +672,8 @@ Y=\begin{bmatrix}
     return x + y
 
 print(y)</code></pre>
-</section><section id="local-accessed-before-global" class="slide level2">
+</section>
+<section id="local-accessed-before-global" class="slide level2">
 <h2>Local Accessed Before Global</h2>
 <p>The following code will return the <em>local</em> value of <code>y</code>, thus returning 10.</p>
 <pre class="{python}"><code>y = 0
@@ -651,7 +684,8 @@ def f(x):
 
 print(f(5))
 &gt;&gt; 10</code></pre>
-</section><section id="functions-reading-from-global-variables" class="slide level2">
+</section>
+<section id="functions-reading-from-global-variables" class="slide level2">
 <h2>Functions Reading from Global Variables</h2>
 <p>The following code uses <code>y</code>, which is defined globally. Therefore it returns 5.</p>
 <pre class="{python}"><code>y = 0
@@ -661,14 +695,16 @@ def f(x):
 
 print(f(5))
 &gt;&gt; 5</code></pre>
-</section><section id="lambda-functions" class="slide level2">
+</section>
+<section id="lambda-functions" class="slide level2">
 <h2><code>Lambda</code> Functions</h2>
 <p>Python has <em>lambda functions</em>. These are essentially a way to define a function in-line. Below, the function <code>f</code> is equivalent to the line <code>lambda x: x+1</code>.</p>
 <pre class="{python}"><code>def f(x):
     return x+1
 
 lambda x: x+1</code></pre>
-</section><section id="applying-functions-to-pandas-objects" class="slide level2">
+</section>
+<section id="applying-functions-to-pandas-objects" class="slide level2">
 <h2>Applying Functions to Pandas Objects</h2>
 <p>Remember that there are four relevant ways in which we might want to apply a function to a <code>Series</code> (or <code>DataFrame</code>!)</p>
 <ul>
@@ -683,7 +719,8 @@ lambda x: x+1</code></pre>
 <li class="fragment">Grouped Summary</li>
 </ul></li>
 </ul>
-</section><section id="element-wise-operations-1" class="slide level2">
+</section>
+<section id="element-wise-operations-1" class="slide level2">
 <h2>Element-wise Operations</h2>
 <p>The most general method for applying a function element-wise is the <code>apply</code> function.</p>
 <ul>
@@ -697,7 +734,8 @@ lambda x: x+1</code></pre>
 <li class="fragment">In order to apply a function to every element of a <code>DataFrame</code>, use <code>applymap</code>.</li>
 </ul></li>
 </ul>
-</section><section id="pd.series.apply-with-functions" class="slide level2">
+</section>
+<section id="pd.series.apply-with-functions" class="slide level2">
 <h2><code>pd.Series.apply</code> with functions</h2>
 <p>The following two examples will add every element of a Series to itself. Note that the function is passed as an argument to <code>apply()</code> <em>without</em> <code>()</code>. This is because we are pointing to the function inside the <code>apply()</code>, not calling it.</p>
 <pre class="{python}"><code>def add_to_self(x):
@@ -705,14 +743,16 @@ lambda x: x+1</code></pre>
     return y
 
 df[&#39;col1&#39;].apply(add_to_self)</code></pre>
-</section><section id="pd.series.apply-with-lambda" class="slide level2">
+</section>
+<section id="pd.series.apply-with-lambda" class="slide level2">
 <h2><code>pd.Series.apply</code> with lambda</h2>
 <p>I usually use <code>apply()</code> with <em>lambda functions</em>. There are two advantages to this approach:</p>
 <ul>
 <li class="fragment">Conciseness: you do not have to define a new function for something you do only once.</li>
 <li class="fragment">Passing arguments to the applied function: because <code>apply()</code> takes a function name, and not a call, as its argument, you cannot pass arguments to the function. By using a lambda function, this is possible:</li>
 </ul>
-</section><section id="pd.series.apply-with-lambda-examples" class="slide level2">
+</section>
+<section id="pd.series.apply-with-lambda-examples" class="slide level2">
 <h2><code>pd.Series.apply</code> with lambda examples</h2>
 <pre class="{python}"><code>In [1]: import pandas as pd
 
@@ -739,7 +779,8 @@ Out[7]:
 2   -1
 3    1
 4    3</code></pre>
-</section><section id="cumulative-operations-1" class="slide level2">
+</section>
+<section id="cumulative-operations-1" class="slide level2">
 <h2>Cumulative Operations</h2>
 <p>There are built-in methods for the four standard cumulative operations. These are methods of both <code>pd.Series</code> and <code>pd.DataFrame</code>.</p>
 <ul>
@@ -749,7 +790,8 @@ Out[7]:
 <li class="fragment">Max: <code>cummax</code></li>
 <li class="fragment"><em>Advanced</em>: If you want to conduct other types of cumulative operation, you will need to use <code>pd.Series.expanding</code>, which works similarly to <code>groupby</code> (covered in subsequent slides).</li>
 </ul>
-</section><section id="apply-versus-for-loops" class="slide level2">
+</section>
+<section id="apply-versus-for-loops" class="slide level2">
 <h2><code>apply</code> versus for-loops</h2>
 <ul>
 <li class="fragment">You may have noticed that both kinds of transformations thus described could be done iteratively, with a for-loop.</li>
@@ -757,7 +799,8 @@ Out[7]:
 <li class="fragment">This essentially means that if you want to take advantage of the speed of <code>pandas</code>, you should use <code>apply</code> as much as possible when conducting transformations.</li>
 <li class="fragment">This does not mean <em>never</em> use for-loops; the take-away should be that vectorization runs faster, but the fastest solution when accounting for programmer effort always depends on the task at hand.</li>
 </ul>
-</section><section id="grouped-summaries-1" class="slide level2">
+</section>
+<section id="grouped-summaries-1" class="slide level2">
 <h2>Grouped Summaries</h2>
 <p>Pandas provides an extremely efficient and clean method for doing group summaries, but the syntax can be difficult to understand.</p>
 <p>Imagine we have the following table:</p>
@@ -819,7 +862,8 @@ df = pd.DataFrame({
     'PM_approval': [1, 3, 2, 6, 4]
 })
 ``` -->
-</section><section id="groupby-syntax-simple-group-operations" class="slide level2">
+</section>
+<section id="groupby-syntax-simple-group-operations" class="slide level2">
 <h2>Groupby Syntax: Simple Group Operations</h2>
 <p>To conduct grouped summaries, we use the following syntax:</p>
 <pre class="{python}"><code>df.groupby(&#39;group_col&#39;)[&#39;value_col&#39;].summary_func()</code></pre>
@@ -828,7 +872,8 @@ df = pd.DataFrame({
 <li class="fragment"><code>value_col</code> is the column that contains the values we will be applying grouped summary functions to.</li>
 <li class="fragment"><code>summary_func</code> is the function that that is applied to each group.</li>
 </ul>
-</section><section id="groupby-syntax-hierarchical-group-operations-multiple-outputs" class="slide level2">
+</section>
+<section id="groupby-syntax-hierarchical-group-operations-multiple-outputs" class="slide level2">
 <h2>Groupby Syntax: Hierarchical Group Operations, Multiple Outputs</h2>
 <p>We can pass lists in place of the scalar values above:</p>
 <pre class="{python}"><code>df.groupby([&#39;group_col1&#39;, &#39;group_col2&#39;])[[&#39;value_col1&#39;, &#39;value_col2&#39;]].summary_func()</code></pre>
@@ -836,7 +881,8 @@ df = pd.DataFrame({
 <li class="fragment">If we pass a list of values to the <code>groupby()</code> function, the resulting groups are <em>hierarchical</em>, with the order of columns in the list passed to this function determining the rank of columns within the hierarchy.</li>
 <li class="fragment">If we pass a list of values to the <code>[]</code> accessor following the <code>groupby()</code> call, we apply the grouped summary operation to each of the columns in this list. Order matters less here.</li>
 </ul>
-</section><section id="groupby-example-with-single-input" class="slide level2">
+</section>
+<section id="groupby-example-with-single-input" class="slide level2">
 <h2>Groupby Example with Single Input</h2>
 <pre class="{python}"><code>In [3]: df.groupby(&#39;Location&#39;)[&#39;Age&#39;].mean()
 Out[3]:
@@ -854,7 +900,8 @@ Name: Age, dtype: float64</code></pre>
 </ul></li>
 <li class="fragment">Note the output is a <code>Series</code>, because the <code>value_cols</code> arguments contained only a single column.</li>
 </ul>
-</section><section id="groupby-example-with-hierarchical-groups-single-input" class="slide level2">
+</section>
+<section id="groupby-example-with-hierarchical-groups-single-input" class="slide level2">
 <h2>Groupby Example with Hierarchical Groups, Single Input</h2>
 <pre class="{python}"><code>In [4]: df.groupby([&#39;Location&#39;, &#39;Female&#39;])[&#39;PM_approval&#39;].mean()
 Out[4]:
@@ -872,7 +919,8 @@ Name: PM_approval, dtype: float64</code></pre>
 </ul></li>
 <li class="fragment">Note the nested index on the series; we discuss this later.</li>
 </ul>
-</section><section id="groupby-example-with-hierarchical-groups-multiple-inputs" class="slide level2">
+</section>
+<section id="groupby-example-with-hierarchical-groups-multiple-inputs" class="slide level2">
 <h2>Groupby Example with Hierarchical Groups, Multiple Inputs</h2>
 <pre class="{python}"><code>In [5]: df.groupby([&#39;Location&#39;, &#39;Female&#39;])[[&#39;Age&#39;, &#39;PM_approval&#39;]].mean()
 Out[5]:
@@ -886,7 +934,8 @@ Wales      1       45.5          3.5</code></pre>
 <li class="fragment">This calculates the <em>mean age and PM approval per gender per location</em>.</li>
 <li class="fragment">Note that passing multiple input columns (i.e. a dataframe) returns a dataframe.</li>
 </ul>
-</section><section id="appendconcat-joinmerge" class="slide level2">
+</section>
+<section id="appendconcat-joinmerge" class="slide level2">
 <h2>Append/Concat, Join/Merge</h2>
 <p>Pandas includes a multitude of functions for combining datasets, as well as <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/merging.html">an extensive guide with examples</a>.</p>
 <p>We cover just two functions:</p>
@@ -894,7 +943,8 @@ Wales      1       45.5          3.5</code></pre>
 <li class="fragment"><code>pd.concat()</code></li>
 <li class="fragment"><code>pd.merge()</code></li>
 </ul>
-</section><section id="concatenation-syntax" class="slide level2">
+</section>
+<section id="concatenation-syntax" class="slide level2">
 <h2>Concatenation Syntax</h2>
 <p>To concatenate two or more dataframes, we use the following syntax:</p>
 <pre class="{python}"><code>pd.concat([df1, df2{, ..., dfn}], axis={0, 1})</code></pre>
@@ -906,7 +956,8 @@ Wales      1       45.5          3.5</code></pre>
 </ul></li>
 <li class="fragment">When <code>axis=1</code>, dataframes are stacked “horizontally”. Where the index aligns, rows will be concatenated side-by-side. If there are index values not common between the dataframes, then <code>N/A</code> will be inserted in the cells.</li>
 </ul>
-</section><section id="merge-syntax" class="slide level2">
+</section>
+<section id="merge-syntax" class="slide level2">
 <h2>Merge Syntax</h2>
 <pre class="{python}"><code>pd.merge(
     left_df,
@@ -926,7 +977,8 @@ Wales      1       45.5          3.5</code></pre>
 <li class="fragment"><code>how</code> determines what kind of join is used. (See <a href="#/joiningmerging">previous slides</a>.)</li>
 </ul></li>
 </ul>
-</section><section id="merge-syntax-cont." class="slide level2">
+</section>
+<section id="merge-syntax-cont." class="slide level2">
 <h2>Merge Syntax cont.</h2>
 <ul>
 <li class="fragment">The following argument(s) identify the keys from the left- and right-hand dataframes to be used for the join.
@@ -936,13 +988,15 @@ Wales      1       45.5          3.5</code></pre>
 <li class="fragment"><code>left_index</code> and <code>right_index</code> take either <code>True</code> or <code>False</code>. If <code>True</code>, then the index of the according dataframe is used as the merge key.</li>
 </ul></li>
 </ul>
-</section><section id="performance" class="slide level2">
+</section>
+<section id="performance" class="slide level2">
 <h2>Performance</h2>
 <ul>
 <li class="fragment">In general, indices are faster to perform operations on, but also require more memory to store.</li>
 <li class="fragment">Pre-sorting concatenation axes or merging keys will improve performance greatly.</li>
 </ul>
-</section><section id="long-and-wide-format" class="slide level2">
+</section>
+<section id="long-and-wide-format" class="slide level2">
 <h2>Long and Wide Format</h2>
 <p>Pandas provides two functions for changing between long and wide data format. For further details I direct you to the documentation:</p>
 <ul>
@@ -950,30 +1004,32 @@ Wales      1       45.5          3.5</code></pre>
 <li class="fragment"><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.melt.html#pandas.melt"><code>pd.melt()</code></a>: Converts wide to long.</li>
 </ul>
 </section></section>
-<section><section id="coding-tutorial" class="title-slide slide level1"><h1>Coding Tutorial</h1></section><section id="lets-get-to-some-advanced-pandas" class="slide level2">
-<h2>Let’s get to some advanced pandas!</h2>
-</section></section>
-<section class="footnotes">
+<section class="footnotes" role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1"><p>One could construct an iterative parser that treats a language as a cumulative set of tokens; whether this parser would be the most effective is a different question.<a href="#/fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn1" role="doc-endnote"><p>One could construct an iterative parser that treats a language as a cumulative set of tokens; whether this parser would be the most effective is a different question.<a href="#/fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
     </div>
   </div>
 
-  <script src="../reveal.js/lib/js/head.min.js"></script>
-  <script src="../reveal.js/js/reveal.js"></script>
+  <script src="../reveal.js/dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="../reveal.js/plugin/notes/notes.js"></script>
+  <script src="../reveal.js/plugin/search/search.js"></script>
+  <script src="../reveal.js/plugin/zoom/zoom.js"></script>
+  <script src="../reveal.js/plugin/math/math.js"></script>
 
   <script>
 
       // Full list of configuration options available at:
-      // https://github.com/hakimel/reveal.js#configuration
+      // https://revealjs.com/config/
       Reveal.initialize({
         // Push each slide change to the browser history
         history: true,
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -989,12 +1045,12 @@ Wales      1       45.5          3.5</code></pre>
           },
         },
 
-        // Optional reveal.js plugins
-        dependencies: [
-          { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true },
-          { src: '../reveal.js/plugin/math/math.js', async: true },
-          { src: '../reveal.js/plugin/notes/notes.js', async: true }
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
         ]
       });
     </script>
