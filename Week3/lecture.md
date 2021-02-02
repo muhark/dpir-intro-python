@@ -2,7 +2,7 @@
 title: Introduction to Python for Social Science
 subtitle: Lecture 3 - Data Structures and Pandas II
 author: Musashi Harukawa, DPIR
-date: 3rd Week Hilary 2020
+date: 3rd Week Hilary 2021
 ---
 
 # Overview
@@ -59,25 +59,14 @@ Examples/Use Cases per Datatype:
 
 | Dtype     | Example                  |
 | --------- | ------------------------ |
-| Numeric   | Multiple Regression      |
+| Numeric   | Normalization by Mean    |
 | Date/Time | Conversion to Timedeltas |
 | Language  | Translation              |
 
 ## Transformation
 
 $$
-f \begin{bmatrix}
-    x_1 \\
-    x_2 \\
-    \vdots \\
-    x_i
-\end{bmatrix} \rightarrow
-\begin{bmatrix}
-    y_1 \\
-    y_2 \\
-    \vdots \\
-    y_i \\
-\end{bmatrix}
+f(X_{i}) = Y_{i}
 $$
 
 ## Element-wise Operations
@@ -95,18 +84,17 @@ Examples/Use Cases per Datatype:
 ## Element-wise Operations: Illustration
 
 $$
-f \odot
-\begin{bmatrix}
-    x_1 \\
-    x_2 \\
-    \vdots \\
-    x_i
-\end{bmatrix} \rightarrow
 \begin{bmatrix}
     f(x_1) \\
     f(x_2) \\
     \vdots \\
     f(x_i)
+\end{bmatrix} = 
+\begin{bmatrix}
+    y_1 \\
+    y_2 \\
+    \vdots \\
+    y_i
 \end{bmatrix}
 $$
 
@@ -126,16 +114,16 @@ Cumulative operations apply a function with an expanding scope iteratively over 
 
 $$
 f_{cum}(X_i) = \begin{bmatrix}
-    f_{1}^{1}(x_1) \\
-    f_{1}^{2}(x_1, x_2) \\
+    f(x_1) \\
+    f(x_1, x_2) \\
     \vdots \\
-    f_{1}^{i}(x_1, x_2, ..., x_i)
+    f(x_1, x_2, ..., x_i)
 \end{bmatrix} =
 \begin{bmatrix}
-    f_{1}^{1}x_i \\
-    f_{1}^{2}x_i \\
+    f_{1}^{1}(x_i) \\
+    f_{1}^{2}(x_i) \\
     \vdots \\
-    f_{1}^{i}x_i
+    f_{1}^{i}(x_i)
 \end{bmatrix}
 $$
 
@@ -166,6 +154,7 @@ $$
 ## Grouped Summaries
 
 Elements of $X_{i, g}$ are groupable in that each element $x_i$ is a member of some group $g \in G$. In a sense they are somewhere between element-wise operations and summaries.
+<!-- Observations $i \in N$ have an additional characteristic $G_i$. We calculate summary statistics conditional on each value of $G$. -->
 <!-- A grouped summary therefore returns a vector $Y_g$ of length $g$, where each element $y_g'$ is the value of $f(\{x_{i, g=g'}\})$. -->
 
 $$
@@ -343,8 +332,11 @@ A (full) outer join retains all rows of both datasets, filling NAs where there i
 | Oxford East  | Labour    | Labour    | Labour    | Labour    |
 | Oxford West  | Tory      | Tory      | LibDem    | LibDem    |
 
+# Coding Tutorial
 
-# Implementation
+## Let's get to some advanced pandas!
+
+# Recap
 
 ## Functions in Python
 
@@ -693,6 +685,3 @@ Pandas provides two functions for changing between long and wide data format. Fo
 - [`pd.melt()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.melt.html#pandas.melt): Converts wide to long.
 
 
-# Coding Tutorial
-
-## Let's get to some advanced pandas!
