@@ -2,7 +2,7 @@
 title: Introduction to Python for Social Science
 subtitle: Lecture 4 - Data Visualization
 author: Musashi Harukawa, DPIR
-date: 4th Week Hilary 2020
+date: 4th Week Hilary 2021
 ---
 
 # Overview
@@ -16,9 +16,10 @@ date: 4th Week Hilary 2020
 
 ## This Week
 
-This week we finally get to a fun topic: **data visualisation**.
-
-There's more to data visualisation than I could possibly cover in 90 minutes, so I focus on _static_, _two-dimensional_ visuals; these are the kind that you are most likely to use.
+- This week we finally get to a fun topic: **data visualisation**.
+- There's more to data visualisation than I could possibly cover in 90 minutes
+- I focus on _static_, _two-dimensional_ visuals
+	- These are the kind that you are most likely to use.
 
 # Theory & Motivation
 
@@ -51,7 +52,7 @@ The type and structure of your data tells you what _type_ of figure you need:
 
 Most figures are created on a two-dimensional plane, where the dimensions are usually referred to as _X_ (width) and _Y_ (height).
 
-These axes are the most versatile; they can be used to plot any kind of variable. The only tradeoff is the overall size of the figure is determined by these two dimensions.
+These axes are the most versatile; they can be used to plot any kind of variable. The only trade-off is the overall size of the figure is determined by these two dimensions.
 
 ## One-Dimension: Distributions
 
@@ -71,7 +72,7 @@ Visuals for two-dimensional data often fulfil one of the following two purposes:
 - Comparing distributions
 - Plotting functions
 
-In addition to all of the aforementioned plots, some examples of the latter include:
+<p class="fragment">In addition to all of the aforementioned plots, some examples of the latter include:</p>
 
 - Scatter plot
 - Line plot
@@ -222,8 +223,9 @@ f.suptitle("This is a figure with a subplot")
 ax.set_title("This is a subplot", color="r")
 ```
 
+<div class="fragment">
 ![Figure with 1 Subplot](figures/lecture_emptysubplot1.png)
-
+</div>
 
 ## Axes (Two Subplots)
 
@@ -234,8 +236,9 @@ ax[0].set_title("This is a subplot", color="r")
 ax[1].set_title("This is another subplot", color="r")
 ```
 
+<div class="fragment">
 ![Figure with 2 Subplots](figures/lecture_emptysubplot2.png)
-
+</div>
 
 ## Axes (Subplot Grid System)
 
@@ -247,7 +250,9 @@ for i in range(2):
         ax[i][j].set_title(f"Subplot [{i}][{j}]", color="r")
 ```
 
+<div class="fragment">
 ![Figure with Four Subplots](figures/lecture_emptysubplot3.png)
+</div>
 
 ## Graphical Functions (Scatter)
 
@@ -256,7 +261,9 @@ f, ax = plt.subplots(1, 1, figsize=(15, 8))
 ax.scatter(data['x2'], data['x1'], color='r')
 ```
 
+<div class="fragment">
 ![Scatter Plot](figures/lecture_scatter1.png)
+</div>
 
 ## Graphical Functions (Line)
 
@@ -265,7 +272,9 @@ f, ax = plt.subplots(1, 1, figsize=(15, 8))
 ax.plot(np.linspace(0, 10, 100), np.linspace(0, 5, 100), color='r')
 ```
 
+<div class="fragment">
 ![Line Plot](figures/lecture_line1.png)
+</div>
 
 ## Combining Graphical Functions (Scatter + Line)
 
@@ -277,7 +286,9 @@ ax.axhline(0, color='k', alpha=0.5, ls="--")
 ax.axvline(0, color='k', alpha=0.5, ls="--")
 ```
 
+<div class="fragment">
 ![Line and Scatter Plot](figures/lecture_linescatter1.png)
+</div>
 
 ## Adding Axis Labels
 
@@ -287,7 +298,9 @@ ax.xaxis.set_label_text("X-Axis Label", color='r')
 ax.yaxis.set_label_text("Y-Axis Label", color='r')
 ```
 
+<div class="fragment">
 ![Custom Axis Labels](figures/lecture_linescatter2.png)
+</div>
 
 ## Customising Tick Locations (Manual)
 
@@ -297,7 +310,9 @@ ax.xaxis.set_ticks(range(-10, 40, 10))
 ax.yaxis.set_ticks(range(-4, 25, 2))
 ```
 
+<div class="fragment">
 ![Manually Adjusted Ticks](figures/lecture_linescatter3.png)
+</div>
 
 ## Customising Tick Locations (Automatic)
 
@@ -306,7 +321,9 @@ ax.xaxis.set_major_locator(matplotlib.ticker.MultipleLocator(base=3))
 ax.yaxis.set_major_locator(matplotlib.ticker.MultipleLocator(base=2))
 ```
 
+<div class="fragment">
 ![Manually Adjusted Ticks](figures/lecture_linescatter4.png)
+</div>
 
 ## Customising Tick Labels/Orientation
 
@@ -315,7 +332,9 @@ f, ax = plt.subplots(1, 1, figsize=(8, 4))
 sns.boxenplot(bes_df['region'], bes_df['Age'], ax=ax)
 ax.xaxis.set_ticklabels(ax.xaxis.get_ticklabels(), rotation=30)
 ```
+<div class="fragment">
 ![Rotated Tick Labels](figures/lecture_rotated_labels1.png)
+</div>
 
 # Gallery
 
