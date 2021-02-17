@@ -2,7 +2,7 @@
 title: Introduction to Python for Social Science
 subtitle: Lecture 5 - Machine Learning I
 author: Musashi Harukawa, DPIR
-date: 5th Week Hilary 2020
+date: 5th Week Hilary 2021
 ---
 
 # Overview
@@ -71,7 +71,7 @@ Given:
 - $j$-dimensional feature space
 - Data matrix $X_{ij}$ of $i$ observations of $j$ features
 
-Clustering algorithms:
+<p class="fragment">Clustering algorithms:</p>
 
 - Assign each observation $x_i$ to a cluster $k \in K$
 - Where $K \le j$
@@ -128,7 +128,13 @@ The algorithm to solve this problem (known as Lloyd's Algorithm) has three steps
 2. Assign each point $x_i \in X_{ij}$ to a cluster by finding the nearest centroid.
 3. Re-calculate the centroids by taking the mean of each cluster.
 
-<p class="fragment">At step 3, the distance each centroid has moved is calculated, and once this distance goes below some threshold for all clusters, the algorithm is understood to have converged.</p>
+::: {.fragment}
+At step 3, the distance each centroid has moved is calculated, and once this distance goes below some threshold for all clusters, the algorithm is understood to have converged.
+:::
+
+## `k-means`:Visualised
+
+<object type="text/html" data="https://stanford.edu/class/engr108/visualizations/kmeans/kmeans.html" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></object>
 
 ##
 
@@ -138,11 +144,12 @@ Some variations and issues:
     - The cluster assignments are therefore a result of the random initialisation, and they themselves random.
 - `k-means++`: This variant of the algorithm, implemented by default in `scikit-learn`, chooses random starting centroids that are far from each other, resulting in more efficient computation (faster convergence) and more consistent clusterings.
 
-## Other Clustering Algorithms
+## Other Algorithms
 
-- `k-means` is an instance of a Euclidean centroid-based algorithm. We can cluster based on different distance metrics, or take a different approach to assigning and separating values into clusters.
-    - Other distance metrics include cosine distance, L1 (Cityblock) distance, or graph distance.
-    - Other algorithms for separation/assignment include hierarchical splitting of the sample.
+- `k-means` is an instance of a Euclidean centroid-based algorithm.
+- We can cluster based on different distance metrics, or take a different approach to assigning and separating values into clusters.
+- Other distance metrics include cosine distance, L1 (Cityblock) distance, or graph distance.
+- Other algorithms for separation/assignment include hierarchical splitting of the sample.
 
 # Dimensionality Reduction
 
@@ -152,7 +159,7 @@ Whereas clustering is used to find "groups" within the data, dimensionality redu
 
 This "reduced form" of the data can either contain a subset, or mix, of the original variables.
 
-Dimensionality reduction is almost always _lossy_, that is, the reduced representation of the data contains less information than original dataset.
+Dimensionality reduction is almost always _lossy_, that is, the reduced representation of the data necessarily contains weakly less information than original dataset.
 
 ## Use Cases
 
@@ -167,23 +174,26 @@ Given:
 - $j$-dimensional feature space
 - Data matrix $X_{ij}$ of $i$ observations of $j$ features
 
+::: {.fragment}
 Dimensionality Reduction Methods:
+:::
 
 - Provide a transformation of $X_{ij} \rightarrow X'_{ik}$, where $k \le j$.
     - _Feature Selection_:  $k \subset j$
     - _Latent Variable Discovery_: $k \not \subset j$
 
-## A Short List of Algorithms
+## Some Dimensionality Reduction Algorithms
 
 - Principal Components Analysis (PCA)
-- [t-SNE/UMAP](https://pair-code.github.io/understanding-umap/)
+- T-distributed Stochastic Neighbour Embedding (t-SNE)
+- [UMAP](https://pair-code.github.io/understanding-umap/)
 - Topic Modelling: Latent Dirichlet Allocations, Structural Topic Model, etc.
 
 ## Principal Components Analysis
 
-Given an $i$-length dataset of $j$ variables, PCA returns a $i \times K$ transformed matrix of $K$ principal components indexed by $i$.
-
-Each principal component $k = \{1, 2, ..., K \le j\}$ are orthogonal vectors that successively capture the most variance within $X_{ij}$.
+- Given an $i$-length dataset of $j$ variables
+- PCA returns a $i \times K$ transformed matrix of $K \le j$ principal components indexed by $i$.
+- Each principal component $k = \{1, 2, ..., K\}$ are _orthogonal vectors that successively capture the most variance within $X_{ij}$_.
 
 ##
 
@@ -195,20 +205,31 @@ Thus:
 
 ## Interpreting Principal Components
 
-Interpreting principal components can be complicated when the researcher has strong priors over the link betweeen the variables in the original dataset and the outcome (if there is one).
+- Interpreting principal components can be complicated when the researcher has strong priors over the link between the variables in the original dataset and the outcome (if there is one).
+- As mentioned, the first principal component contains the location observations along the latent dimension along which observations in $X_{ij}$ vary the most.
+- In a UK survey dataset, we could imagine that this dimension might be an aggregate of geography and class (or maybe not!)
 
-As mentioned, the first principal component contains the location observations along the latent dimension along which observations in $X_{ij}$ vary the most. In a UK survey dataset, we could imagine that this dimension might be an aggregate of geography and class (or maybe not!)
+## Feature-Component Weights
 
-##
+- In order to interpret principal components, one can look at the feature-component weights in the $j \times K$ matrix, which shows the "prevalence" of each of the individual variables of $X_{ij}$ in each principal component $k$.
 
-In order to interpret principal components, one can look at the feature-component weights in the $j \times k$ matrix, which shows the "prevalence" of each of the individual variables of $X_{ij}$ in each principal component $k$.
+## `https://setosa.io/ev/principal-component-analysis/`
+
+<object type="text/html" data="https://setosa.io/ev/principal-component-analysis/" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></object>
 
 ## Combining PCA and `k-means`
 
-PCA and `k-means` can be used in conjunction; the data is reduced using PCA, and then clustered with `k-means`. There are a number of reasons/advantages to this:
+PCA and `k-means` can be used in conjunction:
 
-- _Visualisability_: Plotting the results of `k-means` in high-dimensional data is difficult. Note that `t-SNE` and `UMAP` are alternative, and arguably better methods for this.
-- _Clustering over Latent Variables_: Where we can interpret the principal components, clustering over them means that we are clustering over normalised axes that contribute variance to the data.
+- Step 1: PCA to reduce dimensionality
+- Step 2: `k-means` clustering on transformed data
+- Step 3: Visualise with colored scatter plot
+
+## `PCA`+`k-means` continued
+
+- _Visualisability_: Plotting the results of `k-means` in high-dimensional data is difficult. 
+	- Note that `t-SNE` and `UMAP` are alternative, and arguably better methods for this.
+- _Non-correlation_: Where interpretable, the non-correlation of principle components has theoretically attractive qualities.
 
 ## A Short Warning
 
@@ -319,3 +340,19 @@ _For next week!_
 - Dimensionality Reduction:
     - [PCA Visually Explained](http://setosa.io/ev/principal-component-analysis/)
     - [UMAP Visually Explained](https://pair-code.github.io/understanding-umap/)
+    - [Understanding Component Scores](https://towardsdatascience.com/pca-clearly-explained-how-when-why-to-use-it-and-feature-importance-a-guide-in-python-7c274582c37e)
+
+## Readings Continued
+
+- [Elements of Statistical Learning, Hastie Tibshirani and Friedman](https://web.stanford.edu/~hastie/ElemStatLearn/)
+	- In my opinion the single best book on Machine Learning.
+	- Also free from authors at the above link!
+	- Chapter 14 Unsupervised Learning
+
+
+## External Sites
+
+This lecture contains content from the following websites, which provide excellent and interactive visuals for understanding k-means and PCA:
+
+- `k-means`: `https://stanford.edu/class/engr108/visualizations/kmeans/kmeans.html`
+- `PCA`: `https://setosa.io/ev/principal-component-analysis/`
