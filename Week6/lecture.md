@@ -2,7 +2,7 @@
 title: Introduction to Python for Social Science
 subtitle: Lecture 6 - Machine Learning II
 author: Musashi Harukawa, DPIR
-date: 6th Week Hilary 2020
+date: 6th Week Hilary 2021
 ---
 
 # Recap
@@ -72,9 +72,9 @@ A decision tree can be understood as a mapping from the multi-dimensional featur
 
 ## Visualising Trees
 
-![](https://scikit-learn.org/stable/_images/iris.png)
+![Source: https://github.com/parrt/dtreeviz](iris-TD-2.svg)
 
-## Tree Tradeoffs
+## Tree Trade-offs
 
 Advantages:
 
@@ -82,7 +82,9 @@ Advantages:
 - Arguably more intuitive than OLS.
 - Provides an metric of feature importance that has a substantive interpretation.
 
+::: {.fragment}
 Disadvantages:
+:::
 
 - **Extremely** prone to _over-fitting_.
 - Does not provide a linear marginal effect estimate.
@@ -142,7 +144,9 @@ Cross validation is one such of these strategies. It consists of dividing the da
 2. The fitted model is applied to the _test features_ to generate _predicted values_: $\hat{y} = \hat{f}(X_{test})$
 3. The difference between the _predicted values_ and the _test labels_ is used as a measure of the predictive accuracy of the model: $\hat{e} = y_{test} - \hat{y}$
 
-<p class="fragment">There are multiple aggregate measures of prediction error, but a common one is _mean squared (prediction) error_, calculated as the sum of squared differences between prediction and test label.</p>
+::: {.fragment}
+There are multiple aggregate measures of prediction error, but a common one is _mean squared (prediction) error_, calculated as the sum of squared differences between prediction and test label.
+:::
 
 ## k-fold Cross Validation
 
@@ -200,3 +204,10 @@ Ensemble Methods:
 
 - [Grimmer \& Westwood, _Political Analysis_ 2017](https://www.cambridge.org/core/journals/political-analysis/article/estimating-heterogeneous-treatment-effects-and-the-effects-of-heterogeneous-treatments-with-ensemble-methods/C7E3EA00D0AD83429CBE73F4F0C6652C)
 - [Kunzel et al, _PNAS_ 2019](https://arxiv.org/abs/1706.03461)
+
+Elements of Statistical Learning:
+
+- 9.2: Tree-Based Methods
+- 15: Random Forests
+- 16: Ensemble Learning
+

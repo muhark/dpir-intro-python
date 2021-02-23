@@ -8,25 +8,17 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="../reveal.js/css/reveal.css">
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
   </style>
-  <link rel="stylesheet" href="../reveal.js/css/theme/../../../dpir-intro-theme.css" id="theme">
-  <!-- Printing and PDF exports -->
-  <script>
-    var link = document.createElement( 'link' );
-    link.rel = 'stylesheet';
-    link.type = 'text/css';
-    link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal.js/css/print/pdf.css' : '../reveal.js/css/print/paper.css';
-    document.getElementsByTagName( 'head' )[0].appendChild( link );
-  </script>
-  <!--[if lt IE 9]>
-  <script src="../reveal.js/lib/js/html5shiv.js"></script>
-  <![endif]-->
+  <link rel="stylesheet" href="../reveal.js/dist/theme/../../../dpir-intro-theme.css" id="theme">
 </head>
 <body>
   <div class="reveal">
@@ -36,10 +28,15 @@
   <h1 class="title">Introduction to Python for Social Science</h1>
   <p class="subtitle">Lecture 6 - Machine Learning II</p>
   <p class="author">Musashi Harukawa, DPIR</p>
-  <p class="date">6th Week Hilary 2020</p>
+  <p class="date">6th Week Hilary 2021</p>
 </section>
 
-<section><section id="recap" class="title-slide slide level1"><h1>Recap</h1></section><section id="last-week" class="slide level2">
+<section>
+<section id="recap" class="title-slide slide level1">
+<h1>Recap</h1>
+
+</section>
+<section id="last-week" class="slide level2">
 <h2>Last Week</h2>
 <ul>
 <li class="fragment">Unsupervised Machine Learning
@@ -48,7 +45,8 @@
 <li class="fragment">Dimensionality Reduction with <code>PCA</code></li>
 </ul></li>
 </ul>
-</section><section id="this-week" class="slide level2">
+</section>
+<section id="this-week" class="slide level2">
 <h2>This Week</h2>
 <ul>
 <li class="fragment">Supervised Machine Learning
@@ -67,7 +65,12 @@
 </ul></li>
 </ul>
 </section></section>
-<section><section id="supervised-ml" class="title-slide slide level1"><h1>Supervised ML</h1></section><section id="supervised-learning-use-x-to-infer-y" class="slide level2">
+<section>
+<section id="supervised-ml" class="title-slide slide level1">
+<h1>Supervised ML</h1>
+
+</section>
+<section id="supervised-learning-use-x-to-infer-y" class="slide level2">
 <h2>Supervised Learning: Use X to infer Y</h2>
 <ul>
 <li class="fragment">Supervised Learning starts with a dataset containing both <em>features</em> (<span class="math inline">\(X\)</span>) and <em>labels</em> (<span class="math inline">\(y\)</span>).</li>
@@ -78,7 +81,8 @@
 <li class="fragment">If <span class="math inline">\(y\)</span> is continuous, then the task is called <em>regression</em>.</li>
 </ul></li>
 </ul>
-</section><section id="supervised-learning-models" class="slide level2">
+</section>
+<section id="supervised-learning-models" class="slide level2">
 <h2>Supervised Learning Models</h2>
 <p>Some general classes of supervised models include:</p>
 <ul>
@@ -88,14 +92,16 @@
 <li class="fragment">Tree-based Estimators</li>
 <li class="fragment">(Supervised) Neural Networks</li>
 </ul>
-</section><section id="decision-trees" class="slide level2">
+</section>
+<section id="decision-trees" class="slide level2">
 <h2>Decision Trees</h2>
 <p>Although radically distinct to linear estimators such as OLS, decision trees offer a simple and intuitive approach to estimating values of <span class="math inline">\(y\)</span> based on <span class="math inline">\(X\)</span>.</p>
 <ul>
 <li class="fragment">If you have played the game twenty questions, then you should be familiar with the idea behind decision trees.</li>
 <li class="fragment">Constructs a series of binary questions (nodes) regarding your features, and eventually at the end of the resulting branches gives a prediction (leaf) of your label.</li>
 </ul>
-</section><section id="understanding-decision-trees" class="slide level2">
+</section>
+<section id="understanding-decision-trees" class="slide level2">
 <h2>Understanding Decision Trees</h2>
 <p>A decision tree can be understood as a mapping from the multi-dimensional feature space, <span class="math inline">\(X_{ij}\)</span>, to the label space <span class="math inline">\(y_i\)</span>.</p>
 <ul>
@@ -103,7 +109,8 @@
 <li class="fragment">Each leaf maps one of these partitions to a value (or range) in the <span class="math inline">\(y\)</span>-space.</li>
 <li class="fragment">The algorithm necessarily sets some convergence threshold so that there are fewer leafs than observations.</li>
 </ul>
-</section><section id="impurity" class="slide level2">
+</section>
+<section id="impurity" class="slide level2">
 <h2>Impurity</h2>
 <ul>
 <li class="fragment">Given that the algorithm knows the values of <span class="math inline">\(y\)</span>:
@@ -118,23 +125,30 @@
 <li class="fragment">Entropy: <span class="math inline">\(H(X_m) = - \sum_k p_{mk} \log(p_{mk})\)</span></li>
 </ul></li>
 </ul>
-</section><section id="visualising-trees" class="slide level2">
+</section>
+<section id="visualising-trees" class="slide level2">
 <h2>Visualising Trees</h2>
-<p><img data-src="https://scikit-learn.org/stable/_images/iris.png" /></p>
-</section><section id="tree-tradeoffs" class="slide level2">
-<h2>Tree Tradeoffs</h2>
+<figure>
+<img data-src="iris-TD-2.svg" alt="Source: https://github.com/parrt/dtreeviz" /><figcaption aria-hidden="true">Source: https://github.com/parrt/dtreeviz</figcaption>
+</figure>
+</section>
+<section id="tree-trade-offs" class="slide level2">
+<h2>Tree Trade-offs</h2>
 <p>Advantages:</p>
 <ul>
 <li class="fragment">Excels at capturing conditional dependencies</li>
 <li class="fragment">Arguably more intuitive than OLS.</li>
 <li class="fragment">Provides an metric of feature importance that has a substantive interpretation.</li>
 </ul>
+<div class="fragment">
 <p>Disadvantages:</p>
+</div>
 <ul>
 <li class="fragment"><strong>Extremely</strong> prone to <em>over-fitting</em>.</li>
 <li class="fragment">Does not provide a linear marginal effect estimate.</li>
 </ul>
-</section><section id="choosing-your-supervised-algorithm" class="slide level2">
+</section>
+<section id="choosing-your-supervised-algorithm" class="slide level2">
 <h2>Choosing Your Supervised Algorithm</h2>
 <p>These are some of the criteria you may want to consider when choosing an algorithm:</p>
 <ul>
@@ -142,10 +156,16 @@
 <li class="fragment"><em>Minimum Data</em>: Some models are able to do more with less. This is especially true if the model makes certain parametric assumptions about the nature or distribution of the data.</li>
 <li class="fragment"><em>Interpretability</em>: Not all methods provide insight into <em>how</em> they formulate their predictions. Methods range from extremely intuitive, such as decision trees, to complete black boxes, such as neural networks. When seeking to <em>explain</em> and not <em>predict</em>, one should take this into account.</li>
 </ul>
-</section><section id="this-brings-me-to" class="slide level2">
+</section>
+<section id="this-brings-me-to" class="slide level2">
 <h2>This brings me to…</h2>
 </section></section>
-<section><section id="ensemble-methods" class="title-slide slide level1"><h1>Ensemble Methods</h1></section><section id="managing-shortcomings-by-working-together" class="slide level2">
+<section>
+<section id="ensemble-methods" class="title-slide slide level1">
+<h1>Ensemble Methods</h1>
+
+</section>
+<section id="managing-shortcomings-by-working-together" class="slide level2">
 <h2>Managing Shortcomings by Working Together</h2>
 <ul>
 <li class="fragment">There is no single model or algorithm that performs best across all criteria in all scenarios.</li>
@@ -156,7 +176,8 @@
 <li class="fragment"><em>Sequential Ensembles</em> use the output of one algorithm (often unsupervised) as features to train another. PCA+kmeans is an example of this.</li>
 </ul></li>
 </ul>
-</section><section id="aggregating-trees-random-forests" class="slide level2">
+</section>
+<section id="aggregating-trees-random-forests" class="slide level2">
 <h2>Aggregating Trees: Random Forests</h2>
 <p>There are various algorithms that aggregate decision trees, but here I outline the logic behind the most straightforward and common one: Random Forests (RFs).</p>
 <ul>
@@ -165,7 +186,8 @@
 <li class="fragment">To predict, the same input array is passed to all the constituent trees, and the algorithm either returns mean prediction (continuous data) or modal prediction (categorical data).</li>
 <li class="fragment">The noteworthy improvement on this algorithm is Bayesian Additive Regression Trees (BARTs).</li>
 </ul>
-</section><section id="aggregating-learners-meta-learners" class="slide level2">
+</section>
+<section id="aggregating-learners-meta-learners" class="slide level2">
 <h2>Aggregating Learners: Meta-Learners</h2>
 <p>A number of papers have been published recently that use ensemble methods to estimate heterogeneous treatment effects:</p>
 <ul>
@@ -176,7 +198,12 @@
 These papers both focus on innovating on the <em>meta-learner</em>.
 </p>
 </section></section>
-<section><section id="optimising-your-model" class="title-slide slide level1"><h1>Optimising Your Model</h1></section><section id="machine-learning-is-not-just-algorithms" class="slide level2">
+<section>
+<section id="optimising-your-model" class="title-slide slide level1">
+<h1>Optimising Your Model</h1>
+
+</section>
+<section id="machine-learning-is-not-just-algorithms" class="slide level2">
 <h2>Machine Learning is not just Algorithms</h2>
 <ul>
 <li class="fragment">Another contribution of machine learning to econometrics, in my opinion, has been the development of strategies to test and evaluate models.</li>
@@ -186,7 +213,8 @@ These papers both focus on innovating on the <em>meta-learner</em>.
 <li class="fragment">The cost of this is the unsuitability of many machine learning algorithms to theory testing in the traditional econometric sense.</li>
 </ul></li>
 </ul>
-</section><section id="cross-validation" class="slide level2">
+</section>
+<section id="cross-validation" class="slide level2">
 <h2>Cross Validation</h2>
 <p>Cross validation is one such of these strategies. It consists of dividing the data into <em>training</em> and <em>test</em> sets:</p>
 <ol type="1">
@@ -194,21 +222,24 @@ These papers both focus on innovating on the <em>meta-learner</em>.
 <li class="fragment">The fitted model is applied to the <em>test features</em> to generate <em>predicted values</em>: <span class="math inline">\(\hat{y} = \hat{f}(X_{test})\)</span></li>
 <li class="fragment">The difference between the <em>predicted values</em> and the <em>test labels</em> is used as a measure of the predictive accuracy of the model: <span class="math inline">\(\hat{e} = y_{test} - \hat{y}\)</span></li>
 </ol>
-<p class="fragment">
-There are multiple aggregate measures of prediction error, but a common one is <em>mean squared (prediction) error</em>, calculated as the sum of squared differences between prediction and test label.
-</p>
-</section><section id="k-fold-cross-validation" class="slide level2">
+<div class="fragment">
+<p>There are multiple aggregate measures of prediction error, but a common one is <em>mean squared (prediction) error</em>, calculated as the sum of squared differences between prediction and test label.</p>
+</div>
+</section>
+<section id="k-fold-cross-validation" class="slide level2">
 <h2>k-fold Cross Validation</h2>
 <ul>
 <li class="fragment">There are some obvious shortcomings to dividing the data into a training at test set just once.</li>
 <li class="fragment">A slightly more advanced method for train-test splitting is known a k-fold CV, which consists of splitting the training data randomly into <span class="math inline">\(k\)</span> bins, and then iteratively using the <span class="math inline">\(k\)</span>th bin as a test set for all bins not <span class="math inline">\(k\)</span>.</li>
 </ul>
-</section><section id="cross-validation-visualised" class="slide level2">
+</section>
+<section id="cross-validation-visualised" class="slide level2">
 <h2>Cross Validation Visualised</h2>
 <figure>
-<img data-src="https://scikit-learn.org/stable/_images/grid_search_cross_validation.png" alt="K-Fold Cross Validation" /><figcaption>K-Fold Cross Validation</figcaption>
+<img data-src="https://scikit-learn.org/stable/_images/grid_search_cross_validation.png" alt="K-Fold Cross Validation" /><figcaption aria-hidden="true">K-Fold Cross Validation</figcaption>
 </figure>
-</section><section id="choosing-parameters" class="slide level2">
+</section>
+<section id="choosing-parameters" class="slide level2">
 <h2>Choosing Parameters</h2>
 <p>Another strategy for improving the predictive accuracy of algorithms relates to choosing the right <em>parameters</em>.</p>
 <p>Most, if not all algorithms have some parameters that affect predictions in very unobvious ways. For example:</p>
@@ -218,7 +249,8 @@ There are multiple aggregate measures of prediction error, but a common one is <
 <li class="fragment">Random Forest: proportion of features to use in each subset</li>
 <li class="fragment">LASSO/Ridge/EN: <span class="math inline">\(\beta\)</span></li>
 </ul>
-</section><section id="hyperparameter-tuning" class="slide level2">
+</section>
+<section id="hyperparameter-tuning" class="slide level2">
 <h2>Hyperparameter Tuning</h2>
 <ul>
 <li class="fragment">Hyperparameter tuning is the practice of choosing model parameters by maximising an <em>objective function</em>. Some possible objective functions include:
@@ -230,7 +262,12 @@ There are multiple aggregate measures of prediction error, but a common one is <
 <li class="fragment">Hyperparameter tuning is computationally costly, but also easily parallelisable. <!-- - _Remember_: The optimal parameters are closely related to the choice of objective function. Whether they are correct for the task you are trying to accomplish depends therefore on the objective function. --></li>
 </ul>
 </section></section>
-<section><section id="machine-learning-recap" class="title-slide slide level1"><h1>Machine Learning Recap</h1></section><section id="key-terms" class="slide level2">
+<section>
+<section id="machine-learning-recap" class="title-slide slide level1">
+<h1>Machine Learning Recap</h1>
+
+</section>
+<section id="key-terms" class="slide level2">
 <h2>Key Terms</h2>
 <ul>
 <li class="fragment"><em>Unsupervised Learning</em>: No <span class="math inline">\(y\)</span>, explore <span class="math inline">\(X\)</span></li>
@@ -242,7 +279,8 @@ There are multiple aggregate measures of prediction error, but a common one is <
 <li class="fragment"><em>Hyperparameter Tuning</em>: Systematically choose optimal parameters for algorithm.</li>
 <li class="fragment"><em>Objective Function</em>: An optimisable aspect of the data used to measure goodness-of-fit.</li>
 </ul>
-</section><section id="trade-offs" class="slide level2">
+</section>
+<section id="trade-offs" class="slide level2">
 <h2>Trade-offs</h2>
 <p>These trade-offs are not linear, but generally hold:</p>
 <ul>
@@ -250,29 +288,41 @@ There are multiple aggregate measures of prediction error, but a common one is <
 <li class="fragment"><em>Flexibility vs efficiency</em></li>
 <li class="fragment"><em>Information vs time</em></li>
 </ul>
-</section><section id="readings" class="slide level2">
+</section>
+<section id="readings" class="slide level2">
 <h2>Readings</h2>
 <p>Ensemble Methods:</p>
 <ul>
 <li class="fragment"><a href="https://www.cambridge.org/core/journals/political-analysis/article/estimating-heterogeneous-treatment-effects-and-the-effects-of-heterogeneous-treatments-with-ensemble-methods/C7E3EA00D0AD83429CBE73F4F0C6652C">Grimmer &amp; Westwood, <em>Political Analysis</em> 2017</a></li>
 <li class="fragment"><a href="https://arxiv.org/abs/1706.03461">Kunzel et al, <em>PNAS</em> 2019</a></li>
 </ul>
+<p>Elements of Statistical Learning:</p>
+<ul>
+<li class="fragment">9.2: Tree-Based Methods</li>
+<li class="fragment">15: Random Forests</li>
+<li class="fragment">16: Ensemble Learning</li>
+</ul>
 </section></section>
     </div>
   </div>
 
-  <script src="../reveal.js/lib/js/head.min.js"></script>
-  <script src="../reveal.js/js/reveal.js"></script>
+  <script src="../reveal.js/dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="../reveal.js/plugin/notes/notes.js"></script>
+  <script src="../reveal.js/plugin/search/search.js"></script>
+  <script src="../reveal.js/plugin/zoom/zoom.js"></script>
+  <script src="../reveal.js/plugin/math/math.js"></script>
 
   <script>
 
       // Full list of configuration options available at:
-      // https://github.com/hakimel/reveal.js#configuration
+      // https://revealjs.com/config/
       Reveal.initialize({
         // Push each slide change to the browser history
         history: true,
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -288,12 +338,12 @@ There are multiple aggregate measures of prediction error, but a common one is <
           },
         },
 
-        // Optional reveal.js plugins
-        dependencies: [
-          { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true },
-          { src: '../reveal.js/plugin/math/math.js', async: true },
-          { src: '../reveal.js/plugin/notes/notes.js', async: true }
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
         ]
       });
     </script>
