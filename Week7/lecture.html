@@ -8,25 +8,17 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="../reveal.js/css/reveal.css">
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
   </style>
-  <link rel="stylesheet" href="../reveal.js/css/theme/../../../dpir-intro-theme.css" id="theme">
-  <!-- Printing and PDF exports -->
-  <script>
-    var link = document.createElement( 'link' );
-    link.rel = 'stylesheet';
-    link.type = 'text/css';
-    link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal.js/css/print/pdf.css' : '../reveal.js/css/print/paper.css';
-    document.getElementsByTagName( 'head' )[0].appendChild( link );
-  </script>
-  <!--[if lt IE 9]>
-  <script src="../reveal.js/lib/js/html5shiv.js"></script>
-  <![endif]-->
+  <link rel="stylesheet" href="../reveal.js/dist/theme/../../../dpir-intro-theme.css" id="theme">
 </head>
 <body>
   <div class="reveal">
@@ -39,14 +31,20 @@
   <p class="date">7th Week Hilary 2020</p>
 </section>
 
-<section><section id="this-week" class="title-slide slide level1"><h1>This Week</h1></section><section id="mining-the-web" class="slide level2">
+<section>
+<section id="this-week" class="title-slide slide level1">
+<h1>This Week</h1>
+
+</section>
+<section id="mining-the-web" class="slide level2">
 <h2>Mining the Web</h2>
 <ul>
 <li class="fragment">This week we learn about automating data collection from the Internet.</li>
 <li class="fragment">This is a powerful tool in your research arsenal, and a frequently sought-after skill by social science researchers.</li>
 <li class="fragment">This also lays bare a broader goal that computational methods seek to accomplish: <em>automation</em>.</li>
 </ul>
-</section><section id="roadmap" class="slide level2">
+</section>
+<section id="roadmap" class="slide level2">
 <h2>Roadmap</h2>
 <ul>
 <li class="fragment">How does the Internet work? (Short version)</li>
@@ -55,7 +53,8 @@
 <li class="fragment">When is it (in)appropriate to scrape?</li>
 <li class="fragment">Coding Tutorial</li>
 </ul>
-</section><section id="final-note" class="slide level2">
+</section>
+<section id="final-note" class="slide level2">
 <h2>Final Note</h2>
 <p>The aim of this lecture/tutorial is twofold:</p>
 <ul>
@@ -66,7 +65,12 @@
 Writing a web scraper takes a lot of time and effort. Mastery of the tools will enable you to build these more efficiently, and focus on the <em>logic</em> instead of the <em>mechanics</em>.
 </p>
 </section></section>
-<section><section id="how-does-the-internet-work-abridged" class="title-slide slide level1"><h1>How does the Internet work? (Abridged)</h1></section><section id="our-experience" class="slide level2">
+<section>
+<section id="how-does-the-internet-work-abridged" class="title-slide slide level1">
+<h1>How does the Internet work? (Abridged)</h1>
+
+</section>
+<section id="our-experience" class="slide level2">
 <h2>Our Experience</h2>
 <p>We are all familiar with how to access information on the Internet.</p>
 <ul>
@@ -80,7 +84,8 @@ To understand how to automate this process, we need to understand which portions
 <p class="fragment">
 Let’s look under the hood to see what actually happens.
 </p>
-</section><section id="step-1-request" class="slide level2">
+</section>
+<section id="step-1-request" class="slide level2">
 <h2>STEP 1: <strong>REQUEST</strong></h2>
 <p>When you type a website into your browser’s <code>URL</code> bar and hit <code>enter</code>:</p>
 <ul>
@@ -94,14 +99,16 @@ Let’s break this down:
 <li class="fragment">Action: <code>GET</code></li>
 <li class="fragment">Destination: <code>URL</code></li>
 </ul>
-</section><section id="protocol" class="slide level2">
+</section>
+<section id="protocol" class="slide level2">
 <h2>Protocol</h2>
 <ul>
 <li class="fragment"><code>HTTP</code> is an application-level data transfer protocol used on the Internet.</li>
 <li class="fragment"><code>HTTPS</code> is a secured version of this protocol.</li>
 <li class="fragment">Other protocols include <code>FTP</code> (file transfer protocol), <code>SSH</code> (secure shell), etc.</li>
 </ul>
-</section><section id="action" class="slide level2">
+</section>
+<section id="action" class="slide level2">
 <h2>Action</h2>
 <ul>
 <li class="fragment">A <code>GET</code> request is an <code>HTTP</code> request for retrieving information from the target web server.
@@ -109,9 +116,10 @@ Let’s break this down:
 <li class="fragment">Keep this in mind: accessing a webpage is similar to requesting a book or document from a library.</li>
 </ul></li>
 </ul>
-</section><section id="destination-url" class="slide level2">
+</section>
+<section id="destination-url" class="slide level2">
 <h2>Destination: <code>URL</code></h2>
-<p>A <code>URL</code> (uniform resource locator) is a reference to a web resource. They have the generic syntax<a href="#/fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>:</p>
+<p>A <code>URL</code> (uniform resource locator) is a reference to a web resource. They have the generic syntax<a href="#/fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>:</p>
 <pre><code>URI = scheme:[//authority]path[?query][#fragment]
 authority = [userinfo@]host[:port]
 
@@ -120,7 +128,8 @@ authority = [userinfo@]host[:port]
 https://john.doe@www.example.com:123/forum/questions/?tag=networking&amp;order=newest#top
 └─┬─┘   └───────────┬──────────────┘└───────┬───────┘ └───────────┬─────────────┘ └┬┘
 scheme          authority                  path                 query             fragment</code></pre>
-</section><section id="urls-explained" class="slide level2">
+</section>
+<section id="urls-explained" class="slide level2">
 <h2><code>URL</code>s Explained</h2>
 <pre><code>              host
         ┌──────┴───────┐
@@ -137,18 +146,20 @@ scheme     authority                     path                     fragment</code
 <li class="fragment"><strong>path</strong>: A path in the internal filesystem of the web server.</li>
 <li class="fragment"><strong>fragment</strong>: Optional, “scrolls” to a specific sub-element within the webpage.</li>
 </ul>
-</section><section id="aside-ip-addresses-dns" class="slide level2">
+</section>
+<section id="aside-ip-addresses-dns" class="slide level2">
 <h2>Aside: IP Addresses, DNS</h2>
 <p><em>(Heavy oversimplification on this slide)</em></p>
 <ul>
-<li class="fragment">The destination web server’s “location” within the Internet is stored not as a <code>URL</code>, but usually as an IP address, e.g. <code>216.58.210.206</code></li>
+<li class="fragment">The destination web server’s “location” within the Internet is stored not as a <code>URL</code>, but usually as an IP address, e.g. <code>216.58.210.206</code></li>
 <li class="fragment">An IP address is similar to a physical address for mail.</li>
 <li class="fragment">Note: to make sure that your request gets sent to the right desintation the host in the <code>URL</code> must be converted to an IP address. This conversion is done by <code>DNS</code>.
 <ul>
 <li class="fragment">DNS resolvers are essentially the address books of the web. They maintain records of urls and IP addresses. These resolvers are within the browser, our OS, and also maintained by third parties such as our ISPs, Google or Cloudflare.</li>
 </ul></li>
 </ul>
-</section><section id="step-2-response" class="slide level2">
+</section>
+<section id="step-2-response" class="slide level2">
 <h2>STEP 2: <strong>RESPONSE</strong></h2>
 <p>Your request now having been routed to the correct address, the web server:</p>
 <ul>
@@ -160,16 +171,18 @@ scheme     authority                     path                     fragment</code
 <li class="fragment">Exceptions: requesting <code>pdf</code> documents directly from webpages, interacting with a <code>php</code> server.</li>
 </ul></li>
 </ul>
-</section><section id="step-3-render" class="slide level2">
+</section>
+<section id="step-3-render" class="slide level2">
 <h2>STEP 3: <strong>RENDER</strong></h2>
-<p>A web browser is actually a specialised piece of software that can render and display all kinds of document formats, and allow you to interact with them via a graphical interface<a href="#/fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.</p>
+<p>A web browser is actually a specialised piece of software that can render and display all kinds of document formats, and allow you to interact with them via a graphical interface<a href="#/fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
 <p>Many websites you deal with will be a mixture of <code>html</code>, <code>css</code> and <code>javascript</code>.</p>
 <ul>
 <li class="fragment"><code>html</code> is more appropriately described as a data structure than a language. It provides the “skeleton” of the webpage and the textual elements.</li>
 <li class="fragment"><code>css</code> is also a data structure, but provides <em>styling</em> information that informs much of the aesthetics of the webpage.</li>
 <li class="fragment"><code>javascript</code> is a programming language that runs programs on the <em>client side</em> (i.e. in your computer) and creates interactive elements on webpages.</li>
 </ul>
-</section><section id="inspecting-source" class="slide level2">
+</section>
+<section id="inspecting-source" class="slide level2">
 <h2>Inspecting Source</h2>
 <p>Most browsers allow you to inspect the source of the webpage that you are viewing. I recommend that you use Chrome/Chromium/Firefox.</p>
 <table>
@@ -188,7 +201,12 @@ scheme     authority                     path                     fragment</code
 </table>
 <p>The devtools in the browser allow you to inspect the <code>html</code> and <code>css</code> files that generate the webpages. Recognising how these are structured is key to web scraping.</p>
 </section></section>
-<section><section id="web-mining-for-social-scientists" class="title-slide slide level1"><h1>Web Mining for Social Scientists?</h1></section><section id="note-on-terminology" class="slide level2">
+<section>
+<section id="web-mining-for-social-scientists" class="title-slide slide level1">
+<h1>Web Mining for Social Scientists?</h1>
+
+</section>
+<section id="note-on-terminology" class="slide level2">
 <h2>Note on Terminology</h2>
 <p>I use the following three terms to refer to different things:</p>
 <ul>
@@ -199,7 +217,8 @@ scheme     authority                     path                     fragment</code
 <p class="fragment">
 The difference will become clearer as I discuss them.
 </p>
-</section><section id="social-science-use-cases" class="slide level2">
+</section>
+<section id="social-science-use-cases" class="slide level2">
 <h2>Social Science Use Cases</h2>
 <ul>
 <li class="fragment">Collecting parliamentary transcripts.</li>
@@ -212,7 +231,8 @@ The difference will become clearer as I discuss them.
 <li class="fragment">Analysing precinct-level crime data.</li>
 <li class="fragment">…</li>
 </ul>
-</section><section id="trace-data" class="slide level2">
+</section>
+<section id="trace-data" class="slide level2">
 <h2>Trace Data</h2>
 <p>It’s useful to distinguish between <em>trace</em> data, and structured data embedded in websites.</p>
 <ul>
@@ -222,7 +242,8 @@ The difference will become clearer as I discuss them.
 <li class="fragment">Using trace data requires you to think more carefully about what exists, how that connects to the activity you are trying to measure. Missingness is less clear; it could be erased/censored entries, or offline activity.</li>
 </ul></li>
 </ul>
-</section><section id="embedded-structued-resources" class="slide level2">
+</section>
+<section id="embedded-structued-resources" class="slide level2">
 <h2>Embedded Structued Resources</h2>
 <ul>
 <li class="fragment">Embedded structured data (my term) refers to online archives of structured data. This could take the form of statistics stored in spreadsheets, transcripts of debates, and so on.
@@ -231,17 +252,23 @@ The difference will become clearer as I discuss them.
 </ul></li>
 <li class="fragment">This is not a dichotomy; many things fall somewhere in between, such as press releases.</li>
 </ul>
-</section><section id="apis" class="slide level2">
+</section>
+<section id="apis" class="slide level2">
 <h2>APIs</h2>
 <p>Some websites provide an <em>application programming interface</em> (API), which is an interface specifically designed for automated querying/retrieval.</p>
 <ul>
 <li class="fragment">If an API exists, <em>use it</em>. APIs are more resource efficient than webpages, and exist in part to prevent unstructured scraping.</li>
 <li class="fragment">Check for an API at the bottom of the webpage, sometimes in a section “for developers”.</li>
-<li class="fragment">There will usually be documentation for an API, and sometimes even a specific Python library (e.g. <code>tweepy</code> for Twitter).</li>
+<li class="fragment">There will usually be documentation for an API, and sometimes even a specific Python library (e.g. <code>tweepy</code> for Twitter).</li>
 <li class="fragment">Because APIs are so specific to websites, I will not go over them in this class.</li>
 </ul>
 </section></section>
-<section><section id="using-python-for-web-mining" class="title-slide slide level1"><h1>Using Python for Web Mining</h1></section><section id="libraries" class="slide level2">
+<section>
+<section id="using-python-for-web-mining" class="title-slide slide level1">
+<h1>Using Python for Web Mining</h1>
+
+</section>
+<section id="libraries" class="slide level2">
 <h2>Libraries</h2>
 <p>The following libraries are key for building web scrapers:</p>
 <ul>
@@ -256,7 +283,8 @@ Some glaring omissions from this list:
 <li class="fragment"><code>scrapy</code>: For building deployable web crawlers.</li>
 <li class="fragment"><code>selenium</code>: Web testing library, can handle <code>javascript</code> and be programmed to behave much more like a human than a bot.</li>
 </ul>
-</section><section id="retrieving-web-pages" class="slide level2">
+</section>
+<section id="retrieving-web-pages" class="slide level2">
 <h2>Retrieving Web Pages</h2>
 <p>Here’s a function I wrote/adapted from <a href="https://www.oreilly.com/library/view/web-scraping-with/9781491985564/"><em>Web Scraping with Python, 2nd Ed.</em></a></p>
 <pre class="{python}"><code>def safe_get(url, parser=&#39;html.parser&#39;):
@@ -269,7 +297,8 @@ Some glaring omissions from this list:
     except requests.exceptions.RequestsWarning:
         return None
     return BeautifulSoup(req.text, parser)</code></pre>
-</section><section id="tryexcept" class="slide level2">
+</section>
+<section id="tryexcept" class="slide level2">
 <h2><code>try</code>/<code>except</code></h2>
 <pre class="{python}"><code>    try:
         session = requests.Session()
@@ -283,7 +312,8 @@ Some glaring omissions from this list:
 <li class="fragment">If in the execution of this code, a <code>requests.exceptions.RequestsWarning</code> is <em>raised</em>, then the code <code>return None</code> is executed.</li>
 <li class="fragment">If a different kind of exception occurs, then it is not <em>handled</em> by this except statement, and is raised normally (resulting in an error).</li>
 </ul>
-</section><section id="requests" class="slide level2">
+</section>
+<section id="requests" class="slide level2">
 <h2><code>requests</code></h2>
 <p>There are just three things the <code>requests</code> library is being used for:</p>
 <ul>
@@ -295,14 +325,20 @@ Some glaring omissions from this list:
 <li class="fragment">Web-request specific errors/exceptions.</li>
 </ul>
 </section></section>
-<section><section id="parsing-html" class="title-slide slide level1"><h1>Parsing <code>html</code></h1></section><section id="html" class="slide level2">
+<section>
+<section id="parsing-html" class="title-slide slide level1">
+<h1>Parsing <code>html</code></h1>
+
+</section>
+<section id="html" class="slide level2">
 <h2><code>html</code></h2>
 <p><em>Hypertext Markup Language</em>, or <code>html</code>, is the core of all webpages.</p>
 <ul>
 <li class="fragment">Consists of <em>elements</em>, beginning and ending with a <em>tag</em>.</li>
 <li class="fragment">Nested structure (like a dictionary).</li>
 </ul>
-</section><section id="html-tags" class="slide level2">
+</section>
+<section id="html-tags" class="slide level2">
 <h2><code>html</code> tags</h2>
 <ul>
 <li class="fragment">Tags define the type of element contained between them:
@@ -315,11 +351,12 @@ Some glaring omissions from this list:
 </ul></li>
 <li class="fragment">The front tag can contain additional attributes:
 <ul>
-<li class="fragment"><code>&lt;section id=&quot;title-slide&quot;&gt;...&lt;/section&gt;</code></li>
+<li class="fragment"><code>&lt;section id="title-slide"&gt;...&lt;/section&gt;</code></li>
 <li class="fragment">The <code>class</code> attribute allows for style inheritance from <code>css</code>.</li>
 </ul></li>
 </ul>
-</section><section id="html-example" class="slide level2">
+</section>
+<section id="html-example" class="slide level2">
 <h2><code>html</code> example</h2>
 <pre class="{html}"><code>&lt;section id=&quot;title-slide&quot;&gt;
   &lt;h1 class=&quot;title&quot;&gt;Introduction to Python for Social Science&lt;/h1&gt;
@@ -327,7 +364,8 @@ Some glaring omissions from this list:
   &lt;p class=&quot;author&quot;&gt;Musashi Harukawa, DPIR&lt;/p&gt;
   &lt;p class=&quot;date&quot;&gt;7th Week Hilary 2020&lt;/p&gt;
 &lt;/section&gt;</code></pre>
-</section><section id="beautifulsoup" class="slide level2">
+</section>
+<section id="beautifulsoup" class="slide level2">
 <h2><code>BeautifulSoup</code></h2>
 <ul>
 <li class="fragment"><code>html</code> does not actually need to be “correct” to function; most parsers can deal with issues such as missing tags, etc.</li>
@@ -339,7 +377,8 @@ Some glaring omissions from this list:
 <li class="fragment"><code>.parents</code>: Iterates up the tree through each parent.</li>
 </ul></li>
 </ul>
-</section><section id="searching-with-beautifulsoup" class="slide level2">
+</section>
+<section id="searching-with-beautifulsoup" class="slide level2">
 <h2>Searching with <code>BeautifulSoup</code></h2>
 <ul>
 <li class="fragment">It also provides powerful search functionality with <code>find()</code>, <code>find_all()</code>, etc. These searches can take:
@@ -351,11 +390,17 @@ Some glaring omissions from this list:
 <li class="fragment">Full documentation can be found <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">online</a></li>
 </ul>
 </section></section>
-<section><section id="regular-expressions" class="title-slide slide level1"><h1>Regular Expressions</h1></section><section id="re" class="slide level2">
+<section>
+<section id="regular-expressions" class="title-slide slide level1">
+<h1>Regular Expressions</h1>
+
+</section>
+<section id="re" class="slide level2">
 <h2><code>re</code></h2>
 <p>A regular expression (RE) is a sequence of characters that defines a <em>search pattern</em>. These patterns are used to systematically and flexibly search through strings.</p>
 <p>Python provides its own implementation of regular expressions, along with the built-in library <code>re</code>.</p>
-</section><section id="understanding-regular-expressions" class="slide level2">
+</section>
+<section id="understanding-regular-expressions" class="slide level2">
 <h2>Understanding Regular Expressions</h2>
 <p>Regular expressions are constructed of:</p>
 <ul>
@@ -369,7 +414,8 @@ For instance, the regular expression <code>a.</code> contains:
 <li class="fragment"><code>a</code>: the regular character lowercase ‘a’</li>
 <li class="fragment"><code>.</code>: the metacharacter matching any character except a newline.</li>
 </ul>
-</section><section id="metacharacters-for-character-sets" class="slide level2">
+</section>
+<section id="metacharacters-for-character-sets" class="slide level2">
 <h2>Metacharacters for Character Sets</h2>
 <ul>
 <li class="fragment"><code>.</code>: Any character other than <code>newline</code> (the character denoting that the subsequent character should be on a new line)</li>
@@ -381,14 +427,16 @@ For instance, the regular expression <code>a.</code> contains:
 <li class="fragment"><code>^</code> at the beginning of the set negates the following; <code>[^eng]</code> is all characters other than <code>e</code>, <code>n</code> or <code>g</code></li>
 </ul></li>
 </ul>
-</section><section id="more-metacharacter-character-sets" class="slide level2">
+</section>
+<section id="more-metacharacter-character-sets" class="slide level2">
 <h2>More Metacharacter Character Sets</h2>
 <ul>
 <li class="fragment"><code>\w</code> matches all Unicode word characters, including numbers and underscore.</li>
-<li class="fragment"><code>\W</code> matches all Unicode non-word characters, i.e. <code>[^\w]</code></li>
+<li class="fragment"><code>\W</code> matches all Unicode non-word characters, i.e. <code>[^\w]</code></li>
 <li class="fragment"><code>\s</code>/<code>\S</code> match respectively all whitespace and non-whitespace characters.</li>
 </ul>
-</section><section id="metacharacters-defining-repetition" class="slide level2">
+</section>
+<section id="metacharacters-defining-repetition" class="slide level2">
 <h2>Metacharacters Defining Repetition</h2>
 <ul>
 <li class="fragment"><code>*</code>: Matches 0 or more consecutive instances of the previous RE. Matches as many as possible.</li>
@@ -397,20 +445,26 @@ For instance, the regular expression <code>a.</code> contains:
 <li class="fragment"><code>{m}</code>: Matches exactly <code>m</code> instances of the previous RE.</li>
 <li class="fragment"><code>{m, n}</code>: Matches between <code>m</code> and <code>n</code> instances of the previous RE.</li>
 </ul>
-</section><section id="combining-sets-and-repetition" class="slide level2">
+</section>
+<section id="combining-sets-and-repetition" class="slide level2">
 <h2>Combining Sets and Repetition</h2>
 <ul>
 <li class="fragment"><code>[a-z]*</code> matches 0 or more instances of lowercase latin letters.</li>
 <li class="fragment"><code>[^0-9]?</code> matches 0 or 1 instances a non-number character.</li>
 <li class="fragment"><code>[abc]{4, }[0-9]</code> will match 4 or more occurrences of <code>a</code>, <code>b</code> or <code>c</code> followed by a single number:
-<ul>
-<li class="fragment">[x] <code>aaaaabac1</code></li>
-<li class="fragment">[ ] <code>abcabc</code></li>
-<li class="fragment">[ ] <code>abc0</code></li>
-<li class="fragment">[x] <code>abcb01</code> -&gt; will match the substring <code>abcb0</code></li>
+<ul class="task-list">
+<li class="fragment"><input type="checkbox" disabled="" />
+<code>aaaaabac1</code></li>
+<li class="fragment"><input type="checkbox" disabled="" />
+<code>abcabc</code></li>
+<li class="fragment"><input type="checkbox" disabled="" />
+<code>abc0</code></li>
+<li class="fragment"><input type="checkbox" disabled="" />
+<code>abcb01</code></li>
 </ul></li>
 </ul>
-</section><section id="other-special-characters" class="slide level2">
+</section>
+<section id="other-special-characters" class="slide level2">
 <h2>Other Special Characters</h2>
 <ul>
 <li class="fragment"><code>^</code>: Matches the null character at the beginning of a string.</li>
@@ -419,7 +473,12 @@ For instance, the regular expression <code>a.</code> contains:
 <li class="fragment"><code>()</code>: Defines subgroups within the regular expression that can be extracted individually.</li>
 </ul>
 </section></section>
-<section><section id="combined-workflow" class="title-slide slide level1"><h1>Combined Workflow</h1></section><section id="scraping-data-files-from-an-archive" class="slide level2">
+<section>
+<section id="combined-workflow" class="title-slide slide level1">
+<h1>Combined Workflow</h1>
+
+</section>
+<section id="scraping-data-files-from-an-archive" class="slide level2">
 <h2>Scraping Data Files from an Archive</h2>
 <p>Say you have a webpage containing a large number of links, each leading to a csv file that you want to download.</p>
 <ol type="1">
@@ -429,7 +488,8 @@ For instance, the regular expression <code>a.</code> contains:
 <li class="fragment">Use a for-loop to go through the links in this section, appending them to a list of the hypertext matches the regex string <code>.*\.pdf</code></li>
 <li class="fragment">Verify output, then use <code>requests</code> to recursively download the objects and write them to disk.</li>
 </ol>
-</section><section id="searching-politicians-websites-for-twitter-handles" class="slide level2">
+</section>
+<section id="searching-politicians-websites-for-twitter-handles" class="slide level2">
 <h2>Searching Politicians’ Websites for Twitter Handles</h2>
 <ol type="1">
 <li class="fragment">Find a website listing all politicians’ websites (usually exists).</li>
@@ -445,7 +505,8 @@ For instance, the regular expression <code>a.</code> contains:
 <li class="fragment">If internal, pull page and repeat search for link that leads to Twitter account, but <strong>not</strong> Twitter’s homepage.</li>
 </ul></li>
 </ul>
-</section><section id="good-practices" class="slide level2">
+</section>
+<section id="good-practices" class="slide level2">
 <h2>Good Practices</h2>
 <ul>
 <li class="fragment">The first and most important step in searching a page is identifying which “part” of the page you want to search, i.e. the node in the <code>html</code>-tree that contains all relevant matches. This can be found using the Inspector Tool on most browsers.</li>
@@ -453,7 +514,12 @@ For instance, the regular expression <code>a.</code> contains:
 <li class="fragment">Writing a good regex string is as much about identifying true positives as it is about filtering out false positives. Do the filtering in a separate step if need be.</li>
 </ul>
 </section></section>
-<section><section id="when-is-it-inappropriate-to-scrape" class="title-slide slide level1"><h1>When is it (in)appropriate to scrape?</h1></section><section id="a-strong-warning" class="slide level2">
+<section>
+<section id="when-is-it-inappropriate-to-scrape" class="title-slide slide level1">
+<h1>When is it (in)appropriate to scrape?</h1>
+
+</section>
+<section id="a-strong-warning" class="slide level2">
 <h2>A Strong Warning</h2>
 <p>Unlike the tools we have discussed so far in this course, the tools used for web scraping can easily have unintended and damaging consequences.</p>
 <ul>
@@ -463,7 +529,8 @@ For instance, the regular expression <code>a.</code> contains:
 <li class="fragment">If the volume of requests is greater than what the web server can handle, then you can significantly slow down, or even bring down a website.</li>
 <li class="fragment">This is known as a <a href="https://en.wikipedia.org/wiki/Denial-of-service_attack">Denial of Service attack</a>, <em>and is essentially a cyber-attack</em>.</li>
 </ul>
-</section><section id="avoiding-this" class="slide level2">
+</section>
+<section id="avoiding-this" class="slide level2">
 <h2>Avoiding This</h2>
 <p>For the most part, it is unlikely that you will bring down a website; most web servers have countermeasures in place which will block IP addresses in response to a sudden high volume of requests. Nevertheless, make sure to:</p>
 <ul>
@@ -472,7 +539,8 @@ For instance, the regular expression <code>a.</code> contains:
 <li class="fragment"><strong>Be considerate and efficient</strong>. Do not request pages or resources that you do not need.</li>
 <li class="fragment"><strong>Know what you are doing</strong>. Make sure you understand what is happening at each stage. If possible, have someone else check over your code.</li>
 </ul>
-</section><section id="legality" class="slide level2">
+</section>
+<section id="legality" class="slide level2">
 <h2>Legality</h2>
 <p><strong>I am not a lawyer, and this does not constitute legal advice.</strong></p>
 <ul>
@@ -482,48 +550,59 @@ For instance, the regular expression <code>a.</code> contains:
 <li class="fragment">Relatedly, if there is an API, <strong>use it</strong>!</li>
 </ul>
 </section></section>
-<section><section id="reference" class="title-slide slide level1"><h1>Reference</h1></section><section id="readings" class="slide level2">
+<section>
+<section id="reference" class="title-slide slide level1">
+<h1>Reference</h1>
+
+</section>
+<section id="readings" class="slide level2">
 <h2>Readings</h2>
 <ul>
 <li class="fragment"><a href="https://www.oreilly.com/library/view/web-scraping-with/9781491985564/">Web Scraping</a>: Mitchell, 2018. <em>Web Scraping with Python, 2nd Edition</em>. O’Reilly Publishing. Can be accessed for free via SOLO.</li>
 <li class="fragment"><a href="https://www.oxfordhandbooks.com/view/10.1093/oxfordhb/9780199573691.001.0001/oxfordhb-9780199573691-e-021">Formal Language Theory</a>: Becerra-Bonache et al, 2018. “Mathematical Foundations: Formal Grammars and Languages”, in <em>The Oxford Handbook of Computational Linguistics, 2nd Edition</em>. OUP.</li>
 <li class="fragment"><a href="https://www.oxfordhandbooks.com/view/10.1093/oxfordhb/9780199573691.001.0001/oxfordhb-9780199573691-e-27">Web Text Mining</a>: Baeza-Yates et al, 2016. “Web Text Mining”, in <em>The Oxford Handbook of Computational Linguistics, 2nd Edition</em>. OUP.</li>
 </ul>
-</section><section id="resources" class="slide level2">
+</section>
+<section id="resources" class="slide level2">
 <h2>Resources</h2>
 <ul>
 <li class="fragment"><a href="https://w3resource.com/python-exercises/web-scraping/index.php">Python Web Scraping Exercises with Solutions</a></li>
 <li class="fragment">Regex Testers:
 <ul>
-<li class="fragment">Not Python specific, but the most full-featured: <a href="https://regexr.com/" class="uri">https://regexr.com/</a></li>
-<li class="fragment">Python specific, minimal: <a href="http://www.pyregex.com/" class="uri">http://www.pyregex.com/</a></li>
-<li class="fragment">Python specific, with cheatsheet: <a href="https://pythex.org/" class="uri">https://pythex.org/</a></li>
+<li class="fragment">Not Python specific, but the most full-featured: <a href="https://regexr.com/">https://regexr.com/</a></li>
+<li class="fragment">Python specific, minimal: <a href="http://www.pyregex.com/">http://www.pyregex.com/</a></li>
+<li class="fragment">Python specific, with cheatsheet: <a href="https://pythex.org/">https://pythex.org/</a></li>
 </ul></li>
 <li class="fragment"><a href="toscrape.com">Scraping Practice Website</a></li>
 </ul>
 </section></section>
-<section class="footnotes">
+<section class="footnotes" role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1"><p>This example is taken directly from https://en.wikipedia.org/wiki/Uniform_Resource_Identifier#Generic_syntax<a href="#/fnref1" class="footnote-back">↩</a></p></li>
-<li id="fn2"><p>There are CLI web browsers, such as <code>lynx</code>. These are fun to play around with if you want to explore the Internet without any graphical elements.<a href="#/fnref2" class="footnote-back">↩</a></p></li>
+<li id="fn1" role="doc-endnote"><p>This example is taken directly from https://en.wikipedia.org/wiki/Uniform_Resource_Identifier#Generic_syntax<a href="#/fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>There are CLI web browsers, such as <code>lynx</code>. These are fun to play around with if you want to explore the Internet without any graphical elements.<a href="#/fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
     </div>
   </div>
 
-  <script src="../reveal.js/lib/js/head.min.js"></script>
-  <script src="../reveal.js/js/reveal.js"></script>
+  <script src="../reveal.js/dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="../reveal.js/plugin/notes/notes.js"></script>
+  <script src="../reveal.js/plugin/search/search.js"></script>
+  <script src="../reveal.js/plugin/zoom/zoom.js"></script>
+  <script src="../reveal.js/plugin/math/math.js"></script>
 
   <script>
 
       // Full list of configuration options available at:
-      // https://github.com/hakimel/reveal.js#configuration
+      // https://revealjs.com/config/
       Reveal.initialize({
         // Push each slide change to the browser history
         history: true,
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -539,12 +618,12 @@ For instance, the regular expression <code>a.</code> contains:
           },
         },
 
-        // Optional reveal.js plugins
-        dependencies: [
-          { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true },
-          { src: '../reveal.js/plugin/math/math.js', async: true },
-          { src: '../reveal.js/plugin/notes/notes.js', async: true }
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
         ]
       });
     </script>

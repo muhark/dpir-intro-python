@@ -2,10 +2,10 @@
 title: Introduction to Python for Social Science
 subtitle: Lecture 7 - Mining the Web
 author: Musashi Harukawa, DPIR
-date: 7th Week Hilary 2020
+date: 7th Week Hilary 2021
 ---
 
-# This Week
+# This Week and Next
 
 ## Mining the Web
 
@@ -175,7 +175,7 @@ It's useful to distinguish between _trace_ data, and structured data embedded in
     - Much of "big data" refers to massive volumes of trace data generated on a secondly basis by users on these websites.
     - Using trace data requires you to think more carefully about what exists, how that connects to the activity you are trying to measure. Missingness is less clear; it could be erased/censored entries, or offline activity.
 
-## Embedded Structued Resources
+## Embedded Structured Resources
 
 - Embedded structured data (my term) refers to online archives of structured data. This could take the form of statistics stored in spreadsheets, transcripts of debates, and so on.
     - The objective here is entirely different; it may make sense to collect large portions of the archive and leverage other libraries to parse it afterwards.
@@ -207,7 +207,68 @@ The following libraries are key for building web scrapers:
 
 ## Retrieving Web Pages
 
-Here's a function I wrote/adapted from [_Web Scraping with Python, 2nd Ed._](https://www.oreilly.com/library/view/web-scraping-with/9781491985564/)
+Retrieving a webpage is as easy as sending a `GET` request to the correct `url`:
+
+```{python}
+In [1]: import requests
+
+In [2]: url = 'https://muhark.github.io/dpir-intro-python'
+
+In [3]: req = requests.get(url)
+
+In [4]: req
+Out[4]: <Response [200]>
+```
+
+
+## Parsing the Response
+
+We use BeautifulSoup to clean up and parse the response
+
+```{python}
+In [5]: from bs4 import BeautifulSoup
+
+In [6]: soup = BeautifulSoup(req.text)
+
+In [7]: print(soup.prettify())
+<!DOCTYPE html>
+<html lang="en-US">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+  <title>
+   Introduction to Python for Social Science | dpir-intro-python
+  </title>
+
+[...]
+```
+
+## Catching Errors
+
+- When working with other computers, a lot of things can go wrong.
+	- Network disconnect
+	- Server failure
+- It's important to 'catch' and 'handle' these errors.
+
+## Try/Except
+
+```{python}
+In [8]: try:
+   ...:     requests.get(url)
+   ...: except requests.exceptions.RequestsWarning:
+   ...:     print('Bad request!')
+```
+
+- This code will try to retrieve the url..
+- If this succeeds, then it proceeds as usual!
+- If it fails, and the failure (exception) is a `requests.exceptions.RequestsWarning`, then instead of exiting it will just print off the warning.
+
+
+## Putting it together
+
+This function has multiple presets to a) fail less and b) appear more like a regular user.
 
 ```{python}
 def safe_get(url, parser='html.parser'):
@@ -221,23 +282,6 @@ def safe_get(url, parser='html.parser'):
         return None
     return BeautifulSoup(req.text, parser)
 ```
-
-## `try`/`except`
-
-```{python}
-    try:
-        session = requests.Session()
-        [...]
-        req = session.get(url, headers=headers)
-    except requests.exceptions.RequestsWarning:
-        return None
-```
-
-`try`/`except` is a control flow structure.
-
-- In this case the function first runs the code from `session = ...` to `... headers=headers)`
-- If in the execution of this code, a `requests.exceptions.RequestsWarning` is _raised_, then the code `return None` is executed.
-- If a different kind of exception occurs, then it is not _handled_ by this except statement, and is raised normally (resulting in an error).
 
 ## `requests`
 
@@ -346,16 +390,16 @@ Regular expressions are constructed of:
 - `[a-z]*` matches 0 or more instances of lowercase latin letters.
 - `[^0-9]?` matches 0 or 1 instances a non-number character.
 - `[abc]{4, }[0-9]` will match 4 or more occurrences of `a`, `b` or `c` followed by a single number:
-    - [x] `aaaaabac1`
+    - [ ] `aaaaabac1`
     - [ ] `abcabc`
     - [ ] `abc0`
-    - [x] `abcb01` -> will match the substring `abcb0`
+    - [ ] `abcb01`
 
 ## Other Special Characters
 
 - `^`: Matches the null character at the beginning of a string.
 - `$`: Matches the null character at the end of a string.
-- `\`: Converts the subsequent metacharacter to a literal.
+- `\``: Converts the subsequent metacharacter to a literal.
 - `()`: Defines subgroups within the regular expression that can be extracted individually.
 
 # Combined Workflow
