@@ -8,25 +8,17 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="../reveal.js/css/reveal.css">
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
   </style>
-  <link rel="stylesheet" href="../reveal.js/css/theme/../../../dpir-intro-theme.css" id="theme">
-  <!-- Printing and PDF exports -->
-  <script>
-    var link = document.createElement( 'link' );
-    link.rel = 'stylesheet';
-    link.type = 'text/css';
-    link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal.js/css/print/pdf.css' : '../reveal.js/css/print/paper.css';
-    document.getElementsByTagName( 'head' )[0].appendChild( link );
-  </script>
-  <!--[if lt IE 9]>
-  <script src="../reveal.js/lib/js/html5shiv.js"></script>
-  <![endif]-->
+  <link rel="stylesheet" href="../reveal.js/dist/theme/../../../dpir-intro-theme.css" id="theme">
 </head>
 <body>
   <div class="reveal">
@@ -34,382 +26,248 @@
 
 <section id="title-slide">
   <h1 class="title">Introduction to Python for Social Science</h1>
-  <p class="subtitle">Lecture 8 - Intro to Natural Language Processing</p>
+  <p class="subtitle">Lecture 8 - APIs and Selenium</p>
   <p class="author">Musashi Harukawa, DPIR</p>
-  <p class="date">8th Week Hilary 2020</p>
+  <p class="date">8th Week Hilary 2021</p>
 </section>
 
-<section><section id="this-week" class="title-slide slide level1"><h1>This Week</h1></section><section id="roadmap" class="slide level2">
-<h2>Roadmap</h2>
-<p>This week we dive into my favourite field, <em>Natural Language Processing</em> (NLP), and look at the opportunities and difficulties that come with trying to harness text-as-data.</p>
-<p>Points covered:</p>
+<section>
+<section id="lecture-roadmap" class="title-slide slide level1">
+<h1>Lecture Roadmap</h1>
+
+</section>
+<section id="last-week" class="slide level2">
+<h2>Last Week</h2>
 <ul>
-<li class="fragment">What is NLP?</li>
-<li class="fragment">Considerations about language as a data source</li>
-<li class="fragment">Representations of Language and Relevant Metrics</li>
-<li class="fragment">Application: POS-taggers, NER, and noun extraction.</li>
+<li class="fragment">HTTP requests and Internet fundamentals</li>
+<li class="fragment">Regular Expressions</li>
 </ul>
-</section></section>
-<section><section id="intro-to-natural-language-processing" class="title-slide slide level1"><h1>Intro to Natural Language Processing</h1></section><section id="what-is-nlp" class="slide level2">
-<h2>What is NLP?</h2>
-<p><em>Natural Language Processing</em> (NLP) is an cross-disciplinary field drawing on linguistics, computer science, information retrieval, machine learning and artificial intelligence (among other fields) focused on computational methods for language. Applications include <em>speech recognition</em>, <em>natural language generation</em>, and <em>natural language understanding</em>.</p>
+</section>
+<section id="this-week" class="slide level2">
+<h2>This Week</h2>
 <ul>
-<li class="fragment"><em>Natural Language</em> is most easily defined in contrast to artificial or constructed languages. It includes all world languages, but excludes languages such as programming languages or Esperanto.</li>
-</ul>
-</section><section id="social-science-applications" class="slide level2">
-<h2>Social Science Applications</h2>
-<p>Applications in social science are usually focused on the <em>information retrieval</em>/<em>understanding</em> aspect of NLP. In other words, our focus is on using language as a data source, rather than building a working model for languages. As such, some major applications include:</p>
+<li class="fragment">APIs
 <ul>
-<li class="fragment"><em>Topic segmentation</em></li>
-<li class="fragment"><em>Summarisation</em></li>
-<li class="fragment"><em>Scaling</em></li>
-<li class="fragment"><em>Sentiment analysis</em></li>
-</ul>
-</section><section id="terminology" class="slide level2">
-<h2>Terminology</h2>
-<p>NLP has its own terminology, related to but separate from machine learning. Key terms include:</p>
-<ul>
-<li class="fragment"><em>Text-as-data</em>: Applications of NLP focused on the extraction of information from textual data.</li>
-<li class="fragment"><em>String</em>: A sequence of characters.</li>
-<li class="fragment"><em>Token</em>: A string having a semantic function, often delineated by spaces in English. Otherwise a word, or a word fragment.</li>
-<li class="fragment"><em>Document</em>: Sentences aggregated to a unit of analysis; can be a paragraph, a speech, a Tweet, etc.</li>
-<li class="fragment"><em>Corpus</em>: A set of documents.</li>
-<li class="fragment"><em>Vocabulary</em>: The set of all tokens. Usually the unique set of tokens contained within a given corpus.</li>
-</ul>
-</section><section id="further-terminology" class="slide level2">
-<h2>Further Terminology</h2>
-<ul>
-<li class="fragment"><em>Lemmatization</em>: The reduction of a word to its grammatical root.</li>
-<li class="fragment"><em>Stemming</em>: A set of rules for removing suffixes (and prefixes) from a word to reduce it to a word “stem”.</li>
-<li class="fragment"><em>Part-of-Speech Tagging</em>: The process of identifying the syntactic function of each token in a sentence, e.g. noun, verb, quantifier, etc.</li>
-<li class="fragment"><em>Named Entity Recognition</em>: Automatic tagging of “named entities” within a text, usually proper nouns such as companies, people or places.</li>
-</ul>
-</section></section>
-<section><section id="language-as-a-data-source" class="title-slide slide level1"><h1>Language as a Data Source</h1></section><section id="text-as-data" class="slide level2">
-<h2>Text-as-Data?</h2>
-<p>In general, as social scientists, we are not intrinsically interested in the process by which utterances and texts are generated (natural language generation) but rather the conditions which influence the generation of one text over another.</p>
-<p>Put differently, we use language as a proxy to measure the states and processes that both produce and are produced by the data.</p>
-</section><section id="example-question" class="slide level2">
-<h2>Example Question</h2>
-<ul>
-<li class="fragment">Imagine we are interested in the following question: <em>What is the effect of electoral system on legislators’ Twitter usage?</em></li>
-<li class="fragment">How do we go about answering this question?</li>
-</ul>
-</section><section id="formalizing-language" class="slide level2">
-<h2>Formalizing Language</h2>
-<p>A tweet by legislator <span class="math inline">\(i\)</span> of party <span class="math inline">\(j\)</span> at time <span class="math inline">\(t\)</span> can be described as an ordered set of tokens, drawn from the vocabulary <span class="math inline">\(V\)</span>:</p>
-<p><span class="math display">\[
-d_{ijt} := \langle w_1, w_2, ..., w_n, w_\omega \rangle \; \forall w_i \in V
-\]</span></p>
-</section><section id="language-automata" class="slide level2">
-<h2>Language Automata</h2>
-<p>Given this chain of tokens, we can describe the tokens as being probabilisitcally generated by an <em>automaton</em>, process which places probabilities over selecting one token given that another one came prior.</p>
-<figure>
-<img data-src="./figure1.png" alt="I will (not) endorse (Sanders|Biden)." /><figcaption>I will (not) endorse (Sanders|Biden).</figcaption>
-</figure>
-</section><section id="generative-process" class="slide level2">
-<h2>Generative Process</h2>
-<p>The probabilities in these automata can be described as a function placing probabilities over all tokens (the vocabulary) given the current state of the automaton. Aggregating this process up to the level of <em>document</em>, we can think of there as being a <em>document-generating process</em>.</p>
-</section><section id="the-tweet-generating-process" class="slide level2">
-<h2>The Tweet-Generating Process</h2>
-<p><span class="math display">\[
-d_{ijt} \leftarrow M(t, s_i, u_i, \lambda(\mathbf{w}_j, e_i, [...]), \mathcal{L}, [...])
-\]</span></p>
-<p>Where:</p>
-<ul>
-<li class="fragment"><span class="math inline">\(t\)</span> is the substantive <em>topic</em> of the Tweet.</li>
-<li class="fragment"><span class="math inline">\(s_i\)</span> is the authorial <em>style</em> of legislator <span class="math inline">\(i\)</span>.</li>
-<li class="fragment"><span class="math inline">\(u_i\)</span> is the preferences, or <em>position</em> of legislator <span class="math inline">\(i\)</span>.
-<ul>
-<li class="fragment"><span class="math inline">\(\lambda()\)</span> is a constraint function on the preferences of legislator <span class="math inline">\(i\)</span>.</li>
-<li class="fragment"><span class="math inline">\(\mathbf{w}_j\)</span> is the aggregated preferences, or <em>position</em> of party <span class="math inline">\(j\)</span>’s elite.</li>
-<li class="fragment"><span class="math inline">\(e_j\)</span> is the electoral formula faced by legislator <span class="math inline">\(i\)</span>.</li>
+<li class="fragment">Twitter’s Academic Track</li>
 </ul></li>
-<li class="fragment"><span class="math inline">\(\mathcal{L}\)</span> is the linguistic constraints on <span class="math inline">\(d\)</span>, i.e. the language rules.</li>
+<li class="fragment">Browser Automation</li>
 </ul>
-</section><section id="sources-of-variance" class="slide level2">
-<h2>Sources of Variance</h2>
-<p>Each of these inputs and constraints contribute <em>variance</em> to the DGP. <a href="http://benjaminlauderdale.net/files/papers/2016LauderdaleHerzogPA.pdf">Lauderdale and Herzog (<em>PA</em>, 2016)</a> provide a rough hierarchy of these sources of variance:</p>
+</section></section>
+<section>
+<section id="apis" class="title-slide slide level1">
+<h1>APIs</h1>
+
+</section>
+<section id="what-is-an-api" class="slide level2">
+<h2>What is an API?</h2>
+<ul>
+<li class="fragment"><em>Application Programming Interface</em></li>
+<li class="fragment"><em>Interface</em>: Specialized endpoint
+<ul>
+<li class="fragment">Specific query syntax</li>
+<li class="fragment">Returns defined data packets</li>
+</ul></li>
+<li class="fragment">We are interested in <em>Web APIs</em></li>
+</ul>
+</section>
+<section id="web-api-examples" class="slide level2">
+<h2>Web API Examples</h2>
+<ul>
+<li class="fragment">Twitter</li>
+<li class="fragment">Reddit</li>
+<li class="fragment">NY Times</li>
+<li class="fragment">The Guardian</li>
+<li class="fragment">Spotify</li>
+<li class="fragment">Netflix</li>
+</ul>
+</section>
+<section id="api-mechanics" class="slide level2">
+<h2>API Mechanics</h2>
+<ul>
+<li class="fragment">REST vs SOAP</li>
+<li class="fragment">RESTful APIs loosely based on HTTP methods
+<ul>
+<li class="fragment">Accept HTTP-like requests to access server-side assets</li>
+<li class="fragment">Return the payload usually as JSON or XML</li>
+<li class="fragment"><em>Stateless</em>: no server-side session information</li>
+</ul></li>
+</ul>
+<aside class="notes">
+<ul>
+<li>Most of the APIs I have come across are REST; all I know about SOAP is that it mandates XML payloads.</li>
+<li>Loosely-based: depending on the API, may allow for header or body parameters that do not typically exist in HTTP requests.</li>
+<li>Payload: the actual data packet. Sounds dramatic, it’s just the thing you wanted (versus the header, which basically says what it is and where it should go).</li>
+<li>Stateless: remember that the server does not remember who its speaking to. That means your credentials need to be sent with each request, and importantly for paginated requests, a “next page” token. We’ll come back to that later.</li>
+</ul>
+</aside>
+</section>
+<section id="twitters-api" class="slide level2">
+<h2>Twitter’s API</h2>
+<ul>
+<li class="fragment">Many different Twitter APIs and endpoints (Standard, Premium, Enterprise, and <strong>Academic</strong>)</li>
+<li class="fragment"><strong>Academic Research product track</strong> has following endpoints:
+<ul>
+<li class="fragment"><em>Full-archive search</em>: (Almost) everything back to 2006!</li>
+<li class="fragment"><em>Recent search</em>: Last 7 days, higher volumes</li>
+<li class="fragment"><em>Filtered stream</em>: Real-time filtered stream, capped at 1% of total volume</li>
+<li class="fragment"><em>Sampled stream</em>: <span class="math inline">\(~1\%\)</span> of all new Tweets in real-time</li>
+<li class="fragment"><em>Tweet and User Lookup</em>: Look up user/tweet by id</li>
+<li class="fragment">and <a href="https://developer.twitter.com/en/solutions/academic-research/products-for-researchers">more</a></li>
+</ul></li>
+</ul>
+</section>
+<section id="applying-for-access" class="slide level2">
+<h2>Applying for Access</h2>
+<ul>
+<li class="fragment">The Academic Research track has the following criteria:
+<ul>
+<li class="fragment">Master’s student or above (doctoral candidate, post-doc, faculty, researcher, etc.)</li>
+<li class="fragment">Clearly defined research objective and specific plans for how you will use the Twitter data</li>
+<li class="fragment">Non-commercial use</li>
+</ul></li>
+<li class="fragment">You can apply <a href="https://developer.twitter.com/en/portal/petition/academic/is-it-right-for-you">here</a></li>
+</ul>
+</section>
+<section id="using-the-api-with-python" class="slide level2">
+<h2>Using the API (with Python)</h2>
+<ul>
+<li class="fragment">We can use Python to generate requests to interact with Twitter’s API</li>
+<li class="fragment">Twitter provides a “wrapper” package: <code>searchtweets-v2</code></li>
+<li class="fragment">Documentation provided <a href="https://pypi.org/project/searchtweets-v2/">here</a> and <a href="https://developer.twitter.com/en/docs/twitter-api/tweets/search/introduction">here</a></li>
+</ul>
+</section>
+<section id="managing-credentials" class="slide level2">
+<h2>Managing Credentials</h2>
+<ul>
+<li class="fragment">Once you are granted access, you will be given a set of credentials for your project/application.</li>
+<li class="fragment">Store these securely, i.e. do not post them somewhere public.</li>
+<li class="fragment">Place them in a credentials <code>yaml</code> file that looks like the following:</li>
+</ul>
+<div class="fragment">
+<pre class="{yaml}"><code>search_tweets_v2:
+  endpoint:  https://api.twitter.com/2/tweets/search/all
+  consumer_key: &lt;CONSUMER_KEY&gt;
+  consumer_secret: &lt;CONSUMER_SECRET&gt;
+  bearer_token: &lt;BEARER_TOKEN&gt;</code></pre>
+</div>
+</section>
+<section id="writing-and-sending-requests" class="slide level2">
+<h2>Writing and Sending Requests</h2>
+<ul>
+<li class="fragment">To be discussed in the coding tutorial</li>
+</ul>
+</section></section>
+<section>
+<section id="browser-automation" class="title-slide slide level1">
+<h1>Browser Automation</h1>
+
+</section>
+<section id="when-does-static-scraping-fail" class="slide level2">
+<h2>When does static scraping fail?</h2>
+<ul>
+<li class="fragment">Sometimes the information you need is not contained in the <code>html</code> returned by a request.</li>
+<li class="fragment">Obtaining that information may require interaction with the web app.
+<ul>
+<li class="fragment">Log in</li>
+<li class="fragment">Dynamic elements</li>
+</ul></li>
+<li class="fragment">Some web servers block suspicious activity</li>
+</ul>
+</section>
+<section id="static-vs-dynamic-webpages" class="slide level2">
+<h2>Static vs Dynamic Webpages</h2>
+<ul>
+<li class="fragment">Interactive <span class="math inline">\(\not\to\)</span> Dynamic</li>
+<li class="fragment">Dynamic page source generation
+<ul>
+<li class="fragment">Server-side: <code>php</code></li>
+<li class="fragment">Client-side: JavaScript</li>
+</ul></li>
+</ul>
+<aside class="notes">
+<ul>
+<li><code>html</code> supports moderate interactivity, through drop-down menus and text boxes</li>
+<li>What we’re talking about here is pages with dynamic source, i.e. when you interact with an element, the source of the page itself transforms.</li>
+</ul>
+</aside>
+</section>
+<section id="browser-automation-1" class="slide level2">
+<h2>Browser Automation</h2>
+<ul>
+<li class="fragment"><a href="https://www.selenium.dev/">Selenium Browser Automation Framework</a></li>
+<li class="fragment">Designed for testing, but useful for scraping!</li>
+<li class="fragment">Any and all browser actions can be emulated/automated.</li>
+</ul>
+</section>
+<section id="using-selenium" class="slide level2">
+<h2>Using Selenium</h2>
+<ul>
+<li class="fragment">Actions are methods of a “WebDriver” object.</li>
+<li class="fragment">Many similar methods to <code>BeautifulSoup</code> for navigating DOM.
+<ul>
+<li class="fragment">Search for elements by id, regex, xpath, etc.</li>
+</ul></li>
+<li class="fragment">Selenium IDE allows you to record your own usage and codify it afterwards.</li>
+</ul>
+</section>
+<section id="considerations" class="slide level2">
+<h2>Considerations</h2>
+<ul>
+<li class="fragment">Race conditions—“wait”s are your friend!</li>
+<li class="fragment">Overhead/overkill</li>
+<li class="fragment">Human-like automation</li>
+</ul>
+</section></section>
+<section>
+<section id="course-recap" class="title-slide slide level1">
+<h1>Course Recap</h1>
+
+</section>
+<section id="topics" class="slide level2">
+<h2>Topics</h2>
 <ol type="1">
-<li class="fragment">Language</li>
-<li class="fragment">Style</li>
-<li class="fragment">Topic</li>
-<li class="fragment">Position</li>
+<li class="fragment">Introduction to Python and the Development Environment</li>
+<li class="fragment">Data Structures and <code>pandas</code> I</li>
+<li class="fragment">Data Structures and <code>pandas</code> II</li>
+<li class="fragment">Data Visualisation</li>
+<li class="fragment">Machine Learning with <code>scikit-learn</code> I</li>
+<li class="fragment">Machine Learning with <code>scikit-learn</code> II</li>
+<li class="fragment">Web Scraping with <code>BeautifulSoup</code> and <code>regex</code></li>
+<li class="fragment">Web Scraping with <code>Selenium</code></li>
 </ol>
-</section><section id="our-goal" class="slide level2">
-<h2>Our Goal</h2>
-<p>As we are social scientists, and not computational linguists, we are usually not interested in <em>recreating</em> the document-generating process.</p>
+</section>
+<section id="you-can-now" class="slide level2">
+<h2>You can now:</h2>
 <ul>
-<li class="fragment">Rather, we are usually interested in <em>quantifying</em> the effect of exogenous constraints on political processes.</li>
-<li class="fragment">Thinking of text as a proxy for the states that produced those texts, we are interested in quantifying the effect of particular aspects of those states.</li>
-<li class="fragment">Ultimately, our use case involves using statistical and machine learning methods to disentangle and quantify the heterogeneous sources of variance in our data.</li>
-</ul>
-</section><section id="social-science-examples" class="slide level2">
-<h2>Social Science Examples</h2>
-<ul>
-<li class="fragment">“A Scaling Model for Estimating Time-Series Party Positions from Texts”, <a href="http://www.wordfish.org/uploads/1/2/9/8/12985397/slapin_proksch_ajps_2008.pdf">Slapin and Proksch, AJPS 2008</a>: Looks to infer party positions along a single ideological dimension with a model that assumes word counts are generated by a Poisson distribution.</li>
-<li class="fragment">“How Words and Money Cultivate a Personal Vote: The Effect of Legislator Credit Claiming on Constituent Credit Allocation” <a href="https://projects.iq.harvard.edu/ptr/files/grimmercreditclaiming.pdf">(Grimmer, Messing and Westwood 2012)</a></li>
-</ul>
-</section></section>
-<section><section id="languages-as-numbers" class="title-slide slide level1"><h1>Languages as Numbers</h1></section><section id="representing-language" class="slide level2">
-<h2>Representing Language</h2>
-<ul>
-<li class="fragment">We are already familiar with one computational representation of language: <em>strings</em>.</li>
-<li class="fragment">All of the models we have encountered thus far require data that is both <em>numeric</em> and <em>tabular</em>.</li>
-<li class="fragment">String data is <em>non-numeric</em> and <em>non-tabular</em>.</li>
-<li class="fragment">Therefore we either need new kinds of models that can handle this structure of data, or a representation of language that can work with the kinds of models we have seen thus far.</li>
-</ul>
-</section><section id="frequency-based-approaches" class="slide level2">
-<h2>Frequency-Based Approaches</h2>
-<p>The simplest numeric representation of language data is to simply count occurrences of words.</p>
-<p>The document “The fox jumped over the fence.” can be represented:</p>
-<table>
-<thead>
-<tr class="header">
-<th>the</th>
-<th>fox</th>
-<th>jumped</th>
-<th>over</th>
-<th>fence</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>2</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-</tr>
-</tbody>
-</table>
-</section><section id="bag-of-words" class="slide level2">
-<h2>Bag-of-Words</h2>
-<p>When we apply word counts to a <em>corpus</em>, we get a representation of language known as <em>bag-of-words</em>. Given two documents <span class="math inline">\(d_1\)</span> and <span class="math inline">\(d_2\)</span>, “the fox jumped over the fence” and “the buffalo kicked the fence”, we can write:</p>
-<table>
-<thead>
-<tr class="header">
-<th><strong>Document</strong></th>
-<th>buffalo</th>
-<th>fence</th>
-<th>fox</th>
-<th>jumped</th>
-<th>kicked</th>
-<th>over</th>
-<th>the</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">\(d_1\)</span></td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>2</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(d_2\)</span></td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>2</td>
-</tr>
-</tbody>
-</table>
-</section><section id="variations" class="slide level2">
-<h2>Variations</h2>
-<p>Some common variations of bag-of-words include:</p>
-<ul>
-<li class="fragment"><em>Bag-of-ngrams</em>: An <em>ngram</em> is an ordered set of <span class="math inline">\(n\)</span> words. Therefore a bag of bi-grams is the frequency of word pairs.</li>
-<li class="fragment"><em>tf-idf</em>: Words are weighted by the product of two statistics:
-<ul>
-<li class="fragment"><em>Term Frequency</em>: The frequency of terms in the document, same as bag-of-words.</li>
-<li class="fragment"><em>Inverse Document Frequency</em>: <span class="math inline">\(log(\frac{n\;documents}{n\;documents\;containing\;w})\)</span></li>
-<li class="fragment">This measure penalises words that occur across documents (e.g. “the”, “and”), therefore favouring “unique” high-frequency words.</li>
-</ul></li>
-</ul>
-</section><section id="limitations" class="slide level2">
-<h2>Limitations</h2>
-<ul>
-<li class="fragment"><em>Syntactic Information Loss</em>: Frequency-based approaches are purely <em>semantic</em> representations of language, and lose all <em>syntactic</em> information. i.e. they measure <em>what words people choose</em>, and not <em>what these words mean in conjunction</em> or <em>how these words are used</em>.</li>
-<li class="fragment"><em>False equivalence</em>: Sentences containing the same words can have radically different meanings due to singular differences, or word order.
-<ul>
-<li class="fragment">e.g. “The panda eats shoots and leaves” and “The panda eats, shoots and leaves”.</li>
-</ul></li>
-</ul>
-<p class="fragment">
-Keep all this in mind when using models based on word frequencies— they often do not measure what you might think!
-</p>
-</section><section id="vector-representation" class="slide level2">
-<h2>Vector Representation</h2>
-<p><em>Word</em> and <em>document embeddings</em> refer to the vector representation of words and documents respectively.</p>
-<p>Bag-of-words provides vector representations of words and documents in a corpus:</p>
-<table>
-<thead>
-<tr class="header">
-<th><strong>Document</strong></th>
-<th>buffalo</th>
-<th>fence</th>
-<th>fox</th>
-<th>jumped</th>
-<th>kicked</th>
-<th>over</th>
-<th>the</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">\(d_1\)</span></td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>2</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(d_2\)</span></td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>2</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li class="fragment"><span class="math inline">\(vector(d_1) = [0, 1, 1, 1, 0, 1, 2]\)</span></li>
-<li class="fragment"><span class="math inline">\(vector(buffalo) = [0, 1]\)</span></li>
-</ul>
-</section><section id="word2vec" class="slide level2">
-<h2><code>word2vec</code></h2>
-<p><a href="https://arxiv.org/pdf/1301.3781.pdf">Mikolov et al (2013)</a> provide a method for word embeddings that is many senses superior to the bag-of-words model.</p>
-<p><code>word2vec</code> works by training a neural network to predict the middle word of a moving window of words through the corpus. The resultant vector space has some very attractive properties:</p>
-<figure>
-<img data-src="https://miro.medium.com/max/1400/1*jpnKO5X0Ii8PVdQYFO2z1Q.png" alt="word2vec" /><figcaption><code>word2vec</code></figcaption>
-</figure>
-</section><section id="glove" class="slide level2">
-<h2><code>GloVe</code></h2>
-<p>Given the social sciences’ (arguably justfied) aversion to neural networks, you may also prefer <a href="https://www.aclweb.org/anthology/D14-1162.pdf">Pennington et al (2014)</a>, who take a more principled approach to word embeddings.</p>
-<p>In essense, <code>GloVe</code> trains a statistical model to predict the co-occurrence of proximate terms. For further detail, see <a href="https://mlexplained.com/2018/04/29/paper-dissected-glove-global-vectors-for-word-representation-explained/">this excellent blog post</a>.</p>
-<p>In terms of accuracy, <code>GloVe</code> performs the same, or often <em>better</em> than <code>word2vec</code>, although the difference is limited for downstream analysis.</p>
-</section><section id="applications-for-word-embeddings" class="slide level2">
-<h2>Applications for Word Embeddings</h2>
-<ul>
-<li class="fragment">As seen from the <code>word2vec</code> example, <em>distances</em> in the high-dimensional vector space generated by a model can accord with intuitive conceptual distances.</li>
-<li class="fragment">With this space, we want to be able to <em>scale</em> or <em>cluster</em> words and documents, with the same intuitions that apply to other <em>scaling</em> and <em>clustering</em> tasks:
-<ul>
-<li class="fragment">The ordering of and distance between observations on <em>latent dimensions</em> should correspond with the concept we are aiming to measure, such as ideology.</li>
-<li class="fragment">Words and documents classified as similar should be similar in some meaningful way, by topic, position, etc.</li>
-</ul></li>
-</ul>
-</section><section id="measuring-similarity" class="slide level2">
-<h2>Measuring Similarity</h2>
-<ul>
-<li class="fragment">The standard metric for distance in Euclidean spaces, <em>Euclidean distance</em>.</li>
-<li class="fragment">This is unsuitable for linguistic data for a number of reasons, the foremost being that word frequencies follow a <a href="https://en.wikipedia.org/wiki/Zipf%27s_law"><em>power law</em></a>.</li>
-<li class="fragment">The distribution of word frequencies are highly skewed, meaning most of the distance between documents by magnitude will be the result of relatively meaningless differences in the occurrence of common words.</li>
-</ul>
-</section><section id="cosine-similarity" class="slide level2">
-<h2>Cosine Similarity</h2>
-<ul>
-<li class="fragment">One common alternative to Euclidean distances is <em>cosine similarity</em>.</li>
-<li class="fragment">The cosine similarity between two vectors is a function of the angle created by the two vectors from the origin.</li>
-</ul>
-<figure>
-<img data-src="https://www.oreilly.com/library/view/statistics-for-machine/9781788295758/assets/2b4a7a82-ad4c-4b2a-b808-e423a334de6f.png" alt="Cosine Distance" /><figcaption>Cosine Distance</figcaption>
-</figure>
-</section><section id="word-movers-distance" class="slide level2">
-<h2>Word Mover’s Distance</h2>
-<p><a href="http://proceedings.mlr.press/v37/kusnerb15.pdf">Kusner et al (2015)</a> apply <a href="https://en.wikipedia.org/wiki/Earth_mover%27s_distance">Earth Mover’s Distance</a>, a measure of the minimum number of transformations from one distribution to another to sentences, calling this Word Mover’s Distance.</p>
-<figure>
-<img data-src="wmd_fig1.png" alt="Word Mover’s Distance" /><figcaption>Word Mover’s Distance</figcaption>
-</figure>
-</section></section>
-<section><section id="applications" class="title-slide slide level1"><h1>Applications</h1></section><section id="spacy" class="slide level2">
-<h2><code>spaCy</code></h2>
-<p>SpaCy provides industry-grade natural language processing resources with powerful out-of-the-box functionality. In particular, we can make quick use of the:</p>
-<ul>
-<li class="fragment">Part-of-Speech Tagger</li>
-<li class="fragment">Lemmatizer</li>
-<li class="fragment">Named Entity Recognition</li>
-</ul>
-<p class="fragment">
-<p>To a lesser extent, we may also be interested in:</p>
-<ul>
-<li class="fragment">Document and Word Similarity</li>
-<li class="fragment">Token Matching</li>
-</ul>
-</section><section id="part-of-speech-tagging" class="slide level2">
-<h2>Part-of-Speech Tagging</h2>
-<ul>
-<li class="fragment"><code>spaCy</code> provides a POS tagger that automatically labels tokens by their function within the sentence.</li>
-<li class="fragment">We can use this to extract all of the nouns, adjectives, verbs, etc. from a text, a straightforward method for comparing intuitively a large collection of documents.</li>
-</ul>
-</section><section id="lemmatization" class="slide level2">
-<h2>Lemmatization</h2>
-<ul>
-<li class="fragment">Often we do not care about the exact form of a word:
-<ul>
-<li class="fragment"><em>investigate(s|d)</em>, <em>investigator(s)</em>, <em>investigation(s)</em></li>
-</ul></li>
-<li class="fragment">Lemmatization is the reduction of a word to its morphological stem.
-<ul>
-<li class="fragment"><em>investigat</em></li>
-</ul></li>
-<li class="fragment">Stemming is similar, but uses a series of rules to simply cut off the ends of words.</li>
-</ul>
-</section><section id="named-entity-recognition" class="slide level2">
-<h2>Named Entity Recognition</h2>
-<p>NER is the automatic tagging of <em>named entities</em>. These include people, places, companies, events, and so on.</p>
-<ul>
-<li class="fragment">This functionality can also be useful when combing through large quantities of data, but be aware that NER is less accurate than POS, and only recognises named entities that were in, or are similar to, the training data.</li>
-</ul>
-</section></section>
-<section><section id="things-not-covered-because-theyre-implemented-in-r" class="title-slide slide level1"><h1>Things Not Covered Because They’re Implemented in <code>R</code></h1></section><section id="structural-topic-model" class="slide level2">
-<h2>Structural Topic Model</h2>
-<p><em>Topic models</em> are a class of dimensionality reduction model that discovers latent substantive “topics” in a corpus. They have powerful applications in classifying documents or measuring attention.</p>
-<p>A dominant variant of the topic model is the <em>structural topic model</em>, which unfortunately is only implemented in <code>R</code>.</p>
-</section><section id="wordfish-and-wordshoals" class="slide level2">
-<h2>Wordfish and Wordshoals</h2>
-<p>Wordfish (Slapin and Proksch 2008) and its more recent context-aware variant Wordshoals (Lauderdale and Herzog 2016) provide <em>scaling</em> estimates of texts. Though originally applied to manifestos, it has a multitude of applications for quantifying one-dimensional variation between political actors.</p>
-</section></section>
-<section><section id="references" class="title-slide slide level1"><h1>References</h1></section><section id="word-embedding-approaches" class="slide level2">
-<h2>Word Embedding Approaches</h2>
-<ul>
-<li class="fragment"><a href="https://link.springer.com/article/10.1007/s42001-019-00048-6">“Concept Mover’s Distance: measuring concept engagement via word embeddings in texts”</a>, Stoltz &amp; Taylor (2019)</li>
-</ul>
-</section><section id="topic-models" class="slide level2">
-<h2>Topic Models</h2>
-<ul>
-<li class="fragment"><a href="https://www.structuraltopicmodel.com/">“Structural Topic Model”</a>, Roberts et al (2015)</li>
-<li class="fragment"><a href="https://projects.iq.harvard.edu/ptr/files/grimmercreditclaiming.pdf">“How Words and Money Cultivate a Personal Vote: The Effect of Legislator Credit Claiming on Constituent Credit Allocation”</a>, Grimmer, Messing and Westwood (2012)</li>
+<li class="fragment">Write and execute code using Google Colab notebooks</li>
+<li class="fragment">Read, write, clean, and analyze different tabular data formats</li>
+<li class="fragment">Generate summary statistics and run simple linear algebra operations</li>
+<li class="fragment">Create static, 2D data-based visuals</li>
+<li class="fragment">Implement, fine-tune and interpret a range of ML models</li>
+<li class="fragment">Flexibly search text with regex</li>
+<li class="fragment">Scrape static and dynamic webpages, and use APIs</li>
 </ul>
 </section></section>
     </div>
   </div>
 
-  <script src="../reveal.js/lib/js/head.min.js"></script>
-  <script src="../reveal.js/js/reveal.js"></script>
+  <script src="../reveal.js/dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="../reveal.js/plugin/notes/notes.js"></script>
+  <script src="../reveal.js/plugin/search/search.js"></script>
+  <script src="../reveal.js/plugin/zoom/zoom.js"></script>
+  <script src="../reveal.js/plugin/math/math.js"></script>
 
   <script>
 
       // Full list of configuration options available at:
-      // https://github.com/hakimel/reveal.js#configuration
+      // https://revealjs.com/config/
       Reveal.initialize({
         // Push each slide change to the browser history
         history: true,
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -425,12 +283,12 @@ Keep all this in mind when using models based on word frequencies— they often 
           },
         },
 
-        // Optional reveal.js plugins
-        dependencies: [
-          { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true },
-          { src: '../reveal.js/plugin/math/math.js', async: true },
-          { src: '../reveal.js/plugin/notes/notes.js', async: true }
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
         ]
       });
     </script>
