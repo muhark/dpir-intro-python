@@ -1,286 +1,162 @@
 ---
 title: Introduction to Python for Social Science
-subtitle: Lecture 8 - Intro to Natural Language Processing
+subtitle: Lecture 8 - APIs and Selenium
 author: Musashi Harukawa, DPIR
-date: 8th Week Hilary 2020
+date: 8th Week Hilary 2021
 ---
 
-# This Week
+# Lecture Roadmap
 
-## Roadmap
+## Last Week
 
-This week we dive into my favourite field, _Natural Language Processing_ (NLP), and look at the opportunities and difficulties that come with trying to harness text-as-data.
+- HTTP requests and Internet fundamentals
+- Regular Expressions
 
-Points covered:
+## This Week
 
-- What is NLP?
-- Considerations about language as a data source
-- Representations of Language and Relevant Metrics
-- Application: POS-taggers, NER, and noun extraction.
+- APIs
+	- Twitter's Academic Track
+- Browser Automation
 
-# Intro to Natural Language Processing
+# APIs
 
-## What is NLP?
+## What is an API?
 
-_Natural Language Processing_ (NLP) is an cross-disciplinary field drawing on linguistics, computer science, information retrieval, machine learning and artificial intelligence (among other fields) focused on computational methods for language. Applications include _speech recognition_, _natural language generation_, and _natural language understanding_.
+- _Application Programming Interface_
+- _Interface_: Specialized endpoint
+	- Specific query syntax
+	- Returns defined data packets
+- We are interested in _Web APIs_
 
-- _Natural Language_ is most easily defined in contrast to artificial or constructed languages. It includes all world languages, but excludes languages such as programming languages or Esperanto.
+## Web API Examples
 
-## Social Science Applications
+- Twitter
+- Reddit
+- NY Times
+- The Guardian
+- Spotify
+- Netflix
 
-Applications in social science are usually focused on the _information retrieval_/_understanding_ aspect of NLP. In other words, our focus is on using language as a data source, rather than building a working model for languages. As such, some major applications include:
+## API Mechanics
 
-- _Topic segmentation_
-- _Summarisation_
-- _Scaling_
-- _Sentiment analysis_
+- REST vs SOAP
+- RESTful APIs loosely based on HTTP methods
+	- Accept HTTP-like requests to access server-side assets
+	- Return the payload usually as JSON or XML
+	- _Stateless_: no server-side session information
 
-## Terminology
+::: notes
+- Most of the APIs I have come across are REST; all I know about SOAP is that it mandates XML payloads.
+- Loosely-based: depending on the API, may allow for header or body parameters that do not typically exist in HTTP requests.
+- Payload: the actual data packet. Sounds dramatic, it's just the thing you wanted (versus the header, which basically says what it is and where it should go).
+- Stateless: remember that the server does not remember who its speaking to. That means your credentials need to be sent with each request, and importantly for paginated requests, a "next page" token. We'll come back to that later.
+:::
 
-NLP has its own terminology, related to but separate from machine learning. Key terms include:
+## Twitter's API
 
-- _Text-as-data_: Applications of NLP focused on the extraction of information from textual data.
-- _String_: A sequence of characters.
-- _Token_: A string having a semantic function, often delineated by spaces in English. Otherwise a word, or a word fragment.
-- _Document_: Sentences aggregated to a unit of analysis; can be a paragraph, a speech, a Tweet, etc.
-- _Corpus_: A set of documents.
-- _Vocabulary_: The set of all tokens. Usually the unique set of tokens contained within a given corpus.
+- Many different Twitter APIs and endpoints (Standard, Premium, Enterprise, and **Academic**)
+- **Academic Research product track** has following endpoints:
+	- _Full-archive search_: (Almost) everything back to 2006!
+	- _Recent search_: Last 7 days, higher volumes
+	- _Filtered stream_: Real-time filtered stream, capped at 1% of total volume
+	- _Sampled stream_: $~1\%$ of all new Tweets in real-time
+	- _Tweet and User Lookup_: Look up user/tweet by id
+	- and [more](https://developer.twitter.com/en/solutions/academic-research/products-for-researchers)
 
-## Further Terminology
+## Applying for Access
 
-- _Lemmatization_: The reduction of a word to its grammatical root.
-- _Stemming_: A set of rules for removing suffixes (and prefixes) from a word to reduce it to a word "stem".
-- _Part-of-Speech Tagging_: The process of identifying the syntactic function of each token in a sentence, e.g. noun, verb, quantifier, etc.
-- _Named Entity Recognition_: Automatic tagging of "named entities" within a text, usually proper nouns such as companies, people or places.
+- The Academic Research track has the following criteria:
+	- Master's student or above (doctoral candidate, post-doc, faculty, researcher, etc.)
+	- Clearly defined research objective and specific plans for how you will use the Twitter data
+	- Non-commercial use
+- You can apply [here](https://developer.twitter.com/en/portal/petition/academic/is-it-right-for-you)
 
-# Language as a Data Source
+## Using the API (with Python)
 
-## Text-as-Data?
+- We can use Python to generate requests to interact with Twitter's API
+- Twitter provides a "wrapper" package: `searchtweets-v2`
+- Documentation provided [here](https://pypi.org/project/searchtweets-v2/) and [here](https://developer.twitter.com/en/docs/twitter-api/tweets/search/introduction)
 
-In general, as social scientists, we are not intrinsically interested in the process by which utterances and texts are generated (natural language generation) but rather the conditions which influence the generation of one text over another.
+## Managing Credentials
 
-Put differently, we use language as a proxy to measure the states and processes that both produce and are produced by the data.
+- Once you are granted access, you will be given a set of credentials for your project/application.
+- Store these securely, i.e. do not post them somewhere public.
+- Place them in a credentials `yaml` file that looks like the following:
 
+:::{.fragment}
+```{yaml}
+search_tweets_v2:
+  endpoint:  https://api.twitter.com/2/tweets/search/all
+  consumer_key: <CONSUMER_KEY>
+  consumer_secret: <CONSUMER_SECRET>
+  bearer_token: <BEARER_TOKEN>
+```
+:::
 
-## Example Question
+## Writing and Sending Requests
 
-- Imagine we are interested in the following question: _What is the effect of electoral system on legislators' Twitter usage?_
-- How do we go about answering this question?
+- To be discussed in the coding tutorial
 
-## Formalizing Language
+# Browser Automation
 
-A tweet by legislator $i$ of party $j$ at time $t$ can be described as an ordered set of tokens, drawn from the vocabulary $V$:
+## When does static scraping fail?
 
-$$
-d_{ijt} := \langle w_1, w_2, ..., w_n, w_\omega \rangle \; \forall w_i \in V
-$$
+- Sometimes the information you need is not contained in the `html` returned by a request.
+- Obtaining that information may require interaction with the web app.
+	- Log in
+	- Dynamic elements
+- Some web servers block suspicious activity
 
-## Language Automata
+## Static vs Dynamic Webpages
 
-Given this chain of tokens, we can describe the tokens as being probabilisitcally generated by an _automaton_, process which places probabilities over selecting one token given that another one came prior.
+- Interactive $\not\to$ Dynamic
+- Dynamic page source generation
+	- Server-side: `php`
+	- Client-side: JavaScript
 
-![I will (not) endorse (Sanders|Biden).](./figure1.png)
+::: notes
+- `html` supports moderate interactivity, through drop-down menus and text boxes
+- What we're talking about here is pages with dynamic source, i.e. when you interact with an element, the source of the page itself transforms.
+:::
 
-## Generative Process
+## Browser Automation
 
-The probabilities in these automata can be described as a function placing probabilities over all tokens (the vocabulary) given the current state of the automaton. Aggregating this process up to the level of _document_, we can think of there as being a _document-generating process_.
+- [Selenium Browser Automation Framework](https://www.selenium.dev/)
+- Designed for testing, but useful for scraping!
+- Any and all browser actions can be emulated/automated.
 
-## The Tweet-Generating Process
+## Using Selenium
 
-$$
-d_{ijt} \leftarrow M(t, s_i, u_i, \lambda(\mathbf{w}_j, e_i, [...]), \mathcal{L}, [...])
-$$
+- Actions are methods of a "WebDriver" object.
+- Many similar methods to `BeautifulSoup` for navigating DOM.
+	- Search for elements by id, regex, xpath, etc.
+- Selenium IDE allows you to record your own usage and codify it afterwards.
 
-Where:
+## Considerations
 
-- $t$ is the substantive _topic_ of the Tweet.
-- $s_i$ is the authorial _style_ of legislator $i$.
-- $u_i$ is the preferences, or _position_ of legislator $i$.
-    - $\lambda()$ is a constraint function on the preferences of legislator $i$.
-    - $\mathbf{w}_j$ is the aggregated preferences, or _position_ of party $j$'s elite.
-    - $e_j$ is the electoral formula faced by legislator $i$.
-- $\mathcal{L}$ is the linguistic constraints on $d$, i.e. the language rules.
+- Race conditions—"wait"s are your friend!
+- Overhead/overkill
+- Human-like automation
 
+# Course Recap
 
-## Sources of Variance
+## Topics
 
-Each of these inputs and constraints contribute _variance_ to the DGP. [Lauderdale and Herzog (_PA_, 2016)](http://benjaminlauderdale.net/files/papers/2016LauderdaleHerzogPA.pdf) provide a rough hierarchy of these sources of variance:
+1. Introduction to Python and the Development Environment
+2. Data Structures and `pandas` I
+3. Data Structures and `pandas` II
+4. Data Visualisation
+5. Machine Learning with `scikit-learn` I
+6. Machine Learning with `scikit-learn` II
+7. Web Scraping with `BeautifulSoup` and `regex`
+8. Web Scraping with `Selenium`
 
-1. Language
-2. Style
-3. Topic
-4. Position
+## You can now:
 
-## Our Goal
-
-As we are social scientists, and not computational linguists, we are usually not interested in _recreating_ the document-generating process.
-
-- Rather, we are usually interested in _quantifying_ the effect of exogenous constraints on political processes.
-- Thinking of text as a proxy for the states that produced those texts, we are interested in quantifying the effect of particular aspects of those states.
-- Ultimately, our use case involves using statistical and machine learning methods to disentangle and quantify the heterogeneous sources of variance in our data.
-
-## Social Science Examples
-
-- "A Scaling Model for Estimating Time-Series Party Positions from Texts", [Slapin and Proksch, AJPS 2008](http://www.wordfish.org/uploads/1/2/9/8/12985397/slapin_proksch_ajps_2008.pdf): Looks to infer party positions along a single ideological dimension with a model that assumes word counts are generated by a Poisson distribution.
-- "How Words and Money Cultivate a Personal Vote: The Effect of Legislator Credit Claiming on Constituent Credit Allocation" [(Grimmer, Messing and Westwood 2012)](https://projects.iq.harvard.edu/ptr/files/grimmercreditclaiming.pdf)
-
-# Languages as Numbers
-
-## Representing Language
-
-- We are already familiar with one computational representation of language: _strings_.
-- All of the models we have encountered thus far require data that is both _numeric_ and _tabular_.
-- String data is _non-numeric_ and _non-tabular_.
-- Therefore we either need new kinds of models that can handle this structure of data, or a representation of language that can work with the kinds of models we have seen thus far.
-
-## Frequency-Based Approaches
-
-The simplest numeric representation of language data is to simply count occurrences of words.
-
-The document "The fox jumped over the fence." can be represented:
-
-| the | fox | jumped | over | fence |
-| --- | --- | ------ | ---- | ----- |
-| 2   | 1   | 1      | 1    | 1     |
-
-## Bag-of-Words
-
-When we apply word counts to a _corpus_, we get a representation of language known as _bag-of-words_. Given two documents $d_1$ and $d_2$, "the fox jumped over the fence" and "the buffalo kicked the fence", we can write:
-
-| **Document** | buffalo | fence | fox | jumped | kicked | over | the |
-| ------------ | ------- | ----- | --- | ------ | ------ | ---- | --- |
-| $d_1$        | 0       | 1     | 1   | 1      | 0      | 1    | 2   |
-| $d_2$        | 1       | 1     | 0   | 0      | 1      | 0    | 2   |
-
-## Variations
-
-Some common variations of bag-of-words include:
-
-- _Bag-of-ngrams_: An _ngram_ is an ordered set of $n$ words. Therefore a bag of bi-grams is the frequency of word pairs.
-- _tf-idf_: Words are weighted by the product of two statistics:
-    - _Term Frequency_: The frequency of terms in the document, same as bag-of-words.
-    - _Inverse Document Frequency_: $log(\frac{n\;documents}{n\;documents\;containing\;w})$
-    - This measure penalises words that occur across documents (e.g. "the", "and"), therefore favouring "unique" high-frequency words.
-
-## Limitations
-
-- _Syntactic Information Loss_: Frequency-based approaches are purely _semantic_ representations of language, and lose all _syntactic_ information. i.e. they measure _what words people choose_, and not _what these words mean in conjunction_ or _how these words are used_.
-- _False equivalence_: Sentences containing the same words can have radically different meanings due to singular differences, or word order.
-    - e.g. "The panda eats shoots and leaves" and "The panda eats, shoots and leaves".
-
-<p class="fragment">Keep all this in mind when using models based on word frequencies— they often do not measure what you might think!</p>
-
-## Vector Representation
-
-_Word_ and _document embeddings_ refer to the vector representation of words and documents respectively.
-
-Bag-of-words provides vector representations of words and documents in a corpus:
-
-| **Document** | buffalo | fence | fox | jumped | kicked | over | the |
-| ------------ | ------- | ----- | --- | ------ | ------ | ---- | --- |
-| $d_1$        | 0       | 1     | 1   | 1      | 0      | 1    | 2   |
-| $d_2$        | 1       | 1     | 0   | 0      | 1      | 0    | 2   |
-
-- $vector(d_1) = [0, 1, 1, 1, 0, 1, 2]$
-- $vector(buffalo) = [0, 1]$
-
-## `word2vec`
-
-[Mikolov et al (2013)](https://arxiv.org/pdf/1301.3781.pdf) provide a method for word embeddings that is many senses superior to the bag-of-words model.
-
-`word2vec` works by training a neural network to predict the middle word of a moving window of words through the corpus. The resultant vector space has some very attractive properties:
-
-![`word2vec`](https://miro.medium.com/max/1400/1*jpnKO5X0Ii8PVdQYFO2z1Q.png)
-
-## `GloVe`
-
-Given the social sciences' (arguably justfied) aversion to neural networks, you may also prefer [Pennington et al (2014)](https://www.aclweb.org/anthology/D14-1162.pdf), who take a more principled approach to word embeddings.
-
-In essense, `GloVe` trains a statistical model to predict the co-occurrence of proximate terms. For further detail, see [this excellent blog post](https://mlexplained.com/2018/04/29/paper-dissected-glove-global-vectors-for-word-representation-explained/).
-
-In terms of accuracy, `GloVe` performs the same, or often _better_ than `word2vec`, although the difference is limited for downstream analysis.
-
-## Applications for Word Embeddings
-
-- As seen from the `word2vec` example, _distances_ in the high-dimensional vector space generated by a model can accord with intuitive conceptual distances.
-- With this space, we want to be able to _scale_ or _cluster_ words and documents, with the same intuitions that apply to other _scaling_ and _clustering_ tasks:
-    - The ordering of and distance between observations on _latent dimensions_ should correspond with the concept we are aiming to measure, such as ideology.
-    - Words and documents classified as similar should be similar in some meaningful way, by topic, position, etc.
-
-## Measuring Similarity
-
-- The standard metric for distance in Euclidean spaces, _Euclidean distance_.
-- This is unsuitable for linguistic data for a number of reasons, the foremost being that word frequencies follow a [_power law_](https://en.wikipedia.org/wiki/Zipf%27s_law).
-- The distribution of word frequencies are highly skewed, meaning most of the distance between documents by magnitude will be the result of relatively meaningless differences in the occurrence of common words.
-
-## Cosine Similarity
-
-- One common alternative to Euclidean distances is _cosine similarity_.
-- The cosine similarity between two vectors is a function of the angle created by the two vectors from the origin.
-
-![Cosine Distance](https://www.oreilly.com/library/view/statistics-for-machine/9781788295758/assets/2b4a7a82-ad4c-4b2a-b808-e423a334de6f.png)
-
-## Word Mover's Distance
-
-[Kusner et al (2015)](http://proceedings.mlr.press/v37/kusnerb15.pdf) apply [Earth Mover's Distance](https://en.wikipedia.org/wiki/Earth_mover%27s_distance), a measure of the minimum number of transformations from one distribution to another to sentences, calling this Word Mover's Distance.
-
-![Word Mover's Distance](wmd_fig1.png)
-
-# Applications
-
-## `spaCy`
-
-SpaCy provides industry-grade natural language processing resources with powerful out-of-the-box functionality. In particular, we can make quick use of the:
-
-- Part-of-Speech Tagger
-- Lemmatizer
-- Named Entity Recognition
-
-<p class="fragment">To a lesser extent, we may also be interested in:
-
-- Document and Word Similarity
-- Token Matching
-
-## Part-of-Speech Tagging
-
-- `spaCy` provides a POS tagger that automatically labels tokens by their function within the sentence.
-- We can use this to extract all of the nouns, adjectives, verbs, etc. from a text, a straightforward method for comparing intuitively a large collection of documents.
-
-## Lemmatization
-
-- Often we do not care about the exact form of a word:
-    - _investigate(s|d)_, _investigator(s)_, _investigation(s)_
-- Lemmatization is the reduction of a word to its morphological stem.
-    - _investigat_
-- Stemming is similar, but uses a series of rules to simply cut off the ends of words.
-
-## Named Entity Recognition
-
-NER is the automatic tagging of _named entities_. These include people, places, companies, events, and so on.
-
-- This functionality can also be useful when combing through large quantities of data, but be aware that NER is less accurate than POS, and only recognises named entities that were in, or are similar to, the training data.
-
-# Things Not Covered Because They're Implemented in `R`
-
-## Structural Topic Model
-
-_Topic models_ are a class of dimensionality reduction model that discovers latent substantive "topics" in a corpus. They have powerful applications in classifying documents or measuring attention.
-
-A dominant variant of the topic model is the _structural topic model_, which unfortunately is only implemented in `R`.
-
-## Wordfish and Wordshoals
-
-Wordfish (Slapin and Proksch 2008) and its more recent context-aware variant Wordshoals (Lauderdale and Herzog 2016) provide _scaling_ estimates of texts. Though originally applied to manifestos, it has a multitude of applications for quantifying one-dimensional variation between political actors.
-
-
-
-# References
-
-## Word Embedding Approaches
-
-- ["Concept Mover’s Distance: measuring concept engagement via word embeddings in texts"](https://link.springer.com/article/10.1007/s42001-019-00048-6), Stoltz \& Taylor (2019)
-
-## Topic Models
-
-- ["Structural Topic Model"](https://www.structuraltopicmodel.com/), Roberts et al (2015)
-- ["How Words and Money Cultivate a Personal Vote: The Effect of Legislator Credit Claiming on Constituent Credit Allocation"](https://projects.iq.harvard.edu/ptr/files/grimmercreditclaiming.pdf), Grimmer, Messing and Westwood (2012)
+- Write and execute code using Google Colab notebooks
+- Read, write, clean, and analyze different tabular data formats
+- Generate summary statistics and run simple linear algebra operations
+- Create static, 2D data-based visuals
+- Implement, fine-tune and interpret a range of ML models
+- Flexibly search text with regex
+- Scrape static and dynamic webpages, and use APIs
