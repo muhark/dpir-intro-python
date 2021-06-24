@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Musashi Jacobs-Harukawa, University of Oxford">
+  <meta name="dcterms.date" content="2021-06-24">
+  <title>Discussant Slides</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="../reveal.js/dist/theme/../../../dpir-intro-theme.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Discussant Slides</h1>
+  <p class="subtitle">Methodology of Text Analysis Panel - EPSA 2021</p>
+  <p class="author">Musashi Jacobs-Harukawa, University of Oxford</p>
+  <p class="date">24 June 2021</p>
+</section>
+
+<section>
+<section id="record-linkage-with-text" class="title-slide slide level1">
+<h1>Record Linkage with Text</h1>
+<p>Tom Paskhalis, <em>New York University</em>.</p>
+</section>
+<section id="recap" class="slide level2">
+<h2>Recap</h2>
+<p><em>Context</em>:</p>
+<ul>
+<li class="fragment">Record linkage opens many doors for interesting analyses.</li>
+<li class="fragment">Paper asserts that two (three) kinds of noise exist: character-level, token-level, and both.</li>
+</ul>
+<p><em>Claims</em>:</p>
+<ul>
+<li class="fragment">Choice of record linkage method:
+<ul class="task-list">
+<li class="fragment"><input type="checkbox" disabled="" checked="" />
+should be made based on likely type of noise.</li>
+<li class="fragment"><input type="checkbox" disabled="" checked="" />
+affects downstream analysis.</li>
+</ul></li>
+</ul>
+</section>
+<section id="commentsquestions-in-brief" class="slide level2">
+<h2>Comments/Questions in Brief</h2>
+<ol type="1">
+<li class="fragment"><em>How similar of a task is this to other text-as-data problems?</em></li>
+<li class="fragment"><em>What does the PPP example tell us?</em></li>
+<li class="fragment"><em>Is simulation the best strategy for this paper?</em></li>
+</ol>
+</section>
+<section id="record-linkage-vs-the-rest-section-4" class="slide level2">
+<h2>Record Linkage vs the Rest (Section 4)</h2>
+<p><em>The Paper:</em></p>
+<ul>
+<li class="fragment">Shows entity label data exhibits similar statistical properties to State of the Union corpus.</li>
+<li class="fragment">Concludes “statistical properties should not pose a problem for the application methods for text analysis”.</li>
+</ul>
+</section>
+<section id="record-linkage-vs-the-rest-section-4-1" class="slide level2">
+<h2>Record Linkage vs the Rest (Section 4)</h2>
+<p><em>Comments</em>:</p>
+<ul>
+<li class="fragment">(Do we rely on this conclusion later?)</li>
+<li class="fragment">Statistically similar corpora, but are record linkage and e.g. scaling or topic modelling comparable tasks?
+<ul>
+<li class="fragment">Both can be thought of as a signal decomposition problem.</li>
+<li class="fragment">Stark differences: one-to-one matching structure, treatment and expectation of noise, supervised vs unsupervised, etc.</li>
+</ul></li>
+</ul>
+</section>
+<section id="ppp-example-section-5" class="slide level2">
+<h2>PPP Example (Section 5)</h2>
+<p><em>The Paper</em>:</p>
+<ul>
+<li class="fragment">Estimates n jobs retained given PPP loan received as a function of lobbying activity and organization type.</li>
+<li class="fragment">Shows that substantive conclusions vary with choice of record linkage method.</li>
+</ul>
+</section>
+<section id="ppp-example-section-5-1" class="slide level2">
+<h2>PPP Example (Section 5)</h2>
+<p><em>Comments</em>:</p>
+<ul>
+<li class="fragment">Successfully shows that choice of record linkage strategy is not trivial for downstream analysis.</li>
+<li class="fragment">As noted, given only positive cases included, results of model hard to interpret substantively.
+<ul>
+<li class="fragment">Doesn’t affect conclusion, but does obscure narrative.</li>
+</ul></li>
+</ul>
+</section>
+<section id="simulation-strategy-sections-6-8" class="slide level2">
+<h2>Simulation Strategy (Sections 6-8)</h2>
+<p><em>The Paper</em>:</p>
+<ul>
+<li class="fragment">Claims simulating label data has advantages over using empirical data.</li>
+<li class="fragment">Builds up a statistical model for generating label data. (Really cool!)</li>
+<li class="fragment">Stochastically permutes subset of labels, then compares performance of different record linkage strategies.</li>
+<li class="fragment">Finds that different methods perform differently depending on kind of noise.</li>
+</ul>
+</section>
+<section id="simulation-strategy-sections-6-8-1" class="slide level2">
+<h2>Simulation Strategy (Sections 6-8)</h2>
+<p><em>Comments</em>:</p>
+<ul>
+<li class="fragment">If we’re adding noise to simulated labels, why not just use real ones (section 7)?</li>
+<li class="fragment">Empirical justification for noising strategy?</li>
+<li class="fragment">Regarding final result:
+<ul>
+<li class="fragment">Linkage strategies mirror noise generating strategy.</li>
+<li class="fragment">Could there be other kinds of noise?</li>
+<li class="fragment">When should we not use fastLink?</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="legislators-sentiment-analysis-supervised-by-legislators" class="title-slide slide level1">
+<h1>Legislators’ Sentiment Analysis Supervised by Legislators</h1>
+<p>Akitaka Matsuo, <em>University of Essex</em></p>
+<p>Kentaro Fukumoto, <em>Gakushuin University</em></p>
+</section>
+<section id="in-brief" class="slide level2">
+<h2>In Brief</h2>
+<ul>
+<li class="fragment">We can leverage knowledge of parliamentary procedures that provide “self-labelled” data points…</li>
+<li class="fragment">to provide sensible and theoretically-grounded reference points for analyses of parliamentary text corpora.</li>
+</ul>
+</section>
+<section id="data-and-method" class="slide level2">
+<h2>Data and Method</h2>
+<ul>
+<li class="fragment">Corpus of Japanese parliamentary committee meeting minutes 1955-2014.</li>
+<li class="fragment">Closing speeches containing the words “sansei” or “hantai” paired.</li>
+<li class="fragment">Wordscores fit to learn pro-con dimension.</li>
+</ul>
+</section>
+<section id="comments-overview" class="slide level2">
+<h2>Comments Overview</h2>
+<ol type="1">
+<li class="fragment"><em>Show robustness and applicability for alternative methods</em>.</li>
+<li class="fragment"><em>“Pro” = “LDP”</em>?</li>
+<li class="fragment"><em>Is there confounding from using the <strong>end</strong> of the debate?</em></li>
+</ol>
+</section>
+<section id="robustness-and-applicability-to-other-methods" class="slide level2">
+<h2>Robustness and Applicability to Other Methods</h2>
+<ul>
+<li class="fragment">Advantage of supervised methods is interpretability (what is the dimension).</li>
+<li class="fragment">Wordscores provides similar benefits.</li>
+<li class="fragment">But main contribution is that we can use procedural rules to improve reliability/interpretability of parliamentary text analysis.
+<ul>
+<li class="fragment">Request: apply this idea to unsupervised scaling methods.</li>
+</ul></li>
+</ul>
+</section>
+<section id="unsupervised-methods" class="slide level2">
+<h2>Unsupervised Methods</h2>
+<ul>
+<li class="fragment"><em>tf-idf+cosine</em>: Score each document by average similarity to anchor documents.</li>
+<li class="fragment"><em>Wordfish</em>: using the anchor documents for the orienting (<code>dir</code>) should give similar results?</li>
+<li class="fragment"><em>Wordshoals</em>: authors avoid controlling for topic by looking at single debates, but progress has been made on this issue. Would allow inclusion of floor debates.</li>
+<li class="fragment"><em>Embeddings</em>: e.g. doc2vec, SBERT. Can measure variation of documents along axis connecting anchor texts. Does this approach help interpret scaling documents in an embedding space?</li>
+</ul>
+</section>
+<section id="japanese-ldp" class="slide level2">
+<h2>Japanese, LDP</h2>
+<p>A few context-specific comment:</p>
+<ul>
+<li class="fragment">For much of dataset, “pro”=“LDP”. Does this cause issues for interpretation of “sentiment”?
+<ul>
+<li class="fragment">Especially if LDP has any of its own particular style/rules.</li>
+</ul></li>
+<li class="fragment">Ideally tokenisation method should preserve negation for the sentiment task.</li>
+</ul>
+</section>
+<section id="end-and-confounding" class="slide level2">
+<h2>End and Confounding</h2>
+<p>Could the fact that we define our axis based on the closing statements confound our sentiment measure?</p>
+<ul>
+<li class="fragment">Suppose “allow” is used in pro-bill context early in the debate
+<ul>
+<li class="fragment">“the passage of this bill will allow citizens to enjoy X benefit”</li>
+</ul></li>
+<li class="fragment">but anti-bill context later in the debate
+<ul>
+<li class="fragment">“if we allow this bill to pass”/“we must not allow this bill to pass”</li>
+</ul></li>
+<li class="fragment">Maybe not a good example, but point is:
+<ul>
+<li class="fragment">sentiment of word could plausibly vary through debate, and defining measure on closing statement pair could lead to mislabelling.</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="parties-evolving-issue-agendas" class="title-slide slide level1">
+<h1>Parties’ Evolving Issue Agendas</h1>
+<p>Cornelius Erfort, <em>Humboldt University of Berlin</em></p>
+<p>Lukas Stoetzer, <em>Humboldt University of Berlin</em></p>
+<p>Heike Klüver, <em>Humboldt University of Berlin</em></p>
+</section>
+<section id="in-brief-1" class="slide level2">
+<h2>In Brief</h2>
+<p>Authors:</p>
+<ul>
+<li class="fragment">collect large dataset of party press releases for eight European countries.</li>
+<li class="fragment">argue that press releases are useful.</li>
+<li class="fragment">label press releases with CAP codes using variety of supervised ML and readme2</li>
+<li class="fragment">analyse issue attention using labels</li>
+</ul>
+</section>
+<section id="comments-overview-1" class="slide level2">
+<h2>Comments Overview</h2>
+<ul>
+<li class="fragment"><em>Are press releases consequential?</em></li>
+<li class="fragment"><em>Is dataset complete?</em></li>
+<li class="fragment"><em>Is 65% accuracy enough?</em></li>
+</ul>
+</section>
+<section id="on-press-releases" class="slide level2">
+<h2>On Press Releases</h2>
+<ul>
+<li class="fragment">I agree that press releases are useful for analysing party issue attention.</li>
+<li class="fragment">I want to know whether party press releases <em>matter</em>.
+<ul>
+<li class="fragment">Relation between press releases, media coverage, and social media?</li>
+<li class="fragment">Separate analysis, but possible with this dataset.</li>
+</ul></li>
+</ul>
+</section>
+<section id="data-quality" class="slide level2">
+<h2>Data Quality</h2>
+<ul>
+<li class="fragment">Scraping is difficult–great job collecting this data!</li>
+<li class="fragment">Do parties ever delete past press releases?
+<ul>
+<li class="fragment">Are there any mirrors you can scrape?</li>
+</ul></li>
+</ul>
+</section>
+<section id="supervised-models-and-accuracy" class="slide level2">
+<h2>Supervised Models and Accuracy</h2>
+<ul>
+<li class="fragment"><em>Note</em>: Random Forest should perform poorly on sparse text data.</li>
+<li class="fragment">Compared to baseline, 65% accuracy is not bad, <em>but</em>:
+<ul>
+<li class="fragment">Are you extrapolating to unlabelled dataset?</li>
+<li class="fragment">Expectation that 1/3 labels is wrong is not good.</li>
+<li class="fragment">Can and should check conditional error distribution.</li>
+</ul></li>
+</ul>
+</section>
+<section id="also" class="slide level2">
+<h2>Also</h2>
+<ul>
+<li class="fragment"><a href="https://journals.sagepub.com/doi/full/10.1177/20531680211022206">Check out Bechará et al (2021) “Transfer Learning for Topic Labeling”.</a>
+<ul>
+<li class="fragment">They provide a transfer learning approach for applying CAP codes to parliamentary speech.</li>
+<li class="fragment">Clear application to your dataset.</li>
+</ul></li>
+</ul>
+</section></section>
+    </div>
+  </div>
+
+  <script src="../reveal.js/dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="../reveal.js/plugin/notes/notes.js"></script>
+  <script src="../reveal.js/plugin/search/search.js"></script>
+  <script src="../reveal.js/plugin/zoom/zoom.js"></script>
+  <script src="../reveal.js/plugin/math/math.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+      
+        // Push each slide change to the browser history
+        history: true,
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
