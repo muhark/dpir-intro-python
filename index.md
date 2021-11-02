@@ -55,5 +55,5 @@ My research interests fall into two areas. In methods, I am working on non-param
 
 #### Misc.
 
-["Estimating the Micro_Targeting Effect: Evidence from a Survey Experiment During the 2020 U.S. Presidential Election", _WIP_](/misc_presentations/draft4.pdf), [Link to Presentation](/misc_presentations/pip-colloquium.html)
+["Estimating the Micro_Targeting Effect: Evidence from a Survey Experiment During the 2020 U.S. Presidential Election", _Under Review_](https://muhark.github.io/static/docs/harukawa-2021-microtargeting.pdf), [Link to Presentation](/misc_presentations/cess-mt21-pres.html)
 ["Comparative Government Revision Class"](/misc_presentations/compgov_revision.html)
