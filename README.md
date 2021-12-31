@@ -1,6 +1,6 @@
 # Introduction to Python for Social Science
 
-_Musashi Harukawa, Department of Politics and International Relations_
+_Musashi Jacobs-Harukawa, Department of Politics and International Relations_
 
 ## Course Description
 
