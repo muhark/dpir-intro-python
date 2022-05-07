@@ -57,3 +57,5 @@ I research computational methods for unstructured (i.e. text or image) data and 
 ["Estimating the Micro_Targeting Effect: Evidence from a Survey Experiment During the 2020 U.S. Presidential Election", _Under Review_](https://muhark.github.io/static/docs/harukawa-2021-microtargeting.pdf), [Link to Presentation](/misc_presentations/cess-mt21-pres.html)
 
 ["Comparative Government Revision Class"](/misc_presentations/compgov_revision.html)
+
+[COMPTEXT 2022 Presentation](/misc_presentations/comptext-pres.html)
