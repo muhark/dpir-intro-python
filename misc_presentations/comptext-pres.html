@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="Musashi Jacobs-Harukawa, Lucy Barnes">
+  <meta name="author" content="Musashi Jacobs-Harukawa, Dr Lucy Barnes">
   <meta name="dcterms.date" content="2022-05-06">
   <title>Linking Economic Ideas between Diverse Corpora</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -31,8 +31,8 @@
 
 <section id="title-slide">
   <h1 class="title">Linking Economic Ideas between Diverse Corpora</h1>
-  <p class="subtitle">Prelimiary Results presented at COMPTEXT 2022</p>
-  <p class="author">Musashi Jacobs-Harukawa, Lucy Barnes</p>
+  <p class="subtitle">Preliminary Results presented at COMPTEXT 2022</p>
+  <p class="author">Musashi Jacobs-Harukawa, Dr Lucy Barnes</p>
   <p class="institute">University of Oxford, University College
 London</p>
   <p class="date">6 May 2022</p>
@@ -127,15 +127,16 @@ Agent-Action-Patient tuples from text.</li>
 <section id="three-datasets" class="slide level2">
 <h2>Three Datasets</h2>
 <ul>
-<li class="fragment">Survey (UK subset N=1,055)</li>
-<li class="fragment">Elite interviews (N=99)</li>
-<li class="fragment">News Headlines and Descriptions (N=376,583)</li>
+<li class="fragment">Survey</li>
+<li class="fragment">Elite interviews</li>
+<li class="fragment">News Headlines and Descriptions</li>
 </ul>
 </section>
 <section id="survey" class="slide level2">
 <h2>Survey</h2>
 <ul>
 <li class="fragment">General public, 5 countries</li>
+<li class="fragment">UK subset N=1,055</li>
 <li class="fragment">Zero-sum economic thinking</li>
 <li class="fragment">Forthcoming Barnes JEPP</li>
 </ul>
@@ -143,6 +144,7 @@ Agent-Action-Patient tuples from text.</li>
 <section id="interviews" class="slide level2">
 <h2>Interviews</h2>
 <ul>
+<li class="fragment">N=99</li>
 <li class="fragment">Politicians and Advisers</li>
 <li class="fragment">Manually transcribed and translated</li>
 <li class="fragment">How do they think about the economy?</li>
@@ -155,7 +157,7 @@ economy?</li>
 <h2>News</h2>
 <ul>
 <li class="fragment">Collected using NewsAPI</li>
-<li class="fragment">9 News Outlets (4 UK, 5 US)</li>
+<li class="fragment">9 News Outlets (4 UK, 5 US, N=376,583)</li>
 <li class="fragment">Query: <code>econom*</code>, <code>tax*</code>,
 <code>market*</code>, <code>inflat*</code>, <code>invest*</code>,
 <code>job*</code>, <code>financ*</code>, <code>capit*</code>,
@@ -184,7 +186,7 @@ interviews/news</li>
 <li class="fragment">Apply SRL</li>
 <li class="fragment">Simplify spans labelled as roles <code>ARG0</code>,
 <code>ARG1</code> and <code>ARG2</code></li>
-<li class="fragment">Embed roles</li>
+<li class="fragment">Embed phrases</li>
 <li class="fragment">Cluster embeddings</li>
 <li class="fragment">Label clusters</li>
 <li class="fragment">Retain only complete <span
@@ -275,30 +277,30 @@ phrase</li>
 <section id="when-clustering-and-labelling-worked" class="slide level2">
 <h2>When Clustering and Labelling Worked</h2>
 <p><code>LABEL: "drug" (0.05)</code></p>
-<p><code>RAW TEXT COUNTS:</code>
-<code>drug-192 | cannabis-71 | alcohol-62 | vaccination-48 | marijuana-38 | vaccinate-38 | cocaine-35 | dose-19 | medicine-18 | heroin-17 | fentanyl-16 | pharmacist-15 | addict-14</code></p>
+<p><code>RAW TEXT COUNTS:</code></p>
+<p><code>drug-192 | cannabis-71 | alcohol-62 | vaccination-48 | marijuana-38 | vaccinate-38 | cocaine-35 | dose-19 | medicine-18 | heroin-17 | fentanyl-16 | pharmacist-15 | addict-14</code></p>
 </section>
 <section id="when-clustering-worked-but-labelling-did-not"
 class="slide level2">
 <h2>When Clustering Worked but Labelling Did Not</h2>
 <p><code>LABEL: "Labour" (0.10)</code></p>
-<p><code>RAW TEXT COUNTS:</code>
-<code>Labour-789 | staff-402 | worker-383 | union-220 | company-141 | employee-136 | pensioner-91 | employer-82 | boss-74 | landlord-66 | colleague-58 | production-43</code></p>
+<p><code>RAW TEXT COUNTS:</code></p>
+<p><code>Labour-789 | staff-402 | worker-383 | union-220 | company-141 | employee-136 | pensioner-91 | employer-82 | boss-74 | landlord-66 | colleague-58 | production-43</code></p>
 </section>
 <section id="when-the-model-is-racist" class="slide level2">
 <h2>When the Model is Racist</h2>
 <p><code>LABEL: "Rishi Sunak" (0.04)</code></p>
-<p><code>RAW TEXT COUNTS:</code>
-<code>Rishi Sunak-293 | Elon Musk-197 | Turkey-192 | Priti Patel-162 | Sadiq Khan-155 | Sajid Javid-152 | Sunak-126 | Kim Jong-un-75 | TikTok-61 | Ilhan Omar-54 | Isis-53 | Erdogan-53 | he-50 | Asda-46 | Gove-37 | Patel-30 | Tehran-28 | Javid-26 | Imran Khan-26 | jab-25 | year-25 | Alibaba-23 | Taoiseach-22 | attack-22 | they-21 | Asos-20 | Kabul-19 | who-19 | QAnon-19 | say-18</code></p>
+<p><code>RAW TEXT COUNTS:</code></p>
+<p><code>Rishi Sunak-293 | Elon Musk-197 | Turkey-192 | Priti Patel-162 | Sadiq Khan-155 | Sajid Javid-152 | Sunak-126 | Kim Jong-un-75 | TikTok-61 | Ilhan Omar-54 | Isis-53 | Erdogan-53 | he-50 | Asda-46 | Gove-37 | Patel-30 | Tehran-28 | Javid-26 | Imran Khan-26 | jab-25 | year-25 | Alibaba-23 | Taoiseach-22 | attack-22 | they-21 | Asos-20 | Kabul-19 | who-19 | QAnon-19 | say-18</code></p>
 </section>
 <section id="when-the-model-is-sexist" class="slide level2">
 <h2>When the Model is Sexist</h2>
 <p><code>LABEL: "Theresa May" (0.04)</code></p>
-<p><code>RAW TEXT COUNTS:</code>
-<code>Theresa May-418 | Nicola Sturgeon-199 | she-149 | Marjorie Taylor Greene-140 | Kamala Harris-109 | Ghislaine Maxwell-93 | Elizabeth Warren-92 | Liz Truss-73 | Nancy Pelosi-65 | Lindsey Graham-65 | Melania Trump-64 | Ivanka Trump-60</code></p>
+<p><code>RAW TEXT COUNTS:</code></p>
+<p><code>Theresa May-418 | Nicola Sturgeon-199 | she-149 | Marjorie Taylor Greene-140 | Kamala Harris-109 | Ghislaine Maxwell-93 | Elizabeth Warren-92 | Liz Truss-73 | Nancy Pelosi-65 | Lindsey Graham-65 | Melania Trump-64 | Ivanka Trump-60</code></p>
 </section>
-<section id="reduced-representation" class="slide level2">
-<h2>Reduced Representation</h2>
+<section id="reduction-is-still-lossy" class="slide level2">
+<h2>Reduction is Still Lossy</h2>
 <aside class="notes">
 <ul>
 <li>This is a relatively clear example to a human reader.</li>
@@ -311,9 +313,6 @@ class="slide level2">
 </section>
 <section id="linking-and-comparing" class="slide level2">
 <h2>Linking and Comparing</h2>
-<aside class="notes">
-
-</aside>
 <table>
 <thead>
 <tr class="header">
@@ -375,14 +374,9 @@ class="slide level2">
 </tbody>
 </table>
 </section>
-<section id="targeted-concept-discovery" class="slide level2">
-<h2>Targeted Concept Discovery</h2>
-<figure>
-<img data-src="a7.png"
-alt="Tabulated responses to A7. Who has power? among UK Respondents" />
-<figcaption aria-hidden="true">Tabulated responses to A7. Who has power?
-among UK Respondents</figcaption>
-</figure>
+<section id="section" class="slide level2" data-background="a7.png"
+data-background-size="contain">
+<h2 data-background="a7.png" data-background-size="contain"></h2>
 </section>
 <section id="clustering-concepts" class="slide level2">
 <h2>Clustering Concepts</h2>
@@ -408,14 +402,9 @@ class="fragment"><code>FINANCIAL, BIG BANKS, BUSINESS AND CORPORATE</code>
 assigned to Cluster 68 (<code>bank</code>)</li>
 </ul>
 </section>
-<section id="k-nearest-embeddings" class="slide level2">
-<h2>K-Nearest Embeddings</h2>
-<figure>
-<img data-src="knn.png"
-alt="Narrative graph of 100 closest phrases to “working class” embedding" />
-<figcaption aria-hidden="true">Narrative graph of 100 closest phrases to
-“working class” embedding</figcaption>
-</figure>
+<section id="section-1" class="slide level2" data-background="knn.png"
+data-background-size="contain">
+<h2 data-background="knn.png" data-background-size="contain"></h2>
 </section></section>
 <section id="next-steps" class="title-slide slide level1">
 <h1>Next Steps</h1>
