@@ -58,4 +58,3 @@ I research computational methods for unstructured (i.e. text or image) data and 
 
 ["Comparative Government Revision Class"](/misc_presentations/compgov_revision.html)
 
-[COMPTEXT 2022 Presentation](/misc_presentations/comptext-pres.html)
