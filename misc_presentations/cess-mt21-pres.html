@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Musashi Jacobs-Harukawa">
+  <title>Does Microtargeting Work?</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="../reveal.js/dist/theme/../../../minimal-theme.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Does Microtargeting Work?</h1>
+  <p class="subtitle">Evidence from a Survey Experiment during the 2020 US Election</p>
+  <p class="author">Musashi Jacobs-Harukawa</p>
+  <p class="institute">Department of Politics and International Relations, University of Oxford</p>
+  <p class="date">CESS Colloquium, 3 Nov 2021</p>
+</section>
+
+<section>
+<section id="tldr" class="title-slide slide level1">
+<h1>tl;dr</h1>
+<ul>
+<li class="fragment"><strong>Objective</strong>: estimate effect of political microtargeting.</li>
+<li class="fragment"><strong>Design</strong>: Two-stage survey experiment with allocation mechanism as treatment.</li>
+<li class="fragment"><strong>Result</strong>: Among unaligned respondents who had not pre-voted, targeting:
+<ul>
+<li class="fragment"><strong>Increased proportion anti-Biden by 8.7 percentage points</strong>.</li>
+<li class="fragment"><strong>Decreased proportion intending to vote Biden by 7.1 percentage points</strong>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="scope" class="slide level2">
+<h2>Scope</h2>
+<ul>
+<li class="fragment"><strong>Tailoring</strong>: constructing a message so that it appeals to a specific audience.</li>
+<li class="fragment"><strong>Targeting</strong>: delivering the message so only the intended audience sees it.
+<ul>
+<li class="fragment"><strong>Micro-</strong>: on the basis of individual characteristics.</li>
+</ul></li>
+</ul>
+</section>
+<section id="context" class="slide level2">
+<h2>Context</h2>
+<ol type="1">
+<li class="fragment">Rise of data-driven political campaigning in the past decade (Fowler et al 2021)
+<ul>
+<li class="fragment">Creates various legal (Wood and Ravel 2017) and ethical (e.g. Burkell &amp; Regan 2019) issues.</li>
+</ul></li>
+<li class="fragment">Many of these arguments presume that micro-targeting <em>works</em>:
+<ul>
+<li class="fragment">“micro-targeting of voters can pay very handsome electoral dividends for a relatively modest investment” (Krotoszynski Jr. 2020).</li>
+</ul></li>
+</ol>
+</section>
+<section id="puzzle" class="slide level2">
+<h2>Puzzle</h2>
+<ol start="3" type="1">
+<li class="fragment">Research on <em>psychometric profiling</em> indicates that improvements should be possible (Zarouali et al 2020)</li>
+<li class="fragment">But extant political science research casts doubt (Nickerson and Rogers 2020)
+<ul>
+<li class="fragment">Decade of political science research finds largely small/null effects of campaigns (Kalla and Broockman 2018)</li>
+<li class="fragment">Coppock et al (2020) find <strong>lack of heterogeneity that leaves little room for targeting to operate</strong>.</li>
+</ul></li>
+</ol>
+</section>
+<section id="question" class="slide level2">
+<h2>Question</h2>
+<ul>
+<li class="fragment"><em>If ad effects are small and homogeneous, then how can targeting yield any benefits?</em></li>
+<li class="fragment"><em>Does (micro)targeting work?</em></li>
+</ul>
+<aside class="notes">
+<p>Note that in this context, I take “micro” to mean on the basis of individual traits, as opposed to group-level data.</p>
+</aside>
+</section></section>
+<section>
+<section id="research-design" class="title-slide slide level1">
+<h1>Research Design</h1>
+
+</section>
+<section id="design-summarized" class="slide level2">
+<h2>Design Summarized</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p><strong>Stage 1</strong></p>
+<ul>
+<li class="fragment">Control</li>
+<li class="fragment">N = 1500</li>
+<li class="fragment">5 ads</li>
+<li class="fragment">Random allocation</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><strong>Switch-Over</strong></p>
+<ul>
+<li class="fragment">5 algorithms trained on stage 1 data learn:</li>
+<li class="fragment">Biden fav. <br>= f(ad, traits)</li>
+<li class="fragment">Best algorithm uploaded</li>
+</ul>
+</div><div class="column" style="width:30%;">
+<p><strong>Stage 2</strong></p>
+<ul>
+<li class="fragment">Treatment</li>
+<li class="fragment">N = 900</li>
+<li class="fragment">Allocate ad that minimizes Biden favorability</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="advertisements" class="slide level2">
+<h2>Advertisements</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Title</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>“They Mock Us”</td>
+<td>In-group: Clinton and Biden mocking</td>
+</tr>
+<tr class="even">
+<td>“Why did Biden let him do it?”</td>
+<td>Hunter Biden’s ostensible corruption</td>
+</tr>
+<tr class="odd">
+<td>“Biden will come for your guns”</td>
+<td>2A; Biden will steal guns</td>
+</tr>
+<tr class="even">
+<td>“Insult”</td>
+<td>Biden: Black Trump supporters not Black</td>
+</tr>
+<tr class="odd">
+<td>“Real Leadership”</td>
+<td>Obama/Biden caused wars, neglected veterans</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="covariates" class="slide level2">
+<h2>Covariates</h2>
+<div class="columns">
+<div class="column">
+<p><strong>Demographic (5 items)</strong></p>
+<ul>
+<li class="fragment">Age</li>
+<li class="fragment">Gender</li>
+<li class="fragment">Race</li>
+<li class="fragment">Income Group</li>
+<li class="fragment">State</li>
+</ul>
+</div><div class="column">
+<p><strong>Political (4 items)</strong></p>
+<ul>
+<li class="fragment">News interest</li>
+<li class="fragment">Is country on right track?</li>
+<li class="fragment">Partisanship (1-7 Dem/Rep)</li>
+<li class="fragment">Ideology (1-5 L/R)</li>
+</ul>
+</div>
+</div>
+<div class="fragment">
+<p><em>Note</em>: expectation that online advertisers (e.g. Facebook) able to infer these traits with high degree of accuracy.</p>
+</div>
+</section>
+<section id="five-candidate-algorithms" class="slide level2">
+<h2>Five Candidate Algorithms</h2>
+<p>Chosen for speed and ability to learn highly conditional relationships:</p>
+<ul>
+<li class="fragment">*Random Forest (RF)</li>
+<li class="fragment">AdaBoost</li>
+<li class="fragment">Gradient Boosted Decision Trees (GBDT)</li>
+<li class="fragment">Multi-Layer Perceptron Regressor (MLPR)</li>
+<li class="fragment">Support Vector Machine (SVM)</li>
+</ul>
+</section>
+<section id="outcomes" class="slide level2">
+<h2>Outcomes</h2>
+<ol type="1">
+<li class="fragment">Trump and Biden Favorability (1-5)</li>
+<li class="fragment">Voting Intention:
+<ul>
+<li class="fragment">Trump/Biden/Other</li>
+<li class="fragment">Already voted (Trump/Biden/Other)</li>
+<li class="fragment">Do not intend to vote</li>
+</ul></li>
+</ol>
+</section>
+<section id="hypotheses" class="slide level2">
+<h2>Hypotheses</h2>
+<ul>
+<li class="fragment"><p>Targeting anti-Biden ads decreases:</p>
+<ul>
+<li class="fragment">Biden favorability</li>
+<li class="fragment">Intent to vote Biden</li>
+<li class="fragment">Intent to vote (turnout</li>
+</ul></li>
+<li class="fragment"><p>Versus group that receives ad at random</p></li>
+<li class="fragment"><p>All hypotheses tested conditional on partisanship (motivated reasoning)</p></li>
+</ul>
+</section></section>
+<section>
+<section id="results" class="title-slide slide level1">
+<h1>Results</h1>
+
+</section>
+<section id="section" class="slide level2" data-background="figures/effect_of_targeting_presentation.png" data-background-size="contain">
+<h2 data-background="figures/effect_of_targeting_presentation.png" data-background-size="contain"></h2>
+</section>
+<section id="robustness" class="slide level2">
+<h2>Robustness</h2>
+<ul>
+<li class="fragment">Pre-treatment covariate balance check.</li>
+<li class="fragment">Multiple comparisons correction (Holm, Benjamini-Hochberg).</li>
+<li class="fragment">Variety of operationalizations of outcome (linear, binary, ordered categorical)</li>
+<li class="fragment">Pre-experimental power check using Coppock et al (2020) data (along with permutation test for bias in mechanism).</li>
+</ul>
+</section>
+<section id="decomposition" class="slide level2">
+<h2>Decomposition</h2>
+<ul>
+<li class="fragment">Proportion of ads varies between stages.</li>
+<li class="fragment">Effect can be decomposed:
+<ul>
+<li class="fragment">“Better Allocations”: leveraging within-respondent heterogeneity to increase average effect</li>
+<li class="fragment">“Better Ads”: more of better ads shown</li>
+</ul></li>
+<li class="fragment">Targeting vs simple A/B testing.</li>
+</ul>
+</section>
+<section id="section-1" class="slide level2" data-background="figures/heterogeneity_presentation.png" data-background-size="contain">
+<h2 data-background="figures/heterogeneity_presentation.png" data-background-size="contain"></h2>
+</section></section>
+<section>
+<section id="discussion" class="title-slide slide level1">
+<h1>Discussion</h1>
+
+</section>
+<section id="limitations" class="slide level2">
+<h2>Limitations</h2>
+<ul>
+<li class="fragment">Survey response vs vote choice</li>
+<li class="fragment">Convenience sample</li>
+<li class="fragment">Possible confounding due to sequential assignment.</li>
+<li class="fragment">“Black box” approach</li>
+</ul>
+</section>
+<section id="envelope-calculation" class="slide level2">
+<h2>Envelope Calculation</h2>
+<ul>
+<li class="fragment">7.1pp decrease in unaligned voters voting Biden</li>
+<li class="fragment">Sufficient to change outcome in Arizona (35.1% unaligned, 0.3% margin)
+<ul>
+<li class="fragment">Unrepresentative sample</li>
+<li class="fragment">Decay</li>
+</ul></li>
+</ul>
+</section>
+<section id="contradictory" class="slide level2">
+<h2>Contradictory?</h2>
+<ul>
+<li class="fragment">I argue consistent with results of Coppock et al. (and others).</li>
+<li class="fragment">Difference may be due to ML search of covariate space to maximise effect.</li>
+<li class="fragment">In future, necessary to consider within-respondent heterogeneity?</li>
+</ul>
+</section>
+<section id="what-we-learned" class="slide level2">
+<h2>What We Learned</h2>
+<ul>
+<li class="fragment"><em>Possible</em> to increase the effectiveness of ad campaigns with (micro)targeting.
+<ul>
+<li class="fragment">Creates bad incentives for data harvesting</li>
+<li class="fragment">Targeting negative ads = manipulative?</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="whats-next" class="title-slide slide level1">
+<h1>What’s Next</h1>
+
+</section>
+<section id="follow-up-fixes" class="slide level2">
+<h2>Follow-Up: Fixes</h2>
+<ul>
+<li class="fragment"><strong>Setting</strong>: US 2022 mid-term elections</li>
+<li class="fragment"><strong>Fixes</strong>:
+<ul>
+<li class="fragment">Stage 1 as training-only (avoid confounding)</li>
+<li class="fragment">General appeal and GOTV ads as control.</li>
+<li class="fragment">Increase <span class="math inline">\(N\)</span>, exclude partisan respondents.</li>
+</ul></li>
+</ul>
+</section>
+<section id="follow-up-additions" class="slide level2">
+<h2>Follow-Up: Additions</h2>
+<ul>
+<li class="fragment">How does priming respondents to presence of targeting moderate effect of targeting?
+<ul>
+<li class="fragment">Do existing “warnings” have any effect?</li>
+<li class="fragment">Would a stronger disclosure have an effect?</li>
+<li class="fragment">How can this be used for better regulation of online ads?</li>
+</ul></li>
+</ul>
+</section>
+<section id="other-applications" class="slide level2">
+<h2>Other Applications</h2>
+<ul>
+<li class="fragment">Dynamic optimal allocation:
+<ul>
+<li class="fragment">Continuously updating adaptive treatment design?</li>
+</ul></li>
+<li class="fragment">Idea: maximising sample efficiency for estimating HTEs in multi-intervention studies.</li>
+</ul>
+</section>
+<section id="bonus-technical-implementation" class="slide level2">
+<h2>Bonus: Technical Implementation</h2>
+<ul>
+<li class="fragment">Built/hosted website on AWS Lightsail instance running Linux/Nginx/PHP/MariaDB (LEMP) stack.</li>
+<li class="fragment">Responses sent real-time to to server-side kernel and db.</li>
+<li class="fragment">Python kernel API modified Jupyter interface.</li>
+<li class="fragment">Kernel hosts pre-trained algorithm, sends best ad back.</li>
+<li class="fragment">PHP generates webpage to contain assigned video.</li>
+<li class="fragment">Source code available: <code>https://github.com/muhark/dotas-design</code></li>
+</ul>
+</section></section>
+    </div>
+  </div>
+
+  <script src="../reveal.js/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="../reveal.js/plugin/notes/notes.js"></script>
+  <script src="../reveal.js/plugin/search/search.js"></script>
+  <script src="../reveal.js/plugin/zoom/zoom.js"></script>
+  <script src="../reveal.js/plugin/math/math.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: false,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>

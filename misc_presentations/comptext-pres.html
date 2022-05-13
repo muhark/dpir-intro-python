@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Musashi Jacobs-Harukawa, Dr Lucy Barnes">
+  <meta name="dcterms.date" content="2022-05-06">
+  <title>Linking Economic Ideas between Diverse Corpora</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="minimal-theme.css"/>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Linking Economic Ideas between Diverse Corpora</h1>
+  <p class="subtitle">Preliminary Results presented at COMPTEXT 2022</p>
+  <p class="author">Musashi Jacobs-Harukawa, Dr Lucy Barnes</p>
+  <p class="institute">University of Oxford, University College
+London</p>
+  <p class="date">6 May 2022</p>
+</section>
+
+<section>
+<section id="context" class="title-slide slide level1">
+<h1>Context</h1>
+
+</section>
+<section id="economic-thinking" class="slide level2">
+<h2>Economic Thinking</h2>
+<aside class="notes">
+<ul>
+<li>Begin with motivation: why be interested in economic ideas?
+<ul>
+<li>What are they? Why do they matter?
+<ul>
+<li>Normative ideas like Equality and Fairness shape public response to
+policy</li>
+<li>Cause-and-effect understanding of economy shapes policy decisions of
+experts</li>
+<li>Descriptive ideas like zero-sum thinking shape support for taxation
+of rich</li>
+</ul></li>
+<li>Evidence that they matter</li>
+</ul></li>
+</ul>
+</aside>
+<ul>
+<li class="fragment">Normative Ideas (Cavaillé 2021)</li>
+<li class="fragment">Cause-and-Effect Understandings (Lindvall
+2009)</li>
+<li class="fragment">Descriptive Ideas (Barnes
+<em>forthcoming</em>)</li>
+</ul>
+</section>
+<section id="menmope" class="slide level2">
+<h2>MENMOPE</h2>
+<aside class="notes">
+<ul>
+<li>This research part of wider research agenda, PI Lucy Barnes.</li>
+<li>Two “goals”:
+<ul>
+<li>Inductively identify economic ideas, avoid elitism.</li>
+<li>Study interplay between politicians, public and media.</li>
+</ul></li>
+</ul>
+</aside>
+<ul>
+<li class="fragment"><em>Mental Models of the Political
+Economy</em></li>
+<li class="fragment">Inductive approach to economic ideas</li>
+<li class="fragment">Politicians, Public and Media</li>
+</ul>
+</section>
+<section id="ideas-as-a-quantity" class="slide level2">
+<h2>Ideas as a Quantity</h2>
+<aside class="notes">
+<ul>
+<li>Thinking about the unit of analysis</li>
+<li>Linguistic structures that reveal it</li>
+<li>Ideas more granular than a semantic field</li>
+<li>More complex than individual words</li>
+<li>Sentence and phrase level, but how to interpret phrase-level
+output?</li>
+</ul>
+</aside>
+<ul>
+<li class="fragment">More granular than a semantic field</li>
+<li class="fragment">More complex than individual words</li>
+<li class="fragment">Sentence- and phrase-level phenomenon</li>
+</ul>
+</section>
+<section id="ash-gauthier-and-widmer-2021" class="slide level2">
+<h2>Ash Gauthier and Widmer (2021)</h2>
+<aside class="notes">
+
+</aside>
+<ul>
+<li class="fragment">Hereafter AGW21</li>
+<li class="fragment">Pipeline for extracting and simplifying
+Agent-Action-Patient tuples from text.</li>
+<li class="fragment">Economic ideas as SR tuples?</li>
+</ul>
+</section></section>
+<section>
+<section id="data" class="title-slide slide level1">
+<h1>Data</h1>
+
+</section>
+<section id="three-datasets" class="slide level2">
+<h2>Three Datasets</h2>
+<ul>
+<li class="fragment">Survey</li>
+<li class="fragment">Elite interviews</li>
+<li class="fragment">News Headlines and Descriptions</li>
+</ul>
+</section>
+<section id="survey" class="slide level2">
+<h2>Survey</h2>
+<ul>
+<li class="fragment">General public, 5 countries</li>
+<li class="fragment">UK subset N=1,055</li>
+<li class="fragment">Zero-sum economic thinking</li>
+<li class="fragment">Forthcoming Barnes JEPP</li>
+</ul>
+</section>
+<section id="interviews" class="slide level2">
+<h2>Interviews</h2>
+<ul>
+<li class="fragment">N=99</li>
+<li class="fragment">Politicians and Advisers</li>
+<li class="fragment">Manually transcribed and translated</li>
+<li class="fragment">How do they think about the economy?</li>
+<li class="fragment">How do they think the public thinks about the
+economy?</li>
+<li class="fragment">Forthcoming Killick, Barnes et al</li>
+</ul>
+</section>
+<section id="news" class="slide level2">
+<h2>News</h2>
+<ul>
+<li class="fragment">Collected using NewsAPI</li>
+<li class="fragment">9 News Outlets (4 UK, 5 US, N=376,583)</li>
+<li class="fragment">Query: <code>econom*</code>, <code>tax*</code>,
+<code>market*</code>, <code>inflat*</code>, <code>invest*</code>,
+<code>job*</code>, <code>financ*</code>, <code>capit*</code>,
+<code>employ*</code>.</li>
+<li class="fragment">Filter on URL regex</li>
+</ul>
+</section>
+<section id="tasks" class="slide level2">
+<h2>Tasks</h2>
+<ul>
+<li class="fragment">Identify ideas in text datasets</li>
+<li class="fragment">Compare ideas between interviews and news</li>
+<li class="fragment">Identify relevant concepts from survey in
+interviews/news</li>
+</ul>
+</section></section>
+<section>
+<section id="method" class="title-slide slide level1">
+<h1>Method</h1>
+
+</section>
+<section id="primer-on-agw21-and-srl" class="slide level2">
+<h2>Primer on AGW21 and SRL</h2>
+<ol type="1">
+<li class="fragment">Split corpus into sentences</li>
+<li class="fragment">Apply SRL</li>
+<li class="fragment">Simplify spans labelled as roles <code>ARG0</code>,
+<code>ARG1</code> and <code>ARG2</code></li>
+<li class="fragment">Embed phrases</li>
+<li class="fragment">Cluster embeddings</li>
+<li class="fragment">Label clusters</li>
+<li class="fragment">Retain only complete <span
+class="math inline">\(\langle ARG0, V, ARG1 \rangle\)</span> narrative
+tuples.</li>
+</ol>
+</section>
+<section id="pipeline-example" class="slide level2">
+<h2>Pipeline Example</h2>
+<p><code>ORIGINAL: He discovered trying to introduce market reforms into a heavily state controlled economy produces corruption and all sorts of by products.</code></p>
+<p><code>PARSE:    [ARG0: He] [V: discovered] [ARG1: trying to introduce market reforms into a heavily state controlled economy produces corruption and all sorts of by products] .</code></p>
+<p><code>REDUCED:  man discover cost</code></p>
+</section>
+<section id="more-bert-more-good" class="slide level2">
+<h2>More BERT more good</h2>
+<ul>
+<li class="fragment">SRL <code>BERT</code> (Shi et al 2019)</li>
+<li class="fragment">Phrase Embedding (<code>Phrase-BERT</code>)</li>
+<li class="fragment">SpaCy <code>RoBERTa</code> for POS-tagging,
+disambiguation, dependency parsing</li>
+</ul>
+</section>
+<section id="labelling-strategy" class="slide level2">
+<h2>Labelling Strategy</h2>
+<ul>
+<li class="fragment">AGW21 lemmas, exclude if &gt;4 tokens</li>
+<li class="fragment">Use dependency parsing, identify head noun phrase
+of role span</li>
+<li class="fragment">Keep all tokens direct descendants of head noun
+phrase</li>
+</ul>
+</section></section>
+<section>
+<section id="results" class="title-slide slide level1">
+<h1>Results</h1>
+
+</section>
+<section id="parsing-results" class="slide level2">
+<h2>Parsing Results</h2>
+<table>
+<caption>Table: Corpus summary statistics</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: right;">Interviews</th>
+<th style="text-align: right;">News</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Documents</td>
+<td style="text-align: right;">2,706</td>
+<td style="text-align: right;">376,583</td>
+</tr>
+<tr class="even">
+<td>Sentences</td>
+<td style="text-align: right;">19,124</td>
+<td style="text-align: right;">865,372</td>
+</tr>
+<tr class="odd">
+<td>Parses</td>
+<td style="text-align: right;">100,617</td>
+<td style="text-align: right;">2,313,149</td>
+</tr>
+<tr class="even">
+<td>Tokens</td>
+<td style="text-align: right;">530,834</td>
+<td style="text-align: right;">14,651,857</td>
+</tr>
+<tr class="odd">
+<td>Roles (ARG0-2, unreduced)</td>
+<td style="text-align: right;">59,519</td>
+<td style="text-align: right;">1,640,069</td>
+</tr>
+<tr class="even">
+<td>Roles (ARG0-2, reduced)</td>
+<td style="text-align: right;">34,221</td>
+<td style="text-align: right;">878,233</td>
+</tr>
+<tr class="odd">
+<td>Verb Lemmas</td>
+<td style="text-align: right;">2,337</td>
+<td style="text-align: right;">13,980</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="when-clustering-and-labelling-worked" class="slide level2">
+<h2>When Clustering and Labelling Worked</h2>
+<p><code>LABEL: "drug" (0.05)</code></p>
+<p><code>RAW TEXT COUNTS:</code></p>
+<p><code>drug-192 | cannabis-71 | alcohol-62 | vaccination-48 | marijuana-38 | vaccinate-38 | cocaine-35 | dose-19 | medicine-18 | heroin-17 | fentanyl-16 | pharmacist-15 | addict-14</code></p>
+</section>
+<section id="when-clustering-worked-but-labelling-did-not"
+class="slide level2">
+<h2>When Clustering Worked but Labelling Did Not</h2>
+<p><code>LABEL: "Labour" (0.10)</code></p>
+<p><code>RAW TEXT COUNTS:</code></p>
+<p><code>Labour-789 | staff-402 | worker-383 | union-220 | company-141 | employee-136 | pensioner-91 | employer-82 | boss-74 | landlord-66 | colleague-58 | production-43</code></p>
+</section>
+<section id="when-the-model-is-racist" class="slide level2">
+<h2>When the Model is Racist</h2>
+<p><code>LABEL: "Rishi Sunak" (0.04)</code></p>
+<p><code>RAW TEXT COUNTS:</code></p>
+<p><code>Rishi Sunak-293 | Elon Musk-197 | Turkey-192 | Priti Patel-162 | Sadiq Khan-155 | Sajid Javid-152 | Sunak-126 | Kim Jong-un-75 | TikTok-61 | Ilhan Omar-54 | Isis-53 | Erdogan-53 | he-50 | Asda-46 | Gove-37 | Patel-30 | Tehran-28 | Javid-26 | Imran Khan-26 | jab-25 | year-25 | Alibaba-23 | Taoiseach-22 | attack-22 | they-21 | Asos-20 | Kabul-19 | who-19 | QAnon-19 | say-18</code></p>
+</section>
+<section id="when-the-model-is-sexist" class="slide level2">
+<h2>When the Model is Sexist</h2>
+<p><code>LABEL: "Theresa May" (0.04)</code></p>
+<p><code>RAW TEXT COUNTS:</code></p>
+<p><code>Theresa May-418 | Nicola Sturgeon-199 | she-149 | Marjorie Taylor Greene-140 | Kamala Harris-109 | Ghislaine Maxwell-93 | Elizabeth Warren-92 | Liz Truss-73 | Nancy Pelosi-65 | Lindsey Graham-65 | Melania Trump-64 | Ivanka Trump-60</code></p>
+</section>
+<section id="reduction-is-still-lossy" class="slide level2">
+<h2>Reduction is Still Lossy</h2>
+<aside class="notes">
+<ul>
+<li>This is a relatively clear example to a human reader.</li>
+<li>Reduced representation is unsatisfactory.</li>
+</ul>
+</aside>
+<p><code>ORIGINAL: I would describe an economy as where people share skills and talents in an open market.</code></p>
+<p><code>PARSE:    I would describe [ARGM-LOC: an economy] as [R-ARGM-LOC: where] [ARG0: people] [V: share] [ARG1: skills and talents] [ARGM-LOC: in an open market] .</code></p>
+<p><code>REDUCED:  man share part</code></p>
+</section>
+<section id="linking-and-comparing" class="slide level2">
+<h2>Linking and Comparing</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">ARG0</th>
+<th style="text-align: left;">B-V</th>
+<th style="text-align: left;">Party</th>
+<th style="text-align: left;">ARG1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ECONOMY</td>
+<td style="text-align: left;">DETERMINE</td>
+<td style="text-align: left;">Labour</td>
+<td style="text-align: left;">money</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Tory</td>
+<td style="text-align: left;">industrial action</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GOVERNMENT</td>
+<td style="text-align: left;">MAKE</td>
+<td style="text-align: left;">Labour</td>
+<td style="text-align: left;">pressure</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Tory</td>
+<td style="text-align: left;">Democrats, action, problem</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MINISTER</td>
+<td style="text-align: left;">FIND</td>
+<td style="text-align: left;">Labour</td>
+<td style="text-align: left;">EU</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Tory</td>
+<td style="text-align: left;">help</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MONEY</td>
+<td style="text-align: left;">TRY</td>
+<td style="text-align: left;">Labour</td>
+<td style="text-align: left;">cost</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Tory</td>
+<td style="text-align: left;">action</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="section" class="slide level2" data-background="a7.png"
+data-background-size="contain">
+<h2 data-background="a7.png" data-background-size="contain"></h2>
+</section>
+<section id="clustering-concepts" class="slide level2">
+<h2>Clustering Concepts</h2>
+<ul>
+<li class="fragment"><code>MYSELF AND PEOPLE LIKE ME</code> assigned to
+Cluster 55 (<code>I</code>)</li>
+<li class="fragment"><code>RICH PEOPLE</code> assigned to Cluster 4
+(<code>money</code>)</li>
+<li class="fragment"><code>MIDDLE CLASS</code> assigned to Cluster 6
+(<code>black man</code>)</li>
+<li class="fragment"><code>WORKING CLASS</code> assigned to Cluster 11
+(<code>Labour</code>)</li>
+<li
+class="fragment"><code>INTELLECTUALS, PROFESSORS AND THINK-TANKS</code>
+assigned to Cluster 125 (<code>university</code>)</li>
+<li class="fragment"><code>MEDIA, NEWSPAPER OWNERS AND EDITORS</code>
+assigned to Cluster 175 (<code>journalist</code>)</li>
+<li
+class="fragment"><code>POLITICAL, MINISTERS, CIVIL SERVANTS, PARTY LEADERS</code>
+assigned to Cluster 67 (<code>campaigner</code>)</li>
+<li
+class="fragment"><code>FINANCIAL, BIG BANKS, BUSINESS AND CORPORATE</code>
+assigned to Cluster 68 (<code>bank</code>)</li>
+</ul>
+</section>
+<section id="section-1" class="slide level2" data-background="knn.png"
+data-background-size="contain">
+<h2 data-background="knn.png" data-background-size="contain"></h2>
+</section></section>
+<section id="next-steps" class="title-slide slide level1">
+<h1>Next Steps</h1>
+
+</section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/math/math.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
